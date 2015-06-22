@@ -1,0 +1,34 @@
+- provide(:before_container) do
+  .jumbotron
+    .container
+      %h1 Help Fund Adoptions
+      %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
+      / = form_for @users do |f|
+      /   = f.text_field
+      /   = f.submit "Search"
+      /   %p.small Search by name or email
+      %span As seen on
+
+%h2 Raise Money for Your Adoption from Your Friends, Family, and More
+%p Create an AdoptTogether profile and invite your friends & family to make designated donations to bring your child home.
+= link_to "Get My Own Family Profile", new_family_path, class: "btn btn-primary"
+
+.family
+  %h2 1,100 Families have raised $5,500,000
+  %p for their adoptions on AdoptTogether
+
+.family
+  %h3 Bob & Kimberly Johnson
+  %p are adopting from the United States
+
+.testimonial
+  %p "A great quote about what AdoptTogether did to help us adopt our beautiful child who we love so dearly. We would be lost without Adopt Together."
+  %h4 The Wittigs
+  %p Adopted from Uganda
+  %p See their story
+
+.blog
+  %h3 A Seahawk Family's Crazy Adoption Story
+  %p Dec 30, 2014
+  %P Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
+  %p See the blog

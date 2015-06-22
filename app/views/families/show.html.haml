@@ -1,0 +1,10 @@
+%h1 #{@family.first_name} #{@family.last_name}
+%h2 are adopting from #{@family.country}
+%p= @family.description
+%p Adoption Agency
+%p= @family.agency_name
+%p= @family.agency_site
+
+%aside
+  %p Raised $0
+  %p of #{number_to_currency(@family.cost)} goal

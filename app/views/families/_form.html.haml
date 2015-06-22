@@ -1,0 +1,49 @@
+= form_for @family do |f|
+  = render 'shared/errors', object: @family
+  %fieldset
+    %legend Family Information
+    .form-group
+      = f.label :first_name, "First Name(s)"
+      = f.text_field :first_name, autofocus: true, class: "form-control"
+    .form-group
+      = f.label :last_name, "Last Name"
+      = f.text_field :last_name, class: "form-control"
+    / - if current_user == nil
+    /   .form-group
+    /     = f.label :email
+    /     = f.email_field :email, class: "form-control"
+    /   .form-group
+    /     = f.label :password
+    /     = f.password_field :password
+    /     %p.small You'll use this info to log back in.
+    .form-group
+      = f.label :phone
+      = f.text_field :phone, class: "form-control"
+    .form-group
+      = f.label :postal_code, "Zip/Postal Code"
+      = f.text_field :postal_code, class: "form-control"
+  %fieldset
+    %legend Adoption Information
+    .form-group
+      = f.label :cost, "Estimated Adoption Cost"
+      = f.text_field :cost, class: "form-control"
+    .form-group
+      = f.label :country
+      = f.text_field :country, class: "form-control"
+    / %h3 Gender Requested
+    / = f.collection_check_boxes :gender, Family::GENDER_OPTIONS, Family::GENDER_OPTIONS, Family::GENDER_OPTIONS
+    / = f.label :quantity, "How many children are you adopting?"
+    / = f.select
+    .form-group
+      = f.label :description, "Message to your visitors"
+      = f.text_area :description, class: "form-control"
+    / = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+    / = f.label :satus, "Adoption Status"
+    / = f.collection_select :status, Family::ADOPTION_STATUSES, Family::ADOPTION_STATUSES, Family::ADOPTION_STATUSES, prompt: true
+    .form-group
+      = f.label :agency_name, "Adoption Agency"
+      = f.text_field :agency_name, class: "form-control"
+    .form-group
+      = f.label :agency_site, "Adoption Agency URL"
+      = f.text_field :agency_site, class: "form-control"
+    = f.submit "Apply for a Profile", class: "btn btn-default"

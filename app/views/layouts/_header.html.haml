@@ -1,0 +1,21 @@
+%header.navbar.navbar-default
+  .container-fluid
+    %button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+      %span.sr-only Toggle Navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to image_tag("logo.png", alt: "AdoptTogether"), root_url, class: "logo navbar-brand"
+    .collapse.navbar-collapse
+      %nav
+        %ul.nav.navbar-nav.navbar-right
+          %li=link_to "Start a Family Profile", new_family_path
+          %li=link_to "Start a Fundraiser", "#"
+          %li=link_to "What is AdoptTogether?", "#"
+          -if current_user
+            %li=link_to current_user.email, edit_user_path(current_user)
+            %li=link_to "Log out", logout_path
+          -else
+            %li=link_to "Login", login_path
+            %li=link_to "Sign Up", signup_path
+          %li=link_to "Donate", "#"

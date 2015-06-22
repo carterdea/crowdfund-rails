@@ -1,0 +1,9 @@
+= form_for @user do |f|
+  = render 'shared/errors', object: @user
+  .form-group
+    = f.label :email
+    = f.email_field :email, size: 40, autofocus: true, class: "form-control"
+  .form-group
+    = f.label :password
+    = f.password_field :password, size: 40, class: "form-control"
+  = f.submit "Sign Up", class: "btn btn-default"

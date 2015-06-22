@@ -1,0 +1,4 @@
+- if object.errors.any?
+  %ul
+    - object.errors.full_messages.each do |error|
+      %li= error

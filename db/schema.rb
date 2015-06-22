@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621042854) do
+ActiveRecord::Schema.define(version: 20150621085047) do
+
+  create_table "families", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "cost"
+    t.string   "country"
+    t.string   "gender"
+    t.integer  "quantity"
+    t.text     "description"
+    t.string   "status"
+    t.string   "agency_name"
+    t.string   "agency_site"
+    t.string   "photo"
+    t.boolean  "approved",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "families", ["user_id"], name: "index_families_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false

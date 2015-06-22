@@ -7,7 +7,7 @@ gem 'haml', '~> 4.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'bourbon', '~> 4.2.3'
-gem 'neat', '~> 1.7.2'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sorcery', '~> 0.9.1'
 # gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
@@ -25,8 +25,7 @@ group :development, :test do
   gem 'capybara', '~> 2.4.4'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'rspec-rails', '~> 3.2.3'
+  gem 'spring', '~> 1.3.6'
 end
 
 group :production do

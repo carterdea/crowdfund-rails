@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    %h1 Log In
+    = form_tag sessions_path do
+      .form-group
+        = label_tag :email
+        = email_field_tag :email, nil, class: "form-control"
+      .form-group
+        = label_tag :password
+        = password_field_tag :password, nil, class: "form-control"
+      = submit_tag "Log In", class: "btn btn-default"
+    %p Need an account? #{link_to "Sign Up", signup_path}

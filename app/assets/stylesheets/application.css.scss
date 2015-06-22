@@ -1,0 +1,9 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "application/core/mixins";
+@import "application/core/variables";
+@import "application/core/fonts";
+@import "application/core/global";
+@import "application/core/buttons";
+
+@import "application/pages/home";
