@@ -58,12 +58,6 @@
   filter: blur($value);
 }
 
-@mixin box-shadow($left: 0px, $top: 0px, $blur: 0px, $color:#000, $inset:"") {
-  -webkit-box-shadow:$left $top $blur $color #{$inset};
-  -moz-box-shadow:$left $top $blur $color #{$inset};
-  box-shadow:$left $top $blur $color #{$inset};
-}
-
 @mixin translateY ($value:-50%) {
   -webkit-transform: translateY($value);
   -ms-transform: translateY($value);

@@ -16,7 +16,7 @@
         .form-group
           = ff.label :password
           = ff.password_field :password, class: "form-control"
-          %p.small You'll use this info to log back in.
+          %p.help-block.small You'll use your email & this password to log back in.
     .form-group
       = f.label :phone
       = f.text_field :phone, class: "form-control"
@@ -47,4 +47,4 @@
     .form-group
       = f.label :agency_site, "Adoption Agency URL"
       = f.text_field :agency_site, class: "form-control"
-    = f.submit "Apply for a Profile", class: "btn btn-default"
+    = f.submit "Apply for a Profile", class: "btn btn-primary"

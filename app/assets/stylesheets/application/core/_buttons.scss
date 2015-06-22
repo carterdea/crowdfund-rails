@@ -1,3 +1,32 @@
-.btn-primary {
-  background: $color-primary;
+.btn {
+  border: 0;
 }
+
+.btn-primary,
+.btn-primary:focus {
+  color: $color-white;
+  background: $color-primary;
+  outline: none;
+}
+
+.btn-primary:hover {
+  background: lighten($color-primary, 10%);
+}
+
+.btn-primary:active,
+.btn-primary:active:hover,
+.btn-primary:active:focus {
+  background: darken($color-primary, 10%);
+  outline: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {  }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) { }
