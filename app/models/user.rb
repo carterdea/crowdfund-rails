@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
 
   has_many :families
 
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  validates :email, presence: true, format: VALID_EMAIL_REGEX, uniqueness: { case_sensitive: false }
   validates :password, presence: true
+
+  def has_family?
+    self.families.any?
+  end
 end
