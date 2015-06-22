@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :families
   root 'pages#home'
   get 'signup' => "users#new"
   get 'login' => "sessions#new"
   get 'logout' => "sessions#destroy"
   resources :users
+  resources :families
   resources :sessions
 
   # Example of regular route:
