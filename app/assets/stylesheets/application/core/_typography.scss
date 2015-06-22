@@ -1,0 +1,19 @@
+body {
+  color: $color-medium-grey-2;
+  font: 14px/1.4 'Whitney', 'Whitney A', 'Whitney B', sans-serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+.jumbotron h1 {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+footer h4 {
+  color: transparentize($color-white, .3);
+  font-size: 14px;
+}

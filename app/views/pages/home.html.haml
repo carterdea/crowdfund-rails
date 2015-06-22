@@ -1,13 +1,15 @@
 - provide(:before_container) do
   .jumbotron
     .container
-      %h1 Help Fund Adoptions
-      %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
-      / = form_for @users do |f|
-      /   = f.text_field
-      /   = f.submit "Search"
-      /   %p.small Search by name or email
-      %span As seen on
+      .hero-content.col-xs-12.col-md-8
+        %h1 Help Fund Adoptions
+        %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
+        = form_tag '/families', method: "post", class: "form-inline form-horizontal" do
+          = text_field_tag 'search', nil, placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
+          = submit_tag "Search", class: "btn btn-primary btn-lg"
+          %p.small Search by name or email
+      .press
+        %span.col-xs-12 As seen on
 
 %h2 Raise Money for Your Adoption from Your Friends, Family, and More
 %p Create an AdoptTogether profile and invite your friends & family to make designated donations to bring your child home.
@@ -31,4 +33,4 @@
   %h3 A Seahawk Family's Crazy Adoption Story
   %p Dec 30, 2014
   %P Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
-  %p See the blog
+  =link_to "See the blog", "#", class: "btn btn-default"

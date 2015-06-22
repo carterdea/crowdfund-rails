@@ -2,11 +2,16 @@
   border: 0;
 }
 
+.btn:focus,
+.btn:hover,
+.btn:focus {
+  outline: none;
+}
+
 .btn-primary,
 .btn-primary:focus {
   color: $color-white;
   background: $color-primary;
-  outline: none;
 }
 
 .btn-primary:hover {
@@ -17,7 +22,10 @@
 .btn-primary:active:hover,
 .btn-primary:active:focus {
   background: darken($color-primary, 10%);
-  outline: none;
+}
+
+.btn-default {
+  background: $color-medium-grey-1;
 }
 
 /* Small devices (tablets, 768px and up) */

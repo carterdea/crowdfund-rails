@@ -1,13 +1,13 @@
 %footer
   .container
     .row
-      .col-xs-12
+      .col-xs-12.col-md-4
         =image_tag "logo-alt.png", alt: "AdoptTogether", class: "pull-left"
-        %p Donate to AdoptTogether
+        =link_to "Donate to AdoptTogether", "#", class: "btn btn-primary"
         %p AdoptTogether is a project of Hoping Hearts Foundation, an IRS approved 501(c)(3) organization.
-      .col-xs-12
+      .col-xs-12.col-md-4
+        %h4 What is AdoptTogether
         %ul
-          %li What is AdoptTogether
           %li How It Works
           %li About Us
           %li FAQ
@@ -17,7 +17,8 @@
           %li Press
           %li Blog
           %li Help
-      .col-xs-12
+      .col-xs-12.col-md-4
+        %h4 Get Infrequent Email Updates
         %ul
           %li Facebook
           %li Twitter
