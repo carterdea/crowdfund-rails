@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_url, notice: "You need to be logged in to do this."
   end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 end

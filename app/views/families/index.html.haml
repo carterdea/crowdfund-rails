@@ -1,0 +1,8 @@
+%h1 Search Results
+%h2 #{@families.count} adopting families
+.row
+  -@families.each do |family|
+    .family.col-xs-6
+      %h3= family.full_name
+      %span are adopting from #{family.country}
+      %span $0 Raised

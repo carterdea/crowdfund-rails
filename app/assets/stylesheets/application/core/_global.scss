@@ -1,8 +1,15 @@
 header.navbar {
   background-color: $color-white;
   @include box-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
-  height: 50px;
   margin-bottom: 0;
+}
+
+.navbar-header {
+  height: 50px;
+}
+
+a.navbar-btn {
+  padding: 6px 12px !important;
 }
 
 // .navbar-brand {
@@ -10,7 +17,23 @@ header.navbar {
 // }
 
 .navbar-toggle {
-  margin-right: 0;
+  @include border-radius(5px);
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  margin: 7px 15px 7px 0;
+  padding: 8px 10px;
+  &.collapsed {
+    background-color: $color-white;
+    .icon-bar {
+      background-color: #ccc;
+    }
+  }
+  .icon-bar {
+    background-color: $color-white;
+    border-radius: 0;
+    width: 26px;
+    height: 3px;
+  }
 }
 
 footer {

@@ -8,14 +8,15 @@
     .form-group
       = f.label :last_name, "Last Name"
       = f.text_field :last_name, class: "form-control"
-    / - if current_user == nil
-    /   .form-group
-    /     = f.label :email
-    /     = f.email_field :email, class: "form-control"
-    /   .form-group
-    /     = f.label :password
-    /     = f.password_field :password
-    /     %p.small You'll use this info to log back in.
+    - if current_user == nil
+      = fields_for :user do |ff|
+        .form-group
+          = ff.label :email
+          = ff.email_field :email, class: "form-control"
+        .form-group
+          = ff.label :password
+          = ff.password_field :password, class: "form-control"
+          %p.small You'll use this info to log back in.
     .form-group
       = f.label :phone
       = f.text_field :phone, class: "form-control"
