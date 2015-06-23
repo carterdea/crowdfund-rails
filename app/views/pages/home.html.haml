@@ -5,7 +5,7 @@
         %h1 Help Fund Adoptions
         %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
         = form_tag '/families', method: "post", class: "form-inline form-horizontal" do
-          = text_field_tag 'search', nil, placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
+          = search_field_tag 'search', nil, placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
           = submit_tag "Search", class: "btn btn-primary btn-lg"
           %p.small Search by name or email
       .press

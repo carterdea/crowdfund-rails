@@ -1,4 +1,4 @@
-= form_for @family do |f|
+= form_for @family, html: { multipart: true } do |f|
   = render 'shared/errors', object: @family
   %fieldset
     %legend Family Information
@@ -31,16 +31,25 @@
     .form-group
       = f.label :country
       = f.text_field :country, class: "form-control"
-    / %h3 Gender Requested
-    / = f.collection_check_boxes :gender, Family::GENDER_OPTIONS, Family::GENDER_OPTIONS, Family::GENDER_OPTIONS
-    / = f.label :quantity, "How many children are you adopting?"
-    / = f.select
+    .form-group
+      %h3 Gender Requested
+      - Family::GENDER_OPTIONS.each do |gender|
+        .checkbox
+          = f.label :gender, :gender, { value: gender } do
+            = f.radio_button :gender, gender
+            = gender
+    .form-group
+      = f.label :quantity, "How many children are you adopting?"
+      = f.select :quantity, options_for_select(1..5), {}, { class: "form-control" }
     .form-group
       = f.label :description, "Message to your visitors"
       = f.text_area :description, class: "form-control"
-    / = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
-    / = f.label :satus, "Adoption Status"
-    / = f.collection_select :status, Family::ADOPTION_STATUSES, Family::ADOPTION_STATUSES, Family::ADOPTION_STATUSES, prompt: true
+    .form-group
+      = f.label :photo
+      = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+    .form-group
+      = f.label :status, "Adoption Status"
+      = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: "form-control" }
     .form-group
       = f.label :agency_name, "Adoption Agency"
       = f.text_field :agency_name, class: "form-control"

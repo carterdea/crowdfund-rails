@@ -16,6 +16,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
+gem 'rmagick', '~> 2.15.2'
+gem 'carrierwave', '~> 0.10.0'
 # gem 'unicorn'
 
 # gem 'capistrano-rails', group: :development
@@ -23,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   gem 'better_errors'
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.3.1'
   gem 'capybara', '~> 2.4.4'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'

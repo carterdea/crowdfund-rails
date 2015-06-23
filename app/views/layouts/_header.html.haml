@@ -12,7 +12,7 @@
         %li=link_to "Start a Family Profile", new_family_path
         %li=link_to "Start a Fundraiser", "#"
         %li=link_to "What is AdoptTogether?", "#"
-        -if current_user
+        -if logged_in?
           %li=link_to (current_user.has_family? ? current_user.families.last.full_name : current_user.email), edit_user_path(current_user)
           %li=link_to "Log out", logout_path
         -else
