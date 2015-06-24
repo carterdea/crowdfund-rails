@@ -1,7 +1,7 @@
 require 'elasticsearch/model'
 
 class Family < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
 
   include Elasticsearch::Model

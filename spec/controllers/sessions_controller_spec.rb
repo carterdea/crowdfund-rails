@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "A session or sessions" do
+describe SessionsController do
 
   describe "when not logged in" do
     it "doesn't accept an invalid email"

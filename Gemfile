@@ -33,10 +33,13 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.1'
-  gem 'capybara', '~> 2.4.4'
   gem 'sqlite3'
-  gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.3.6'
+  gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara', '~> 2.4.4'
 end
 
 group :production do
@@ -44,5 +47,6 @@ group :production do
   gem 'rails_12factor', '~> 0.0.3'
   gem 'puma', '~> 2.11.3'
   gem 'fog', '~> 1.31.0'
+  gem 'bonsai-elasticsearch-rails', '~> 0.0.4'
 end
 

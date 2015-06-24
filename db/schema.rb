@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621085047) do
+ActiveRecord::Schema.define(version: 20150624094408) do
+
+  create_table "donations", force: :cascade do |t|
+    t.integer  "family_id"
+    t.integer  "amount"
+    t.boolean  "recurring"
+    t.integer  "at_tip"
+    t.string   "privacy"
+    t.text     "message"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "newsletter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "donations", ["family_id"], name: "index_donations_on_family_id"
 
   create_table "families", force: :cascade do |t|
     t.integer  "user_id"
