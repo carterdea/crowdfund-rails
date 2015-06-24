@@ -1,4 +1,4 @@
-- if params[:q].empty?
+- if params[:q].blank?
   %h1 All Families
 - else
   %h1 Search Results for "#{params[:q]}"

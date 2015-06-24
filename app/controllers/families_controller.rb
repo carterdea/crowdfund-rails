@@ -6,9 +6,12 @@ class FamiliesController < ApplicationController
   end
 
   def search
-    @families = Family.search(params[:q]).records
-
-    render action: "index"
+    if params[:q].present?
+      @families = Family.search(params[:q]).records
+      render action: "index"
+    else
+      redirect_to families_path
+    end
   end
 
   def show
