@@ -5,6 +5,12 @@ class FamiliesController < ApplicationController
     @families = Family.all
   end
 
+  def search
+    @families = Family.search(params[:q]).records
+
+    render action: "index"
+  end
+
   def show
     @family = Family.find(params[:id])
   end

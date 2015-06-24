@@ -4,9 +4,9 @@
       .hero-content.col-xs-12.col-md-8
         %h1 Help Fund Adoptions
         %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
-        = form_tag '/families', method: "post", class: "form-inline form-horizontal" do
-          = search_field_tag 'search', nil, placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
-          = submit_tag "Search", class: "btn btn-primary btn-lg"
+        = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
+          = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
+          = submit_tag :search, class: "btn btn-primary btn-lg"
           %p.small.hidden-xs Search by name or email
       .press
         %span.text-center.col-xs-12 As seen on

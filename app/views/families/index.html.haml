@@ -1,9 +1,12 @@
-%h1 Search Results
-%h2 #{@families.count} adopting families
+- if params[:q].empty?
+  %h1 All Families
+- else
+  %h1 Search Results for "#{params[:q]}"
+%h2= pluralize(@families.count, "Adopting families")
 .row
   -@families.each do |family|
     .family.col-xs-6.col-md-4
-      %img{:src => "http://placehold.it/300x200", :class => "img-responsive"}
+      %img{:src => family.photo, :class => "img-responsive"}
       %h3= link_to family.full_name, family
       %span are adopting from #{family.country}
       %span $0 Raised

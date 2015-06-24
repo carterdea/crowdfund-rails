@@ -18,6 +18,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'rmagick', '~> 2.15.2'
 gem 'carrierwave', '~> 0.10.0'
+gem 'elasticsearch-model', '~> 0.1.7'
+gem 'elasticsearch-rails', '~> 0.1.7'
 # gem 'unicorn'
 
 # gem 'capistrano-rails', group: :development

@@ -1,6 +1,11 @@
+require 'elasticsearch/model'
+
 class Family < ActiveRecord::Base
   belongs_to :user
   mount_uploader :photo, ImageUploader
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   validates :first_name, :last_name, :postal_code, :cost, :description, presence: true
 
@@ -25,3 +30,5 @@ class Family < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 end
+
+Family.import

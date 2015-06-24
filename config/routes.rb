@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'login' => "sessions#new"
   get 'logout' => "sessions#destroy"
   resources :users
-  resources :families
+  resources :families do
+    collection { get :search }
+  end
   resources :sessions
 
   # Example of regular route:
