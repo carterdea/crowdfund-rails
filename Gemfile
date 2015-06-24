@@ -22,6 +22,11 @@ gem 'carrierwave', '~> 0.10.0'
 
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'stackprof', '~> 0.2.7'
+  gem 'derailed_benchmarks', '~> 1.0.1'
+end
+
 group :development, :test do
   gem 'better_errors'
   gem 'byebug'

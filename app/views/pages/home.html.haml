@@ -1,5 +1,5 @@
 - provide(:before_container) do
-  .jumbotron
+  .jumbotron.no-padding
     .container
       .hero-content.col-xs-12.col-md-8
         %h1 Help Fund Adoptions
@@ -7,7 +7,7 @@
         = form_tag '/families', method: "post", class: "form-inline form-horizontal" do
           = search_field_tag 'search', nil, placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
           = submit_tag "Search", class: "btn btn-primary btn-lg"
-          %p.small Search by name or email
+          %p.small.hidden-xs Search by name or email
       .press
         %span.text-center.col-xs-12 As seen on
 

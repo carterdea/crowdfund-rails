@@ -6,4 +6,24 @@
   p {
     font-size: 14px;
   }
+
+  .form-inline button {
+    @include border-radius(0 0 5px 5px);
+    display: block;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+
 }
