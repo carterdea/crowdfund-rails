@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :families do
     collection { get :search }
+    resources :donations
   end
   resources :sessions
 

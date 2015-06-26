@@ -1,0 +1,49 @@
+%h1 Donate to a Family's Adoption
+
+= form_for([@family, @donation]) do |f|
+  / = render 'shared/errors', object @donation
+  %ul.page-tabs.list-unstyled
+    %li
+      %a Amount
+    %li
+      %a Donation Info
+    %li
+      %a Payment Info
+  .tab-content
+    .amount#page-amount
+      %fieldset
+        %legend Choose an Amount
+        %a.right.small Donate with PayPal
+      .radio-button-group.money-button-group
+        .row.gutters-10
+          - Donation::DONATION_AMOUNTS.each do |amount|
+            .col-xs-4
+              %a.btn-default.btn-lg.stretch #{number_to_currency(amount)}
+          .col-xs-4
+            .input-group.other
+              .input-group-addon.hidden-xs.hidden-sm
+              = f.text_field :amount, placeholder: "other", class: "form-control"
+      %fieldset.at-donation
+        %legend Give a small donation to AdoptTogether <small>(totally optional!)</small>
+        .form-group.radio-group
+          - Donation::TIP_AMOUNTS.each do |amount|
+            .radio
+              = f.label :at_tip, value: amount do
+                = f.radio_button :at_tip, amount
+                = amount
+          .radio
+            = f.label :at_tip, "other", class: "stretch" do
+              = f.radio_button :at_tip, "other", class: "other-amount oa-radio"
+              .radio-with-text
+                %span.block.left.other-amount Other Amount
+                = f.text_field :at_tip, class: "form-control other-amt-input", placeholder: "$0"
+
+        %p.help-block.gray.spacer AdoptTogether is a FREE service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you make these small donations.
+
+        / .checkbox
+        /   = f.label :donation_amount_private do
+        /     = f.check_box :donation_amount_private
+        /     Make my donation amount private
+        .row.submit.submit-section
+          .col-xs-12.col-sm-7
+            %a#amount-next.btn.btn-primary Next

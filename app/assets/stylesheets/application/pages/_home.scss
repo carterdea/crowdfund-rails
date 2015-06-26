@@ -7,16 +7,35 @@
     font-size: 14px;
   }
 
-  .form-inline button {
-    @include border-radius(0 0 5px 5px);
-    display: block;
+  input {
+    border: 0;
+    @include box-shadow(0,0,0,rgba(255,255,255,0));
+    
+    &.form-control {
+      @include border-radius(5px 5px 0 0);
+    }
+    &.btn {
+      @include border-radius(0 0 5px 5px);
+      display: block;
+      width: 100%;
+    }
   }
 }
 
-/* Small devices (tablets, 768px and up) */
-// @media (min-width: @screen-sm-min) {
+// Small devices (tablets, 768px and up)
+@media (min-width: $screen-sm-min) {
+  .jumbotron {
+    input.form-control {
+      @include border-radius(5px)
+    }
 
-// }
+    input.btn {
+      @include border-radius(5px);
+      display: inline-block;
+      width: auto;
+    }
+  }
+}
 
 // /* Medium devices (desktops, 992px and up) */
 // @media (min-width: @screen-md-min) {

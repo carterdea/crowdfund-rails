@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624094408) do
+ActiveRecord::Schema.define(version: 20150625002009) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
-    t.integer  "amount"
+    t.decimal  "amount",     precision: 2, default: 0
     t.boolean  "recurring"
     t.integer  "at_tip"
     t.string   "privacy"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20150624094408) do
     t.string   "name"
     t.string   "email"
     t.boolean  "newsletter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "donations", ["family_id"], name: "index_donations_on_family_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150624094408) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "state"
-    t.integer  "cost"
+    t.decimal  "cost",        precision: 2, default: 0
     t.string   "country"
     t.string   "gender"
     t.integer  "quantity"
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150624094408) do
     t.string   "agency_name"
     t.string   "agency_site"
     t.string   "photo"
-    t.boolean  "approved",    default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "approved",                  default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "families", ["user_id"], name: "index_families_on_user_id"

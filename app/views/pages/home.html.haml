@@ -6,7 +6,7 @@
         %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
         = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
           = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
-          = submit_tag :search, class: "btn btn-primary btn-lg"
+          = submit_tag :Search, class: "btn btn-primary btn-lg"
           %p.small.hidden-xs Search by name or email
       .press
         %span.text-center.col-xs-12 As seen on
@@ -16,7 +16,7 @@
 = link_to "Get My Own Family Profile", new_family_path, class: "btn btn-primary"
 
 .family
-  %h2 1,100 Families have raised $5,500,000
+  %h2 #{pluralize(@families.count, 'Family')} have raised $1
   %p for their adoptions on AdoptTogether
 
 .family

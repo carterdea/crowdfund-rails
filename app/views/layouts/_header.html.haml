@@ -8,6 +8,9 @@
         %span.icon-bar
       = link_to image_tag("logo.png", alt: "AdoptTogether"), root_url, class: "logo navbar-brand"
     %nav.collapse.navbar-collapse.clearfix#navbar-collapse
+      = form_tag search_families_path, method: "get", class: "navbar-form navbar-left" do
+        .form-group
+          = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control"
       %ul.nav.navbar-nav.navbar-right
         %li=link_to "Start a Family Profile", new_family_path
         %li=link_to "Start a Fundraiser", "#"
@@ -20,6 +23,3 @@
         %li
           %p.navbar-btn
             =link_to "Donate", "#", class: "btn btn-primary btn-block"
-          / = form_tag "http://google.com", method: "get", class: "btn-donate navbar-form navbar-right" do
-          /   .form-group
-          /     = button_tag "Donate", class: "btn btn-primary navbar-btn"

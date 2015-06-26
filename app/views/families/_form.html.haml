@@ -8,21 +8,23 @@
     .form-group
       = f.label :last_name, "Last Name"
       = f.text_field :last_name, class: "form-control"
-    - if current_user == nil
-      = fields_for :user do |ff|
-        .form-group
-          = ff.label :email
-          = ff.email_field :email, class: "form-control"
-        .form-group
-          = ff.label :password
-          = ff.password_field :password, class: "form-control"
-          %p.help-block.small You'll use your email & this password to log back in.
     .form-group
       = f.label :phone
       = f.text_field :phone, class: "form-control"
     .form-group
       = f.label :postal_code, "Zip/Postal Code"
       = f.text_field :postal_code, class: "form-control"
+    - if current_user == nil
+      %fieldset
+        %legend Login Information
+        = fields_for :user do |ff|
+          .form-group
+            = ff.label :email
+            = ff.email_field :email, class: "form-control"
+          .form-group
+            = ff.label :password
+            = ff.password_field :password, class: "form-control"
+            %p.help-block.small You'll use your email & this password to log back in.
   %fieldset
     %legend Adoption Information
     .form-group
@@ -40,7 +42,7 @@
             = gender
     .form-group
       = f.label :quantity, "How many children are you adopting?"
-      = f.select :quantity, options_for_select(1..5), {}, { class: "form-control" }
+      = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
     .form-group
       = f.label :description, "Message to your visitors"
       = f.text_area :description, class: "form-control"

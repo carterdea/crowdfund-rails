@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @families = Family.all
   end
 
   # TODO according to the UX doc here: http://cl.ly/bjD8
