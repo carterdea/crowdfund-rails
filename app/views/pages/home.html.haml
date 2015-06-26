@@ -14,9 +14,9 @@
       .press
         %span.text-center.col-xs-12 As seen on
         .row.clearfix
-          = image_tag("press-cnn-logo.png", alt: "CNN", class: "img-responsive")
-          = image_tag("press-the-christian-post-logo.png", alt: "The Christian Post", class: "img-responsive")
-          = image_tag("press-womans-day-logo.png", alt: "Woman's Day", class: "img-responsive")
+          = image_tag("press-cnn-logo.png", alt: "CNN", class: "img-responsive first")
+          = image_tag("press-the-christian-post-logo.png", alt: "The Christian Post", class: "img-responsive second")
+          = image_tag("press-womans-day-logo.png", alt: "Woman's Day", class: "img-responsive third")
 
 .row.family-bucket
   .col-xs-12.col-md-6
@@ -26,22 +26,27 @@
   .col-xs-12.col-md-6
     = image_tag("ipad-family-profile.png", class: "img-responsive center-block")
 
-.family
+.family-list.no-padding
   %h2 #{pluralize(@families.count, 'Family')} have raised $1
   %p for their adoptions on AdoptTogether
+  .row.no-padding
+    - @families.each do |family|
+      .family.col-xs-6.col-md-4
+        =image_tag(family.photo, class: "img-responsive")
+        %h3= link_to family.full_name, family
+        %p are adopting from the #{family.country}
 
-.family
-  %h3 Bob & Kimberly Johnson
-  %p are adopting from the United States
-
-.testimonial
-  %p "A great quote about what AdoptTogether did to help us adopt our beautiful child who we love so dearly. We would be lost without Adopt Together."
-  %h4 The Wittigs
-  %p Adopted from Uganda
-  %p See their story
-
-.blog
-  %h3 A Seahawk Family's Crazy Adoption Story
-  %p Dec 30, 2014
-  %P Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
-  =link_to "See the blog", "#", class: "btn btn-default btn-sm"
+- provide(:after_container) do
+  .testimonials.no-padding
+    .container
+      .testimonial
+        %p "A great quote about what AdoptTogether did to help us adopt our beautiful child who we love so dearly. We would be lost without Adopt Together."
+        %h4 The Wittigs
+        %p Adopted from Uganda
+        %p See their story
+  .container
+    .blog
+      %h3 A Seahawk Family's Crazy Adoption Story
+      %p Dec 30, 2014
+      %P Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
+      =link_to "See the blog", "#", class: "btn btn-default btn-sm"

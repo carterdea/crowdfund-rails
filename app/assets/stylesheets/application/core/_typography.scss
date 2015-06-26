@@ -1,7 +1,8 @@
 body {
   color: $color-medium-grey-2;
-  font: 14px/1.4 'Whitney', 'Whitney A', 'Whitney B', sans-serif;
-  font-weight: 400;
+  font: 14px/1.4 'Whitney SSm A', 'Whitney SSm B' sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 h1,
@@ -11,6 +12,7 @@ h4,
 h5, 
 h6 {
   font-weight: 600;
+  font-style: normal;
 }
 
 h1 {

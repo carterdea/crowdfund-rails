@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @families = Family.all
+    @families = Family.all.limit(9)
   end
 
   # TODO according to the UX doc here: http://cl.ly/bjD8

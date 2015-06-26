@@ -32,16 +32,16 @@
   color: $color-white;
 }
 
+.btn.btn-sm {
+  font-size: 16px;
+  padding: 8px 30px;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
   .btn {
     font-size: 18px;
     padding: 14px 20px;
-  }
-
-  .btn-sm {
-    font-size: 16px;
-    padding: 8px 30px;
   }
 
   .navbar-btn a {

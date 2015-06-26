@@ -7,7 +7,7 @@
 %p= @family.agency_site
 
 %aside
-  %p Raised #{@family.donations.sum.amount}
+  / %p Raised #{total_raised(@family)}
   %p of #{number_to_currency(@family.cost)} goal
 
 = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg"
