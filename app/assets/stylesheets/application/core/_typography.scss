@@ -1,20 +1,55 @@
 body {
   color: $color-medium-grey-2;
   font: 14px/1.4 'Whitney', 'Whitney A', 'Whitney B', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+h1,
+h2, 
+h3,
+h4,
+h5, 
+h6 {
+  font-weight: 600;
 }
 
 h1 {
-  
-  font-weight: 600;
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 15px;
 }
 
 .jumbotron h1 {
   font-size: 28px;
   line-height: 40px;
+  margin-bottom: 3px;
 }
 
 footer h4 {
   color: transparentize($color-white, .3);
   font-size: 14px;
+}
+
+@media (min-width: $screen-sm-min) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+
+  }
+
+  h2 {
+    font-size: 22px;
+  }
 }

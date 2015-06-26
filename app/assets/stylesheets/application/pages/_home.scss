@@ -2,37 +2,113 @@
   background: image-url("hero.jpg") center center;
   background-size: cover;
   color: $color-white;
+  margin-bottom: 0;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.07);
   p {
     font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .input-group-addon {
+    background: image-url("search-icon-sm.png") no-repeat right center $color-white;
+    border: 0;
+    @include border-radius(5px 0 0 0);
   }
 
   input {
     border: 0;
-    @include box-shadow(0,0,0,rgba(255,255,255,0));
-    
+    font-size: 18px;
+    height: 40px;
+
     &.form-control {
       @include border-radius(5px 5px 0 0);
+      @include box-shadow(none);
+      padding-left: 10px;
+      &:focus {
+        border: 0;
+        @include box-shadow(none);
+      }
     }
     &.btn {
       @include border-radius(0 0 5px 5px);
       display: block;
+      font-weight: 600;
+      line-height: 1.1;
       width: 100%;
     }
+  }
+
+  span.text-center {
+    font-weight: 600;
+    margin: 20px auto;
+    text-transform: uppercase;
+    opacity: .6;
+  }
+
+  .press {
+    .row {
+      padding-bottom: 30px;
+    }
+    img.img-responsive {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.family-bucket {
+  border-bottom: 1px solid #eaeaea;
+  .img-responsive {
+    margin-top: 24px;
   }
 }
 
 // Small devices (tablets, 768px and up)
 @media (min-width: $screen-sm-min) {
   .jumbotron {
-    input.form-control {
-      @include border-radius(5px)
+    padding-top: 20px;
+    
+    h1 {
+      font-size: 36px;
     }
 
-    input.btn {
-      @include border-radius(5px);
-      display: inline-block;
-      width: auto;
+    p {
+      font-size: 18px;
+      &.small {
+        font-size: 14px;
+        opacity: .8;
+        padding-top: 4px;
+        margin-bottom: 20px
+      }
+    }
+
+    .input-group-addon {
+      background: image-url("search-icon-lg.png") no-repeat right center $color-white;
+      @include border-radius(5px 0 0 5px);
+      padding: 0 18px;
+    }
+
+    input {
+      font-size: 22px;
+      height: 50px;
+
+      &.form-control {
+        @include border-radius(0 5px 5px 0);
+        height: 50px;
+      }
+
+      &.btn {
+        @include border-radius(5px);
+        display: inline-block;
+        width: auto;
+        padding: 13px 28px;
+      }
+    }
+  }
+
+  .family-bucket {
+    h2 {
+      margin-top: 50px;
     }
   }
 }

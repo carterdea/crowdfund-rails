@@ -1,19 +1,30 @@
 - provide(:before_container) do
   .jumbotron.no-padding
     .container
-      .hero-content.col-xs-12.col-md-8
-        %h1 Help Fund Adoptions
-        %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
-        = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
-          = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
-          = submit_tag :Search, class: "btn btn-primary btn-lg"
-          %p.small.hidden-xs Search by name or email
+      .row
+        .hero-content.col-xs-12.col-md-8.col-lg-7
+          %h1 Help Fund Adoptions
+          %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
+          = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
+            .input-group
+              %span.input-group-addon
+              = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
+            = submit_tag :Search, class: "btn btn-primary btn-lg"
+            %p.small.hidden-xs Search by name or email
       .press
         %span.text-center.col-xs-12 As seen on
+        .row.clearfix
+          = image_tag("press-cnn-logo.png", alt: "CNN", class: "img-responsive")
+          = image_tag("press-the-christian-post-logo.png", alt: "The Christian Post", class: "img-responsive")
+          = image_tag("press-womans-day-logo.png", alt: "Woman's Day", class: "img-responsive")
 
-%h2 Raise Money for Your Adoption from Your Friends, Family, and More
-%p Create an AdoptTogether profile and invite your friends & family to make designated donations to bring your child home.
-= link_to "Get My Own Family Profile", new_family_path, class: "btn btn-primary"
+.row.family-bucket
+  .col-xs-12.col-md-6
+    %h2 Raise Money for Your Adoption from Your Friends, Family, and More
+    %p Create an AdoptTogether profile and invite your friends & family to make designated donations to bring your child home.
+    = link_to "Get My Own Family Profile", new_family_path, class: "btn btn-primary"
+  .col-xs-12.col-md-6
+    = image_tag("ipad-family-profile.png", class: "img-responsive center-block")
 
 .family
   %h2 #{pluralize(@families.count, 'Family')} have raised $1
@@ -33,4 +44,4 @@
   %h3 A Seahawk Family's Crazy Adoption Story
   %p Dec 30, 2014
   %P Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
-  =link_to "See the blog", "#", class: "btn btn-default"
+  =link_to "See the blog", "#", class: "btn btn-default btn-sm"

@@ -16,6 +16,7 @@ class FamiliesController < ApplicationController
 
   def show
     @family = Family.find(params[:id])
+    @donations = @family.donations
   end
 
   def new
