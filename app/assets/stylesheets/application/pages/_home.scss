@@ -18,7 +18,7 @@
 
   input {
     border: 0;
-    font-size: 18px;
+    font-size: 16px;
     height: 40px;
 
     &.form-control {
@@ -40,6 +40,7 @@
   }
 
   span.text-center {
+    font-size: 13px;
     font-weight: 600;
     margin: 20px auto;
     text-transform: uppercase;
@@ -95,7 +96,7 @@
     p {
       font-size: 18px;
       &.small {
-        font-size: 14px;
+        font-size: 13px;
         opacity: .8;
         padding-top: 4px;
         margin-bottom: 20px
@@ -140,6 +141,9 @@
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) {
   .jumbotron {
+    h1 {
+      margin-bottom: 8px;
+    }
     .press img.img-responsive {
       margin-right: 22%;
     }
@@ -149,6 +153,7 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) {
   .jumbotron {
+    padding-top: 30px;
     .press img.img-responsive {
       margin-right: 27%;
     }

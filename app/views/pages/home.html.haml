@@ -8,7 +8,7 @@
           = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
             .input-group
               %span.input-group-addon
-              = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 40, class: "form-control input-lg"
+              = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 34, class: "form-control input-lg"
             = submit_tag :Search, class: "btn btn-primary btn-lg"
             %p.small.hidden-xs Search by name or email
       .press
@@ -33,8 +33,9 @@
     - @families.each do |family|
       .family.col-xs-6.col-md-4
         =image_tag(family.photo, class: "img-responsive")
-        %h3= link_to family.full_name, family
-        %p are adopting from the #{family.country}
+        .caption
+          %h3= link_to family.full_name, family
+          %p are adopting from the #{family.country}
 
 - provide(:after_container) do
   .testimonials.no-padding

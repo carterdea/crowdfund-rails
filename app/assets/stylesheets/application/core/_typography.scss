@@ -1,8 +1,10 @@
 body {
   color: $color-medium-grey-2;
-  font: 14px/1.4 'Whitney SSm A', 'Whitney SSm B' sans-serif;
+  font: 12px/1.6 'Whitney SSm A', 'Whitney SSm B', sans-serif;
   font-weight: 500;
   font-style: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -13,6 +15,7 @@ h5,
 h6 {
   font-weight: 600;
   font-style: normal;
+  line-height: 1.4;
 }
 
 h1 {
@@ -20,19 +23,19 @@ h1 {
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 h4 {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .jumbotron h1 {
-  font-size: 28px;
+  font-size: 26px;
   line-height: 40px;
   margin-bottom: 3px;
 }

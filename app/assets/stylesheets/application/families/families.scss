@@ -1,3 +1,43 @@
-// Place all the styles related to the Families controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.family-list {
+  h2 {
+    margin-bottom: 2px;
+  }
+  p {
+    color: #888;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+}
+
+.family {
+  h3 {
+    margin: 4px 0 0;
+    a {
+      color: $color-medium-grey-2;
+    }
+  }
+  p {
+    color: $color-medium-grey-1;
+  }
+}
+
+// Small devices (tablets, 768px and up)
+@media (min-width: $screen-sm-min) {
+  .family-list {
+    h2 {
+
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .family {
+    h3 {
+      font-size: 16px;
+      margin: 10px 0 0;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-= image_tag @family.photo.url
+= image_tag(@family.photo.url, class: "img-responsive")
 %h1 #{@family.first_name} #{@family.last_name}
 %h2 are adopting from #{@family.country}
 %p= @family.description

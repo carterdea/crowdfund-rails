@@ -2,7 +2,7 @@
   border: 0;
   font-size: 16px;
   font-weight: 600;
-  padding: 10px 26px;
+  padding: 10px 26px 8px;
 }
 
 .btn:focus,
@@ -33,18 +33,22 @@
 }
 
 .btn.btn-sm {
-  font-size: 16px;
-  padding: 8px 30px;
+  font-size: 14px;
+  padding: 6px 24px 4px;
+}
+
+.navbar-nav .navbar-btn a {
+  color: $color-white;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
   .btn {
-    font-size: 18px;
-    padding: 14px 20px;
+    font-size: 16px;
+    padding: 12px 20px 10px;
   }
 
-  .navbar-btn a {
+  .navbar-nav .navbar-btn a {
     font-size: 16px;
     padding: 6px 20px;
   }

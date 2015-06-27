@@ -14,27 +14,34 @@ header.navbar {
   height: 50px;
 }
 
-.navbar-btn {
-  margin: 8px 14px;
+.navbar-nav li a {
+  color: $color-medium-grey-1;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 15px 8px;
+  &.greater {
+    color: $color-medium-grey-2;
+    font-size: 14px;
+  }
 }
 
-// form.navbar-form {
-//   margin: 0;
-// }
-
-// @media (min-width: $screen-sm-min) {
-// }
+.navbar-btn {
+  margin: 8px 14px;
+  a {
+    color: $color-white;
+  }
+}
 
 .navbar-toggle {
   @include border-radius(5px);
   background-color: #ccc;
-  border: 1px solid #ccc;
-  margin: 7px 15px 7px 0;
-  padding: 8px 10px;
+  border: 1px solid $color-medium-grey-1;
+  margin: 8px 15px 5px 0;
+  padding: 7px 8px;
   &.collapsed {
     background-color: $color-white;
     .icon-bar {
-      background-color: #ccc;
+      background-color: $color-medium-grey-1
     }
   }
   .icon-bar {
@@ -49,4 +56,8 @@ footer {
   padding: 40px 0 20px;
   background-color: $color-dark-grey;
   color: transparentize($color-white, .7);
+}
+
+a {
+  color: $color-primary;
 }
