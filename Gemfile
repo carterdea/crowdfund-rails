@@ -9,7 +9,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'bourbon', '~> 4.2.3'
 gem 'bootstrap-sass', '~> 3.3.5'
-# gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 
@@ -21,10 +20,12 @@ gem 'rmagick', '~> 2.15.2'
 gem 'sorcery', '~> 0.9.1'
 gem 'bcrypt', '~> 3.1.7'
 
+# payment
+gem 'stripe', '~> 1.22.0'
+
 # search
 gem 'elasticsearch-model', '~> 0.1.7'
 gem 'elasticsearch-rails', '~> 0.1.7'
-# gem 'unicorn'
 
 # miscelaneous
 gem 'jbuilder', '~> 2.0'
@@ -48,6 +49,8 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4.4'
+  gem 'factory_girl', '~> 4.5.0'
+  gem 'guard-rspec', '~> 4.6.0'
 end
 
 group :production do

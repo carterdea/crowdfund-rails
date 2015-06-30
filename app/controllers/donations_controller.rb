@@ -14,10 +14,21 @@ class DonationsController < ApplicationController
   def create
     if params[:family_id].present?
       @family = Family.find(params[:family_id])
+      @donation = @family.donations.build(donation_params)
+      if @donation.save
+        redirect_to @family, notice: "Thanks so much for your generous donation!"
+      else
+        render :new
+      end
     else
       @family = nil
+      @donation = Donation.new(donation_params)
+      if @donation.save
+        redirect_to root_url, notice: "Thanks so much for your generous donation!"
+      else
+        render :new
+      end
     end
-    @donation = @family.donations.build(donation_params)
   end
 
   def edit
@@ -27,7 +38,7 @@ class DonationsController < ApplicationController
 
 private
   def donation_params
-    params.require(params).require(:family_id, :amount, :recurring, :at_tip, :privacy, :message, :name, :email, :newsletter)
+    params.require(:donation).permit(:family_id, :amount, :at_tip, :name, :anonymous, :message, :email, :at_newsletter, :family_email_updates, :hide_amount, :recurring)
   end
 
 end

@@ -11,22 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625002009) do
+ActiveRecord::Schema.define(version: 20150630002206) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
-    t.decimal  "amount",     precision: 2, default: 0
+    t.decimal  "amount",               precision: 2, default: 0
     t.boolean  "recurring"
     t.integer  "at_tip"
-    t.string   "privacy"
+    t.string   "family_email_updates"
     t.text     "message"
     t.string   "name"
     t.string   "email"
-    t.boolean  "newsletter"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.boolean  "at_newsletter"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.boolean  "hide_amount"
+    t.boolean  "anonymous"
   end
 
+  add_index "donations", ["family_email_updates"], name: "index_donations_on_family_email_updates"
   add_index "donations", ["family_id"], name: "index_donations_on_family_id"
 
   create_table "families", force: :cascade do |t|
