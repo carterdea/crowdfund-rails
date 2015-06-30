@@ -2,6 +2,7 @@
   border: 0;
   font-size: 16px;
   font-weight: 600;
+  line-height: 1;
   padding: 10px 26px 8px;
 }
 
@@ -34,11 +35,15 @@
 
 .btn.btn-sm {
   font-size: 14px;
-  padding: 6px 24px 4px;
+  padding: 10px 24px 8px;
 }
 
 .navbar-nav .navbar-btn a {
   color: $color-white;
+}
+
+.form-group .btn {
+  width: 24%;
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -50,7 +55,7 @@
 
   .navbar-nav .navbar-btn a {
     font-size: 16px;
-    padding: 6px 20px;
+    padding: 10px 20px 8px;
   }
 }
 

@@ -9,8 +9,7 @@
     = csrf_meta_tags
   %body
     = render 'layouts/header'
-    .container
-      = render 'layouts/flash'
+    = render 'layouts/flash'
     = content_for(:before_container)
     .container
       = yield

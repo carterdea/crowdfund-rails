@@ -1,13 +1,15 @@
 = image_tag(@family.photo.url, class: "img-responsive")
-%h1 #{@family.first_name} #{@family.last_name}
-%h2 are adopting from #{@family.country}
+%h1.title #{@family.first_name} #{@family.last_name}
+%h2.subtitle are adopting from #{@family.country}
 %p= @family.description
-%p Adoption Agency
-%p= @family.agency_name
-%p= @family.agency_site
+%h4 Adoption Status
+%h3= @family.status
+%h4 Adoption Agency
+%h3= @family.agency_name
+%p.website= @family.agency_site
 
 %aside
-  / %p Raised #{total_raised(@family)}
+  %h4 Raised
+  / %span #{total_raised(@family)}
   %p of #{number_to_currency(@family.cost)} goal
-
-= link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg"
+  = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg"

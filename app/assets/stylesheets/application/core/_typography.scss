@@ -26,6 +26,10 @@ h2 {
   font-size: 16px;
 }
 
+h2.subtitle {
+  
+}
+
 h3 {
   font-size: 14px;
 }
@@ -51,10 +55,18 @@ footer h4 {
   }
 
   h1 {
-
+    font-size: 36px;
+    margin: 10px 0 10px;
   }
 
   h2 {
     font-size: 22px;
+  }
+
+  h2.subtitle {
+    color: $color-medium-grey-1;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0;
   }
 }
