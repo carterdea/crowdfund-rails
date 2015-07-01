@@ -5,6 +5,5 @@ class AddHideAmountAndAnonymousToDonations < ActiveRecord::Migration
     rename_column :donations, :newsletter, :at_newsletter
     rename_column :donations, :privacy, :family_email_updates
     add_index :donations, :family_email_updates
-    change_default :donations, :family_email_updates, false
   end
 end

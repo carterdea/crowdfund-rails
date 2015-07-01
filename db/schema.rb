@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150630002206) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
-    t.decimal  "amount",               precision: 2, default: 0
+    t.decimal  "amount",               precision: 10, scale: 2, default: 0.0
     t.boolean  "recurring"
     t.integer  "at_tip"
     t.string   "family_email_updates"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20150630002206) do
     t.string   "name"
     t.string   "email"
     t.boolean  "at_newsletter"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.boolean  "hide_amount"
     t.boolean  "anonymous"
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150630002206) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "state"
-    t.decimal  "cost",        precision: 2, default: 0
+    t.decimal  "cost",        precision: 10, scale: 2, default: 0.0
     t.string   "country"
     t.string   "gender"
     t.integer  "quantity"
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20150630002206) do
     t.string   "agency_name"
     t.string   "agency_site"
     t.string   "photo"
-    t.boolean  "approved",                  default: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.boolean  "approved",                             default: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   add_index "families", ["user_id"], name: "index_families_on_user_id"
