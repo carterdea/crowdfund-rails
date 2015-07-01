@@ -31,6 +31,9 @@ class DonationsController < ApplicationController
     end
   end
 
+  def thanks
+  end
+
   def edit
     @family = Family.find(params[:family_id])
     @donation = @family.donations.build(donation_params)

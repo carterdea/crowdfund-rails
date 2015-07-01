@@ -6,6 +6,7 @@ A rails port of the existing AdoptTogether web app.
 ### Setup
 
 1. Get the code.
+  
   % git clone git@github.com:carterdea/adopttogether.git
 
 2. Install Dependencies
@@ -14,13 +15,21 @@ A rails port of the existing AdoptTogether web app.
 -- ElasticSearch
 
 3. Install Gems
+
   % bundle install
+
 4. Setup the DB
+
   % rake db:schema:load
+
 5. Start ElasticSearch
+
   % elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+
 6. Start the Server
+
   % rails s
+
 visit locahlhost:3000
 
 ### Continuous Integration
@@ -75,12 +84,12 @@ TODO
 Credits
 -------
 
-Hank Fortener - Co-Founder
-David Sinatra - Co-Founder
-Brent Coursey - Co-Founder & Original PHP Developer
-Jeff Tribble - Front-end Developer
-Alex Wines - Front-end Developer
-Carter De Angelis - Designer, Front-end Developer, Rails Developer
+- Hank Fortener - Co-Founder
+- David Sinatra - Co-Founder
+- Brent Coursey - Co-Founder & Original PHP Developer
+- Jeff Tribble - Front-end Developer
+- Alex Wines - Front-end Developer
+- Carter De Angelis - Designer, Front-end Developer, Rails Developer
 
 License
 -------

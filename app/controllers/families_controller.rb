@@ -39,6 +39,7 @@ class FamiliesController < ApplicationController
       @user.save unless current_user
       @family.save
       login(user_params[:email], user_params[:password])
+
       redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
     else
       flash.now[:alert] = "There was a problem with your family profile. Please check it and try again."
@@ -66,7 +67,7 @@ class FamiliesController < ApplicationController
 
 private
   def family_params
-    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :cost, :fixnum, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo)
+    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo)
   end
 
 end

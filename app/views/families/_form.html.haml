@@ -9,10 +9,14 @@
       = f.label :last_name, "Last Name"
       = f.text_field :last_name, class: "form-control"
     .form-group
-      = f.label :phone
+      = f.label :phone do
+        Phone
+        %span.optional (optional)
       = f.text_field :phone, class: "form-control"
     .form-group
-      = f.label :postal_code, "Zip/Postal Code"
+      = f.label :postal_code do
+        Zip/Postal Code
+        %span.optional (optional)
       = f.text_field :postal_code, class: "form-control"
     - if current_user == nil
       %fieldset
@@ -36,7 +40,7 @@
     .form-group
       %h3 Gender Requested
       - Family::GENDER_OPTIONS.each do |gender|
-        .checkbox
+        .radio
           = f.label :gender, :gender, { value: gender } do
             = f.radio_button :gender, gender
             = gender
@@ -45,7 +49,7 @@
       = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
     .form-group
       = f.label :description, "Message to your visitors"
-      = f.text_area :description, class: "form-control"
+      = f.text_area :description, size: "40x9",class: "form-control"
     .form-group
       = f.label :photo
       = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')

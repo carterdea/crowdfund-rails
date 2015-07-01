@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :donations
   end
   resources :sessions
+  get 'donate' => "donations#new"
+  get 'thanks' => "donations#thanks"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

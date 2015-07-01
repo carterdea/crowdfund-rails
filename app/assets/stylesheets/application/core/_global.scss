@@ -14,23 +14,25 @@ header.navbar {
   height: 50px;
 }
 
-.navbar-nav li a {
-  color: $color-medium-grey-1;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 15px 8px;
-  &.greater {
-    color: $color-medium-grey-2;
+.navbar-nav {
+  margin: 0px -10px 7.5px;
+  li a {
+    color: $color-medium-grey-1;
     font-size: 14px;
+    font-weight: 600;
+    padding: 10px 8px;
+    &.greater {
+      color: $color-medium-grey-2;
+      font-size: 16px;
+    }
   }
-}
-
-.navbar-btn {
-  margin: 8px 14px;
-  a {
-    color: $color-white;
-    font-size: 18px;
-    padding: 12px 0 10px;
+  .navbar-btn {
+    margin: 8px 14px;
+    a {
+      color: $color-white;
+      font-size: 18px;
+      padding: 12px 0 10px;
+    }
   }
 }
 
@@ -54,6 +56,25 @@ header.navbar {
   }
 }
 
+@media (min-width: $screen-sm-min) {
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 0;
+  }
+  .navbar-nav {
+    margin: 0;
+    li a {
+      font-size: 12px;
+      padding: 15px 8px;
+      &.greater {
+        font-size: 14px;
+      }
+    }
+    .navbar-btn {
+      margin: 9px 14px;
+    }
+  }
+}
+
 footer {
   padding: 40px 0 20px;
   background-color: $color-dark-grey;
@@ -71,3 +92,5 @@ footer {
 a {
   color: $color-primary;
 }
+
+

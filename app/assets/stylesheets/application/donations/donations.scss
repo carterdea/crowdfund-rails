@@ -1,0 +1,20 @@
+// Place all the styles related to the Donations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-tabs.btn-group .btn {
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+.form-group.donation-amount .btn {
+  font-size: 18px;
+  margin-bottom: 4px;
+  padding: 10px 10px 8px;
+  width: 32%;
+}
+
+.form-group.donation-amount .form-control {
+  display: inline-block;
+  width: 32%;
+}
