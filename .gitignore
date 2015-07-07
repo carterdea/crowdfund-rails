@@ -9,7 +9,6 @@ capybara-*.html
 /public/uploads
 /coverage/
 /spec/tmp
-**.orig
 rerun.txt
 pickle-email-*.html
 
@@ -37,3 +36,5 @@ bower.json
 /log/*
 .powenv
 /tmp
+# Ignore application configuration
+/config/application.yml

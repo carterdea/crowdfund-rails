@@ -1,65 +1,72 @@
-= form_for @family, html: { multipart: true } do |f|
+= form_for @family, html: { multipart: true }, id: "donation-form" do |f|
   = render 'shared/errors', object: @family
+  .payment-errors
   %fieldset
     %legend Family Information
-    .form-group
-      = f.label :first_name, "First Name(s)"
-      = f.text_field :first_name, autofocus: true, class: "form-control"
-    .form-group
-      = f.label :last_name, "Last Name"
-      = f.text_field :last_name, class: "form-control"
-    .form-group
-      = f.label :phone do
-        Phone
-        %span.optional (optional)
-      = f.text_field :phone, class: "form-control"
-    .form-group
-      = f.label :postal_code do
-        Zip/Postal Code
-        %span.optional (optional)
-      = f.text_field :postal_code, class: "form-control"
-    - if current_user == nil
-      %fieldset
-        %legend Login Information
-        = fields_for :user do |ff|
-          .form-group
-            = ff.label :email
-            = ff.email_field :email, class: "form-control"
-          .form-group
-            = ff.label :password
-            = ff.password_field :password, class: "form-control"
-            %p.help-block.small You'll use your email & this password to log back in.
+    .row
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :first_name, "First Name(s)"
+          = f.text_field :first_name, autofocus: true, class: "form-control"
+        .form-group
+          = f.label :last_name, "Last Name"
+          = f.text_field :last_name, class: "form-control"
+        .form-group
+          = f.label :phone do
+            Phone
+            %span.optional (optional)
+          = f.text_field :phone, class: "form-control"
+        .form-group
+          = f.label :postal_code do
+            Zip/Postal Code
+            %span.optional (optional)
+          = f.text_field :postal_code, class: "form-control"
+        - if current_user == nil
+          %fieldset
+            %legend Login Information
+            = fields_for :user do |ff|
+              .form-group
+                = ff.label :email
+                = ff.email_field :email, class: "form-control"
+              .form-group
+                = ff.label :password
+                = ff.password_field :password, class: "form-control"
+                %p.help-block.small You'll use your email & this password to log back in.
   %fieldset
     %legend Adoption Information
-    .form-group
-      = f.label :cost, "Estimated Adoption Cost"
-      = f.text_field :cost, class: "form-control"
-    .form-group
-      = f.label :country
-      = f.text_field :country, class: "form-control"
-    .form-group
-      %h3 Gender Requested
-      - Family::GENDER_OPTIONS.each do |gender|
-        .radio
-          = f.label :gender, :gender, { value: gender } do
-            = f.radio_button :gender, gender
-            = gender
-    .form-group
-      = f.label :quantity, "How many children are you adopting?"
-      = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
-    .form-group
-      = f.label :description, "Message to your visitors"
-      = f.text_area :description, size: "40x9",class: "form-control"
-    .form-group
-      = f.label :photo
-      = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
-    .form-group
-      = f.label :status, "Adoption Status"
-      = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: "form-control" }
-    .form-group
-      = f.label :agency_name, "Adoption Agency"
-      = f.text_field :agency_name, class: "form-control"
-    .form-group
-      = f.label :agency_site, "Adoption Agency URL"
-      = f.text_field :agency_site, class: "form-control"
-    = f.submit "Apply for a Profile", class: "btn btn-primary"
+    .row
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :cost, "Estimated Adoption Cost"
+          = f.text_field :cost, class: "form-control"
+        .form-group
+          = f.label :country
+          = f.country_select :country, { priority_countries: ["US"] }, { class: "form-control" }
+        .form-group
+          %h3 Gender Requested
+          - Family::GENDER_OPTIONS.each do |gender|
+            .radio
+              = f.label :gender, :gender, { value: gender } do
+                = f.radio_button :gender, gender
+                = gender
+        .form-group
+          = f.label :quantity, "How many children are you adopting?"
+          = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
+      .col-xs-12
+        .form-group
+          = f.label :description, "Message to your visitors"
+          = f.text_area :description, size: "40x9",class: "form-control"
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :photo
+          = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+        .form-group
+          = f.label :status, "Adoption Status"
+          = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: "form-control" }
+        .form-group
+          = f.label :agency_name, "Adoption Agency"
+          = f.text_field :agency_name, class: "form-control"
+        .form-group
+          = f.label :agency_site, "Adoption Agency URL"
+          = f.text_field :agency_site, class: "form-control"
+        = f.submit "Apply for a Profile", class: "btn btn-primary"

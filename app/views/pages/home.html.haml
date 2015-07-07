@@ -32,10 +32,11 @@
   .row.no-padding
     - @families.each do |family|
       .family.col-xs-6.col-md-4
-        = link_to (image_tag(family.photo, class: "img-responsive")), family
+        = link_to (image_tag(family.photo.thumb.url, class: "img-responsive")), family
         .caption
           %h3= link_to family.full_name, family
-          %p are adopting from #{family.country}
+          %span.location are adopting from #{family.country}
+          %span.raised Raised $#{family.total_raised.to_i}
 
 - provide(:after_container) do
   .testimonials.no-padding

@@ -7,7 +7,7 @@ class FamiliesController < ApplicationController
 
   def search
     if params[:q].present?
-      @families = Family.search(params[:q]).records
+      @families = Family.search(params[:q]).records.page(params[:page]).per(30)
       render action: "index"
     else
       redirect_to families_path
@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
 
   def show
     @family = Family.find(params[:id])
-    @donations = @family.donations
+    @donations = @family.donations.page(params[:page]).per(10)
   end
 
   def new

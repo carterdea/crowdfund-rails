@@ -1,5 +1,5 @@
 .col-xs-12.col-md-8
-  = image_tag(@family.photo.url, class: "img-responsive")
+  = image_tag(@family.photo.large.url, class: "img-responsive")
   %h1.title #{@family.first_name} #{@family.last_name}
   %h2.subtitle are adopting from #{@family.country}
   %p= @family.description
@@ -11,7 +11,7 @@
 
 %aside.col-xs-12.col-md-4
   %h4 Raised
-  / %span #{total_raised(@family)}
+  %span= number_to_currency(@family.total_raised)
   %p of #{number_to_currency(@family.cost)} goal
   = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg"
   %ul.list-unstyled
@@ -20,3 +20,4 @@
       %h5= donation.name
       %span.amount gave $#{donation.amount} and said:
       %blockquote "#{donation.message}"
+  = paginate @donations

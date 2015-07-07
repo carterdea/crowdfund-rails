@@ -2,8 +2,8 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   
@@ -49,11 +49,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process :resize_to_fit => [300, 200]
+    process resize_to_fill: [300, 200]
   end
 
   version :large do
-    process :resize_to_fit => [640, 420]
+    process resize_to_fill: [640, 420]
+  end
+
+  def resize_to_fill(width, height, gravity=::Magick::CenterGravity)
+    manipulate! do |img|
+      img.crop_resized!(width, height, gravity)
+      img = yield(img) if block_given?
+      img
+    end
   end
 
 end

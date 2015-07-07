@@ -3,6 +3,9 @@
     %h1 Donate to a Family
     = form_for([@family, @donation]) do |f|
       = render 'shared/errors', object: @donation
+      %span.payment-errors
+        %noscript
+          %p This form requires Javascript to use
       .page-tabs.btn-group.btn-group-justified
         %a.btn.btn-default Amount
         %a.btn.btn-default Donation Info
@@ -68,18 +71,21 @@
           %legend Enter your payment information
           .row
             .col-xs-12
-              %noscript
-                %p This form requires Javascript to use
-              / .form-group
-              /   = label_tag :card_number
-              /   = telephone_field_tag :card_number, params[:credit_card_number], id: "cardNumber", class: "form-control"
-              / .form-group
-              /   = label_tag :expiration_date
-              /   = text_field_tag :expiration_date, params[:expiration_date], class: "form-control"
-              / .form-group
-              /   = label_tag :security_code
-              /   = text_field_tag :security_code, params[:security_code], class: "form-control"
-              /   %p.small.help-block What's this?
+              .form-group
+                = label_tag :card_number
+                = telephone_field_tag :card_number, params[:credit_card_number], name: nil, class: "form-control js-cc-number", placeholder: "•••• •••• •••• ••••", "data-stripe" => "number"
+              .form-group
+                = label_tag :expiration_month, "Expiration date"
+                .row.form-inline
+                  .col-xs-4.col-sm-3.col-md-2
+                    = telephone_field_tag :expiration_month, params[:expiration_month], name: nil, class: "form-control", placeholder: "MM", "data-stripe" => "exp-month"
+                  \/
+                  .col-xs-4.col-sm-3.col-md-2
+                    = telephone_field_tag :expiration_year, params[:expiration_year], name: nil, class: "form-control", placeholder: "YY", "data-stripe" => "exp-year"
+              .form-group
+                = label_tag :security_code
+                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc", placeholder: "•••", "data-stripe" => "cvc"
+                %p.small.help-block What's this?
               / .form-group
               /   = label_tag :postal_code
               /   = text_field_tag :postal_code, params[:postal_code]
@@ -87,14 +93,11 @@
                 = f.label :recurring, class: "checkbox" do
                   = f.check_box :recurring
                   Make this a monthly donation. Each month you will bring this family .5% closer to their goal. Learn more.
-        = f.submit "Donate", class: "btn btn-primary"
+        = f.submit "Donate", class: "btn btn-primary donation"
   .col-xs-12.col-sm-4
     %h3 You are donating to
     .family
-      = image_tag(@family.photo, class: "img-responsive")
+      = image_tag(@family.photo.thumb.url, class: "img-responsive")
       .caption
         %h3= @family.full_name
         %p are adopting from #{@family.country}
-
-
-

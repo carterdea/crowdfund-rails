@@ -36,7 +36,15 @@ class Family < ActiveRecord::Base
     value.gsub(/[^0-9,\.]/, '').to_f
     write_attribute(:cost, value)
   end
+
+  def total_raised
+    donations.sum(:amount)
+  end
+
+  def funded?
+  end
     
 end
 
 Family.import
+Family.__elasticsearch__.create_index! force: true

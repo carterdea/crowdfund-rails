@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 gem 'rails', '4.2.1'
+
+# front-end
 gem 'sass-rails', '~> 5.0'
 gem 'compass', '~> 1.0.3'
 gem 'haml', '~> 4.0.6'
@@ -14,7 +16,7 @@ gem 'turbolinks'
 
 # file handling
 gem 'carrierwave', '~> 0.10.0'
-gem 'rmagick', '~> 2.15.2'
+gem 'mini_magick', '~> 4.2.7'
 
 # security & auth
 gem 'sorcery', '~> 0.9.1'
@@ -28,14 +30,19 @@ gem 'elasticsearch-model', '~> 0.1.7'
 gem 'elasticsearch-rails', '~> 0.1.7'
 
 # miscelaneous
+gem 'country_select', '~> 2.2.0'
+gem 'kaminari', '~> 0.16.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'figaro', '~> 1.1.1'
 
 # gem 'capistrano-rails', group: :development
 
 group :development do
+  gem 'thin', '~> 1.6.3'
   gem 'stackprof', '~> 0.2.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
+  gem 'ffaker', '~> 2.0.0'
 end
 
 group :development, :test do
