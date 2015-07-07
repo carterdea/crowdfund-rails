@@ -3,21 +3,24 @@
   %h1.title #{@family.first_name} #{@family.last_name}
   %h2.subtitle are adopting from #{@family.country}
   %p= @family.description
-  %h4 Adoption Status
-  %h3= @family.status
-  %h4 Adoption Agency
-  %h3= @family.agency_name
-  %p.website= @family.agency_site
+  .row
+    .col-xs-12.col-sm-6
+      %h4 Adoption Status
+      %h3= @family.status
+    .col-xs-12.col-sm-6
+      %h4 Adoption Agency
+      %h3= @family.agency_name
+      %p.website= @family.agency_site
 
 %aside.col-xs-12.col-md-4
   %h4 Raised
   %span= number_to_currency(@family.total_raised)
   %p of #{number_to_currency(@family.cost)} goal
-  = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg"
+  = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg btn-block"
   %ul.list-unstyled
   - @donations.each do |donation|
     %li.donor
       %h5= donation.name
-      %span.amount gave $#{donation.amount} and said:
+      %span.amount gave $#{donation.amount.to_i} and said:
       %blockquote "#{donation.message}"
   = paginate @donations

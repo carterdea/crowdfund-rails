@@ -73,22 +73,15 @@
             .col-xs-12
               .form-group
                 = label_tag :card_number
-                = telephone_field_tag :card_number, params[:credit_card_number], name: nil, class: "form-control js-cc-number", placeholder: "•••• •••• •••• ••••", "data-stripe" => "number"
+                = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number"
               .form-group
-                = label_tag :expiration_month, "Expiration date"
-                .row.form-inline
-                  .col-xs-4.col-sm-3.col-md-2
-                    = telephone_field_tag :expiration_month, params[:expiration_month], name: nil, class: "form-control", placeholder: "MM", "data-stripe" => "exp-month"
-                  \/
-                  .col-xs-4.col-sm-3.col-md-2
-                    = telephone_field_tag :expiration_year, params[:expiration_year], name: nil, class: "form-control", placeholder: "YY", "data-stripe" => "exp-year"
+                = label_tag :expiration_date
+                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
               .form-group
                 = label_tag :security_code
-                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc", placeholder: "•••", "data-stripe" => "cvc"
+                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
                 %p.small.help-block What's this?
-              / .form-group
-              /   = label_tag :postal_code
-              /   = text_field_tag :postal_code, params[:postal_code]
+              = f.hidden_field :stripe_token
               .checkbox
                 = f.label :recurring, class: "checkbox" do
                   = f.check_box :recurring

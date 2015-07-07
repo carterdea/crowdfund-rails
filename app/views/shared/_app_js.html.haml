@@ -1,26 +1,43 @@
 :javascript
-  
   Stripe.setPublishableKey('#{Rails.configuration.stripe[:publishable_key]}');
 
   $('.js-cc-number').payment('formatCardNumber');
-  // $('.js-cc-expiry').payment('formatCardExpiry');
+  $('.js-cc-expiry').payment('formatCardExpiry');
   $('.js-cc-cvc').payment('formatCardCVC');
 
-  $('#payment-form').submit(function(event) {
-    var form = $(this);
-    form.find('button').prop('disabled', true);
-    Stripe.createToken(form, stripeResponseHandler);
-    return false;
+  jQuery(function($) {
+    $('#new_donation').submit(function(event) {
+      var $form = $(this);
+
+      // Disable the submit button to prevent repeated clicks
+      $form.find('input[type=submit]').prop('disabled', true);
+
+      // Stripe.card.createToken($form, stripeResponseHandler);
+      Stripe.card.createToken({
+        number: $('.js-cc-number').val(),
+        cvc: $('.js-cc-cvc').val(),
+        exp_month: $('.js-cc-expiry').payment('cardExpiryVal').month,
+        exp_year: $('.js-cc-expiry').payment('cardExpiryVal').year
+      }, stripeResponseHandler);
+
+      // Prevent the form from submitting with the default action
+      return false;
+    });
   });
 
   function stripeResponseHandler(status, response) {
-    var form = $('#payment-form');
+    var $form = $('#new_donation');
+
     if (response.error) {
-      form.find('.payment-errors').text(response.error.message);
-      form.find('button').prop('disabled', false);
+      // Show the errors on the form
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('input[type=submit]').prop('disabled', false);
     } else {
+      // response contains id and card, which contains additional card details
       var token = response.id;
-      form.append($('<input type="hidden" name="stripeToken">').val(token));
-      form.get(0).submit();
+      // Insert the token into the hidden field so it gets submitted to the server
+      $form.find($('#donation_stripe_token').val(token));
+      // and submit
+      $form.get(0).submit();
     }
-  }
+  };
