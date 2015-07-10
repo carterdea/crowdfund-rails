@@ -13,7 +13,7 @@
         = text_field_tag :q, params[:q], placeholder: "Search Families", size: 20, class: "form-control"
     %ul.nav.navbar-nav.navbar-right
       - if logged_in? && current_user.has_family?
-        %li= link_to "Dashboard", "#", class: "greater"
+        %li= link_to "Dashboard", dashboard_path, class: "greater"
       - else
         %li= link_to "Start a Family Profile", new_family_path, class: "greater"
         %li= link_to "Start a Fundraiser", "#", class: "greater"

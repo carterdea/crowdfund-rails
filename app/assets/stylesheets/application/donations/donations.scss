@@ -4,9 +4,21 @@
 
 .paypal {
   color: $color-medium-grey-2;
+  font-size: 14px;
   font-weight: 500;
+  margin-top: 12px;
+  &:hover {
+    color: $color-paypal;
+    text-decoration: none;
+  }
   span {
     background: image-url('paypal.png') no-repeat top left;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 20px;
+    margin-left: 5px;
+    width: 81px;
   }
 }
 

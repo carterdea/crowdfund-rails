@@ -1,0 +1,22 @@
+%h1 Dashboard
+
+.row
+  %ul
+    %li Dashboard
+    %li Update Donors
+    %li Edit Profile Information
+    %li My Fundraisers
+
+  .chart
+    %h2 Fundraising Progress
+    %span= pretty_dollars(@family.total_raised)
+
+  .updates
+    %h3 Latest Updates
+
+  .donations
+    %h3 Latest Donations
+    %ul
+      - @donations.limit(3).each do |donation|
+        = render 'shared/donation'
+

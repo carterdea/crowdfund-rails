@@ -1,0 +1,8 @@
+%li.donor
+  %h5= donation.name
+  %span.amount
+    gave #{donation.donation_amount}
+    - unless donation.message.blank?
+      and said:
+  - unless donation.message.blank?
+    %blockquote "#{donation.message}"

@@ -14,7 +14,7 @@
         %fieldset
           %legend
             Choose an Amount
-            = link_to "#", class: "pull-right small paypal" do
+            = link_to "#", class: "pull-right paypal" do
               Donate with
               %span PayPal
           .form-group.donation-amount(data-toggle="buttons")
@@ -59,7 +59,7 @@
             .col-xs-12
               .form-group
                 = f.label :message, "Message to the Family"
-                = f.text_area :message, size: "60x12", class: "form-control"
+                = f.text_area :message, size: "60x6", class: "form-control"
                 %p.small.help-block This message will be public.
           .row
             .col-xs-12.col-md-6
@@ -106,9 +106,14 @@
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
     %h3 Can I send a check?
     %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
-    %p AdoptTogether
-    %p 251 W. Central Ave. #278 Springboro, OH 45066
-    %p 1 (888) 826-0948
+    %p
+      AdoptTogether
+      %br
+      251 W. Central Ave. #278
+      %br
+      Springboro, OH 45066
+      %br
+      1 (888) 826-0948
     %h3 Can I give a monthly contribution?
     %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
     %h3 Can I edit or cancel my monthly contribution?
