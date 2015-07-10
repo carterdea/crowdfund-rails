@@ -64,7 +64,8 @@ end
 group :production do
   gem 'pg', '~> 0.18.2'
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'puma', '~> 2.11.3'
+  # gem 'puma', '~> 2.11.3'
+  gem 'unicorn', '~> 4.9.0'
   gem 'fog', '~> 1.31.0'
   gem 'bonsai-elasticsearch-rails', '~> 0.0.4'
 end
