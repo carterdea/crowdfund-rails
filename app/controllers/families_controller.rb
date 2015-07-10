@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
 
   def show
     @family = Family.find(params[:id])
-    @donations = @family.donations.page(params[:page]).per(10)
+    @donations = @family.donations.order("id DESC").page(params[:page]).per(10)
   end
 
   def new

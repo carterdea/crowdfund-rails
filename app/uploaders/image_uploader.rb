@@ -49,11 +49,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process resize_to_fill: [300, 200]
+    process resize_to_fill: [360, 240]
   end
 
   version :large do
-    process resize_to_fill: [640, 420]
+    process resize_to_fill: [750, 492]
   end
 
   def resize_to_fill(width, height, gravity=::Magick::CenterGravity)

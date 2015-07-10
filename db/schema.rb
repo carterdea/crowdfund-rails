@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707080910) do
+ActiveRecord::Schema.define(version: 20150710015446) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150707080910) do
     t.boolean  "anonymous"
     t.string   "stripe_id"
     t.string   "uuid"
+    t.string   "stripe_customer"
   end
 
   add_index "donations", ["family_email_updates"], name: "index_donations_on_family_email_updates"

@@ -27,7 +27,7 @@
     = image_tag("ipad-family-profile.png", class: "img-responsive center-block")
 
 .family-list.no-padding
-  %h2 #{pluralize(@families.count, 'Family')} have raised $1
+  %h2 #{pluralize(@families.count, 'Family')} have raised #{pretty_dollars(global_donations)}
   %p for their adoptions on AdoptTogether
   .row.no-padding
     - @families.each do |family|
@@ -36,7 +36,7 @@
         .caption
           %h3= link_to family.full_name, family
           %span.location are adopting from #{family.country}
-          %span.raised Raised $#{family.total_raised.to_i}
+          %span.raised #{pretty_dollars(family.total_raised)} Raised 
 
 - provide(:after_container) do
   .testimonials.no-padding

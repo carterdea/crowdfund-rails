@@ -38,7 +38,9 @@
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
           = f.label :cost, "Estimated Adoption Cost"
-          = f.text_field :cost, class: "form-control"
+          .input-group
+            %span.input-group-addon $
+            = f.text_field :cost, value: "", class: "form-control"
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ["US"] }, { class: "form-control" }
@@ -68,5 +70,7 @@
           = f.text_field :agency_name, class: "form-control"
         .form-group
           = f.label :agency_site, "Adoption Agency URL"
-          = f.text_field :agency_site, class: "form-control"
-        = f.submit "Apply for a Profile", class: "btn btn-primary"
+          .input-group
+            %span.input-group-addon http://
+            = f.text_field :agency_site, class: "form-control"
+        = f.submit "Apply for a Profile", class: "btn btn-primary btn-block"

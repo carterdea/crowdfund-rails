@@ -15,10 +15,19 @@ class DonationsController < ApplicationController
     @family = Family.find(params[:family_id])
     @donation = @family.donations.build(donation_params)
     @stripe_token = :stripe_token
-    if @donation.create_stripe_charge && @donation.save
-      redirect_to @family, notice: "Thanks so much for your generous donation!"
+    if @donation.recurring == false
+      if @donation.create_stripe_charge && @donation.save
+        redirect_to @family, notice: "Thanks so much for your generous donation!"
+      else
+        render :new
+      end
     else
-      render :new
+      if @donation.create_stripe_customer && @donation.save
+        @donation.charge_stripe_customer
+        redirect_to @family, notice: "Thanks so much for your generous **recurring** donation!"
+      else
+        render :new
+      end
     end
   end
 

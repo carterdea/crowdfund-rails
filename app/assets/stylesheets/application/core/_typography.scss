@@ -27,7 +27,10 @@ h2 {
 }
 
 h2.subtitle {
-  
+  color: $color-medium-grey-1;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 5px;
 }
 
 h3 {
@@ -49,6 +52,10 @@ footer h4 {
   font-size: 14px;
 }
 
+.small, small {
+  font-size: 12px;
+}
+
 @media (min-width: $screen-sm-min) {
   body {
     font-size: 14px;
@@ -64,9 +71,16 @@ footer h4 {
   }
 
   h2.subtitle {
-    color: $color-medium-grey-1;
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 0;
+    font-size: 16px;
+  }
+}
+
+footer {
+  font-size: 13px;
+}
+
+@media (min-width: $screen-md-min) {
+  body {
+    font-size: 16px;
   }
 }

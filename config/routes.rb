@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :donations
   end
   resources :sessions
+  resource :dashboard, only: [:show]
   get 'donate' => "donations#new"
   get 'thanks' => "donations#thanks"
 

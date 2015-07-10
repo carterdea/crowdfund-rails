@@ -1,26 +1,34 @@
-.col-xs-12.col-md-8
-  = image_tag(@family.photo.large.url, class: "img-responsive")
-  %h1.title #{@family.first_name} #{@family.last_name}
-  %h2.subtitle are adopting from #{@family.country}
-  %p= @family.description
-  .row
-    .col-xs-12.col-sm-6
-      %h4 Adoption Status
-      %h3= @family.status
-    .col-xs-12.col-sm-6
-      %h4 Adoption Agency
-      %h3= @family.agency_name
-      %p.website= @family.agency_site
+.row
+  .col-xs-12.col-sm-8
+    .family-details
+      = image_tag(@family.photo.large.url, class: "img-responsive")
+      %h1.title= @family.full_name
+      %h2.subtitle are adopting from #{@family.country}
+      %p= @family.description
+      .row
+        .col-xs-6
+          %h4 Adoption Status
+          %h3= @family.status
+        .col-xs-6.agency
+          %h4 Adoption Agency
+          %h3= @family.agency_name
+          %span.website= @family.agency_site
 
-%aside.col-xs-12.col-md-4
-  %h4 Raised
-  %span= number_to_currency(@family.total_raised)
-  %p of #{number_to_currency(@family.cost)} goal
-  = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg btn-block"
-  %ul.list-unstyled
-  - @donations.each do |donation|
-    %li.donor
-      %h5= donation.name
-      %span.amount gave $#{donation.amount.to_i} and said:
-      %blockquote "#{donation.message}"
-  = paginate @donations
+  %aside.col-xs-12.col-sm-4
+    .raised
+      %h3 Raised
+      %span.total-raised= pretty_dollars(@family.total_raised)
+      %span.goal of #{pretty_dollars(@family.cost)} Goal
+    = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg btn-block"
+    %h2 #{pluralize(@family.donations.length, "Donation")}
+    %ul.list-unstyled
+      - @donations.each do |donation|
+        %li.donor
+          %h5= donation.name
+          %span.amount
+            gave #{donation.donation_amount}
+            - unless donation.message.blank?
+              and said:
+          - unless donation.message.blank?
+            %blockquote "#{donation.message}"
+      = paginate @donations

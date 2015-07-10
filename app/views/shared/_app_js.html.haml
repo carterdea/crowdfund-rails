@@ -17,7 +17,8 @@
         number: $('.js-cc-number').val(),
         cvc: $('.js-cc-cvc').val(),
         exp_month: $('.js-cc-expiry').payment('cardExpiryVal').month,
-        exp_year: $('.js-cc-expiry').payment('cardExpiryVal').year
+        exp_year: $('.js-cc-expiry').payment('cardExpiryVal').year,
+        name: $('#donation_name').val()
       }, stripeResponseHandler);
 
       // Prevent the form from submitting with the default action

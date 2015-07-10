@@ -14,7 +14,7 @@
         %fieldset
           %legend
             Choose an Amount
-            %a.pull-right.small.paypal
+            = link_to "#", class: "pull-right small paypal" do
               Donate with
               %span PayPal
           .form-group.donation-amount(data-toggle="buttons")
@@ -47,7 +47,7 @@
         %fieldset
           %legend Enter your information
           .row
-            .col-xs-12
+            .col-xs-12.col-md-6
               .form-group
                 = f.label :name
                 = f.text_field :name, class: "form-control"
@@ -55,10 +55,14 @@
                 = f.label :anonymous, class: "checkbox" do
                   = f.check_box :anonymous
                   Make this donation anonymous
+          .row
+            .col-xs-12
               .form-group
                 = f.label :message, "Message to the Family"
                 = f.text_area :message, size: "60x12", class: "form-control"
                 %p.small.help-block This message will be public.
+          .row
+            .col-xs-12.col-md-6
               .form-group
                 = f.label :email
                 = f.email_field :email, class: "form-control"
@@ -70,27 +74,42 @@
         %fieldset
           %legend Enter your payment information
           .row
-            .col-xs-12
+            .col-xs-12.col-md-6
               .form-group
                 = label_tag :card_number
                 = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number"
-              .form-group
-                = label_tag :expiration_date
-                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
-              .form-group
-                = label_tag :security_code
-                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
-                %p.small.help-block What's this?
-              = f.hidden_field :stripe_token
+              .row
+                .form-group.col-xs-6
+                  = label_tag :expiration_date
+                  = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
+                .form-group.col-xs-6
+                  = label_tag :security_code
+                  = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
+                  %p.small.help-block What's this?
+                = f.hidden_field :stripe_token
               .checkbox
                 = f.label :recurring, class: "checkbox" do
                   = f.check_box :recurring
                   Make this a monthly donation. Each month you will bring this family .5% closer to their goal. Learn more.
-        = f.submit "Donate", class: "btn btn-primary donation"
-  .col-xs-12.col-sm-4
-    %h3 You are donating to
+      .row
+        .col-xs-12.col-md-6
+          = f.submit "Donate", class: "btn btn-primary btn-block donation"
+  %aside.col-xs-12.col-sm-4
+    %h2 You are donating to
     .family
       = image_tag(@family.photo.thumb.url, class: "img-responsive")
       .caption
         %h3= @family.full_name
         %p are adopting from #{@family.country}
+    %h2 FAQ
+    %h3 Are my donations tax deductible?
+    %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
+    %h3 Can I send a check?
+    %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
+    %p AdoptTogether
+    %p 251 W. Central Ave. #278 Springboro, OH 45066
+    %p 1 (888) 826-0948
+    %h3 Can I give a monthly contribution?
+    %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
+    %h3 Can I edit or cancel my monthly contribution?
+    %p You can view or edit your monthly contribution at any time here.

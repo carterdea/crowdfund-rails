@@ -2,9 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.paypal {
+  color: $color-medium-grey-2;
+  font-weight: 500;
+  span {
+    background: image-url('paypal.png') no-repeat top left;
+  }
+}
+
 .page-tabs.btn-group .btn {
+  background: $color-light-grey-1;
+  color: $color-medium-grey-2;
   font-size: 12px;
   padding: 10px 0;
+  &.active {
+    background: $color-medium-grey-2;
+    color: $color-white;
+  }
 }
 
 .form-group.donation-amount .btn {
@@ -17,4 +31,41 @@
 .form-group.donation-amount .form-control {
   display: inline-block;
   width: 32%;
+}
+
+.donor {
+  h5 {
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  .amount {
+    color: $color-medium-grey-1;
+    font-size: 13px;
+  }
+  blockquote {
+    border-left: 0;
+    color: $color-medium-grey-1;
+    font-size: 18px;
+    font-style: italic;
+    padding: 5px 0;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .page-tabs.btn-group {
+    margin-bottom: 20px;
+    .btn {
+      font-size: 18px;
+      padding: 12px 20px;
+    }
+  }
+
+  legend {
+    font-size: 24px;
+  }
+
+  .form-group.donation-amount .btn {
+    font-size: 24px;
+    padding: 15px 25px 13px;
+  }
 }

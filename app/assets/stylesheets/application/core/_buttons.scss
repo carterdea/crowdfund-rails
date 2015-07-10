@@ -33,6 +33,11 @@
   color: $color-white;
 }
 
+.btn.btn-lg {
+  font-size: 18px;
+  padding: 16px 18px 14px;
+}
+
 .btn.btn-sm {
   font-size: 14px;
   padding: 10px 24px 8px;
@@ -44,6 +49,11 @@
 
 .form-group .btn {
   width: 24%;
+}
+
+footer .btn-primary {
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -60,7 +70,16 @@
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: $screen-md-min) {  }
+@media (min-width: $screen-md-min) { 
+  .btn {
+    font-size: 18px;
+    padding: 16px 18px 14px;
+  }
+
+  footer .btn-primary {
+    font-size: 18px;
+  }
+}
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) { }
