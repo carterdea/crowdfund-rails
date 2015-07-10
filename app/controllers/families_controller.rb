@@ -2,7 +2,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @families = Family.all
+    @families = Family.all.page(params[:page]).per(30)
   end
 
   def search
@@ -21,11 +21,6 @@ class FamiliesController < ApplicationController
 
   def new
     @family = Family.new
-    if current_user
-      @user = current_user
-    else
-      @user = User.new
-    end
   end
 
   def create

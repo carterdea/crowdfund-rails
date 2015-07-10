@@ -10,7 +10,7 @@ class Donation < ActiveRecord::Base
   validates :at_tip, numericality: true
   # validates_uniqueness_of :uuid
 
-  attr_accessor :stripe_token
+  attr_accessor :stripe_token, :stripe_customer_id
 
   DONATION_AMOUNTS = [
     30, 50, 100, 500, 1000
@@ -73,27 +73,25 @@ class Donation < ActiveRecord::Base
     if valid?
       # Create a Customer
       customer = Stripe::Customer.create(
+        :email => email,
         :source => stripe_token,
         :description => stripe_customer_description
       )
-
       # Save the customer ID in your database so you can use it later
-      save_stripe_customer_id(stripe_customer, customer.id)
+      self.stripe_id = customer.id
     end
   end
 
   def charge_stripe_customer
-    customer_id = get_stripe_customer_id(stripe_customer)
-
     Stripe::Charge.create(
       :amount   => total_amount_in_cents, # in cents
       :currency => "usd",
-      :customer => customer_id
+      :customer => stripe_id
     )
   end
 
   def delete_stripe_customer
-    customer = get_stripe_customer_id(stripe_customer)
+    customer = self.stripe_id
     customer.delete
   end
 

@@ -39,14 +39,15 @@ gem 'figaro', '~> 1.1.1'
 # gem 'capistrano-rails', group: :development
 
 group :development do
+  gem 'better_errors'
   gem 'thin', '~> 1.6.3'
   gem 'stackprof', '~> 0.2.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
   gem 'ffaker', '~> 2.0.0'
+  gem 'meta_request'
 end
 
 group :development, :test do
-  gem 'better_errors'
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.1'
   gem 'sqlite3'

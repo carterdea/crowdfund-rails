@@ -56,12 +56,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [750, 492]
   end
 
-  def resize_to_fill(width, height, gravity=::Magick::CenterGravity)
-    manipulate! do |img|
-      img.crop_resized!(width, height, gravity)
-      img = yield(img) if block_given?
-      img
-    end
-  end
+  # def resize_to_fill(width, height, gravity=::Magick::CenterGravity)
+  #   manipulate! do |img|
+  #     img.crop_resized!(width, height, gravity)
+  #     img = yield(img) if block_given?
+  #     img
+  #   end
+  # end
 
 end
