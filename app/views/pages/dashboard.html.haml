@@ -18,4 +18,5 @@
     %h3 Latest Donations
     %ul
       - @donations.limit(3).each do |donation|
-        = render 'shared/donation', :donation => donation
+        = render 'shared/donation'
+
