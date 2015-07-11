@@ -23,5 +23,5 @@
     %h2 #{pluralize(@family.donations.length, "Donation")}
     %ul.list-unstyled
       - @donations.each do |donation|
-        = render 'shared/donation'
+        = render 'shared/donation', :donation => donation
       = paginate @donations
