@@ -5,9 +5,5 @@
 %h2= pluralize(@families.count, "Adopting families")
 .row
   -@families.each do |family|
-    .family.col-xs-6.col-md-4
-      %img{:src => family.photo, :class => "img-responsive"}
-      %h3= link_to family.full_name, family
-      %span are adopting from #{family.country}
-      %span $0 Raised
+    = render 'shared/family_thumb', :family => family
 = paginate @families

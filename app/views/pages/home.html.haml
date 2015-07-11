@@ -31,12 +31,7 @@
   %p for their adoptions on AdoptTogether
   .row.no-padding
     - @families.each do |family|
-      .family.col-xs-6.col-md-4
-        = link_to (image_tag(family.photo.thumb.url, class: "img-responsive")), family
-        .caption
-          %h3= link_to family.full_name, family
-          %span.location are adopting from #{family.country}
-          %span.raised #{pretty_dollars(family.total_raised)} Raised 
+      = render 'shared/family_thumb', :family => family
 
 - provide(:after_container) do
   .testimonials.no-padding
