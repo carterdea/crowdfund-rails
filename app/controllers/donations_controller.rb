@@ -17,15 +17,13 @@ class DonationsController < ApplicationController
     @stripe_token = :stripe_token
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
-        session[:donation_id] = @donation.id
         redirect_to :thanks
       else
         render :new
       end
     else
-      if @donation.create_stripe_customer && @donation.save
-        @donation.charge_stripe_customer
-        session[:donation_id] = @donation.id
+      if @donation.subscribe_stripe_customer && @donation.save
+        # @donation.charge_stripe_customer
         redirect_to :thanks
       else
         render :new
@@ -39,6 +37,12 @@ class DonationsController < ApplicationController
   def edit
     @family = Family.find(params[:family_id])
     @donation = @family.donations.build(donation_params)
+  end
+
+  def delete
+  end
+
+  def destroy
   end
 
 private

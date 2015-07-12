@@ -104,11 +104,7 @@
               = f.submit "Donate", class: "btn btn-primary btn-block donation"
   %aside.col-xs-12.col-sm-4
     %h2 You are donating to
-    .family
-      = image_tag(@family.photo.thumb.url, class: "img-responsive")
-      .caption
-        %h3= @family.full_name
-        %p are adopting from #{@family.country}
+    = render 'shared/family_thumb', :family => @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.

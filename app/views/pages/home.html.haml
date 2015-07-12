@@ -31,7 +31,8 @@
   %p for their adoptions on AdoptTogether
   .row.no-padding
     - @families.each do |family|
-      = render 'shared/family_thumb', :family => family
+      .col-xs-6.col-md-4
+        = render 'shared/family_thumb', :family => family
 
 - provide(:after_container) do
   .testimonials.no-padding

@@ -112,18 +112,18 @@ class Donation < ActiveRecord::Base
   def subscribe_stripe_customer
     if valid?
       customer = Stripe::Customer.create(
-        :source => token,
+        :source => stripe_token,
         :plan => "monthly-gift-test", # this is a monthly plan w/ 1¢
         :email => email,
         :quantity => total_amount_in_cents,
         :description => stripe_customer_description
       )
-      save_customer_id
+      save_customer_id(customer)
     end
   end
 
-  def delete_strip_customer_subscription
-
+  def delete_stripe_customer_subscription
+    
   end
 
   def save_customer_id(customer)

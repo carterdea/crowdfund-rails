@@ -5,5 +5,6 @@
 %h2= pluralize(@families.count, "Adopting families")
 .row
   -@families.each do |family|
-    = render 'shared/family_thumb', :family => family
+    .col-xs-6.col-md-4
+      = render 'shared/family_thumb', :family => family
 = paginate @families

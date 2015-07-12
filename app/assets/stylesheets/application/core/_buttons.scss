@@ -29,15 +29,26 @@
 }
 
 .btn-primary[disabled],
- .btn-primary[disabled]:hover,
- .btn-primary[disabled]:focus,
- .btn-primary[disabled]:active {
+.btn-primary[disabled]:hover,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:active {
   background: lighten($color-primary, 15%);
 }
 
-.btn-default {
+.btn-default,
+.btn-default:focus {
   background: $color-medium-grey-1;
   color: $color-white;
+  &:hover {
+    color: $color-white;
+    background: lighten($color-medium-grey-1, 10%);
+  }
+  &:active,
+  &:active:hover,
+  &:active:focus {
+    color: $color-white;
+    background: darken($color-medium-grey-1, 10%);
+  }
 }
 
 .btn.btn-lg {
@@ -60,7 +71,7 @@
 
 footer .btn-primary {
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Small devices (tablets, 768px and up) */
