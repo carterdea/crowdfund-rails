@@ -44,6 +44,14 @@ class Donation < ActiveRecord::Base
     (amount + tip_total).to_i * 100
   end
 
+  def type
+    if recurring == false
+      "Donation"
+    else
+      "Monthly Donation"
+    end
+  end
+
   def stripe_charge_description
     "#{name}'s donation to #{family.full_name}"
   end
@@ -51,6 +59,8 @@ class Donation < ActiveRecord::Base
   def stripe_customer_description
     "#{name}'s (#{email}) recurring donation to #{family.full_name}"
   end
+
+  # Single Donations
 
   def create_stripe_charge
     if valid?
@@ -69,6 +79,8 @@ class Donation < ActiveRecord::Base
     end
   end
 
+  # Customers (Saving the Card)
+
   def create_stripe_customer
     if valid?
       # Create a Customer
@@ -78,7 +90,7 @@ class Donation < ActiveRecord::Base
         :description => stripe_customer_description
       )
       # Save the customer ID in your database so you can use it later
-      self.stripe_id = customer.id
+      save_customer_id(customer)
     end
   end
 
@@ -94,6 +106,31 @@ class Donation < ActiveRecord::Base
     customer = self.stripe_id
     customer.delete
   end
+
+  # Subscriptions (Stripe Recurring)
+
+  def subscribe_stripe_customer
+    if valid?
+      customer = Stripe::Customer.create(
+        :source => token,
+        :plan => "monthly-gift-test", # this is a monthly plan w/ 1¢
+        :email => email,
+        :quantity => total_amount_in_cents,
+        :description => stripe_customer_description
+      )
+      save_customer_id
+    end
+  end
+
+  def delete_strip_customer_subscription
+
+  end
+
+  def save_customer_id(customer)
+    self.stripe_id = customer.id    
+  end
+
+private
 
   def send_receipt
   end

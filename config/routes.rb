@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :sessions
   get 'dashboard' => "pages#dashboard"
+  
   get 'donate' => "donations#new"
   get 'thanks' => "donations#thanks"
 

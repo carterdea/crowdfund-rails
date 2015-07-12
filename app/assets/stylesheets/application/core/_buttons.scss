@@ -28,6 +28,13 @@
   background: darken($color-primary, 10%);
 }
 
+.btn-primary[disabled],
+ .btn-primary[disabled]:hover,
+ .btn-primary[disabled]:focus,
+ .btn-primary[disabled]:active {
+  background: lighten($color-primary, 15%);
+}
+
 .btn-default {
   background: $color-medium-grey-1;
   color: $color-white;

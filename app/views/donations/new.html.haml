@@ -7,93 +7,101 @@
         %noscript
           %p This form requires Javascript to use
       .page-tabs.btn-group.btn-group-justified
-        %a.btn.btn-default Amount
-        %a.btn.btn-default Donation Info
-        %a.btn.btn-default Payment Info
+        = link_to "Amount", "#page-amount", class: "btn btn-default", role: "tab", "data-toggle" => "tab"
+        = link_to "Donation Info", "#page-donation-info", class: "btn btn-default", role: "tab", "data-toggle" => "tab"
+        = link_to "Payment Info", "#page-payment-info", class: "btn btn-default", role: "tab", "data-toggle" => "tab"
       .tab-content
-        %fieldset
-          %legend
-            Choose an Amount
-            = link_to "#", class: "pull-right paypal" do
-              Donate with
-              %span PayPal
-          .form-group.donation-amount(data-toggle="buttons")
-            - Donation::DONATION_AMOUNTS.each do |amount|
-              = f.label :amount, value: amount, class: "btn btn-default" do
-                = f.radio_button :amount, amount
-                = "$" + amount.to_s
-            / = f.text_field :amount, value: "", id: "donation_amount_other", placeholder: "Other", class: "form-control"
-        %fieldset
-          %p Give a small donation to AdoptTogether (totally optional!)
-          .radio-group
-            - Donation::TIP_AMOUNTS.each do |amount|
-              .radio
-                = f.label :at_tip, value: amount do
-                  = f.radio_button :at_tip, amount
-                  #{amount}%
-            / .radio
-            /   = f.label :at_tip, value: "other" do
-            /     = f.radio_button :at_tip, "other"
-            /     Other |
-            /     = f.text_field :at_tip, placeholder: "$0", class: "form-control"
-          %p.small.help-block AdoptTogether is a FREE service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you make these small donations.
-          .checkbox
-            = f.label :hide_amount, class: "checkbox" do
-              = f.check_box :hide_amount
-              Make my donation amount private
-          / .row.submit.submit-section
-          /   .col-xs-12.col-sm-7
-          /     %a#amount-next.btn.btn-primary Next
-        %fieldset
-          %legend Enter your information
+        .amount.tab-pane.in.active#page-amount
+          %fieldset
+            %legend
+              Choose an Amount
+              = link_to "#", class: "pull-right paypal" do
+                Donate with
+                %span PayPal
+            .form-group.donation-amount(data-toggle="buttons")
+              - Donation::DONATION_AMOUNTS.each do |amount|
+                = f.label :amount, value: amount, class: "btn btn-default" do
+                  = f.radio_button :amount, amount
+                  = "$" + amount.to_s
+              / = f.text_field :amount, value: "", id: "donation_amount_other", placeholder: "Other", class: "form-control"
+          %fieldset
+            %p Give a small donation to AdoptTogether (totally optional!)
+            .radio-group
+              - Donation::TIP_AMOUNTS.each do |amount|
+                .radio
+                  = f.label :at_tip, value: amount do
+                    = f.radio_button :at_tip, amount
+                    #{amount}%
+              / .radio
+              /   = f.label :at_tip, value: "other" do
+              /     = f.radio_button :at_tip, "other"
+              /     Other |
+              /     = f.text_field :at_tip, placeholder: "$0", class: "form-control"
+            %p.small.help-block AdoptTogether is a FREE service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you make these small donations.
+            .checkbox
+              = f.label :hide_amount, class: "checkbox" do
+                = f.check_box :hide_amount
+                Make my donation amount private
+            .row
+              .col-xs-12.col-md-6
+                = link_to "Next", "#page-donation-info", "data-toggle" => "tab", class: "btn btn-primary btn-block"
+
+        .donation-info.tab-pane#page-donation-info
+          %fieldset
+            %legend Enter your information
+            .row
+              .col-xs-12.col-md-6
+                .form-group
+                  = f.label :name
+                  = f.text_field :name, class: "form-control"
+                .checkbox
+                  = f.label :anonymous, class: "checkbox" do
+                    = f.check_box :anonymous
+                    Make this donation anonymous
+            .row
+              .col-xs-12
+                .form-group
+                  = f.label :message, "Message to the Family"
+                  = f.text_area :message, size: "60x6", class: "form-control"
+                  %p.small.help-block This message will be public.
+            .row
+              .col-xs-12.col-md-6
+                .form-group
+                  = f.label :email
+                  = f.email_field :email, class: "form-control"
+                  / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
+                .checkbox
+                  = f.label :at_newsletter do
+                    = f.check_box :at_newsletter
+                    Yes, I would like to join the thousands of others who receive monthly updates and inspiration stories.
+            .row
+              .col-xs-12.col-md-6
+                = link_to "Next", "#page-payment-info", "data-toggle" => "tab", class: "btn btn-primary btn-block"
+        .payment-info.tab-pane#page-payment-info
+          %fieldset
+            %legend Enter your payment information
+            .row
+              .col-xs-12.col-md-6
+                .form-group
+                  = label_tag :card_number
+                  = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number"
+                .row
+                  .form-group.col-xs-6
+                    = label_tag :expiration_date
+                    = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
+                  .form-group.col-xs-6
+                    = label_tag :security_code
+                    = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
+                    %p.small.help-block What's this?
+                  = f.hidden_field :stripe_token
+
+            .checkbox
+              = f.label :recurring, class: "checkbox" do
+                = f.check_box :recurring
+                Make this a monthly donation. Each month you will bring this family .5% closer to their goal. Learn more.
           .row
             .col-xs-12.col-md-6
-              .form-group
-                = f.label :name
-                = f.text_field :name, class: "form-control"
-              .checkbox
-                = f.label :anonymous, class: "checkbox" do
-                  = f.check_box :anonymous
-                  Make this donation anonymous
-          .row
-            .col-xs-12
-              .form-group
-                = f.label :message, "Message to the Family"
-                = f.text_area :message, size: "60x6", class: "form-control"
-                %p.small.help-block This message will be public.
-          .row
-            .col-xs-12.col-md-6
-              .form-group
-                = f.label :email
-                = f.email_field :email, class: "form-control"
-                %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
-              .checkbox
-                = f.label :at_newsletter do
-                  = f.check_box :at_newsletter
-                  Yes, I would like to join the thousands of others who receive monthly updates and inspiration stories.
-        %fieldset
-          %legend Enter your payment information
-          .row
-            .col-xs-12.col-md-6
-              .form-group
-                = label_tag :card_number
-                = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number"
-              .row
-                .form-group.col-xs-6
-                  = label_tag :expiration_date
-                  = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
-                .form-group.col-xs-6
-                  = label_tag :security_code
-                  = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
-                  %p.small.help-block What's this?
-                = f.hidden_field :stripe_token
-              .checkbox
-                = f.label :recurring, class: "checkbox" do
-                  = f.check_box :recurring
-                  Make this a monthly donation. Each month you will bring this family .5% closer to their goal. Learn more.
-      .row
-        .col-xs-12.col-md-6
-          = f.submit "Donate", class: "btn btn-primary btn-block donation"
+              = f.submit "Donate", class: "btn btn-primary btn-block donation"
   %aside.col-xs-12.col-sm-4
     %h2 You are donating to
     .family

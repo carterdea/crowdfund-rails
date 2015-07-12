@@ -22,10 +22,18 @@
               %li Help
       .col-xs-12.col-sm-6.col-md-4
         %h4 Get Infrequent Email Updates
+        %form(action="//adopttogether.us1.list-manage.com/subscribe/post?u=3b533553aa7564167238aba5e&amp;id=929a88a092" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" role="form" novalidate)
+          .form-group
+            %input(type="email" value="" name="EMAIL" class="form-control footer-input" placeholder="email@domain.com" required)
+      
+            // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            %div(style="position: absolute; left: -5000px;")
+              %input(type="text" name="b_3b533553aa7564167238aba5e_929a88a092" tabindex="-1" value="")
+            %input(type="submit" value="Sign Up" name="subscribe" class="btn btn-default form-control-button email-btn")
         %ul.list-unstyled
-          %li Facebook
-          %li Twitter
-          %li Google+
-          %li Pinterest
+          %li.facebook Facebook
+          %li.twitter Twitter
+          %li.googleplus Google+
+          %li.pinterest Pinterest
       .col-xs-12
         %p &copy; 2010-2015 AdoptTogether. All rights reserved.

@@ -94,6 +94,19 @@ footer {
   img.pull-left {
     margin-right: 20px;
   }
+  .form-group {
+    width: 100%;
+  }
+  .footer-input {
+    background-color: rgba(255,255,255,.1);
+    border: 0;
+    @include box-shadow(0,0,0,rgba(255,255,255,0));
+    font-size: 12px;
+  }
+  .email-btn {
+    font-size: 12px;
+    padding: 10px;
+  }
 }
 
 a {

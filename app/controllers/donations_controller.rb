@@ -17,14 +17,16 @@ class DonationsController < ApplicationController
     @stripe_token = :stripe_token
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
-        redirect_to @family, notice: "Thanks so much for your generous donation!"
+        session[:donation_id] = @donation.id
+        redirect_to :thanks
       else
         render :new
       end
     else
       if @donation.create_stripe_customer && @donation.save
         @donation.charge_stripe_customer
-        redirect_to @family, notice: "Thanks so much for your generous **recurring** donation!"
+        session[:donation_id] = @donation.id
+        redirect_to :thanks
       else
         render :new
       end
@@ -56,5 +58,4 @@ private
       :stripe_token
     )
   end
-
 end
