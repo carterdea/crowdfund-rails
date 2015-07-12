@@ -1,5 +1,5 @@
 .family
-  = link_to (image_tag(family.photo.thumb.url, class: "img-responsive")), family
+  = link_to (image_thumb(family, "img-responsive")), family
   .caption
     %h3= link_to family.full_name, family
     %span.location are adopting from #{family.country_name}
