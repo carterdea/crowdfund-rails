@@ -1,19 +1,29 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
-  get 'signup' => "users#new"
-  get 'login' => "sessions#new"
-  get 'logout' => "sessions#destroy"
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
   resources :users
   resources :families do
     collection { get :search }
     resources :donations
   end
   resources :sessions
-  get 'dashboard' => "pages#dashboard"
+  resources :pages
+
+  get 'dashboard' => 'pages#dashboard'
   
-  get 'donate' => "donations#new"
-  get 'thanks' => "donations#thanks"
+  get 'donate' => 'donations#new'
+  get 'thanks' => 'donations#thanks'
+
+  namespace :admin do
+    get '/' => 'pages#dashboard'
+    resources :users
+    resources :families do
+      resources :donations
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

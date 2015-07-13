@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
-  before_action :require_correct_user, only: [:edit, :update, :destroy]
+  # before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @families = Family.all.page(params[:page]).per(30)

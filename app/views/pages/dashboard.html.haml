@@ -1,21 +1,24 @@
 %h1 Dashboard
-
 .row
-  %ul
-    %li Dashboard
-    %li Update Donors
-    %li Edit Profile Information
-    %li My Fundraisers
-
-  .chart
-    %h2 Fundraising Progress
-    %span= pretty_dollars(@family.total_raised)
-
-  .updates
-    %h3 Latest Updates
-
-  .donations
-    %h3 Latest Donations
-    %ul
-      - @donations.limit(3).each do |donation|
-        = render 'shared/donation', :donation => donation
+  .col-xs-12.col-md-4
+    %ul.nav.nav-pills.nav-stacked
+      %li.active= link_to "Dashboard", dashboard_path
+      %li= link_to "Update Donors", "#"
+      %li= link_to "Edit Family Profile", edit_family_path(@family)
+      %li= link_to "My Fundraisers", "#"
+  .col-xs-12.col-md-8
+    .row
+      .chart.col-xs-12
+        .well
+          %h2 Fundraising Progress
+          %span= pretty_dollars(@family.total_raised)
+    .row
+      .updates.col-xs-12.col-md-6
+        .well
+          %h3 Latest Updates
+      .donations.col-xs-12.col-md-6
+        .well
+          %h3 Latest Donations
+          %ul.list-unstyled
+            - @donations.limit(3).each do |donation|
+              = render 'shared/donation', :donation => donation

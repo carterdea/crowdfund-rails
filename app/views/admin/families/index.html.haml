@@ -1,0 +1,20 @@
+%h1 All #{pluralize(@families.size, "Family")}
+%table.table.table-hover.table-bordered
+  %thead
+    %tr
+      %td Name
+      %td Raised
+      %td Status
+  %tbody
+    - @families.each do |family|
+      %tr
+        %td
+          .media
+            .media-left
+              = image_thumb(family, "")
+            .media-body
+              %h3.media-heading= link_to family.full_name, family
+              %p= family.user.email
+        %td= pretty_dollars(family.total_raised)
+        %td= family.approved?
+  = paginate(@families)

@@ -2,5 +2,5 @@
   = link_to (image_thumb(family, "img-responsive")), family
   .caption
     %h3= link_to family.full_name, family
-    %span.location are adopting from #{family.country_name}
+    %span.location #{family.pluralize_is} adopting from #{family.country_name}
     %span.raised #{pretty_dollars(family.total_raised)} Raised 

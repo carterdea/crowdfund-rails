@@ -79,20 +79,7 @@ class Donation < ActiveRecord::Base
     end
   end
 
-  # Customers (Saving the Card)
-
-  def create_stripe_customer
-    if valid?
-      # Create a Customer
-      customer = Stripe::Customer.create(
-        :email => email,
-        :source => stripe_token,
-        :description => stripe_customer_description
-      )
-      # Save the customer ID in your database so you can use it later
-      save_customer_id(customer)
-    end
-  end
+  # Customers
 
   def charge_stripe_customer
     Stripe::Charge.create(

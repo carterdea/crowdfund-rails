@@ -32,11 +32,6 @@ class Family < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
-  def cost=(value)
-    value.gsub(/[^0-9,\.]/, '').to_f
-    write_attribute(:cost, value)
-  end
-
   def total_raised
     donations.sum(:amount)
   end
@@ -47,6 +42,22 @@ class Family < ActiveRecord::Base
   def country_name
     country_code = ISO3166::Country[country]
     country_code.translations[I18n.locale.to_s] || country_code.name
+  end
+
+  def pluralize_is
+    if first_name.include?(" " || "and" || "&")
+      "are"
+    else
+      'is'
+    end
+  end
+
+  def number_of_children
+    if quantity > 1
+      "#{quantity} children"
+    else
+      "a child"
+    end
   end
     
 end

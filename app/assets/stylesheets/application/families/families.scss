@@ -21,6 +21,10 @@
   .caption {
     span {
       display: block;
+      &.location {
+        color: $color-medium-grey-1;
+        font-size: 14px;
+      }
       &.raised {
         font-size: 12px;
         font-weight: 600;

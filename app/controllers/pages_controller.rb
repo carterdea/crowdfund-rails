@@ -10,6 +10,21 @@ class PagesController < ApplicationController
     @donations = @family.donations.all
   end
 
+  def new
+  end
+
+  def edit
+  end
+
+  def show
+  end
+
+  def delete
+  end
+
+  def destroy
+  end
+
   # TODO according to the UX doc here: http://cl.ly/bjD8
   # def what_is_adopttogether
   # end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707080910) do
+ActiveRecord::Schema.define(version: 20150712232310) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150707080910) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

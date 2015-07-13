@@ -111,6 +111,12 @@ footer {
 
 a {
   color: $color-primary;
+  &:hover {
+    color: lighten($color-primary, 10%);
+  }
+  &:active {
+    color: darken($color-primary, 15%);
+  }
 }
 
 .well {
