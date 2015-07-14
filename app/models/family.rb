@@ -41,7 +41,7 @@ class Family < ActiveRecord::Base
 
   def country_name
     country_code = ISO3166::Country[country]
-    country_code.translations[I18n.locale.to_s] || country_code.name
+    country_code.name
   end
 
   def pluralize_is
