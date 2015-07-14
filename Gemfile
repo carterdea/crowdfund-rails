@@ -41,6 +41,7 @@ gem 'figaro', '~> 1.1.1'
 
 # performance & monitoring
 gem 'skylight'
+gem 'airbrake'
 
 # gem 'capistrano-rails', group: :development
 
