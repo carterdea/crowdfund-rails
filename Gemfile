@@ -29,12 +29,18 @@ gem 'stripe', '~> 1.22.0'
 gem 'elasticsearch-model', '~> 0.1.7'
 gem 'elasticsearch-rails', '~> 0.1.7'
 
+# mailers
+gem 'mandrill-api', '~> 1.0.53'
+
 # miscelaneous
 gem 'country_select', '~> 2.2.0'
 gem 'kaminari', '~> 0.16.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '~> 1.1.1'
+
+# performance & monitoring
+gem 'skylight'
 
 # gem 'capistrano-rails', group: :development
 

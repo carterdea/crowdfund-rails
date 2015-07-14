@@ -10,7 +10,7 @@ describe 'Creating a family profile' do
     fill_in 'Phone', with: '(123) 456-2387'
     fill_in 'Zip/Postal Code', with: '12345'
     fill_in 'Estimated Adoption Cost', with: '12345.00'
-    fill_in 'Country', with: 'USA'
+    select 'Australia', from: 'Country'
     choose 'Either'
     select '1', from: 'How many children are you adopting?'
     fill_in 'Message to your visitors', with: 'Hi everyone, Please consider donating.'
@@ -33,7 +33,7 @@ describe 'Creating a family profile' do
     fill_in 'Phone', with: '(123) 456-2387'
     fill_in 'Zip/Postal Code', with: '12345'
     fill_in 'Estimated Adoption Cost', with: '12345.00'
-    fill_in 'Country', with: 'USA'
+    select 'Australia', from: 'Country'
     choose 'Either'
     select '1', from: 'How many children are you adopting?'
     fill_in 'Message to your visitors', with: 'Hi everyone, Please consider donating.'
@@ -57,7 +57,7 @@ describe 'Creating a family profile' do
     fill_in 'Phone', with: '(123) 456-2387'
     fill_in 'Zip/Postal Code', with: '12345'
     fill_in 'Estimated Adoption Cost', with: '12345.00'
-    fill_in 'Country', with: 'USA'
+    select 'Australia', from: 'Country'
     choose 'Either'
     select '1', from: 'How many children are you adopting?'
     fill_in 'Message to your visitors', with: 'Hi everyone, Please consider donating.'
@@ -71,5 +71,4 @@ describe 'Creating a family profile' do
     expect(page).not_to have_text('Thanks for setting up your family profile')
     expect(page).to have_text('Login')
   end
-
 end

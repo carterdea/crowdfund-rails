@@ -27,19 +27,26 @@ class FamiliesController < ApplicationController
   def create
     if current_user
       @user = current_user
+      @family = @user.families.build(family_params)
+      if @family.save?
+        redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
+      else
+        flash.now[:alert] = "There was a problem with your family profile. Please check it and try again."
+        render :new
+      end
     else
       @user = User.new(user_params)
-    end
-    @family = @user.families.build(family_params)
-    if @user.valid? && @family.valid?
-      @user.save unless current_user
-      @family.save
-      login(user_params[:email], user_params[:password])
+        @family = @user.families.build(family_params)
+        if @user.valid? && @family.valid?
+          @user.save unless current_user
+          @family.save
+          login(user_params[:email], user_params[:password])
 
-      redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
-    else
-      flash.now[:alert] = "There was a problem with your family profile. Please check it and try again."
-      render :new
+          redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
+      else
+        flash.now[:alert] = "There was a problem with your family profile. Please check it and try again."
+        render :new
+      end
     end
   end
 
