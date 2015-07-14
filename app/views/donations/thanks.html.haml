@@ -1,12 +1,34 @@
-%h1 Thank you for your donation
-%p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business.
+.row
+  .col-xs-12.col-sm-8
+    %h1 Thank you for your donation
+    %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business.
 
-.well
-  %h3 Donation to AdoptTogether
-.small.help-block A receipt with this information has just been emailed to you.
+    .well
+      %h3 Donation to AdoptTogether
+    .small.help-block A receipt with this information has just been emailed to you.
 
-%h2 Take it to the next level: Help them reach their goal. There are 2 more ways to help:
+    %h2 Take it to the next level: Help them reach their goal. There are 2 more ways to help:
 
-%h2 Raise Money for this adoption from your Friends & Family
-%p A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paraismatic country, in which roasted parts of sentences fly into your mouth.
-%a.btn.btn-primary Start a Fundraiser for this Family
+    %h2 Raise Money for this adoption from your Friends & Family
+    %p A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paraismatic country, in which roasted parts of sentences fly into your mouth.
+    %a.btn.btn-primary Start a Fundraiser for this Family
+  %aside.col-xs-12.col-sm-4
+    %h2 You are donating to
+    / = render 'shared/family_thumb', :family => @family
+    %h2 FAQ
+    %h3 Are my donations tax deductible?
+    %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
+    %h3 Can I send a check?
+    %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
+    %p
+      AdoptTogether
+      %br
+      251 W. Central Ave. #278
+      %br
+      Springboro, OH 45066
+      %br
+      1 (888) 826-0948
+    %h3 Can I give a monthly contribution?
+    %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
+    %h3 Can I edit or cancel my monthly contribution?
+    %p You can view or edit your monthly contribution at any time here.

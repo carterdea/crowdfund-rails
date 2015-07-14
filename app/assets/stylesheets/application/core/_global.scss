@@ -1,3 +1,12 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 253px; // The height of the footer
+}
+
 .no-padding {
   padding: 0
 }
@@ -87,10 +96,13 @@ aside {
 }
 
 footer {
-  padding: 40px 0 20px;
+  bottom: 0;
   background-color: $color-dark-grey;
   color: transparentize($color-white, .6);
   margin-top: 20px;
+  padding: 40px 0 20px;
+  position: absolute;
+  width: 100%;
   img.pull-left {
     margin-right: 20px;
   }

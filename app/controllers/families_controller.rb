@@ -28,7 +28,7 @@ class FamiliesController < ApplicationController
     if current_user
       @user = current_user
       @family = @user.families.build(family_params)
-      if @family.save?
+      if @family.save
         redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
       else
         flash.now[:alert] = "There was a problem with your family profile. Please check it and try again."
