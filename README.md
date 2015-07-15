@@ -1,39 +1,40 @@
 # AdoptTogether.org
-A rails port of the existing AdoptTogether web app.
+A rails port of the existing AdoptTogether web app. AdoptTogether is a platform for Crowdfunded adoptions.
 
 ## Development
 
 ### Setup
 
 1. Get the code.
-  
-        % git clone git@github.com:carterdea/adopttogether.git
+```shell
+% git clone git@github.com:carterdea/adopttogether.git
+```
 
-2. Install Dependencies
--- Ruby 2.2.2
--- ImageMagick
--- ElasticSearch
+2. Install Dependencies 
+  * Ruby 2.2.2
+  * ImageMagick
+  * ElasticSearch
 
 3. Install Gems
 
-        % bundle install
+```shell
+% bundle install
+```
 
 4. Setup the DB
+```shell
+% rake db:schema:load
+```
 
-        % rake db:schema:load
+5. Start the Server
+```shell
+% foreman start
+```
 
-5. Start ElasticSearch
-
-        % elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
-
-6. Start the Server
-
-        % rails s
-
-visit http://locahlhost:3000
+visit [http://locahlhost:5000](http://localhost:5000)
 
 ### Continuous Integration
-TODO
+CircleCI & CodeClimate & Hound & Travis, oh my!
 
 ### Stripe
 TODO
@@ -78,7 +79,7 @@ Last 2 version of:
 [![Build Status](https://travis-ci.org/carterdea/adopttogether.svg?branch=master)](https://travis-ci.org/carterdea/adopttogether)
 
 ## Admin Access
-TODO
+Ask @carterdea (me@carterdea.com) for admin access
 
 
 Credits

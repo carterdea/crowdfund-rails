@@ -44,10 +44,13 @@ gem 'figaro', '~> 1.1.1'
 gem 'skylight'
 gem 'airbrake'
 
+# server & deployment
+gem 'puma', '~> 2.11.3'
+gem 'pg', '~> 0.18.2'
+
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  gem 'thin', '~> 1.6.3'
   gem 'stackprof', '~> 0.2.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
   gem 'ffaker', '~> 2.0.0'
@@ -58,21 +61,18 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.1'
-  gem 'sqlite3'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
 end
 
 group :test do
   gem 'capybara', '~> 2.4.4'
-  gem 'factory_girl', '~> 4.5.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'guard-rspec', '~> 4.6.0'
 end
 
 group :production do
-  gem 'pg', '~> 0.18.2'
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'puma', '~> 2.11.3'
   gem 'fog', '~> 1.31.0'
   gem 'bonsai-elasticsearch-rails', '~> 0.0.4'
 end
