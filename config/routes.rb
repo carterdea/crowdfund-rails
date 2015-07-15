@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'pages#dashboard'
   
   get 'donate' => 'donations#new'
-  get 'thanks' => 'donations#thanks'
+  get 'thanks/:id' => 'donations#thanks'
 
   namespace :admin do
     get '/' => 'pages#dashboard'

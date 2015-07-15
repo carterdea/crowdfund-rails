@@ -461,6 +461,7 @@ DEPENDENCIES
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
   compass (~> 1.0.3)
+  countries
   country_select (~> 2.2.0)
   derailed_benchmarks (~> 1.0.1)
   elasticsearch-model (~> 0.1.7)

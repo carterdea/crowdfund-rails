@@ -34,6 +34,7 @@ gem 'mandrill-api', '~> 1.0.53'
 
 # miscelaneous
 gem 'country_select', '~> 2.2.0'
+gem 'countries'
 gem 'kaminari', '~> 0.16.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -75,4 +76,3 @@ group :production do
   gem 'fog', '~> 1.31.0'
   gem 'bonsai-elasticsearch-rails', '~> 0.0.4'
 end
-
