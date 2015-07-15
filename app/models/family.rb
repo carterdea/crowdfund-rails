@@ -40,7 +40,7 @@ class Family < ActiveRecord::Base
   end
 
   def country_name
-    Country["#{country}"].name
+    Country["#{self.country}"].name
   end
 
   def pluralize_is
