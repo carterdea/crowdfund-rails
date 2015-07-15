@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Making a donation to a family' do
   it "makes the donation if the family data & user data is valid" do
-    family = create(:family)
+    family = FactoryGirl.create(:family)
     visit new_family_donation_path(family)
     choose('$100')
     choose('10%')

@@ -4,18 +4,16 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
-  resources :users
+  resources :users, :sessions, :pages
   resources :families do
     collection { get :search }
     resources :donations
   end
-  resources :sessions
-  resources :pages
 
   get 'dashboard' => 'pages#dashboard'
   
   get 'donate' => 'donations#new'
-  get 'thanks/:id' => 'donations#thanks'
+  get 'thanks' => 'donations#thanks'
 
   namespace :admin do
     get '/' => 'pages#dashboard'

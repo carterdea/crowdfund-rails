@@ -40,6 +40,10 @@ class Donation < ActiveRecord::Base
     amount.to_f * (at_tip.to_f / 100)
   end
 
+  def total_amount_in_dollars
+    (amount + tip_total).to_i
+  end
+
   def total_amount_in_cents
     (amount + tip_total).to_i * 100
   end

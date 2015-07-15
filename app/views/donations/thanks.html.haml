@@ -1,10 +1,25 @@
 .row
   .col-xs-12.col-sm-8
-    %h1 Thank you for your donation
+    %h1 Thank you for your donation!
     %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business.
 
     .well
-      %h3 Donation to AdoptTogether
+      .row
+        .col-xs-8
+          %h3 #{@donation.type} to AdoptTogether
+          %p for #{@family.full_name}’s Adoption
+        .col-xs-4
+          %span.pull-right= pretty_dollars(@donation.amount)
+        .col-xs-8
+          %p Tip for AdoptTogether
+        .col-xs-4
+          %span.pull-right= pretty_dollars(@donation.tip_total)
+      %hr
+      .row
+        .col-xs-8
+          %p Total
+        .col-xs-4
+          %span.pull-right #{pretty_dollars(@donation.total_amount_in_dollars)}
     .small.help-block A receipt with this information has just been emailed to you.
 
     %h2 Take it to the next level: Help them reach their goal. There are 2 more ways to help:
@@ -13,8 +28,8 @@
     %p A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paraismatic country, in which roasted parts of sentences fly into your mouth.
     %a.btn.btn-primary Start a Fundraiser for this Family
   %aside.col-xs-12.col-sm-4
-    %h2 You are donating to
-    / = render 'shared/family_thumb', :family => @family
+    %h2 You donated to
+    = render 'shared/family_thumb', :family => @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.

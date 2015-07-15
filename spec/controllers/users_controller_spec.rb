@@ -6,7 +6,6 @@ describe UsersController do
   end
 
   context "when not signed in" do
-
     before do
       session[:user_id] = nil
     end

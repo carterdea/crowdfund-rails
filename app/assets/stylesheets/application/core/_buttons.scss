@@ -95,9 +95,15 @@ footer .btn-primary {
   }
 
   footer .btn-primary {
-    font-size: 18px;
+    font-size: 14px;
+    padding: 16px 16px 14px;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: $screen-lg-min) { }
+@media (min-width: $screen-lg-min) {
+  footer .btn-primary {
+    font-size: 16px;
+    padding: 16px 20px 14px;
+  }  
+}

@@ -3,12 +3,20 @@ html {
   position: relative;
 }
 
-body {
-  margin-bottom: 253px; // The height of the footer
-}
-
 .no-padding {
   padding: 0
+}
+
+@media (min-width: $screen-sm-min) { 
+  body {
+    margin-bottom: 390px; // The height of the footer
+  }
+}
+
+@media (min-width: $screen-md-min) { 
+  body {
+    margin-bottom: 290px; // The height of the footer
+  }
 }
 
 header.navbar {
@@ -106,18 +114,21 @@ footer {
   img.pull-left {
     margin-right: 20px;
   }
-  .form-group {
+  .form-inline .form-group {
     width: 100%;
+    margin-bottom: 10px;
   }
   .footer-input {
     background-color: rgba(255,255,255,.1);
     border: 0;
     @include box-shadow(0,0,0,rgba(255,255,255,0));
+    display: inline-block;
     font-size: 12px;
+    width: 75%;
   }
   .email-btn {
     font-size: 12px;
-    padding: 10px;
+    padding: 11px;
   }
 }
 
