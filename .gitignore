@@ -5,6 +5,7 @@ capybara-*.html
 /tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/vendor/postgresql
 /public/system
 /public/uploads
 /coverage/

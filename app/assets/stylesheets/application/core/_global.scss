@@ -134,7 +134,7 @@ footer {
 
 a {
   color: $color-primary;
-  &:hover {
+  &:hover, &:focus {
     color: lighten($color-primary, 10%);
   }
   &:active {
