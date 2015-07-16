@@ -1,3 +1,3 @@
-web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
-elasticsearch: elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
-postgres: postgres -D /usr/local/var/postgres
+web: bundle exec puma -e $RAILS_ENV -p $PORT -S ~/puma -C config/puma.rb
+postgres: postgres -D vendor/postgresql
+elasticsearch: elasticsearch -f
