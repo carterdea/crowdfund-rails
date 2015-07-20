@@ -36,6 +36,7 @@ gem 'mandrill-api', '~> 1.0.53'
 gem 'country_select', '~> 2.2.0'
 gem 'countries'
 gem 'kaminari', '~> 0.16.3'
+gem 'social_shares', '~> 0.2.5'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '~> 1.1.1'

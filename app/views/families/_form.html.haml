@@ -36,10 +36,10 @@
     .row
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
-          = f.label :cost, "Estimated Adoption Cost"
+          = f.label :user_cost, "Estimated Adoption Cost"
           .input-group
             %span.input-group-addon $
-            = f.text_field :cost, value: "", class: "form-control"
+            = f.text_field :user_cost, class: "form-control"
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ["US"] }, { class: "form-control" }

@@ -8,8 +8,8 @@ class Family < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  validates :first_name, :last_name, :postal_code, :cost, :description, presence: true
-  validates :cost, numericality: true
+  validates :first_name, :last_name, :user_cost, :cost, :description, presence: true
+  validates :cost, numericality: {less_than: 1000000}
   validates :country, presence: true, length: {is: 2}
 
   GENDER_OPTIONS = [
@@ -28,6 +28,14 @@ class Family < ActiveRecord::Base
     'Completed'
   ]
 
+  # Using a virtual attribute (user cost for cost) to clean up the user input
+  def user_cost
+    cost
+  end
+
+  def user_cost=(cost)
+    self.cost = cost.gsub(',', '') if cost.present?
+  end
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -59,7 +67,6 @@ class Family < ActiveRecord::Base
       "a child"
     end
   end
-    
 end
 
 Family.import

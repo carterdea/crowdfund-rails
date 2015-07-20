@@ -4,7 +4,7 @@
       = image_tag(@family.photo.large.url, class: "img-responsive")
       %h1.title= @family.full_name
       %h2.subtitle #{@family.pluralize_is} adopting #{@family.number_of_children} from #{@family.country_name}
-      %p= @family.description
+      %p= simple_format(@family.description)
       .row
         .col-xs-6
           %h4 Adoption Status
@@ -19,7 +19,11 @@
       %h3 Raised
       %span.total-raised= pretty_dollars(@family.total_raised)
       %span.goal of #{pretty_dollars(@family.cost)} Goal
-    = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg btn-block"
+      = link_to "Give to this Adoption", new_family_donation_path(@family), class: "btn btn-primary btn-lg btn-block"
+    .share-buttons
+      %span.share-count= share_count(family_url(@family))
+      %span.shares Shares 
+      = render 'shared/share_buttons'
     %h2 #{pluralize(@family.donations.length, "Donation")}
     %ul.list-unstyled
       - @donations.each do |donation|

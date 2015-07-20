@@ -28,7 +28,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 5. Start the Server
 ```shell
-% foreman start
+% foreman start -f Procfile.dev
 ```
 
 visit [http://locahlhost:5000](http://localhost:5000)

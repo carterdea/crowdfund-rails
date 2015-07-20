@@ -70,7 +70,7 @@ class FamiliesController < ApplicationController
 
 private
   def family_params
-    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo)
+    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo)
   end
 
   def require_correct_user
