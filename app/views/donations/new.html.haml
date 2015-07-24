@@ -23,20 +23,24 @@
                 = f.label :amount, value: amount, class: "btn btn-default" do
                   = f.radio_button :amount, amount
                   = "$" + amount.to_s
-              / = f.text_field :amount, value: "", id: "donation_amount_other", placeholder: "Other", class: "form-control"
+              -# The empty quotes are to keep the label text empty
+              = label_tag 'donation_amount_other', '' do
+                = radio_button_tag 'donation[amount]', 'other', nil
+                = text_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
           %fieldset
             %p Give a small donation to AdoptTogether (totally optional!)
             .radio-group
-              - Donation::TIP_AMOUNTS.each do |amount|
+              - Donation::TIP_AMOUNTS.each do |key, value|
                 .radio
-                  = f.label :at_tip, value: amount do
-                    = f.radio_button :at_tip, amount
-                    #{amount}%
-              / .radio
-              /   = f.label :at_tip, value: "other" do
-              /     = f.radio_button :at_tip, "other"
-              /     Other |
-              /     = f.text_field :at_tip, placeholder: "$0", class: "form-control"
+                  = f.label :at_tip, value: key do
+                    = f.radio_button :at_tip, key
+                    #{value}
+                    %span.tip-amount
+              .radio
+                = label_tag 'donation_at_tip_other', nil do
+                  = radio_button_tag 'donation[at_tip]', 'other', nil
+                  Other |
+                  = text_field_tag 'tip_other_text', nil, placeholder: "$0", class: "form-control"
             %p.small.help-block AdoptTogether is a FREE service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you make these small donations.
             .checkbox
               = f.label :hide_amount, class: "checkbox" do

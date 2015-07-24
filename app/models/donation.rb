@@ -17,7 +17,7 @@ class Donation < ActiveRecord::Base
   ]
 
   TIP_AMOUNTS = [
-    0, 10, 20
+    [0, "None"], [10, "10%"], [20, "20%"]
   ]
 
   def donor_name

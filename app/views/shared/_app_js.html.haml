@@ -5,7 +5,44 @@
   $('.js-cc-expiry').payment('formatCardExpiry');
   $('.js-cc-cvc').payment('formatCardCVC');
 
+  $('#other_text').payment('restrictNumeric');
+  $('#tip_other_text').payment('restrictNumeric');
+  // Other Donation amount
 
+  // When the "Other" text field value changes
+  $('#other_text').change(function () {
+  
+    // Check that radio button
+    var other_text_value = $('#other_text').val()
+    $('#donation_amount_other').prop('checked', true)
+    // Change the radio button value to the value in the text field
+    $('#donation_amount_other').val(other_text_value)
+    // Calculate Tip
+    $('input[type="donation[tip_amount]"]').each(function() {
+
+    });
+    // Show Tip
+  });
+
+  // When "Other" text field is clicked
+  $('#other_text').click(function () {
+    // Check the radio button
+    $('#donation_amount_other').prop('checked', true);
+    $('label.btn').removeClass('active');
+  });
+
+  // Other AT Tip amount
+  // When the "Other" text field value changes
+  $('#tip_other_text').change(function () {
+    var tip_other_text_value = $('#tip_other_text').val();
+    // Check that radio button
+    alert(tip_other_text_value);
+    $('#donation_at_tip_other').prop('checked', true);
+    // Change the radio button value to the value in the text field
+    $('#donation_at_tip_other').val(tip_other_text_value);
+  });
+    
+  // Stripe Tokenization
   jQuery(function($) {
     $('#new_donation').submit(function(event) {
       var $form = $(this);
