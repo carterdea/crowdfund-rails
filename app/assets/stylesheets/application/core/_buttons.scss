@@ -49,6 +49,12 @@
     color: $color-white;
     background: darken($color-medium-grey-1, 10%);
   }
+  &.active,
+  &.active:hover {
+    color: $color-white;
+    background: darken($color-primary, 7%);
+    // background: darken($color-medium-grey-1, 25%);
+  }
 }
 
 .btn.btn-lg {

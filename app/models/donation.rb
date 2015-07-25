@@ -17,7 +17,7 @@ class Donation < ActiveRecord::Base
   ]
 
   TIP_AMOUNTS = [
-    0, 10, 20
+    [0, "None"], [10, "10%"], [20, "20%"]
   ]
 
   def donor_name
@@ -37,7 +37,7 @@ class Donation < ActiveRecord::Base
   end
 
   def tip_total
-    amount.to_f * (at_tip.to_f / 100)
+    at_tip
   end
 
   def total_amount_in_dollars

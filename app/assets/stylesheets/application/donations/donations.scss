@@ -40,9 +40,34 @@
   width: 32%;
 }
 
+label[for="donation_amount_other"] {
+  margin-top: 1px;
+  vertical-align: middle;
+  width: 32%;
+  #donation_amount_other {
+    display: none;
+  }
+  input#other_text {
+    width: 100%;
+  }
+}
+
 .form-group.donation-amount .form-control {
   display: inline-block;
+  font-size: 24px;
+  padding: 25px 15px;
   width: 32%;
+  vertical-align: top;
+}
+
+.radio-label {
+  margin-bottom: 0;
+}
+
+#tip_other_text {
+  display: inline-block;
+  margin-top: -6px;
+  width: 140px;
 }
 
 .donor {
@@ -63,6 +88,17 @@
   }
 }
 
+#new_donation {
+  .radio label {
+    width: 205px;
+    .tip-amount {
+      color: $color-medium-grey-1;
+      float: right;
+      font-size: 12px;
+    }
+  }
+}
+
 .well {
   background: $color-off-white;
   border: 1px solid $color-light-grey-1;
@@ -78,6 +114,12 @@
   }
   hr {
     border-color: $color-light-grey-1;
+  }
+}
+
+.donations.thanks {
+  .well p {
+    margin-bottom: 0;
   }
 }
 
