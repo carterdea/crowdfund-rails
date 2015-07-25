@@ -11,6 +11,7 @@ class Family < ActiveRecord::Base
   validates :first_name, :last_name, :user_cost, :cost, :description, presence: true
   validates :cost, numericality: {less_than: 1000000}
   validates :country, presence: true, length: {is: 2}
+  validates :quantity, numericality: {greater_than: 0}
 
   GENDER_OPTIONS = [
     'Male',
