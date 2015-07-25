@@ -26,7 +26,7 @@
               -# The empty quotes are to keep the label text empty
               = label_tag 'donation_amount_other', '' do
                 = radio_button_tag 'donation[amount]', 'other', nil
-                = text_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
+                = telephone_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
           %fieldset
             %p.radio-label Give a small donation to AdoptTogether (totally optional!)
             .radio-group
@@ -40,7 +40,7 @@
                 = label_tag 'donation_at_tip_other', nil do
                   = radio_button_tag 'donation[at_tip]', 'other', nil
                   Other |
-                  = text_field_tag 'tip_other_text', nil, placeholder: "$0", class: "form-control"
+                  = telephone_field_tag 'tip_other_text', nil, placeholder: "$0", class: "form-control"
             %p.small.help-block AdoptTogether is a FREE service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you make these small donations.
             .checkbox
               = f.label :hide_amount, class: "checkbox" do

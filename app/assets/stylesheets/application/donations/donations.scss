@@ -42,12 +42,12 @@
 
 label[for="donation_amount_other"] {
   margin-top: 1px;
-  width: 32%;
   vertical-align: middle;
+  width: 32%;
   #donation_amount_other {
     display: none;
   }
-  input[type="text"].form-control {
+  input#other_text {
     width: 100%;
   }
 }
@@ -66,8 +66,8 @@ label[for="donation_amount_other"] {
 
 #tip_other_text {
   display: inline-block;
-  width: 140px;
   margin-top: -6px;
+  width: 140px;
 }
 
 .donor {
@@ -88,12 +88,14 @@ label[for="donation_amount_other"] {
   }
 }
 
-#new_donation .radio label {
-  width: 205px;
-  .tip-amount {
-    color: $color-medium-grey-1;
-    font-size: 12px;
-    float: right;
+#new_donation {
+  .radio label {
+    width: 205px;
+    .tip-amount {
+      color: $color-medium-grey-1;
+      float: right;
+      font-size: 12px;
+    }
   }
 }
 
@@ -115,8 +117,10 @@ label[for="donation_amount_other"] {
   }
 }
 
-.donations.thanks .well p {
-  margin-bottom: 0;
+.donations.thanks {
+  .well p {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: $screen-sm-min) {

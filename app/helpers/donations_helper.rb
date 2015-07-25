@@ -4,10 +4,9 @@ module DonationsHelper
     Donation.all.sum(:amount)
   end
 
-  def pretty_dollars(value, decimals=0)
-  	decimal_amount = '%0.' + decimals.to_s + 'f'
-  	dollar_value = sprintf(decimal_amount, value)
+  def pretty_dollars(value, decimals= 0)
+    decimal_amount = '%0.' + decimals.to_s + 'f'
+    dollar_value = sprintf(decimal_amount, value)
     "$" + number_with_delimiter(dollar_value)
   end
-
 end
