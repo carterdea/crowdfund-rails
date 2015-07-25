@@ -9,17 +9,17 @@
           %h3 #{@donation.type} to AdoptTogether
           %p for #{@family.full_name}’s Adoption
         .col-xs-4
-          %span.pull-right= pretty_dollars(@donation.amount)
+          %span.pull-right= pretty_dollars(@donation.amount, 2)
         .col-xs-8
           %p Tip for AdoptTogether
         .col-xs-4
-          %span.pull-right= pretty_dollars(@donation.tip_total)
+          %span.pull-right= pretty_dollars(@donation.tip_total, 2)
       %hr
       .row
         .col-xs-8
           %p Total
         .col-xs-4
-          %span.pull-right #{pretty_dollars(@donation.total_amount_in_dollars)}
+          %span.pull-right #{pretty_dollars(@donation.total_amount_in_dollars, 2)}
     .small.help-block A receipt with this information has just been emailed to you.
 
     %h2 Take it to the next level: Help them reach their goal. There are 2 more ways to help:

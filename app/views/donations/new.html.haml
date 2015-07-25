@@ -28,7 +28,7 @@
                 = radio_button_tag 'donation[amount]', 'other', nil
                 = text_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
           %fieldset
-            %p Give a small donation to AdoptTogether (totally optional!)
+            %p.radio-label Give a small donation to AdoptTogether (totally optional!)
             .radio-group
               - Donation::TIP_AMOUNTS.each do |key, value|
                 .radio

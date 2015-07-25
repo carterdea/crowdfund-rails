@@ -10,19 +10,40 @@
   // Other Donation amount
 
   // When the "Other" text field value changes
-  $('#other_text').change(function () {
+  $('#other_text').keyup(function(){
   
     // Check that radio button
     var other_text_value = $('#other_text').val()
-    $('#donation_amount_other').prop('checked', true)
+    $('#donation_amount_other').prop('checked', true);
     // Change the radio button value to the value in the text field
-    $('#donation_amount_other').val(other_text_value)
+    $('#donation_amount_other').val(other_text_value);
     // Calculate Tip
-    $('input[type="donation[tip_amount]"]').each(function() {
-
-    });
+    var tip_10 = (other_text_value * .1).toFixed(2);
+    var tip_20 = (other_text_value * .2).toFixed(2);
+    // Change the radio button values to the tip values
+    $('#donation_at_tip_10').val(tip_10);
+    $('#donation_at_tip_20').val(tip_20);
     // Show Tip
+    $('label[for="donation_at_tip_10"] > span').text('$' + tip_10);
+    $('label[for="donation_at_tip_20"] > span').text('$' + tip_20);
   });
+
+  // When user clicks a donation amount
+  $('label.btn').click(function () {
+    setTimeout(function(){ 
+      var tip_value = $('label.btn.active > input').val();
+      var tip_10 = (tip_value * .1).toFixed(2);
+      var tip_20 = (tip_value * .2).toFixed(2);
+      // Change the radio button value to the tip value
+      $('#donation_at_tip_10').val(tip_10);
+      $('#donation_at_tip_20').val(tip_20);
+      // Show Tip
+      $('label[for="donation_at_tip_10"] > span').text('$' + tip_10);
+      $('label[for="donation_at_tip_20"] > span').text('$' + tip_20);
+    }, 100);
+    
+  });
+    
 
   // When "Other" text field is clicked
   $('#other_text').click(function () {
@@ -33,13 +54,16 @@
 
   // Other AT Tip amount
   // When the "Other" text field value changes
-  $('#tip_other_text').change(function () {
+  $('#tip_other_text').keyup(function () {
     var tip_other_text_value = $('#tip_other_text').val();
     // Check that radio button
-    alert(tip_other_text_value);
     $('#donation_at_tip_other').prop('checked', true);
     // Change the radio button value to the value in the text field
     $('#donation_at_tip_other').val(tip_other_text_value);
+  });
+
+  $('#tip_other_text').click(function() {
+    $('#donation_at_tip_other').prop('checked', true);
   });
     
   // Stripe Tokenization

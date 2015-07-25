@@ -13,6 +13,7 @@ gem 'bourbon', '~> 4.2.3'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'bower-rails', '~> 0.9.2'
 
 # file handling
 gem 'carrierwave', '~> 0.10.0'
