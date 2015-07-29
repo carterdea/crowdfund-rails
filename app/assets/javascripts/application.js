@@ -13,6 +13,6 @@
 //= require jquery2
 //= require jquery_ujs
 //= require turbolinks
+//= require_tree ../../../vendor/assets/javascripts
 //= require_tree .
 //= require bootstrap
-//= require_tree ../../../vendor/assets/javascripts

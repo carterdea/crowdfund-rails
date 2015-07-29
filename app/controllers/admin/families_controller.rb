@@ -17,4 +17,10 @@ class Admin::FamiliesController < ApplicationController
 
   def destroy
   end
+
+  def toggle_approval
+    @family = Family.find(params[:id])
+    @family.toggle_approval
+    redirect_to(:back)
+  end
 end

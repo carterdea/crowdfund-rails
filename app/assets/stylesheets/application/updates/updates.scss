@@ -1,0 +1,27 @@
+// Place all the styles related to the Updates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ul.update-list {
+  li {
+    border-bottom: 1px solid darken($color-off-white, 7%);
+    margin-bottom: 20px;
+
+    h4 {
+      color: $color-medium-grey-1;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    h2, h3 {
+      margin: 0 !important;
+    }
+
+    span.date {
+      color: $color-light-grey-2;
+      display: block;
+      font-size: 12px;
+    }
+  }
+}

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :families do
     collection { get :search }
     resources :donations
+    resources :updates
   end
 
   get 'dashboard' => 'pages#dashboard'
@@ -20,7 +21,11 @@ Rails.application.routes.draw do
     resources :users
     resources :families do
       resources :donations
+      member do
+        put :toggle_approval
+      end
     end
+
   end
 
   # Example of regular route:

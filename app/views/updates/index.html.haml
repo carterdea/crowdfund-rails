@@ -1,0 +1,14 @@
+= link_to "New Update", new_family_update_path(@family), class: "btn btn-primary btn-sm pull-right"
+%h1 Your Updates
+.row
+  .col-xs-12.col-md-4
+    = render 'shared/dashboard_nav'
+  .col-xs-12.col-md-8
+    %ul.list-unstyled.update-list
+      - @family.updates.each do |update|
+        %li
+          %h4 Update #{update.id}
+          %h2= update.title
+          %span.date= update.date_created
+          = simple_format(update.message)
+

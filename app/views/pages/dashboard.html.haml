@@ -1,11 +1,7 @@
 %h1 Dashboard
 .row
   .col-xs-12.col-md-4
-    %ul.nav.nav-pills.nav-stacked
-      %li.active= link_to "Dashboard", dashboard_path
-      %li= link_to "Update Donors", "#"
-      %li= link_to "Edit Family Profile", edit_family_path(@family)
-      %li= link_to "My Fundraisers", "#"
+    = render 'shared/dashboard_nav'
   .col-xs-12.col-md-8
     .row
       .chart.col-xs-12
@@ -16,9 +12,15 @@
       .updates.col-xs-12.col-md-6
         .well
           %h3 Latest Updates
+          %ul.list-unstyled.update-list
+            -@family.updates.limit(5).each do |update|
+              %li
+                = render 'shared/update', :update => update
+          = link_to "See all updates", family_updates_path(@family)
       .donations.col-xs-12.col-md-6
         .well
           %h3 Latest Donations
           %ul.list-unstyled
             - @donations.limit(3).each do |donation|
               = render 'shared/donation', :donation => donation
+          = link_to "See all donations", "#"

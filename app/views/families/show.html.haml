@@ -13,6 +13,13 @@
           %h4 Adoption Agency
           %h3= @family.agency_name
           %span.website= @family.agency_site
+      .row
+        .col-xs-12
+          %h2 Updates
+          %ul.list-unstyled.update-list
+            - @family.updates.each do |update|
+              %li
+                = render 'shared/update', :update => update
 
   %aside.col-xs-12.col-sm-4
     .raised

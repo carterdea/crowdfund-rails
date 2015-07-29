@@ -3,6 +3,7 @@
   %thead
     %tr
       %td Family Name
+      %td Donations
       %td Raised
       %td Status
   %tbody
@@ -15,6 +16,10 @@
             .media-body
               %h3.media-heading= link_to family.full_name, family
               %p= family.user.email
+        %td= family.donations.size
         %td= pretty_dollars(family.total_raised)
-        %td= family.approved?
+        %td
+          = family.approved?
+          = link_to "Approve", toggle_approval_admin_family_path(family), :method => :put
+
   = paginate(@families)

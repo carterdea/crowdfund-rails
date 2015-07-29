@@ -1,9 +1,13 @@
 require 'elasticsearch/model'
 
 class Family < ActiveRecord::Base
+  # has_many :donations, as: :recipient
   belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
   has_many :donations
+  has_many :updates
+
+  default_scope {order('created_at DESC')}
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
@@ -12,6 +16,7 @@ class Family < ActiveRecord::Base
   validates :cost, numericality: {less_than: 1000000}
   validates :country, presence: true, length: {is: 2}
   validates :quantity, numericality: {greater_than: 0}
+  validates_format_of :photo, :with => %r{\.(png|jpg|jpeg)$}i, message: "The Photo must be a gif, jpg, or png image."
 
   GENDER_OPTIONS = [
     'Male',
@@ -67,6 +72,10 @@ class Family < ActiveRecord::Base
     else
       "a child"
     end
+  end
+
+  def toggle_approval
+    toggle!(:approved)
   end
 end
 

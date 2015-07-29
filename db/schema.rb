@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712232310) do
+ActiveRecord::Schema.define(version: 20150726012712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20150712232310) do
 
   add_index "families", ["user_id"], name: "index_families_on_user_id", using: :btree
 
+  create_table "updates", force: :cascade do |t|
+    t.integer  "family_id"
+    t.string   "title"
+    t.text     "message"
+    t.boolean  "on_profile"
+    t.boolean  "email_donors"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "updates", ["family_id"], name: "index_updates_on_family_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                                           null: false
     t.string   "crypted_password"
@@ -81,4 +93,5 @@ ActiveRecord::Schema.define(version: 20150712232310) do
 
   add_foreign_key "donations", "families"
   add_foreign_key "families", "users"
+  add_foreign_key "updates", "families"
 end

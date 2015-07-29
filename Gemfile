@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bourbon', '~> 4.2.3'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-rails'
+gem 'nav_lynx', '~> 1.1.1'
 gem 'turbolinks'
 gem 'bower-rails', '~> 0.9.2'
 

@@ -1,5 +1,6 @@
 class Donation < ActiveRecord::Base
-  belongs_to :family, dependent: :destroy
+  belongs_to :family
+  # belongs_to :recipient
   # before_save :populate_uuid
 
   require 'stripe'

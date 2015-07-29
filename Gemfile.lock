@@ -301,6 +301,8 @@ GEM
     multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nav_lynx (1.1.1)
+      rails (>= 3.1.0)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -479,6 +481,7 @@ DEPENDENCIES
   mandrill-api (~> 1.0.53)
   meta_request
   mini_magick (~> 4.2.7)
+  nav_lynx (~> 1.1.1)
   pg (~> 0.18.2)
   puma (~> 2.11.3)
   rails (= 4.2.1)

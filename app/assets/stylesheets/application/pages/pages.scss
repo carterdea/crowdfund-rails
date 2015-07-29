@@ -13,7 +13,7 @@
     }
   }
 
-  &.active a, &.active a:hover {
+  a.active, &.active a:hover {
     background: $color-medium-grey-2;
     color: $color-white;
   }

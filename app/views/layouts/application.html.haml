@@ -1,14 +1,12 @@
 !!! 5
 %html
   %head
-    %title AdoptTogether
-    = stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track' => true)
-    = stylesheet_link_tag('//cloud.typography.com/7610312/729166/css/fonts.css')
-    = javascript_include_tag('https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true)
+    %title= title
+    = stylesheet_link_tag('application', '//cloud.typography.com/7610312/729166/css/fonts.css', media: 'all', 'data-turbolinks-track' => true)
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     = csrf_meta_tags
-    %link(rel="dns-prefetch" href="//api.stripe.com")
-    %link(rel="dns-prefetch" href="//cloud.typography.com")
+    / %link(rel="dns-prefetch" href="//api.stripe.com")
+    / %link(rel="dns-prefetch" href="//cloud.typography.com")
   %body{:class => body_class}
     = render 'layouts/header'
     = render 'layouts/flash'
@@ -17,5 +15,6 @@
       = yield
     = content_for(:after_container)
     = render 'layouts/footer'
+    = javascript_include_tag('https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true)
     = render 'shared/app_js'
     = render 'shared/fb_share_js'

@@ -1,0 +1,23 @@
+%h1 Update Donors
+.row
+  .col-xs-12.col-md-4
+    = render 'shared/dashboard_nav'
+  .col-xs-12.col-md-8
+    %h2 Give Your Donors an Update
+    = form_for([@family, @update]) do |f|
+      = render 'shared/errors', object: @update
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+      .form-group
+        = f.label :message, "Message to your donors"
+        = f.text_area :message, size: "60x10", class: "form-control"
+      .checkbox
+        = f.label :on_profile do
+          = f.check_box :on_profile
+          Put this on my Profile under "Updates"
+      .checkbox
+        = f.label :email_donors do
+          = f.check_box :email_donors
+          Update my donors via email
+      = f.submit "Post Update", class: "btn btn-primary btn-block"
