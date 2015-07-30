@@ -1,6 +1,12 @@
-$('.js-cc-number').payment('formatCardNumber');
-$('.js-cc-expiry').payment('formatCardExpiry');
-$('.js-cc-cvc').payment('formatCardCVC');
+// When the user clicks the tabs, give the active tab a class of "active"
+$('.page-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  $(e.target).addClass('active').siblings().removeClass("active")
+});
+
+// When the user clicks the "Next" buttons, give the active tab a class of "active"
+$('.btn-primary.btn-block[data-toggle="tab"]').click(function(){
+  $('.page-tabs > .active').next('a').trigger('click');
+});
 
 $('#other_text').payment('restrictNumeric');
 $('#tip_other_text').payment('restrictNumeric');
@@ -62,7 +68,12 @@ $('#tip_other_text').keyup(function () {
 $('#tip_other_text').click(function() {
   $('#donation_at_tip_other').prop('checked', true);
 });
-  
+
+// Format the payment fields
+$('.js-cc-number').payment('formatCardNumber');
+$('.js-cc-expiry').payment('formatCardExpiry');
+$('.js-cc-cvc').payment('formatCardCVC');
+
 // Stripe Tokenization
 jQuery(function($) {
   $('#new_donation').submit(function(event) {

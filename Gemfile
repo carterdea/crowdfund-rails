@@ -56,7 +56,6 @@ gem 'pg', '~> 0.18.2'
 group :development do
   gem 'stackprof', '~> 0.2.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
-  gem 'ffaker', '~> 2.0.0'
   gem 'better_errors'
   gem 'meta_request'
 end
@@ -66,6 +65,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.3.1'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
+  gem 'ffaker', '~> 2.0.0'
 end
 
 group :test do
