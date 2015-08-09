@@ -6,9 +6,10 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 ### Setup
 
 1. Get the code.
-```shell
-% git clone git@github.com:carterdea/adopttogether.git
-```
+
+   ```shell
+   % git clone git@github.com:carterdea/adopttogether.git
+   ```
 
 2. Install Dependencies 
   * Ruby 2.2.2
@@ -17,21 +18,22 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 3. Install Gems
 
-```shell
-% bundle install
-```
+    ```shell
+    % bundle install
+    ```
 
 4. Setup the DB
-```shell
-% rake db:schema:load
-```
+
+    ```shell
+    % rake db:schema:load
+    ```
 
 5. Start the Server
-```shell
-% foreman start -f Procfile.dev
-```
 
-visit [http://locahlhost:5000](http://localhost:5000)
+    ```shell
+    % foreman start -f Procfile.dev
+    ```
+    visit [http://locahlhost:5000](http://localhost:5000)
 
 ### Continuous Integration
 CircleCI & CodeClimate & Hound & Travis, oh my!
