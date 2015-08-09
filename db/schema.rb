@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150809044421) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "family_id"
-    t.decimal  "amount",               precision: 10, scale: 2, default: 0.0
+    t.decimal  "amount",               precision: 15, scale: 2, default: 0.0
     t.boolean  "recurring"
     t.integer  "at_tip"
     t.string   "family_email_updates"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150809044421) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "state"
-    t.decimal  "cost",        precision: 10, scale: 2, default: 0.0
+    t.decimal  "cost",        precision: 15, scale: 2, default: 0.0
     t.string   "country"
     t.string   "gender"
     t.integer  "quantity"

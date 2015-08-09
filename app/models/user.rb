@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :authentications_attributes
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
@@ -16,5 +15,9 @@ class User < ActiveRecord::Base
 
   def has_family?
     self.families.any?
+  end
+private
+  def user_params
+    params.permit(:user).require(:email, :password, :authentications_attributes [:user_id, :provider, :uid])
   end
 end

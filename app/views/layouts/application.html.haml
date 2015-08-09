@@ -5,8 +5,6 @@
     = stylesheet_link_tag('application', '//cloud.typography.com/7610312/729166/css/fonts.css', media: 'all', 'data-turbolinks-track' => true)
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     = csrf_meta_tags
-    / %link(rel="dns-prefetch" href="//api.stripe.com")
-    / %link(rel="dns-prefetch" href="//cloud.typography.com")
   %body{:class => body_class}
     = render 'layouts/header'
     = render 'layouts/flash'

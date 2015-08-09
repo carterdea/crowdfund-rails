@@ -1,4 +1,7 @@
 class Authentication < ActiveRecord::Base
-  attr_accessible :user_id, :provider, :uid
   belongs_to :user
+
+  def has_linked_facebook?
+    authentications.where(provider: 'facebook').present?
+  end
 end

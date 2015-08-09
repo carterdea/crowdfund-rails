@@ -117,9 +117,9 @@ Rails.application.config.sorcery.configure do |config|
   
   config.facebook.key = ENV['FACEBOOK_KEY']
   config.facebook.secret = ENV['FACEBOOK_SECRET']
-  config.facebook.callback_url = "http://0.0.0.0:5000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "email", :first_name => "first_name", :last_name => "last_name"}
-  config.facebook.access_permissions = ["email", "publish_actions"]
+  config.facebook.callback_url = "http://localhost:5000/oauth/callback?provider=facebook"
+  config.facebook.user_info_mapping = {:email => 'email'}
+  config.facebook.scope = "email,public_profile"
   config.facebook.display = "page"
   config.facebook.api_version = "v2.4"
   
@@ -428,8 +428,8 @@ Rails.application.config.sorcery.configure do |config|
 
     # How long since last activity is the user defined logged out?
     # Default: `10 * 60`
-    #
-    # user.activity_timeout =
+    # 7776000 = 3 mos in seconds
+    # user.activity_timeout = 7776000
 
 
     # -- external --
@@ -459,5 +459,5 @@ Rails.application.config.sorcery.configure do |config|
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = "User"
+  config.user_class = User
 end
