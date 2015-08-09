@@ -40,20 +40,35 @@
   background: $color-medium-grey-1;
   color: $color-white;
   &:hover {
-    color: $color-white;
     background: lighten($color-medium-grey-1, 10%);
+    color: $color-white;
   }
   &:active,
   &:active:hover,
   &:active:focus {
-    color: $color-white;
     background: darken($color-medium-grey-1, 10%);
+    color: $color-white;
   }
   &.active,
   &.active:hover {
-    color: $color-white;
     background: darken($color-primary, 7%);
-    // background: darken($color-medium-grey-1, 25%);
+    color: $color-white;
+  }
+}
+
+.btn-facebook,
+.btn-facebook:focus {
+  background: $color-facebook;
+  color: $color-white;
+  &:hover {
+    background: lighten($color-facebook, 10%);
+    color: $color-white;
+  }
+  &:active,
+  &:active:hover,
+  &:active:focus {
+    background: darken($color-facebook, 10%);
+    color: $color-white;
   }
 }
 

@@ -1,5 +1,6 @@
 = form_for @family, html: { multipart: true }, id: "donation-form" do |f|
   = render 'shared/errors', object: @family
+  = link_to 'Sign Up with Facebook', auth_at_provider_path(:provider => :facebook), class: 'btn btn-facebook'
   %fieldset
     %legend Family Information
     .row
@@ -13,12 +14,12 @@
         .form-group
           = f.label :phone do
             Phone
-            %span.optional (optional)
+            %span.optional
           = f.text_field :phone, class: "form-control"
         .form-group
           = f.label :postal_code do
             Zip/Postal Code
-            %span.optional (optional)
+            %span.optional
           = f.text_field :postal_code, class: "form-control"
         - if current_user == nil
           %fieldset

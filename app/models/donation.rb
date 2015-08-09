@@ -4,6 +4,7 @@ class Donation < ActiveRecord::Base
   # before_save :populate_uuid
 
   require 'stripe'
+  require 'mandrill'
 
   validates :name, presence: true
   validates :email, presence: true
@@ -125,5 +126,6 @@ class Donation < ActiveRecord::Base
 private
 
   def send_receipt
+
   end
 end

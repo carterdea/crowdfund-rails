@@ -23,6 +23,7 @@ class DonationsController < ApplicationController
       if @donation.create_stripe_charge && @donation.save
         session[:family_id] = @family.id
         session[:donation_id] = @donation.id
+        # send_receipt
         redirect_to :thanks
       else
         render :new
@@ -31,6 +32,7 @@ class DonationsController < ApplicationController
       if @donation.subscribe_stripe_customer && @donation.save
         session[:family_id] = @family.id
         session[:donation_id] = @donation.id
+        # send_receipt
         redirect_to :thanks
       else
         render :new
@@ -45,7 +47,7 @@ class DonationsController < ApplicationController
 
   def edit
     @family = Family.find(params[:family_id])
-    @donation = @family.donations.build(donation_params)
+    @donation = @family.donations.find(params[:id])
   end
 
   def delete

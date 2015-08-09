@@ -16,7 +16,7 @@
         %li= nav_link_to "Dashboard", dashboard_path, class: "greater"
       - else
         %li= nav_link_to "Start a Family Profile", new_family_path, class: "greater"
-        %li= nav_link_to "Start a Fundraiser", "#", class: "greater"
+        / %li= nav_link_to "Start a Fundraiser", "#", class: "greater"
       %li.hidden-sm.visible-md-inline-block.visible-lg-inline-block= nav_link_to "What is AdoptTogether?", "#"
       - if logged_in?
         %li.dropdown
