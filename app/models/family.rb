@@ -16,12 +16,6 @@ class Family < ActiveRecord::Base
   validates :cost, numericality: {less_than: 1000000}
   validates :country, presence: true, length: {is: 2}
   validates :quantity, numericality: {greater_than: 0}
-
-  GENDER_OPTIONS = [
-    'Male',
-    'Female',
-    'Either'
-  ]
   
   ADOPTION_STATUSES = [
     'Paperwork Not Started',

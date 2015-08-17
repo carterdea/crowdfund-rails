@@ -1,6 +1,5 @@
 .col-xs-12.col.col-sm-6.col-sm-offset-3
   %h1 Log In
-  = link_to 'Log In with Facebook', auth_at_provider_path(provider: :facebook), class: 'btn btn-facebook'
   = form_tag sessions_path do
     .form-group
       = label_tag :email

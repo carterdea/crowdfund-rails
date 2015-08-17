@@ -1,6 +1,5 @@
 = form_for @user do |f|
   = render 'shared/errors', object: @user
-  = link_to 'Log In with Facebook', auth_at_provider_path(provider: :facebook), class: 'btn btn-facebook'
   .form-group
     = f.label :email
     = f.email_field :email, size: 40, autofocus: true, class: "form-control"

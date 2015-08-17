@@ -1,7 +1,5 @@
 = form_for @family, html: { multipart: true }, id: "donation-form" do |f|
   = render 'shared/errors', object: @family
-  - if logged_in? == false
-    = link_to 'Sign Up with Facebook', auth_at_provider_path(provider: :facebook), class: 'btn btn-facebook'
   %fieldset
     %legend Family Information
     .row
@@ -45,13 +43,6 @@
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ["US"] }, { class: "form-control" }
-        .form-group
-          %h3 Gender Requested
-          - Family::GENDER_OPTIONS.each do |gender|
-            .radio
-              = f.label :gender, :gender, { value: gender } do
-                = f.radio_button :gender, gender
-                = gender
         .form-group
           = f.label :quantity, "How many children are you adopting?"
           = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
