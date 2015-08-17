@@ -23,6 +23,7 @@ gem 'mini_magick', '~> 4.2.7'
 # security & auth
 gem 'sorcery', '~> 0.9.1'
 gem 'bcrypt', '~> 3.1.7'
+gem 'cancancan', '~> 1.12.0'
 
 # payment
 gem 'stripe', '~> 1.22.0'
@@ -57,7 +58,9 @@ group :development do
   gem 'stackprof', '~> 0.2.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
   gem 'better_errors'
+  gem 'binding_of_caller', '~> 0.7.2'
   gem 'meta_request'
+  gem 'rails-footnotes', '~> 4.1.7'
 end
 
 group :development, :test do

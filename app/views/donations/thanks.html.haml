@@ -6,8 +6,8 @@
     .well
       .row
         .col-xs-8
-          %h3 #{@donation.type} to AdoptTogether
-          %p for #{@family.full_name}’s Adoption
+          %h3= @donation.type
+          %p designated to #{@family.full_name}’s Adoption
         .col-xs-4
           %span.pull-right= pretty_dollars(@donation.amount, 2)
         .col-xs-8

@@ -4,9 +4,8 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, :dependent => :destroy
-  accepts_nested_attributes_for :authentications
-
   has_many :families
+  accepts_nested_attributes_for :authentications, :families
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -16,6 +15,12 @@ class User < ActiveRecord::Base
   def has_family?
     self.families.any?
   end
+
+  def set_family_params_from_fb
+    @user_hash.first_name = @family.first_name
+    @user_hash.last_name = @family.last_name
+  end
+
 private
   def user_params
     params.permit(:user).require(:email, :password, :authentications_attributes [:user_id, :provider, :uid])

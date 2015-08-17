@@ -1,6 +1,7 @@
 = form_for @family, html: { multipart: true }, id: "donation-form" do |f|
   = render 'shared/errors', object: @family
-  = link_to 'Sign Up with Facebook', auth_at_provider_path(provider: :facebook), class: 'btn btn-facebook'
+  - if logged_in? == false
+    = link_to 'Sign Up with Facebook', auth_at_provider_path(provider: :facebook), class: 'btn btn-facebook'
   %fieldset
     %legend Family Information
     .row
@@ -73,4 +74,4 @@
           .input-group
             %span.input-group-addon http://
             = f.text_field :agency_site, class: "form-control"
-        = f.submit "Apply for a Profile", class: "btn btn-primary btn-block"
+        = f.submit "Start a Family Profile", class: "btn btn-primary btn-block"
