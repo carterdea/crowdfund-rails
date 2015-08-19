@@ -1,0 +1,27 @@
+%h1
+  %span.show.small
+    = link_to "Admin", admin_path
+    \ /
+  All #{pluralize(@users.size, "User")}
+%table.table.table-hover
+  %thead
+    %tr
+      %td ID
+      %td Email
+      %td Family
+      %td Date Created
+      %td Admin?
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td
+          %strong
+            = user.email
+        %td
+          - if user.families.any?
+            - user.families.each do |family|
+              %strong.show= link_to family.full_name, family
+        %td{title: user.created_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(user.created_at)} ago
+        %td= user.admin?
+  = paginate(@users)

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'pages#dashboard'
     resources :users
+    resources :donations
     resources :families do
       resources :donations
       member do

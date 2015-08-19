@@ -1,0 +1,33 @@
+%h1
+  %span.show.small
+    = link_to "Admin", admin_path
+    \ /
+  All #{pluralize(@donations.size, "Donation")}
+%table.table.table-hover
+  %thead
+    %tr
+      %td Donor Name
+      %td Email
+      %td Recipient
+      %td Amount
+      %td AT Tip
+      %td Monthly?
+      %td Stripe Link
+  %tbody
+    - @donations.each do |donation|
+      %tr
+        %td
+          %strong
+            = donation.name
+          - if donation.anonymous?
+            %span.small (Anonymous)
+        %td= donation.email
+        %td= link_to donation.family.full_name, donation.family
+        %td
+          = pretty_dollars(donation.amount)
+          - if donation.hide_amount?
+            %span.small (hidden)
+        %td= pretty_dollars(donation.at_tip)
+        %td= donation.recurring?
+        %td= link_to "💳💸💰", 'https://dashboard.stripe.com/test/customers/' + donation.stripe_id.to_s
+  = paginate(@donations)

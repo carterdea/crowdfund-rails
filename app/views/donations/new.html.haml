@@ -29,6 +29,7 @@
               = label_tag 'donation_amount_other', '' do
                 = radio_button_tag 'donation[amount]', 'other', nil
                 = telephone_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
+                %p.small.help-text The average gift is $210
           %fieldset
             %p.radio-label Give a small donation to AdoptTogether (totally optional!)
             .radio-group

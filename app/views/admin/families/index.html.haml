@@ -1,4 +1,8 @@
-%h1 All #{pluralize(@families.size, "Family")}
+%h1
+  %span.small.show
+    = link_to "Admin", admin_path
+    \ /
+  All #{pluralize(@families.size, "Family")}
 %table.table.table-hover
   %thead
     %tr
@@ -20,6 +24,5 @@
         %td= pretty_dollars(family.total_raised)
         %td
           = family.approved?
-          = link_to "Approve", toggle_approval_admin_family_path(family), :method => :put
 
   = paginate(@families)
