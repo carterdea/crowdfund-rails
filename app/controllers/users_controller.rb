@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_filter :require_login, only: [:edit, :update, :destroy]
   
   def index

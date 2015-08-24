@@ -76,6 +76,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    chartkick (1.3.2)
     chunky_png (1.3.4)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -469,6 +470,7 @@ DEPENDENCIES
   cancancan (~> 1.12.0)
   capybara (~> 2.4.4)
   carrierwave (~> 0.10.0)
+  chartkick (~> 1.3.2)
   coffee-rails (~> 4.1.0)
   compass (~> 1.0.3)
   countries

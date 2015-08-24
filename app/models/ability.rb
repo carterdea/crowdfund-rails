@@ -7,12 +7,13 @@ class Ability
 
     if user.admin?
       can :manage, :all
+      can :read, Admin
     end
 
     can :manage, User, :id => user.id
     can :manage, Family, :user_id => user.id
-    can :manage, Update, :user_id => 
-    cannot :create, Donation, :user_id => user.families.id
+    can :manage, Update, :family_id => { :id => user.families }
+    cannot :create, Donation, :user_id => user.families
 
     # Define abilities for the passed in user here. For example:
     #

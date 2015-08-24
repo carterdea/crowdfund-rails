@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :families
+  has_many :updates, :through => :families
   accepts_nested_attributes_for :authentications, :families
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i

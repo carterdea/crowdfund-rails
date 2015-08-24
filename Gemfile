@@ -16,6 +16,9 @@ gem 'nav_lynx', '~> 1.1.1'
 gem 'turbolinks'
 gem 'bower-rails', '~> 0.9.2'
 
+# charts
+gem 'chartkick', '~> 1.3.2'
+
 # file handling
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.2.7'
