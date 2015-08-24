@@ -1,5 +1,5 @@
 = form_for @family, html: { multipart: true }, id: "donation-form" do |f|
-  = render 'shared/errors', object: @user
+  = render 'shared/errors', object: @family
   %fieldset
     %legend Family Information
     .row
@@ -10,11 +10,6 @@
         .form-group
           = f.label :last_name, "Last Name"
           = f.text_field :last_name, class: "form-control"
-        .form-group
-          = f.label :phone do
-            Phone
-            %span.optional
-          = f.text_field :phone, class: "form-control"
         .form-group
           = f.label :postal_code do
             Zip/Postal Code

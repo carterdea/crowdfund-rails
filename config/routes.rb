@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   resources :users, :sessions, :pages
   resources :families do
     collection { get :search }
-    resources :donations
     resources :updates
+    resources :donations
+    match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', :via => :get
   end
 
   get 'dashboard' => 'pages#dashboard'

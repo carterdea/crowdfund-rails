@@ -1,0 +1,7 @@
+.col-xs-12.col-md-6.col-md-offset-3
+  %h1 Cancel Monthly Donation
+  %p Are you sure you'd like to cancel your monthly donation of #{pretty_dollars(@donation.amount)} for #{@family.full_name}'s adoption?
+  = form_for([@family, @donation]) do |t|
+    = t.hidden_field :recurring, value: false
+    = t.submit "Cancel Monthly Donation", class: 'btn btn-danger'
+    = link_to "Nevermind", root_path, class: 'btn btn-default'

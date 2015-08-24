@@ -259,6 +259,8 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     haml (4.0.6)
       tilt
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     hashie (3.4.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -480,6 +482,7 @@ DEPENDENCIES
   fog (~> 1.31.0)
   guard-rspec (~> 4.6.0)
   haml (~> 4.0.6)
+  has_secure_token (~> 1.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.16.3)
@@ -506,4 +509,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

@@ -20,12 +20,16 @@
           %p Total
         .col-xs-4
           %span.pull-right #{pretty_dollars(@donation.total_amount_in_dollars, 2)}
-    .small.help-block A receipt with this information has just been emailed to you.
+    .small.help-block
+      A receipt with this information has just been emailed to you.
+      - if @donation.recurring
+        You can cancel this monthly donation at any time
+        #{link_to "here", cancel_url(@family, @donation)}
 
-    %h2 Take it to the next level: Help them reach their goal. There are 2 more ways to help:
+    %h2 Help them reach their goal by sharing their fundraiser
     .row
       .col-xs-12.col-sm-4
-        %h2 0
+        %h2= share_count(family_url(@family))
         %h3 Shares
       .share-buttons.col-xs-12.col-sm-8
         = render 'shared/share_buttons'
@@ -48,4 +52,4 @@
     %h3 Can I give a monthly contribution?
     %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
     %h3 Can I edit or cancel my monthly contribution?
-    %p You can view or edit your monthly contribution at any time here.
+    %p You can view or edit your monthly contribution at any time #{link_to "here", cancel_url(@family, @donation)}. If you ever lose this URL or the email we sent, just contact us and we'll help you cancel.

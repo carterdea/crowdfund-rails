@@ -24,6 +24,7 @@ gem 'mini_magick', '~> 4.2.7'
 gem 'sorcery', '~> 0.9.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.12.0'
+gem 'has_secure_token', '~> 1.0.0'
 
 # payment
 gem 'stripe', '~> 1.22.0'

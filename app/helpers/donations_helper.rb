@@ -9,4 +9,12 @@ module DonationsHelper
     dollar_value = sprintf(decimal_amount, value)
     "$" + number_with_delimiter(dollar_value)
   end
+
+  def average_donation_amount
+    global_donations / Donation.all.size if Donation.all.size > 0
+  end
+
+  def cancel_url(family, donation)
+    family_donations_path(family) + '/cancel/' + donation.token
+  end
 end

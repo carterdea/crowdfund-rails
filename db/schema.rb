@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809044421) do
+ActiveRecord::Schema.define(version: 20150823010743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150809044421) do
     t.decimal  "amount",               precision: 15, scale: 2, default: 0.0
     t.boolean  "recurring"
     t.integer  "at_tip"
-    t.string   "family_email_updates"
+    t.string   "family_email_updates",                          default: "t"
     t.text     "message"
     t.string   "name"
     t.string   "email"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150809044421) do
     t.boolean  "hide_amount"
     t.boolean  "anonymous"
     t.string   "stripe_id"
-    t.string   "uuid"
+    t.string   "token"
   end
 
   add_index "donations", ["family_email_updates"], name: "index_donations_on_family_email_updates", using: :btree

@@ -1,11 +1,11 @@
-- title "Donate to #{@family.full_name}'s Adoption on AdoptTogether"
+- title "Edit your Donation to #{@family.full_name}'s Adoption on AdoptTogether"
 - meta_description "You can donate to #{@family.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
 .row
   .col-xs-12.col-sm-8
-    %h1 Donate to a Family
+    %h1 Edit Your Donation
     = render 'form'
   %aside.col-xs-12.col-sm-4
-    %h2 You are donating to
+    %h2 You are editing your donation to
     = render 'shared/family_thumb', :family => @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
@@ -20,7 +20,7 @@
       Springboro, OH 45066
       %br
       1 (888) 826-0948
-    %h3 Can I give a monthly donation?
-    %p Yes, on the last step we’ll ask if you want to make this a monthly donation.
-    %h3 Can I edit or cancel my monthly donation?
-    %p You can cancel your monthly contribution at any time via a unique URL that we will email you after you donate. If you ever lose the email, just contact us and we'll help you cancel your donation.
+    %h3 Can I give a monthly contribution?
+    %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
+    %h3 Can I edit or cancel my monthly contribution?
+    %p You can view or edit your monthly contribution at any time here.

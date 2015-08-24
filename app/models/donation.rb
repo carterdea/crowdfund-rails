@@ -1,7 +1,6 @@
 class Donation < ActiveRecord::Base
+  has_secure_token
   belongs_to :family
-  # belongs_to :recipient
-  # before_save :populate_uuid
 
   require 'stripe'
   require 'mandrill'
@@ -10,7 +9,6 @@ class Donation < ActiveRecord::Base
   validates :email, presence: true
   validates :amount, numericality: {greater_than_or_equal_to: 1, message: "Must be at least $1."}
   validates :at_tip, numericality: true
-  # validates_uniqueness_of :uuid
 
   attr_accessor :stripe_token, :stripe_customer_id
 
@@ -63,7 +61,7 @@ class Donation < ActiveRecord::Base
   end
 
   def stripe_customer_description
-    "#{name}'s (#{email}) recurring donation to #{family.full_name}"
+    "#{name}'s (#{email}) monthly donation to #{family.full_name}"
   end
 
   # Single Donations
@@ -96,7 +94,7 @@ class Donation < ActiveRecord::Base
   end
 
   def delete_stripe_customer
-    customer = self.stripe_id
+    customer = Stripe::Customer.retrieve(self.stripe_id)
     customer.delete
   end
 
@@ -115,12 +113,8 @@ class Donation < ActiveRecord::Base
     end
   end
 
-  def delete_stripe_customer_subscription
-    
-  end
-
   def save_customer_id(customer)
-    self.stripe_id = customer.id    
+    self.stripe_id = customer.id
   end
 
 private

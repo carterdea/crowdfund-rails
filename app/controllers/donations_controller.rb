@@ -8,7 +8,7 @@ class DonationsController < ApplicationController
 
   def new
     if params[:family_id].nil?
-      #...
+      @family = Family.find(1)
     else
       @family = Family.find(params[:family_id])
     end
@@ -50,13 +50,35 @@ class DonationsController < ApplicationController
     @donation = @family.donations.find(params[:id])
   end
 
+  def update
+    @family = Family.find(params[:family_id])
+    @donation = @family.donations.find(params[:id])
+    if @donation.update(donation_params)
+      if @donation.recurring == false
+        @donation.delete_stripe_customer
+      end
+      redirect_to @family, notice: "Your donation has been updated."
+    else
+      render :edit
+    end
+  end
+
   def delete
   end
 
   def destroy
   end
 
+  def cancel_monthly_donation
+    @family = Family.find(params[:family_id])
+    @donation = @family.donations.find_by(token: params[:token])
+  end
+
 private
+  def get_family
+    @family = Family.find(params[:family_id])
+  end
+
   def donation_params
     params.require(:donation).permit(
       :family_id,
