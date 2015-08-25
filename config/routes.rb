@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'oauths/oauth'
-
   get 'oauths/callback'
 
   root 'pages#home'
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard' => 'pages#dashboard'
+  get 'about' => 'pages#about'
   
   get 'donate' => 'donations#new'
   get 'thanks' => 'donations#thanks'

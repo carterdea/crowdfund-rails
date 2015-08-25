@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
+  load_and_authorize_resource
   before_action :require_login, only: [:edit, :update, :destroy]
-  # before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @families = Family.all.page(params[:page]).per(30)
@@ -71,13 +71,6 @@ class FamiliesController < ApplicationController
 private
   def family_params
     params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo)
-  end
-
-  def require_correct_user
-    @family = Family.find(params[:id])
-    unless current_user(@user)
-      redirect_to root_path, notice: "Sorry, you don't have permission to do that."
-    end
   end
 
 end

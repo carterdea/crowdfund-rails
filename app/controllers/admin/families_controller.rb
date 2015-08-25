@@ -1,4 +1,6 @@
 class Admin::FamiliesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @families = Family.all.page(params[:page]).per(30)
   end

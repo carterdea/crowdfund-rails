@@ -5,15 +5,19 @@ class Ability
 
     user ||= User.new
 
+    can :create, Donation
+
     if user.admin?
       can :manage, :all
-      can :read, Admin
+    else
+      can :manage, User, :id => user.id
+      can :manage, Family, :user_id => user.id
+      can :manage, Update
     end
 
-    can :manage, User, :id => user.id
-    can :manage, Family, :user_id => user.id
-    can :manage, Update, :family_id => { :id => user.families }
-    cannot :create, Donation, :user_id => user.families
+    can :create, User
+    can :create, Family
+    can :create, Donation
 
     # Define abilities for the passed in user here. For example:
     #

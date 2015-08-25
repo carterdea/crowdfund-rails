@@ -17,7 +17,7 @@
       - else
         %li= nav_link_to "Start a Family Profile", new_family_path, class: "greater"
         / %li= nav_link_to "Start a Fundraiser", "#", class: "greater"
-      %li.hidden-sm.visible-md-inline-block.visible-lg-inline-block= nav_link_to "What is AdoptTogether?", "#"
+      %li.hidden-sm.visible-md-inline-block.visible-lg-inline-block= nav_link_to "What is AdoptTogether?", about_path
       - if logged_in?
         %li.dropdown
           = nav_link_to (current_user.has_family? ? current_user.families.last.full_name : current_user.email), "#", class: "dropdown-toggle", "data-toggle" => "dropdown"

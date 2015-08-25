@@ -24,5 +24,8 @@
         %td= pretty_dollars(family.total_raised)
         %td
           = family.approved?
+          = form_for family do |t|
+            = t.hidden_field :approved
+            = t.submit "Approve"
 
   = paginate(@families)
