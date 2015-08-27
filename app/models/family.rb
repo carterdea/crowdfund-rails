@@ -1,25 +1,25 @@
 require 'elasticsearch/model'
-
+# app/models/family.rb
 class Family < ActiveRecord::Base
   # has_many :donations, as: :recipient
   belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
-  has_many :donations, :dependent => :delete_all
+  has_many :donations, dependent: :delete_all
   has_many :updates
   has_many :grants
 
-  scope :approved, -> {where(approved: true).order('created_at DESC')}
-  scope :unapproved, -> {where approved: false}
+  scope :approved, -> { where(approved: true).order('created_at DESC') }
+  scope :unapproved, -> { where approved: false }
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
-  validates_length_of :description, maximum:  2000, :message => 'Please keep your story to less than {{count}} characters.'
-  validates :cost, numericality: {less_than: 1000000}
-  validates :country, presence: true, length: {is: 2}
-  validates :quantity, numericality: {greater_than: 0}
-  
+  validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than {{count}} characters.'
+  validates :cost, numericality: { less_than: 1_000_000 }
+  validates :country, presence: true, length: { is: 2 }
+  validates :quantity, numericality: { greater_than: 0 }
+
   ADOPTION_STATUSES = [
     'Paperwork Not Started',
     'Paperwork Filed',
@@ -30,17 +30,17 @@ class Family < ActiveRecord::Base
     'Completed'
   ]
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # Using a virtual attribute (user cost for cost) to clean up the user input
   def user_cost
     cost
   end
 
   def user_cost=(cost)
-    self.cost = cost.gsub(',', '') if cost.present?
-  end
-
-  def full_name
-    "#{self.first_name} #{self.last_name}"
+    self.cost = cost.delete(',', '') if cost.present?
   end
 
   def total_raised
@@ -55,8 +55,8 @@ class Family < ActiveRecord::Base
   end
 
   def pluralize_is
-    if first_name.include?(" " || "and" || "&")
-      "are"
+    if first_name.include?(' ' || 'and' || '&')
+      'are'
     else
       'is'
     end
@@ -66,10 +66,9 @@ class Family < ActiveRecord::Base
     if quantity > 1
       "#{quantity} children"
     else
-      "a child"
+      'a child'
     end
   end
-
 end
 
 Family.import

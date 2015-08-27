@@ -31,9 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.12.0'
 gem 'has_secure_token', '~> 1.0.0'
 
-# Helpers
-gem 'draper', '~> 1.3'
-
 # payment
 gem 'stripe', '~> 1.22.0'
 

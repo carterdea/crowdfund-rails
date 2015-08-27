@@ -135,6 +135,12 @@ footer {
   img.pull-left {
     margin-right: 20px;
   }
+  a {
+    color: transparentize($color-white, .6);
+    &:hover {
+      color: transparentize($color-white, .3);
+    }
+  }
   .form-inline .form-group {
     width: 100%;
     margin-bottom: 10px;

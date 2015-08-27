@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :require_login, only: :dashboard
 
   def home
-    @families = Family.all
+    @families = Family.includes(:donations)
   end
 
   def dashboard

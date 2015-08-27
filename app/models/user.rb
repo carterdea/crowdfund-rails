@@ -23,7 +23,5 @@ class User < ActiveRecord::Base
   end
 
 private
-  def user_params
-    params.permit(:user).require(:email, :password, :authentications_attributes [:user_id, :provider, :uid])
-  end
+  
 end

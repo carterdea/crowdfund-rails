@@ -14,14 +14,20 @@
         .well
           %h3 Latest Updates
           %ul.list-unstyled.update-list
-            -@family.updates.limit(5).each do |update|
-              %li
-                = render 'shared/update', :update => update
+            - if @family.updates.any?
+              - @family.updates.limit(5).each do |update|
+                %li
+                  = render 'shared/update', :update => update
+            - else
+              %p.small.help-block You haven't written any updates yet.
           = link_to "See all updates", family_updates_path(@family)
       .donations.col-xs-12.col-md-6
         .well
           %h3 Latest Donations
           %ul.list-unstyled
-            - @donations.limit(3).each do |donation|
-              = render 'shared/donation', :donation => donation
-          = link_to "See all donations", "#"
+            - if @donations.any?
+              - @donations.limit(5).each do |donation|
+                = render 'shared/donation', :donation => donation
+            - else
+              %p.small.help-block You haven't received any donations yet.
+          = link_to "See all donations", @family

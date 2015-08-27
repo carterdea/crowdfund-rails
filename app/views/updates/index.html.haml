@@ -1,14 +1,16 @@
-= link_to "New Update", new_family_update_path(@family), class: "btn btn-primary btn-lg pull-right"
+= link_to "New Update", new_family_update_path(@family), class: "btn btn-primary pull-right"
 %h1 Your Updates
 .row
   .col-xs-12.col-md-4
     = render 'shared/dashboard_nav'
   .col-xs-12.col-md-8
     %ul.list-unstyled.update-list
-      - @family.updates.each do |update|
-        %li
-          %h4 Update #{update.id}
-          %h2= update.title
-          %span.date= update.date_created
-          = simple_format(update.message)
-
+      - if @family.updates.any?
+        - @family.updates.each do |update|
+          %li
+            %h4 Update #{update.id}
+            %h2= update.title
+            %span.date= update.date_created
+            = simple_format(update.message)
+      - else
+        %p.help-block You haven't written any updates yet. Updates are a great way to communicate with your donors and update them on the status of your adoption.
