@@ -30,7 +30,7 @@
   %h2 #{pluralize(@families.count, 'Family')} have raised #{pretty_dollars(global_donations)}
   %p for their adoptions on AdoptTogether
   .row.no-padding
-    - @families.each do |family|
+    - @families.limit(9).each do |family|
       .col-xs-6.col-md-4
         = render 'shared/family_thumb', :family => family
 

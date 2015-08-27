@@ -2,13 +2,16 @@
   %span.small.show
     = link_to "Admin", admin_path
     \ /
-  All #{pluralize(@families.size, "Family")}
+  All #{pluralize(Family.count, "Family")}
 %table.table.table-hover
   %thead
     %tr
       %td Family Name
       %td Donations
       %td Raised
+      %td Updates
+      %td Grants
+      %td Signed Up
       %td Status
   %tbody
     - @families.each do |family|
@@ -20,12 +23,18 @@
             .media-body
               %h3.media-heading= link_to family.full_name, family
               %p= family.user.email
-        %td= family.donations.size
-        %td= pretty_dollars(family.total_raised)
+        %td= link_to family.donations.size, admin_family_donations_path(family)
+        %td= link_to pretty_dollars(family.total_raised), admin_family_donations_path(family)
+        %td= link_to family.updates.count, family
+        %td= link_to("#{family.grants.count} (#{family.grants.count} total)", admin_family_grants_path(family))
+        %td #{time_ago_in_words(family.created_at)} ago
         %td
-          = family.approved?
+          - if family.approved?
+            👍
+          - else
+            👎
           = form_for family do |t|
             = t.hidden_field :approved
             = t.submit "Approve"
 
-  = paginate(@families)
+= paginate(@families)

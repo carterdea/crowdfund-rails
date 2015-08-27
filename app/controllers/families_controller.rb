@@ -3,7 +3,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @families = Family.all.page(params[:page]).per(30)
+    @families = Family.includes(:donations).page(params[:page]).per(30)
   end
 
   def search
@@ -18,6 +18,7 @@ class FamiliesController < ApplicationController
   def show
     @family = Family.find(params[:id])
     @donations = @family.donations.order("id DESC").page(params[:page]).per(10)
+    @updates = @family.updates.page(params[:page]).per(5)
   end
 
   def new
@@ -51,6 +52,10 @@ class FamiliesController < ApplicationController
   end
 
   def edit
+    @family = Family.find(params[:id])
+  end
+
+  def home_study
     @family = Family.find(params[:id])
   end
 

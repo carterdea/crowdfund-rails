@@ -4,15 +4,18 @@ class Family < ActiveRecord::Base
   # has_many :donations, as: :recipient
   belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
-  has_many :donations
+  has_many :donations, :dependent => :delete_all
   has_many :updates
+  has_many :grants
 
-  default_scope {order('created_at DESC')}
+  scope :approved, -> {where(approved: true).order('created_at DESC')}
+  scope :unapproved, -> {where approved: false}
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  validates :first_name, :last_name, :postal_code, :user_cost, :cost, :description, presence: true
+  validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
+  validates_length_of :description, maximum:  2000, :message => 'Please keep your story to less than {{count}} characters.'
   validates :cost, numericality: {less_than: 1000000}
   validates :country, presence: true, length: {is: 2}
   validates :quantity, numericality: {greater_than: 0}
@@ -67,9 +70,6 @@ class Family < ActiveRecord::Base
     end
   end
 
-  def toggle_approval
-    toggle!(:approved)
-  end
 end
 
 Family.import

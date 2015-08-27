@@ -19,6 +19,7 @@ gem 'bower-rails', '~> 0.9.2'
 
 # charts
 gem 'chartkick', '~> 1.3.2'
+gem 'groupdate', '~> 2.4.0'
 
 # file handling
 gem 'carrierwave', '~> 0.10.0'
@@ -29,6 +30,9 @@ gem 'sorcery', '~> 0.9.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.12.0'
 gem 'has_secure_token', '~> 1.0.0'
+
+# Helpers
+gem 'draper', '~> 1.3'
 
 # payment
 gem 'stripe', '~> 1.22.0'
@@ -73,7 +77,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.3.1'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
-  gem 'ffaker', '~> 2.0.0'
+  gem 'populator', '~> 1.0.0'
+  gem 'ffaker', '~> 2.1.0'
 end
 
 group :test do

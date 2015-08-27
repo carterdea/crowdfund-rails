@@ -56,20 +56,22 @@
     }
   }
 
-  .raised, .share-buttons {
-    border-bottom: 1px solid darken($color-off-white, 7%);
-    padding-bottom: 20px;
-    span {
-      display: block;
-      &.total-raised, &.share-count {
-        font-size: 36px;
-        font-weight: 600;
-        line-height: 1.2;
-      }
-      &.goal, &.shares {
-        color: $color-medium-grey-1;
-        font-size: 16px;
-        margin-bottom: 10px;
+  &.show{
+    .raised, .share-buttons {
+      border-bottom: 1px solid darken($color-off-white, 7%);
+      padding-bottom: 20px;
+      span {
+        display: block;
+        &.total-raised, &.share-count {
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 1.2;
+        }
+        &.goal, &.shares {
+          color: $color-medium-grey-1;
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
       }
     }
   }

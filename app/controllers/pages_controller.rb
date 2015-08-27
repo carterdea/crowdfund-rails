@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :require_login, only: :dashboard
 
   def home
-    @families = Family.all.limit(9)
+    @families = Family.all
   end
 
   def dashboard

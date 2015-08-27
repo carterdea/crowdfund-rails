@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823010743) do
+ActiveRecord::Schema.define(version: 20150826011546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150823010743) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "state"
-    t.decimal  "cost",        precision: 15, scale: 2, default: 0.0
+    t.decimal  "cost",            precision: 15, scale: 2, default: 0.0
     t.string   "country"
     t.string   "gender"
     t.integer  "quantity"
@@ -64,12 +64,31 @@ ActiveRecord::Schema.define(version: 20150823010743) do
     t.string   "agency_name"
     t.string   "agency_site"
     t.string   "photo"
-    t.boolean  "approved",                             default: false
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.boolean  "approved",                                 default: true
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "home_study_file"
   end
 
   add_index "families", ["user_id"], name: "index_families_on_user_id", using: :btree
+
+  create_table "grants", force: :cascade do |t|
+    t.integer  "family_id"
+    t.decimal  "amount_requested"
+    t.text     "expense_description"
+    t.string   "supporting_documentation"
+    t.string   "requested_to_name"
+    t.string   "requested_to_address"
+    t.string   "requested_to_city"
+    t.string   "requested_to_state"
+    t.string   "requested_to_zip"
+    t.boolean  "signature"
+    t.string   "status"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "grants", ["family_id"], name: "index_grants_on_family_id", using: :btree
 
   create_table "updates", force: :cascade do |t|
     t.integer  "family_id"
@@ -103,5 +122,6 @@ ActiveRecord::Schema.define(version: 20150823010743) do
 
   add_foreign_key "donations", "families"
   add_foreign_key "families", "users"
+  add_foreign_key "grants", "families"
   add_foreign_key "updates", "families"
 end

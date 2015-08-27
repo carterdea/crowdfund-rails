@@ -1,0 +1,14 @@
+= link_to "New Grant Request", new_family_grant_path(@family), class: "btn btn-primary btn-lg pull-right"
+%h1 Your Grants
+.row
+  .col-xs-12.col-md-4
+    = render 'shared/dashboard_nav'
+  .col-xs-12.col-md-8
+    %ul.list-unstyled.update-list
+      - @family.grants.each do |grant|
+        %li
+          %h4 Grant
+          %h2= update.title
+          %span.date= update.date_created
+          = simple_format(update.message)
+

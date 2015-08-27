@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection { get :search }
     resources :updates
     resources :donations
+    resources :grants
     match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', :via => :get
   end
 
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
     resources :donations
     resources :families do
       resources :donations
+      resources :updates
+      resources :grants
       member do
         put :toggle_approval
       end

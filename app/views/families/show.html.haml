@@ -17,7 +17,7 @@
         .col-xs-12
           %h2 Updates
           %ul.list-unstyled.update-list
-            - @family.updates.each do |update|
+            - @updates.each do |update|
               %li
                 = render 'shared/update', :update => update
 

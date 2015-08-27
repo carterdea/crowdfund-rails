@@ -16,6 +16,7 @@ class Ability
     end
 
     can :create, User
+    can :read, Family
     can :create, Family
     can :create, Donation
 

@@ -2,7 +2,7 @@ class CreateDonations < ActiveRecord::Migration
   def change
     create_table :donations do |t|
       t.references :family, index: true, foreign_key: true
-      t.integer :amount
+      t.integer :amount, index: true
       t.boolean :recurring
       t.integer :at_tip
       t.string :privacy

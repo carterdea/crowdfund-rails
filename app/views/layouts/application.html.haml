@@ -3,7 +3,7 @@
   %head
     %title= title
     = stylesheet_link_tag('application', '//cloud.typography.com/7610312/729166/css/fonts.css', media: 'all', 'data-turbolinks-track' => true)
-    = javascript_include_tag('https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true)
+    = javascript_include_tag('https://js.stripe.com/v2/', '//www.google.com/jsapi', 'chartkick', 'data-turbolinks-track' => true)
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     = csrf_meta_tags
   %body{:class => body_class}
@@ -16,3 +16,4 @@
     = render 'layouts/footer'
     = render 'shared/app_js'
     = render 'shared/fb_share_js'
+    = javascript_include_tag('application', 'data-turbolinks-track' => false)

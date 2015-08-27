@@ -3,6 +3,8 @@
     = link_to "Admin", admin_path
     \ /
   All #{pluralize(@donations.size, "Donation")}
+  - if @family.present?
+    for #{link_to @family.full_name, family_path(@family)}
 %table.table.table-hover
   %thead
     %tr

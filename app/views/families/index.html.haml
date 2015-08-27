@@ -2,7 +2,7 @@
   %h1 All Families
 - else
   %h1 Search Results for "#{params[:q]}"
-%h2= pluralize(@families.count, "Adopting families")
+%h2= pluralize(Family.all.count, "Adopting families")
 .row
   -@families.each do |family|
     .col-xs-6.col-md-4
