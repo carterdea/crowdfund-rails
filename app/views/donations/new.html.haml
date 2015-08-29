@@ -1,12 +1,26 @@
-- title "Donate to #{@family.full_name}'s Adoption on AdoptTogether"
-- meta_description "You can donate to #{@family.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
+- if params[:id] == 1
+  - title "Donate to AdoptTogether"
+  - meta_description "You can donate to adoption on AdoptTogether, a crowdfunding platform for adopting families."
+- else
+  - title "Donate to #{@family.full_name}'s Adoption on AdoptTogether"
+  - meta_description "You can donate to #{@family.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
 .row
   .col-xs-12.col-sm-8
-    %h1 Donate to a Family
+    - if params[:id] == 1
+      %h1 Donate to AdoptTogether
+      %p This is where we're putting our stuff
+      %ul
+        %li Item 1
+        %li Item 2
+        %li Item 3
+
+    - else
+      %h1 Donate to a Family
     = render 'form'
   %aside.col-xs-12.col-sm-4
-    %h2 You are donating to
-    = render 'shared/family_thumb', :family => @family
+    - unless params[:id] == 1
+      %h2 You are donating to
+      = render 'shared/family_thumb', :family => @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.

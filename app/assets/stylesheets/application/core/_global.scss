@@ -109,7 +109,8 @@ header.navbar {
   border-radius: 0 0 5px 5px;
   box-shadow: 0 1px 1px rgba(0,0,0,.15);
   &.notice {
-    background-color: #eee;
+    background-color: $color-medium-grey-2;
+    color: $color-white;
   }
 }
 

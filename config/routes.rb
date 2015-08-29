@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'oauths/oauth'
   get 'oauths/callback'
 
@@ -9,23 +8,27 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   resources :users, :sessions, :pages
   resources :families do
+    get 'approval_letter' => 'families#approval_letter'
+    post 'approval_letter' => 'families#approval_letter'
     collection { get :search }
     resources :updates
     resources :donations
     resources :grants
-    match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', :via => :get
+    match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', via: :get
   end
+  # post 'approval_letter' => 'families#approval_letter'
 
   get 'dashboard' => 'pages#dashboard'
   get 'about' => 'pages#about'
-  
-  get 'donate' => 'donations#new'
+
+  get 'donate' => 'donations#new', id: 1
   get 'thanks' => 'donations#thanks'
 
   namespace :admin do
     get '/' => 'pages#dashboard'
     resources :users
     resources :donations
+    resources :grants
     resources :families do
       resources :donations
       resources :updates
@@ -36,9 +39,9 @@ Rails.application.routes.draw do
     end
   end
 
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback"
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  post 'oauth/callback' => 'oauths#callback'
+  get 'oauth/callback' => 'oauths#callback'
+  get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

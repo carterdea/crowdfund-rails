@@ -1,14 +1,24 @@
-= link_to "New Grant Request", new_family_grant_path(@family), class: "btn btn-primary pull-right"
-%h1 Your Grants
 .row
   .col-xs-12.col-md-4
     = render 'shared/dashboard_nav'
   .col-xs-12.col-md-8
-    %ul.list-unstyled.update-list
-      - @family.grants.each do |grant|
-        %li
-          %h4 Grant
-          %h2= update.title
-          %span.date= update.date_created
-          = simple_format(update.message)
-
+    - if @family.approval_letter_file.nil?
+      %span.btn.btn-primary.pull-right(disabled: disabled) New Grant Request
+    - else
+      = link_to "New Grant Request", new_family_grant_path(@family), class: "btn btn-primary pull-right"
+    %h1 Your Grants
+    - if @family.approval_letter_file.nil?
+      %p In order to submit your first grant, you must first upload a copy of your Approval Letter from your Adoption Agency, Social Worker, or Lawyer.
+      = link_to "Upload Your Approval Letter", family_approval_letter_path(@family), class: 'btn btn-primary'
+    - else
+      - if @family.grants.any?
+        %ul.list-unstyled.update-list
+          - @family.grants.each do |grant|
+            %li
+              %h4 Grant for #{grant.requested_to_name}
+              %h2= pretty_dollars(grant.amount_requested)
+              / %span.date= grant.date_created
+              = simple_format(grant.expense_description)
+              %span= grant.status
+      - else
+        %p.help-block You haven't requested any grants yet. You will need request grants for each adoption-related expense.

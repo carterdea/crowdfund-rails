@@ -21,7 +21,7 @@ namespace :db do
         family.gender = FFaker::Gender.maybe
         family.country = FFaker::AddressUS.country_code
         family.quantity = [1..5].sample
-        family.description = FFaker::Lorem.paragraphs
+        family.description = FFaker::BaconIpsum.paragraphs(2)
         family.status = 'Awaiting Matching'
         family.agency_name = FFaker::Company.name
         family.agency_site = FFaker::Internet.http_url
@@ -32,19 +32,19 @@ namespace :db do
           donation.name = FFaker::Name.name
           donation.hide_amount = FFaker::Boolean.maybe
           donation.anonymous = FFaker::Boolean.maybe
-          donation.message = FFaker::BaconIpsum.sentences
+          donation.message = FFaker::BaconIpsum.phrases(2).sample
           donation.email = FFaker::Internet.email
           donation.at_newsletter = FFaker::Boolean.maybe
           donation.recurring = FFaker::Boolean.maybe
         end
         Update.populate 0..15 do |update|
           update.family_id = family.id
-          update.title = FFaker::BaconIpsum.phrases(1..2)
-          update.message = FFaker::BaconIpsum.paragraphs(1..10)
+          update.title = FFaker::BaconIpsum.phrases(2).sample
+          update.message = FFaker::BaconIpsum.paragraphs(5).sample
           update.on_profile = FFaker::Boolean.maybe
         end
       end
     end
+    puts 'Your db is all seeded! 👌'
   end
-  puts 'All seeded! 👌'
 end

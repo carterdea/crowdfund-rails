@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150826011546) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "state"
-    t.decimal  "cost",            precision: 15, scale: 2, default: 0.0
+    t.decimal  "cost",                 precision: 15, scale: 2, default: 0.0
     t.string   "country"
     t.string   "gender"
     t.integer  "quantity"
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20150826011546) do
     t.string   "agency_name"
     t.string   "agency_site"
     t.string   "photo"
-    t.boolean  "approved",                                 default: true
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.string   "home_study_file"
+    t.boolean  "approved",                                      default: true
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.string   "approval_letter_file"
   end
 
   add_index "families", ["user_id"], name: "index_families_on_user_id", using: :btree

@@ -1,0 +1,48 @@
+= form_for [@family, @grant], html: { multipart: true } do |f|
+  = render 'shared/errors', object: @grant
+  %fieldset
+    %legend Request Information
+    .row
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :amount_requested
+          .input-group
+            %span.input-group-addon $
+            = f.text_field :amount_requested, class: 'form-control'
+      .col-xs-12
+        .form-group
+          = f.label :expense_description
+          = f.text_area :expense_description, size: "60x6", class: 'form-control'
+          %p.small.help-block This is for Adoption related expenses and describe below (including agency fees, attorney fees, travel costs, dossier, immigration processing, court costs, foreign orphanage or agency donation).
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :supporting_documentation, "Expense documentation"
+          = f.file_field(:supporting_documentation, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+          %p.small.help-block This is for receipts, invoices, tickets, etc. You can upload an individual file, or you can zip it up and upload it.
+  %fieldset
+    %legend Payment Requested To:
+    .row
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        .form-group
+          = f.label :requested_to_name, "Name"
+          = f.text_field :requested_to_name, class: 'form-control'
+        .form-group
+          = f.label :requested_to_address, "Address"
+          = f.text_field :requested_to_address, class: 'form-control'
+        .form-group
+          = f.label :requested_to_city, "City"
+          = f.text_field :requested_to_city, class: 'form-control'
+        .form-group
+          = f.label :requested_to_state, "State"
+          = select_tag :requested_to_state, options_for_select(us_states), class: 'form-control'
+        .form-group
+          = f.label :requested_to_zip, "Zip Code"
+          = f.text_field :requested_to_zip, class: 'form-control'
+      .col-xs-12
+        .checkbox
+          = f.label :signature do
+            = f.check_box :signature
+            I am requesting a grant to cover my adoption related expenses. I understand that Grant Requests are reviewed by the Board of Hoping Hearts Foundation Inc. (parent organization of AdoptTogether.org) and may be denied, approved as requested or approved for a lesser amount than requested.
+        %p <strong>Note:</strong> No family has ever received less than 95% of their net designated donations.
+      .col-xs-12.col-sm-8.col-md-8.col-lg-6
+        = f.submit "Request a Grant", class: "btn btn-primary btn-block"

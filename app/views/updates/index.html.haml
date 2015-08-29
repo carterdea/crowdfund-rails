@@ -1,9 +1,9 @@
-= link_to "New Update", new_family_update_path(@family), class: "btn btn-primary pull-right"
-%h1 Your Updates
 .row
   .col-xs-12.col-md-4
     = render 'shared/dashboard_nav'
   .col-xs-12.col-md-8
+    = link_to "New Update", new_family_update_path(@family), class: "btn btn-primary pull-right"
+    %h1 Your Updates
     %ul.list-unstyled.update-list
       - if @family.updates.any?
         - @family.updates.each do |update|

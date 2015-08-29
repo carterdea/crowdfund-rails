@@ -1,0 +1,15 @@
+.row
+  .col-xs-12.col-sm-8
+    %h1 Upload Your Approval Letter
+    %p You need to upload a copy of your HomeStudy or a Letter of Acceptance from your Adoption agency for the AdoptTogether staff to review. Once approved, your fundraising profile will become live and ready to receive support from generous donors.
+    = form_for @family, html: { multipart: true } do |f|
+      .row
+        .col-xs-12
+          = f.label :approval_letter_file, "Approval Letter"
+          = f.file_field(:approval_letter_file, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+          %p.small.help-block You can upload a Word document, PDF, Jpeg, PNG or ZIP archive. If you want to upload multiple files, create a zip or archive and upload.
+        .col-xs-12.col-sm-8.col-md-8.col-lg-6
+          = f.submit "Upload Your Approval Letter", class: "btn btn-primary btn-block"
+  %aside.col-xs-12.col-sm-4
+    %h2 Details here
+    %p Gimme some text. Maybe this is a list of things we approve, why we need this, etc.

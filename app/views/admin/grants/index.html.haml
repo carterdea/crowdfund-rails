@@ -1,0 +1,25 @@
+%h1
+  %span.small.show
+    = link_to "Admin", admin_path
+    \ /
+  All #{pluralize(Grant.count, "Grant")}
+%table.table.table-hover
+  %thead
+    %tr
+      %td Family & Description
+      %td Amount Requested
+      %td Recipient
+      %td Created
+      %td Status
+  %tbody
+    - @grants.each do |grant|
+      %tr
+        %td
+          %h3= link_to grant.family_id, family
+          %p= grant.expense_description
+        %td= pretty_dollars(grant.amount_requested)
+        %td= grant.requested_to_name
+        %td #{time_ago_in_words(grant.created_at)} ago
+        %td= grant.status
+
+= paginate(@grants)

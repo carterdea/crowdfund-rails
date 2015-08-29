@@ -40,7 +40,7 @@ class Family < ActiveRecord::Base
   end
 
   def user_cost=(cost)
-    self.cost = cost.delete(',', '') if cost.present?
+    self.cost = cost.delete(',', '$') if cost.present?
   end
 
   def total_raised

@@ -2,20 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.nav-pills > li {
+.nav-pills {
+  margin-top: 30px;
+  > li {
 
-  a {
-    color: $color-medium-grey-2;
-    font-weight: 600;
-    padding: 3px 15px 2px;
-    &:hover {
-      background: lighten($color-light-grey-1, 5%);
+    a {
+      color: $color-medium-grey-2;
+      font-weight: 600;
+      padding: 3px 15px 2px;
+      &:hover {
+        background: lighten($color-light-grey-1, 5%);
+      }
     }
-  }
 
-  a.active, &.active a:hover {
-    background: $color-medium-grey-2;
-    color: $color-white;
+    a.active, &.active a:hover {
+      background: $color-medium-grey-2;
+      color: $color-white;
+    }
   }
 }
 
