@@ -8,11 +8,12 @@
     = csrf_meta_tags
   %body{:class => body_class}
     = render 'layouts/header'
-    = render 'layouts/flash'
-    = content_for(:before_container)
-    .container
-      = yield
-    = content_for(:after_container)
+    .wrapper
+      = render 'layouts/flash'
+      = content_for(:before_container)
+      .container
+        = yield
+      = content_for(:after_container)
     = render 'layouts/footer'
     = javascript_include_tag('application', 'data-turbolinks-track' => false, 'data-turbolinks-eval' => false)
     = render 'shared/app_js'

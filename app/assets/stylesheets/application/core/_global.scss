@@ -1,29 +1,32 @@
 html {
-  min-height: 100%;
-  position: relative;
 }
 
 .no-padding {
-  padding: 0
+  padding: 0;
 }
 
-@media (min-width: $screen-sm-min) { 
-  body {
-    margin-bottom: 390px; // The height of the footer
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
 }
 
-@media (min-width: $screen-md-min) { 
-  body {
-    margin-bottom: 290px; // The height of the footer
-  }
+.wrapper {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
-header.navbar {
+header,
+footer {
+  flex: none;
+}
+
+.navbar {
+  @include border-radius(0);
+  @include box-shadow(.5px 1px 2px rgba(0, 0, 0, .1));
   background-color: $color-white;
   border: 0;
-  @include border-radius(0);
-  @include box-shadow(0.5px 1px 2px rgba(0, 0, 0, 0.1));
   margin-bottom: 0;
 }
 
@@ -32,30 +35,36 @@ header.navbar {
 }
 
 .navbar-nav {
-  margin: 0px -10px 7.5px;
+  margin: 0 -10px 7.5px;
+
   li {
+
     a {
-    color: $color-medium-grey-1;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 8px;
+      color: $color-medium-grey-1;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 8px;
+
       &.greater {
         color: $color-medium-grey-2;
         font-size: 16px;
       }
     }
   }
+
   ul.dropdown-menu {
     opacity: .95;
     border: 0;
     border-top: 1px solid $color-light-grey-1;
-    @include box-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, .2));
     li a {
       padding: 5px 8px;
     }
   }
+
   .navbar-btn {
     margin: 8px 14px;
+
     a {
       color: $color-white;
       font-size: 18px;
@@ -66,21 +75,24 @@ header.navbar {
 
 .navbar-toggle {
   @include border-radius(5px);
-  background-color: #ccc;
+  background-color: darken($color-light-grey-1, 10%);
   border: 1px solid $color-medium-grey-1;
   margin: 8px 15px 5px 0;
   padding: 7px 8px;
+
   &.collapsed {
     background-color: $color-white;
+
     .icon-bar {
-      background-color: $color-medium-grey-1
+      background-color: $color-medium-grey-1;
     }
   }
+
   .icon-bar {
     background-color: $color-white;
     border-radius: 0;
-    width: 26px;
     height: 3px;
+    width: 26px;
   }
 }
 
@@ -88,15 +100,19 @@ header.navbar {
   .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
   }
+
   .navbar-nav {
     margin: 0;
+
     li a {
       font-size: 12px;
       padding: 15px 8px;
+
       &.greater {
         font-size: 14px;
       }
     }
+
     .navbar-btn {
       margin: 9px 5px;
     }
@@ -105,9 +121,10 @@ header.navbar {
 
 .flash {
   background-color: darken($color-off-white, 20%);
-  padding: 10px 20px;
   border-radius: 0 0 5px 5px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+  padding: 10px 20px;
+
   &.notice {
     background-color: $color-medium-grey-2;
     color: $color-white;
@@ -116,7 +133,7 @@ header.navbar {
 
 aside {
   h3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   p {
@@ -126,34 +143,38 @@ aside {
 }
 
 footer {
-  bottom: 0;
   background-color: $color-dark-grey;
   color: transparentize($color-white, .6);
   margin-top: 20px;
   padding: 40px 0 20px;
-  position: absolute;
   width: 100%;
+
   img.pull-left {
     margin-right: 20px;
   }
+
   a {
     color: transparentize($color-white, .6);
+
     &:hover {
       color: transparentize($color-white, .3);
     }
   }
+
   .form-inline .form-group {
-    width: 100%;
     margin-bottom: 10px;
+    width: 100%;
   }
+
   .footer-input {
-    background-color: rgba(255,255,255,.1);
+    @include box-shadow(0, 0, 0, rgba(255, 255, 255, 0));
+    background-color: rgba(255, 255, 255, .1);
     border: 0;
-    @include box-shadow(0,0,0,rgba(255,255,255,0));
     display: inline-block;
     font-size: 12px;
     width: 75%;
   }
+
   .email-btn {
     font-size: 12px;
     padding: 11px;
@@ -162,9 +183,12 @@ footer {
 
 a {
   color: $color-primary;
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: lighten($color-primary, 10%);
   }
+
   &:active {
     color: darken($color-primary, 15%);
   }
@@ -176,22 +200,24 @@ a {
 
 .pagination {
   > li > a {
-    border-color: transparent;
     @include border-radius(5px);
+    border-color: transparent;
     color: $color-medium-grey-2;
     line-height: 1;
     margin-right: 4px;
     padding: 10px 12px 8px;
+
     &:hover {
       background: $color-primary;
       border-color: $color-primary;
       color: $color-white;
     }
   }
-  > .active > a, &> .active > a:hover {
+
+  > .active > a,
+  &> .active > a:hover {
     background: $color-light-grey-1;
     border-color: $color-light-grey-1;
     color: $color-light-grey-2;
   }
 }
-
