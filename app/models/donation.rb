@@ -7,7 +7,7 @@ class Donation < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true
-  validates :amount, numericality: {greater_than_or_equal_to: 1, message: "Must be at least $1."}
+  validates :amount, numericality: { greater_than_or_equal_to: 1, message: 'Must be at least $1.' }
   validates :at_tip, numericality: true
 
   attr_accessor :stripe_token, :stripe_customer_id
@@ -17,22 +17,22 @@ class Donation < ActiveRecord::Base
   ]
 
   TIP_AMOUNTS = [
-    [0, "None"], [10, "10%"], [20, "20%"]
+    [0, 'None'], [10, '10%'], [20, '20%']
   ]
 
   def donor_name
     if anonymous == false
       name
     else
-      "Anonymous"
+      'Anonymous'
     end
   end
 
   def donation_amount
     if hide_amount == false
-      "$" + (amount.to_i).to_s
+      '$' + (amount.to_i).to_s
     else
-      "an undisclosed amount"
+      'an undisclosed amount'
     end
   end
 
@@ -50,9 +50,9 @@ class Donation < ActiveRecord::Base
 
   def type
     if recurring == false
-      "Donation"
+      'Donation'
     else
-      "Monthly Donation"
+      'Monthly Donation'
     end
   end
 
@@ -71,11 +71,11 @@ class Donation < ActiveRecord::Base
       # Create the charge on Stripe's servers - this will charge the user's card
       begin
         charge = Stripe::Charge.create(
-          :amount => total_amount_in_cents, # amount in cents, again
-          :currency => "usd",
-          :source => stripe_token,
-          :description => stripe_charge_description,
-          :receipt_email => email
+          amount: total_amount_in_cents, # amount in cents, again
+          currency: 'usd',
+          source: stripe_token,
+          description: stripe_charge_description,
+          receipt_email: email
         )
       rescue Stripe::CardError => e
         # The card has been declined
@@ -87,9 +87,9 @@ class Donation < ActiveRecord::Base
 
   def charge_stripe_customer
     Stripe::Charge.create(
-      :amount   => total_amount_in_cents, # in cents
-      :currency => "usd",
-      :customer => stripe_id
+      amount: total_amount_in_cents, # in cents
+      currency: 'usd',
+      customer: stripe_id
     )
   end
 
@@ -103,11 +103,11 @@ class Donation < ActiveRecord::Base
   def subscribe_stripe_customer
     if valid?
       customer = Stripe::Customer.create(
-        :source => stripe_token,
-        :plan => "monthly-gift-test", # this is a monthly plan w/ 1¢
-        :email => email,
-        :quantity => total_amount_in_cents,
-        :description => stripe_customer_description
+        source: stripe_token,
+        plan: 'monthly-gift-test', # this is a monthly plan w/ 1¢
+        email: email,
+        quantity: total_amount_in_cents,
+        description: stripe_customer_description
       )
       save_customer_id(customer)
     end
@@ -117,7 +117,7 @@ class Donation < ActiveRecord::Base
     self.stripe_id = customer.id
   end
 
-private
+  private
 
   def send_receipt
 

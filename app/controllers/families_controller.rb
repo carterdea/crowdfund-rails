@@ -43,7 +43,7 @@ class FamiliesController < ApplicationController
         @family.save
         login(user_params[:email], user_params[:password])
 
-        redirect_to @family, notice: "Thanks for setting up your family profile! We'll look it over and be in touch shortly."
+        redirect_to @family, notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
       else
         flash.now[:alert] = 'There was a problem with your family profile. Please check it and try again.'
         render :new
@@ -70,7 +70,7 @@ class FamiliesController < ApplicationController
 
   def destroy
     @family.destroy
-    redirect_to root_url, alert: "Your family profile has successfully been deleted. We're sorry to see you go."
+    redirect_to root_url, alert: 'Your family profile has successfully been deleted. We\'re sorry to see you go.'
   end
 
   private
