@@ -10,6 +10,7 @@ legend {
 label {
   font-size: 14px;
   font-weight: 500;
+
   .optional {
     color: $color-light-grey-2;
     font-size: 90%;
@@ -17,18 +18,20 @@ label {
 }
 
 .form-control {
+  @include border-radius(3px);
+  @include box-shadow(inset .5px .9px 1px rgba(0, 0, 0, .2));
   background-color: darken($color-white, 2%);
   border: 1px solid $color-light-grey-1;
-  @include border-radius(3px);
-  @include box-shadow(inset 0.5px 0.9px 1px rgba(0, 0, 0, 0.2));
   // @include placeholder {
   //   color: $color-light-grey-2;
   // }
+
   &:focus {
+    @include box-shadow(inset .5px .9px 1px rgba(0, 0, 0, .2), 0 0 0 rgba(255, 255, 255, 0));
     border-color: $color-light-grey-2;
-    @include box-shadow(inset 0.5px 0.9px 1px rgba(0, 0, 0, 0.2), 0 0 0 rgba(255,255,255,0))
   }
 }
+
 
 .checkbox label {
   font-size: 13px;
@@ -38,6 +41,44 @@ label {
 .navbar-form {
   border: 0;
   margin: 0 -15px;
+}
+
+.parsley-errors-list {
+  list-style-type: none;
+  margin: 5px 0 0;
+  padding: 0;
+
+  li {
+    color: $color-error;
+    font-size: 11px;
+  }
+}
+
+.errors {
+  @include border-radius(5px);
+  background: $color-error;
+  color: $color-white;
+  padding: 15px;
+
+  h3 {
+    margin: 0 0 2px;
+  }
+
+  ul {
+    font-size: 13px;
+    margin-bottom: 0;
+    padding-left: 20px;
+  }
+}
+
+.field_with_errors {
+  label {
+    color: $color-error;
+  }
+
+  .form-control {
+    border-color: darken($color-error, 5%);
+  }
 }
 
 @media (min-width: $screen-sm-min) {

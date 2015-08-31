@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :donations
     resources :grants
     resources :families do
+      collection { get :search }
       resources :donations
       resources :updates
       resources :grants

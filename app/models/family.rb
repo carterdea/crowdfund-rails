@@ -15,7 +15,7 @@ class Family < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
-  validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than {{count}} characters.'
+  validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than 2,000 characters.'
   validates :cost, numericality: { less_than: 1_000_000 }
   validates :country, presence: true, length: { is: 2 }
   validates :quantity, numericality: { greater_than: 0 }
@@ -36,15 +36,15 @@ class Family < ActiveRecord::Base
 
   # Using a virtual attribute (user cost for cost) to clean up the user input
   def user_cost
-    cost
+    cost if cost
   end
 
   def user_cost=(cost)
-    self.cost = cost.delete(',', '$') if cost.present?
+    self.cost = cost.delete('$,') if cost.present?
   end
 
   def total_raised
-    donations.sum(:amount)
+    donations.pluck(:amount).sum
   end
 
   def funded?

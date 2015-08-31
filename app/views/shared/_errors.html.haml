@@ -1,5 +1,6 @@
 - if object.errors.any?
-  %h3 Oops! The #{object.class.name.titleize.downcase} could not be saved.
-  %ul
-    - object.errors.full_messages.each do |error|
-      %li= error
+  .errors
+    %h3 Oops! The #{object.class.name.titleize.downcase} could not be saved.
+    %ul
+      - object.errors.full_messages.each do |error|
+        %li= error

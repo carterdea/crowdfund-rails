@@ -3,7 +3,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @families = Family.includes(:donations).page(params[:page]).per(30)
+    @families = Family.select(:id, :photo, :first_name, :last_name, :country).includes(:donations).page(params[:page]).per(30)
   end
 
   def search
@@ -22,6 +22,7 @@ class FamiliesController < ApplicationController
   end
 
   def new
+    @user = User.new unless current_user
     @family = Family.new
   end
 

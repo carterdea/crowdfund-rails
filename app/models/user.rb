@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  has_many :authentications, :dependent => :destroy
-  has_many :families, :dependent => :delete_all
-  has_many :updates, :through => :families
+  has_many :authentications, dependent: :destroy
+  has_many :families, dependent: :delete_all
+  has_many :updates, through: :families
   accepts_nested_attributes_for :authentications, :families
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: VALID_EMAIL_REGEX, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
 
-  def has_family?
+  def family?
     self.families.any?
   end
 

@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      create: "Create a %{model}"
+      update: "Save changes to %{model}"

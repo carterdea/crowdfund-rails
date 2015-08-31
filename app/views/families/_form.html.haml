@@ -1,64 +1,64 @@
-= form_for @family, html: { multipart: true }, id: "donation-form" do |f|
+= form_for @family, html: { multipart: true }, id: 'donation-form', html: {'data-parsley-validate' => true} do |f|
   = render 'shared/errors', object: @family
   %fieldset
     %legend Family Information
     .row
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
-          = f.label :first_name, "First Name(s)"
-          = f.text_field :first_name, autofocus: true, class: "form-control"
+          = f.label :first_name, 'First Name(s)'
+          = f.text_field :first_name, autofocus: true, class: 'form-control'
         .form-group
-          = f.label :last_name, "Last Name"
-          = f.text_field :last_name, class: "form-control"
+          = f.label :last_name, 'Last Name'
+          = f.text_field :last_name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
         .form-group
           = f.label :postal_code do
             Zip/Postal Code
             %span.optional
-          = f.text_field :postal_code, class: "form-control"
+          = f.text_field :postal_code, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
         - if current_user == nil
           %fieldset
             %legend Login Information
             = fields_for :user do |ff|
               .form-group
                 = ff.label :email
-                = ff.email_field :email, class: "form-control"
+                = ff.email_field :email, class: 'form-control', type: :email, 'data-parsley-trigger' => 'focusout change', required: :true
               .form-group
                 = ff.label :password
-                = ff.password_field :password, class: "form-control"
-                %p.help-block.small You'll use your email & this password to log back in.
+                = ff.password_field :password, class: 'form-control', required: :true, minlength: 6, 'data-parsley-trigger' => 'focusout change'
+                %p.help-block.small Must be at least 6 characters. You'll use this email & password to log back in.
   %fieldset
     %legend Adoption Information
     .row
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
-          = f.label :user_cost, "Estimated Adoption Cost"
+          = f.label :user_cost, 'Estimated Adoption Cost'
           .input-group
             %span.input-group-addon $
-            = f.text_field :user_cost, class: "form-control"
+            = f.text_field :user_cost, class: 'form-control'
         .form-group
           = f.label :country
-          = f.country_select :country, { priority_countries: ["US"] }, { class: "form-control" }
+          = f.country_select :country, { priority_countries: ['US'] }, { class: 'form-control' }
         .form-group
-          = f.label :quantity, "How many children are you adopting?"
-          = f.select :quantity, options_for_select(1..5), { }, { class: "form-control" }
+          = f.label :quantity, 'How many children are you adopting?'
+          = f.select :quantity, options_for_select(1..5), { }, { class: 'form-control' }
       .col-xs-12
         .form-group
-          = f.label :description, "Message to your visitors"
-          = f.text_area :description, size: "40x9",class: "form-control"
+          = f.label :description, 'Message to your visitors'
+          = f.text_area :description, size: '40x9',class: 'form-control', required: :true, maxlength: 2000, 'data-parsley-trigger' => 'focusout change'
           %p.help-block.small Keep this brief, simple and to the point. You can edit this at any time.
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
           = f.label :photo
           = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
         .form-group
-          = f.label :status, "Adoption Status"
-          = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: "form-control" }
+          = f.label :status, 'Adoption Status'
+          = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: 'form-control' }
         .form-group
-          = f.label :agency_name, "Adoption Agency"
-          = f.text_field :agency_name, class: "form-control"
+          = f.label :agency_name, 'Adoption Agency'
+          = f.text_field :agency_name, class: "form-control", required: :true, 'data-parsley-trigger' => 'focusout change'
         .form-group
-          = f.label :agency_site, "Adoption Agency URL"
+          = f.label :agency_site, 'Adoption Agency URL'
           .input-group
             %span.input-group-addon http://
-            = f.text_field :agency_site, class: "form-control"
-        = f.submit "Start a Family Profile", class: "btn btn-primary btn-block"
+            = f.text_field :agency_site, class: 'form-control', required: :true, type: :url, 'data-parsley-trigger' => 'focusout change'
+        = f.submit 'Start a Family Profile', class: 'btn btn-primary btn-block'

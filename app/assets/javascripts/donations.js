@@ -9,18 +9,22 @@ $(function () {
     $('.page-tabs > .active').next('a').trigger('click');
   });
 
-  $('#other_text').payment('restrictNumeric');
-  $('#tip_other_text').payment('restrictNumeric');
+  $('#other_text').mask('000,000,000,000,000', {reverse: true});
+  $('#tip_other_text').mask('000,000,000,000,000', {reverse: true});
   // Other Donation amount
 
   // When the "Other" text field value changes
   $('#other_text').keyup(function(){
 
     // Check that radio button
-    var other_text_value = $('#other_text').val();
+    var other_text_value = $('#other_text').val().replace(',','');
     $('#donation_amount_other').prop('checked', true);
     // Change the radio button value to the value in the text field
     $('#donation_amount_other').val(other_text_value);
+
+    // Clean other text values (from $ and ,)
+    other_text_value = other_text_value.replace(',','');
+
     // Calculate Tip
     var tip_10 = (other_text_value * .1).toFixed(2);
     var tip_20 = (other_text_value * .2).toFixed(2);
@@ -60,6 +64,7 @@ $(function () {
   // When the "Other" text field value changes
   $('#tip_other_text').keyup(function () {
     var tip_other_text_value = $('#tip_other_text').val();
+    tip_other_text_value = tip_other_text_value.replace(',','');
     // Check that radio button
     $('#donation_at_tip_other').prop('checked', true);
     // Change the radio button value to the value in the text field

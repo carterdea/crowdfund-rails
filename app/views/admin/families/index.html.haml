@@ -1,8 +1,14 @@
-%h1
-  %span.small.show
-    = link_to "Admin", admin_path
-    \ /
-  All #{pluralize(Family.count, "Family")}
+.row
+  .col-xs-12.col-sm-6
+    %h1.pull-left
+      %span.small.show
+        = link_to "Admin", admin_path
+        \ /
+      All #{pluralize(Family.count, "Family")}
+  .col-xs-12.col-sm-6
+    = form_tag search_admin_families_path, method: 'get', class: 'pull-right ' do
+      .form-group
+        = text_field_tag :q, params[:q], placeholder: 'Search Families', size: 20, class: 'form-control'
 %table.table.table-hover
   %thead
     %tr
@@ -22,7 +28,7 @@
               = image_thumb(family, "")
             .media-body
               %h3.media-heading= link_to family.full_name, family
-              %p= family.user.email
+              / %p= family.user.email
         %td= link_to family.donations.size, admin_family_donations_path(family)
         %td= link_to pretty_dollars(family.total_raised), admin_family_donations_path(family)
         %td= link_to family.updates.count, family

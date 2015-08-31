@@ -1,17 +1,17 @@
 module DonationsHelper
   # TODO make this accept scope: eg: global, family_id, etc.
   def global_donations
-    Donation.all.sum(:amount)
+    Donation.pluck(:amount).sum
   end
 
-  def pretty_dollars(value, decimals= 0)
+  def pretty_dollars(value, decimals = 0)
     decimal_amount = '%0.' + decimals.to_s + 'f'
     dollar_value = sprintf(decimal_amount, value)
-    "$" + number_with_delimiter(dollar_value)
+    '$' + number_with_delimiter(dollar_value)
   end
 
   def average_donation_amount
-    global_donations / Donation.all.size if Donation.all.size > 0
+    Donation.average(:amount)
   end
 
   def cancel_url(family, donation)

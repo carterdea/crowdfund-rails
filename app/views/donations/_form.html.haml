@@ -72,11 +72,11 @@
               = f.label :email
               = f.email_field :email, class: "form-control"
               / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
-          .col-xs-12
-            .checkbox
-              = f.label :at_newsletter do
-                = f.check_box :at_newsletter
-                Yes, I would like to join the thousands of others who receive monthly updates and inspiration stories.
+          / .col-xs-12
+          /   .checkbox
+          /     = f.label :at_newsletter do
+          /       = f.check_box :at_newsletter
+          /       Yes, I would like to join the thousands of others who receive monthly updates and inspiration stories.
         .row
           .col-xs-12.col-md-6
             = link_to "Next", "#page-payment-info", "data-toggle" => "tab", class: "btn btn-primary btn-block"

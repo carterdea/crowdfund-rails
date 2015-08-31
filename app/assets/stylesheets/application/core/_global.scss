@@ -49,14 +49,19 @@ footer {
         color: $color-medium-grey-2;
         font-size: 16px;
       }
+
+      .caret {
+        margin-top: -1px;
+      }
     }
   }
 
   ul.dropdown-menu {
-    opacity: .95;
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, .2));
     border: 0;
     border-top: 1px solid $color-light-grey-1;
-    @include box-shadow(0 1px 2px rgba(0, 0, 0, .2));
+    opacity: .95;
+
     li a {
       padding: 5px 8px;
     }
@@ -89,8 +94,8 @@ footer {
   }
 
   .icon-bar {
+    @include border-radius(0);
     background-color: $color-white;
-    border-radius: 0;
     height: 3px;
     width: 26px;
   }
@@ -120,13 +125,20 @@ footer {
 }
 
 .flash {
+  @include border-radius(0 0 5px 5px);
   background-color: darken($color-off-white, 20%);
-  border-radius: 0 0 5px 5px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
   padding: 10px 20px;
 
   &.notice {
     background-color: $color-medium-grey-2;
+    border-color: $color-medium-grey-2;
+    color: $color-white;
+  }
+
+  &.alert {
+    background-color: $color-error;
+    border-color: $color-error;
     color: $color-white;
   }
 }

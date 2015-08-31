@@ -16,6 +16,7 @@ gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'turbolinks', '~> 2.5.3'
 gem 'nav_lynx', '~> 1.1.1'
 gem 'bower-rails', '~> 0.9.2'
+gem 'parsley-rails', '~> 2.0.7.0'
 
 # charts
 gem 'chartkick', '~> 1.3.2'
