@@ -49,6 +49,7 @@ gem 'social_shares', '~> 0.2.5'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '~> 1.1.1'
+gem 'populator', '~> 1.0.0'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'
@@ -77,7 +78,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.3.1'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
-  gem 'populator', '~> 1.0.0'
   gem 'ffaker', '~> 2.1.0'
 end
 

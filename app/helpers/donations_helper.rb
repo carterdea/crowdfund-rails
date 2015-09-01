@@ -11,7 +11,11 @@ module DonationsHelper
   end
 
   def average_donation_amount
-    Donation.average(:amount)
+    if Donation.any?
+      Donation.average(:amount)
+    else
+      0
+    end
   end
 
   def cancel_url(family, donation)
