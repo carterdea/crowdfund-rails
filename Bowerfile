@@ -3,5 +3,6 @@
 
 asset 'jquery.payment.min.js', 'https://raw.githubusercontent.com/stripe/jquery.payment/master/lib/jquery.payment.js'
 asset 'jquery.mask.min.js', 'https://raw.githubusercontent.com/igorescobar/jQuery-Mask-Plugin/master/dist/jquery.mask.min.js'
+asset 'parsley.min.js', 'http://parsleyjs.org/dist/parsley.min.js'
 asset 'readmore.min.js', 'https://raw.githubusercontent.com/jedfoster/Readmore.js/master/readmore.min.js'
 asset 'dropzone.js', 'https://raw.githubusercontent.com/enyo/dropzone/master/dist/dropzone.js'
