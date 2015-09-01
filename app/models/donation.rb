@@ -5,8 +5,10 @@ class Donation < ActiveRecord::Base
   require 'stripe'
   require 'mandrill'
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, format: VALID_EMAIL_REGEX
   validates :amount, numericality: { greater_than_or_equal_to: 1, message: 'Must be at least $1.' }
   validates :at_tip, numericality: true
 
