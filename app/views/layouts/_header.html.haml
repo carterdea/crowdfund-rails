@@ -24,7 +24,9 @@
             = current_user.family? ? current_user.families.last.full_name : current_user.email
             %span.caret
           %ul.dropdown-menu
-            %li= nav_link_to 'Edit your account', edit_user_path(current_user)
+            - if current_user.family?
+              %li= nav_link_to 'View your family profile', family_path(current_user.families.last)
+            %li= nav_link_to 'Edit your login info', edit_user_path(current_user)
             %li= nav_link_to 'Log out', logout_path
       - else
         %li= nav_link_to 'Login', login_path

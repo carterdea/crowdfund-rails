@@ -4,8 +4,8 @@ namespace :db do
     require 'populator'
     require 'ffaker'
 
-    [Donation, Family, User].each do |klass|
-      klass.delete_all
+    [Update, Donation, Family, User].each do |klass|
+      klass.destroy_all
       ActiveRecord::Base.connection.reset_pk_sequence!(klass.table_name)
     end
 

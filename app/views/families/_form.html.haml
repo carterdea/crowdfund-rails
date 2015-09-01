@@ -34,7 +34,7 @@
           = f.label :user_cost, 'Estimated Adoption Cost'
           .input-group
             %span.input-group-addon $
-            = f.text_field :user_cost, class: 'form-control'
+            = f.text_field :user_cost, class: 'form-control', value: ''
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ['US'] }, { class: 'form-control' }
@@ -47,9 +47,10 @@
           = f.text_area :description, size: '40x9',class: 'form-control', required: :true, maxlength: 2000, 'data-parsley-trigger' => 'focusout change'
           %p.help-block.small Keep this brief, simple and to the point. You can edit this at any time.
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
-        .form-group
+        .form-group.dropzone
           = f.label :photo
-          = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+          .fallback
+            = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
         .form-group
           = f.label :status, 'Adoption Status'
           = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: 'form-control' }

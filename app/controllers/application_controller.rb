@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def not_authenticated
-    redirect_to login_url, notice: "You need to be logged in to do this."
+    redirect_to login_url, notice: 'You need to be logged in to do this.'
   end
 
   def user_params
@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
-
 end

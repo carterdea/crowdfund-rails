@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'Creating a family profile' do
-  it "makes an account and a family profile if the family data & user data is valid" do
+  it 'makes an account and a family profile if the family data & user data is valid' do
     visit new_family_path
-    fill_in 'First Name', with: 'John'
+    fill_in 'First Name(s)', with: 'John'
     fill_in 'Last Name', with: 'Doe'
     fill_in 'Email', with: 'example@gmail.com'
     fill_in 'Password', with: 'secret'

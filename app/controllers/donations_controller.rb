@@ -1,5 +1,4 @@
 class DonationsController < ApplicationController
-
   def show
   end
 
@@ -21,8 +20,7 @@ class DonationsController < ApplicationController
     @stripe_token = :stripe_token
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
-        session[:family_id] = @family.id
-        session[:donation_id] = @donation.id
+        get_session_ids
         # send_receipt
         redirect_to :thanks
       else
@@ -30,8 +28,7 @@ class DonationsController < ApplicationController
       end
     else
       if @donation.subscribe_stripe_customer && @donation.save
-        session[:family_id] = @family.id
-        session[:donation_id] = @donation.id
+        get_session_ids
         # send_receipt
         redirect_to :thanks
       else
@@ -57,7 +54,7 @@ class DonationsController < ApplicationController
       if @donation.recurring == false
         @donation.delete_stripe_customer
       end
-      redirect_to @family, notice: "Your donation has been updated."
+      redirect_to @family, notice: 'Your donation has been updated.'
     else
       render :edit
     end
@@ -74,25 +71,20 @@ class DonationsController < ApplicationController
     @donation = @family.donations.find_by(token: params[:token])
   end
 
-private
+  private
+
   def get_family
     @family = Family.find(params[:family_id])
   end
 
+  def get_session_ids
+    session[:family_id] = @family.id
+    session[:donation_id] = @donation.id
+  end
+
   def donation_params
     params.require(:donation).permit(
-      :family_id,
-      :amount,
-      :at_tip,
-      :name,
-      :anonymous,
-      :message,
-      :email,
-      :at_newsletter,
-      :family_email_updates,
-      :hide_amount,
-      :recurring,
-      :stripe_token
+      :family_id, :amount, :at_tip, :name, :anonymous, :message, :email, :at_newsletter, :family_email_updates, :hide_amount, :recurring, :stripe_token
     )
   end
 end

@@ -22,6 +22,6 @@ class User < ActiveRecord::Base
     @user_hash.last_name = @family.last_name
   end
 
-private
+  private
   
 end
