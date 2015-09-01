@@ -1,4 +1,4 @@
-= form_for([@family, @donation]) do |f|
+= form_for([@family, @donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
   = render 'shared/errors', object: @donation
   %span.payment-errors
     %noscript
@@ -55,7 +55,7 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :name
-              = f.text_field :name, class: "form-control"
+              = f.text_field :name, class: "form-control", required: :true, 'data-parsley-trigger' => 'focusout change'
             .checkbox
               = f.label :anonymous, class: "checkbox" do
                 = f.check_box :anonymous
@@ -70,7 +70,7 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :email
-              = f.email_field :email, class: "form-control"
+              = f.email_field :email, class: "form-control", type: :email, required: :true, 'data-parsley-trigger' => 'focusout change'
               / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
           / .col-xs-12
           /   .checkbox
@@ -87,14 +87,14 @@
           .col-xs-12.col-md-6
             .form-group
               = label_tag :card_number
-              = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number"
+              = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number cc-number", autocomplete: 'cc-number', type: 'tel', required: :true, minlength: 15, maxlength: 16, 'data-parsley-type' => 'digits', 'data-parsley-trigger' => 'focusout change'
             .row
               .form-group.col-xs-6
                 = label_tag :expiration_date
-                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry"
+                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry", type: 'tel', required: :true, maxlength: 4, 'data-parsley-trigger' => 'focusout change'
               .form-group.col-xs-6
                 = label_tag :security_code
-                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc"
+                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc", autocomplete: 'off', type: 'tel', required: :true, maxlength: 4, 'data-parsley-trigger' => 'focusout change'
                 %p.small.help-block What's this?
               = f.hidden_field :stripe_token
 

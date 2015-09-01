@@ -6,7 +6,7 @@
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
           = f.label :first_name, 'First Name(s)'
-          = f.text_field :first_name, autofocus: true, class: 'form-control'
+          = f.text_field :first_name, autofocus: true, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
         .form-group
           = f.label :last_name, 'Last Name'
           = f.text_field :last_name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
