@@ -87,7 +87,7 @@
           .col-xs-12.col-md-6
             .form-group
               = label_tag :card_number
-              = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number cc-number", autocomplete: 'cc-number', type: 'tel', required: :true, minlength: 15, maxlength: 20, 'data-parsley-type' => 'digits', 'data-parsley-trigger' => 'focusout change'
+              = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number cc-number", autocomplete: 'cc-number', type: 'tel', required: :true, minlength: 15, maxlength: 20, 'data-parsley-trigger' => 'focusout change'
             .row
               .form-group.col-xs-6
                 = label_tag :expiration_date
