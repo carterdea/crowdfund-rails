@@ -1,7 +1,7 @@
 $(function () {
   // When the user clicks the tabs, give the active tab a class of "active"
   $('.page-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    $(e.target).addClass('active').siblings().removeClass("active")
+    $(e.target).addClass('active').siblings().removeClass("active");
   });
 
   // When the user clicks the "Next" buttons, give the active tab a class of "active"
@@ -26,8 +26,8 @@ $(function () {
     other_text_value = other_text_value.replace(',','');
 
     // Calculate Tip
-    var tip_10 = (other_text_value * .1).toFixed(2);
-    var tip_20 = (other_text_value * .2).toFixed(2);
+    var tip_10 = (other_text_value * 0.1).toFixed(2);
+    var tip_20 = (other_text_value * 0.2).toFixed(2);
     // Change the radio button values to the tip values
     $('#donation_at_tip_10').val(tip_10);
     $('#donation_at_tip_20').val(tip_20);
@@ -40,8 +40,8 @@ $(function () {
   $('label.btn').click(function () {
     setTimeout(function(){ 
       var tip_value = $('label.btn.active > input').val();
-      var tip_10 = (tip_value * .1).toFixed(2);
-      var tip_20 = (tip_value * .2).toFixed(2);
+      var tip_10 = (tip_value * 0.1).toFixed(2);
+      var tip_20 = (tip_value * 0.2).toFixed(2);
       // Change the radio button value to the tip value
       $('#donation_at_tip_10').val(tip_10);
       $('#donation_at_tip_20').val(tip_20);
@@ -117,5 +117,5 @@ $(function () {
       // and submit
       $form.get(0).submit();
     }
-  };
+  }
 });
