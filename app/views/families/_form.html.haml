@@ -62,4 +62,4 @@
           .input-group
             %span.input-group-addon http://
             = f.text_field :agency_site, class: 'form-control', required: :true, type: :url, 'data-parsley-trigger' => 'focusout change'
-        = f.submit 'Start a Family Profile', class: 'btn btn-primary btn-block'
+        = f.submit 'Start a Family Profile', class: 'btn btn-primary btn-block', data: { disable_with: 'Creating Your Family Profile...' }

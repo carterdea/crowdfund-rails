@@ -15,7 +15,7 @@
     - @grants.each do |grant|
       %tr
         %td
-          %h3= link_to grant.family_id, family
+          %h2= link_to grant.family.full_name, family_path(grant.family_id)
           %p= grant.expense_description
         %td= pretty_dollars(grant.amount_requested)
         %td= grant.requested_to_name

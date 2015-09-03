@@ -34,7 +34,7 @@
           = f.text_field :requested_to_city, class: 'form-control'
         .form-group
           = f.label :requested_to_state, "State"
-          = select_tag :requested_to_state, options_for_select(us_states), class: 'form-control'
+          = f.select :requested_to_state, options_for_select(us_states), { }, { class: 'form-control' }
         .form-group
           = f.label :requested_to_zip, "Zip Code"
           = f.text_field :requested_to_zip, class: 'form-control'
