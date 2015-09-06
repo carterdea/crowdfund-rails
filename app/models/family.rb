@@ -44,7 +44,7 @@ class Family < ActiveRecord::Base
   end
 
   def total_raised
-    donations.pluck(:amount).sum
+    donations.sum(:amount)
   end
 
   def funded?
