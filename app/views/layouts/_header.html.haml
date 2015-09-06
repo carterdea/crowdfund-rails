@@ -21,11 +21,11 @@
       - if logged_in?
         %li.dropdown
           = nav_link_to "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown' do 
-            = current_user.family? ? current_user.families.last.full_name : current_user.email
+            = current_user.family? ? current_user.family.full_name : current_user.email
             %span.caret
           %ul.dropdown-menu
             - if current_user.family?
-              %li= nav_link_to 'View your family profile', family_path(current_user.families.last)
+              %li= nav_link_to 'View your family profile', family_path(current_user.family)
             %li= nav_link_to 'Edit your login info', edit_user_path(current_user)
             %li= nav_link_to 'Log out', logout_path
       - else

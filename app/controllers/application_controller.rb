@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, alert: exception.message
+    if current_user.nil?
+      redirect_to login_url, notice: 'You need to be logged in to do this.'
+    else
+      redirect_to root_url, alert: exception.message
+    end
   end
 end

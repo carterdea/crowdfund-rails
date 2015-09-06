@@ -7,6 +7,7 @@ FactoryGirl.define do
   end
 
   factory :family do
+    user
     first_name 'John'
     last_name 'Doe'
     postal_code '12345'
@@ -21,4 +22,8 @@ FactoryGirl.define do
     agency_site 'http://www.cradle.org'
     approved true
   end
+
+  # factory :donation do
+  #   family
+  # end
 end

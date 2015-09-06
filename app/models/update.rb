@@ -3,6 +3,8 @@ class Update < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  validates :title, :message, presence: true
+
   def date_created
     created_at.strftime('%B %e, %Y')
   end

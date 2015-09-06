@@ -3,7 +3,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @families = Family.select(:id, :photo, :first_name, :last_name, :country).includes(:donations).page(params[:page]).per(30)
+    @families = Family.select(:id, :photo, :first_name, :last_name, :country).joins(:donations).select(:amount).page(params[:page]).per(30)
   end
 
   def search
@@ -29,7 +29,7 @@ class FamiliesController < ApplicationController
   def create
     if current_user
       @user = current_user
-      @family = @user.families.build(family_params)
+      @family = @user.build_family(family_params)
       if @family.save
         redirect_to @family, notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
       else
@@ -38,7 +38,7 @@ class FamiliesController < ApplicationController
       end
     else
       @user = User.new(user_params)
-      @family = @user.families.build(family_params)
+      @family = @user.build_family(family_params)
       if @user.valid? && @family.valid?
         @user.save unless current_user
         @family.save

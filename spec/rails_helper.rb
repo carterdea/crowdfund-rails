@@ -6,6 +6,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'database_cleaner'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -38,7 +39,28 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include FactoryGirl::Syntax::Methods
 
-  # config.include Capybara::DSL
+  config.include Capybara::DSL
+
+  Capybara::Webkit.configure do |config|
+    config.allow_unknown_urls
+    config.block_url('example.com')
+    config.ignore_ssl_errors
+  end
+
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do |example|
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

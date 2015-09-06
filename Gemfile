@@ -58,11 +58,11 @@ gem 'rails-i18n', '~> 4.0.4'
 gem 'skylight'
 gem 'airbrake'
 
+# gem 'capistrano-rails', group: :development
+
 # server & deployment
 gem 'puma', '~> 2.11.3'
 gem 'pg', '~> 0.18.2'
-
-# gem 'capistrano-rails', group: :development
 
 group :development do
   gem 'stackprof', '~> 0.2.7'
@@ -70,7 +70,11 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'meta_request'
+  gem 'bullet', '~> 4.14.7'
   gem 'rails-footnotes', '~> 4.1.7'
+  gem 'rack-mini-profiler', '~> 0.9.7'
+  gem 'flamegraph', '~> 0.1.0'
+  gem 'memory_profiler', '~> 0.9.4'
 end
 
 group :development, :test do
@@ -83,8 +87,11 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4.4'
+  gem 'capybara-webkit', '~> 1.7.0'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'database_cleaner', '~> 1.5.0'
   gem 'guard-rspec', '~> 4.6.0'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :production do
