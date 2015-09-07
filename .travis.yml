@@ -3,9 +3,12 @@ rvm:
   - 2.2.2
 addons:
   postgresql: "9.3"
+services:
+  - elasticsearch
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+  - sleep 10
 gemfile:
   - Gemfile
 install:
