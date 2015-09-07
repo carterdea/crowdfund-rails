@@ -25,7 +25,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 4. Setup the DB
 
     ```shell
-    % rake db:schema:load
+    % rake db:setup:populate
     ```
 
 5. Start the Server
@@ -64,6 +64,9 @@ TODO
 
 ### Services
 - Heroku
+- Bonsai.io (for Elasticsearch)
+- Mandrill (for Email)
+- Code Climate
 - Travis-CI
 - AWS S3
 
@@ -77,7 +80,7 @@ Last 2 version of:
 
 ### Code Status
 [![Code Climate](https://codeclimate.com/github/carterdea/adopttogether/badges/gpa.svg)](https://codeclimate.com/github/carterdea/adopttogether)
-<!-- [![Test Coverage](https://codeclimate.com/github/carterdea/adopttogether/badges/coverage.svg)](https://codeclimate.com/github/carterdea/adopttogether/coverage) -->
+[![Test Coverage](https://codeclimate.com/github/carterdea/adopttogether/badges/coverage.svg)](https://codeclimate.com/github/carterdea/adopttogether/coverage)
 [![Build Status](https://travis-ci.org/carterdea/adopttogether.svg?branch=master)](https://travis-ci.org/carterdea/adopttogether)
 
 ## Admin Access
@@ -87,7 +90,6 @@ Ask @carterdea (me@carterdea.com) for admin access
 Credits
 -------
 - [@carterdea](https://github.com/carterdea)
-- [@jtribble](https://github.com/jtribble)
 - [@alexwines224](https://github.com/Alexwines224)
 - [@kurzee](https://github.com/kurzee)
 
