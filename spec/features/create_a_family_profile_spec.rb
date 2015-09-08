@@ -68,4 +68,8 @@ describe 'Creating a family profile' do
     expect(page).not_to have_text('Your family profile is now live!')
     expect(page).to have_text('Login')
   end
+
+  it "just makes a family profile if I'm logged in"
+
+  it "doesn't let me make a profile with an email that's already in the system"
 end

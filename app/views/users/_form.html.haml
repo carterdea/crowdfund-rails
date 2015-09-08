@@ -2,8 +2,8 @@
   = render 'shared/errors', object: @user
   .form-group
     = f.label :email
-    = f.email_field :email, size: 40, autofocus: true, class: "form-control"
+    = f.email_field :email, size: 40, autofocus: true, class: 'form-control', type: :email, 'data-parsley-trigger' => 'focusout change', required: :true
   .form-group
     = f.label :password
-    = f.password_field :password, size: 40, class: "form-control"
-  = f.submit class: "btn btn-primary"
+    = f.password_field :password, size: 40, class: 'form-control', required: true, 'data-parsley-trigger' => 'focusout change'
+  = f.submit class: 'btn btn-primary'

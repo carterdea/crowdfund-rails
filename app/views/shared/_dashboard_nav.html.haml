@@ -1,6 +1,7 @@
 %ul.nav.nav-pills.nav-stacked
   %li= nav_link_to "Dashboard", dashboard_path
-  %li= nav_link_to "Update Your Donors", family_updates_path(@family), {}, {:controller_segment => 1}
-  %li= nav_link_to "Edit Family Profile", edit_family_path(@family)
-  %li= nav_link_to "Your Grants", family_grants_path(@family), {}, {:controller_segment => 1}
+  - if @family.present?
+    %li= nav_link_to "Update Your Donors", family_updates_path(@family), {}, {:controller_segment => 1}
+    %li= nav_link_to "Edit Family Profile", edit_family_path(@family)
+    %li= nav_link_to "Your Grants", family_grants_path(@family), {}, {:controller_segment => 1}
   -# %li= nav_link_to "My Fundraisers", "#"

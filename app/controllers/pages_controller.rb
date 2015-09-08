@@ -6,8 +6,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @family = Family.find_by(user_id: current_user.id)
-    @donations = @family.donations.all
+    if current_user.family?
+      @family = Family.find_by(user_id: current_user.id).includes(:donations, :updates)
+    end
   end
 
   def show

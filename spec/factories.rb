@@ -23,7 +23,16 @@ FactoryGirl.define do
     approved true
   end
 
-  # factory :donation do
-  #   family
-  # end
+  factory :donation do
+    family
+    amount '1234'
+    recurring 'false'
+    at_tip '5'
+    family_email_updates true
+    message 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    name 'Jack Smith'
+    sequence(:email) { |n| "bar#{n}@example.com" }
+    hide_amount false
+    anonymous false
+  end
 end

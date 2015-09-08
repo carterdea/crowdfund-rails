@@ -72,8 +72,6 @@ group :development do
   gem 'meta_request'
   gem 'bullet', '~> 4.14.7'
   gem 'rails-footnotes', '~> 4.1.7'
-  gem 'rack-mini-profiler', '~> 0.9.7'
-  gem 'flamegraph', '~> 0.1.0'
   gem 'memory_profiler', '~> 0.9.4'
 end
 
