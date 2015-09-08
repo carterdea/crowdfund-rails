@@ -1,23 +1,25 @@
 language: ruby
 rvm:
-  - 2.2.2
-addons:
-  postgresql: '9.3'
-services:
-  - elasticsearch
-before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 10
-gemfile:
-  - Gemfile
-install:
-  - bundle install
+- 2.2.2
 addons:
   code_climate:
     repo_token: CODE_CLIMATE_REPO_TOKEN
+services:
+- elasticsearch
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 10
+gemfile:
+- Gemfile
+install:
+- bundle install
 deploy:
   provider: heroku
-    api_key: HEROKU_API_KEY
+  api_key:
+    secure: YbSUlUyyvcpWzQpK9pIMhhEgAxQ6eLgP7p4Knpryrcx2J7sTpYt4pvy239O62Z92IfociR9ycXtAKQMbU8YcO7NpJeLFLcKFcYJe3WeoqfT5+2U2W71XD8B4B/zrd0/Mg5n6qZ5/VXu2c7qChSKl9LNp4Rsugs+jwM9gDNmRHMJvhoUTJKnvei+UX2OtJ0a+mFqcvfAuCJ39/6WnGgGNLKSj1q3dwfQeXdze0QPHjVmnGB0PxgF13YtQpJ6HcuZJGaGyIE2wPgPzTE7JHRtTN48TY672jIRy5UOcdkh5Lg/70IcR4FI856Z+KciPqRSisP6qeAlFFPZniL5up33ivcmA/7roMTSEpwoGmGL/ucJU7DadEWemQtteX9wHQnnCbYtu3FrVrSZ+ax3zIZFEZ6DheB2K1E0TQ+zqnwDg2aZ9bNtxDrfPocM8yEfWes8ilTPWG0x7beADxu5iY8tuseUhZcUVTt7hdhLu/VO3jvagNlwP5Nw6uBy7wH1DCzocMCuimCNB0jiIPBKXNWUI5WQmLkmIIPMOKumrdPksuIThDldOHH6fR9ikzoM1az644ppr15frs7vQi/db2mby3CG9IXuwgMKx4mvJ4JNkivsVkMsGQw/KPp9/IK4EBiOElnG1yyEo95knt106Mej5JSBiVpko0qxCA6AzwNcMLCM=
+  app: adopttogether
+  on:
+    repo: carterdea/adopttogether
