@@ -17,7 +17,7 @@ install:
   - bundle install
 addons:
   code_climate:
-    repo_token: ENV["CODE_CLIMATE_REPO_TOKEN"]
+    repo_token: CODE_CLIMATE_REPO_TOKEN
 deploy:
   provider: heroku
-    api_key: ENV["HEROKU_API_KEY"]
+    api_key: HEROKU_API_KEY
