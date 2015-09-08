@@ -31,7 +31,7 @@
       %span.goal of #{pretty_dollars(@family.cost)} Goal
       - if current_user && @family == current_user.family
         %span.btn.btn-primary.btn-lg.btn-block.disabled Give to this Adoption
-        %span.help-block.small The IRS won't let you give to your own Adoption 😩
+        %span.help-block.small Unfortunately, the IRS won't let you give to your own Adoption. Sorry about that! 😩
       - else
         = link_to 'Give to this Adoption', new_family_donation_path(@family), class: 'btn btn-primary btn-lg btn-block'
     .share-buttons
