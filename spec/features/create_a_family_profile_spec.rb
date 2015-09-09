@@ -16,7 +16,7 @@ describe 'Creating a family profile' do
     select 'Paperwork Not Started', from: 'Adoption Status'
     fill_in 'Adoption Agency', with: 'Holt & Cradle'
     fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
-    click_button('Start a Family Profile')
+    click_button('Create a Family Profile')
 
     expect(page).not_to have_text('Login')
     expect(page).to have_text('John Doe')
@@ -38,7 +38,7 @@ describe 'Creating a family profile' do
     select 'Paperwork Not Started', from: 'Adoption Status'
     fill_in 'Adoption Agency', with: 'Holt & Cradle'
     fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
-    click_button('Start a Family Profile')
+    click_button('Create a Family Profile')
 
     expect(page).not_to have_text('example@gmail.com')
     expect(page).not_to have_text('John Doe')
@@ -61,7 +61,7 @@ describe 'Creating a family profile' do
     select 'Paperwork Not Started', from: 'Adoption Status'
     fill_in 'Adoption Agency', with: 'Holt & Cradle'
     fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
-    click_button('Start a Family Profile')
+    click_button('Create a Family Profile')
 
     expect(page).not_to have_text('example@gmail.com')
     expect(page).not_to have_text('John Doe')
@@ -69,7 +69,44 @@ describe 'Creating a family profile' do
     expect(page).to have_text('Login')
   end
 
-  it "just makes a family profile if I'm logged in"
+  it "just makes a family profile if I'm logged in" do
+    user = create(:user)
+    login_user(user)
+    visit new_family_path
+    fill_in 'First Name(s)', with: 'John'
+    fill_in 'Last Name', with: 'Doe'
+    fill_in 'Zip/Postal Code', with: '12345'
+    fill_in 'Estimated Adoption Cost', with: '12345.00'
+    select 'Australia', from: 'Country'
+    select '1', from: 'How many children are you adopting?'
+    fill_in 'Message to your visitors', with: 'Hi everyone, Please consider donating.'
+    attach_file('family[photo]', File.absolute_path('./spec/support/test_family.jpg'))
+    select 'Paperwork Not Started', from: 'Adoption Status'
+    fill_in 'Adoption Agency', with: 'Holt & Cradle'
+    fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
+    click_button('Create a Family Profile')
 
-  it "doesn't let me make a profile with an email that's already in the system"
+    expect(page).to have_text('John Doe')
+    expect(page).to have_text('Your family profile is now live!')
+  end
+
+  it "doesn't let me make a profile with an email that's already in the system" do
+    user = create(:user)
+    visit new_family_path
+    fill_in 'First Name(s)', with: 'John'
+    fill_in 'Last Name', with: 'Doe'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'secret'
+    fill_in 'Zip/Postal Code', with: '12345'
+    fill_in 'Estimated Adoption Cost', with: '12345.00'
+    select 'Australia', from: 'Country'
+    select '1', from: 'How many children are you adopting?'
+    fill_in 'Message to your visitors', with: 'Hi everyone, Please consider donating.'
+    attach_file('family[photo]', File.absolute_path('./spec/support/test_family.jpg'))
+    select 'Paperwork Not Started', from: 'Adoption Status'
+    fill_in 'Adoption Agency', with: 'Holt & Cradle'
+    fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
+    click_button('Create a Family Profile')
+    expect(page).to have_text('There was a problem with your family profile. Please check it and try again.')
+  end
 end

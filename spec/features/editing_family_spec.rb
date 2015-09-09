@@ -14,7 +14,7 @@ describe 'Editing a family profile' do
     select 'Paperwork Not Started', from: 'Adoption Status'
     fill_in 'Adoption Agency', with: 'Holt & Cradle'
     fill_in 'Adoption Agency URL', with: 'http://www.holtandcradle.com'
-    click_button('Start a Family Profile')
+    click_button('Save Changes to My Family Profile')
 
     expect(page).not_to have_text('John')
     expect(page).to have_text('Jane Doess')
@@ -32,7 +32,7 @@ describe 'Editing a family profile' do
     select 'Paperwork Not Started', from: ''
     fill_in 'Adoption Agency', with: ''
     fill_in 'Adoption Agency URL', with: ''
-    click_button('Update Your Family Profile')
+    click_button('Save Changes to My Family Profile')
 
     expect(page).not_to have_text('example@gmail.com')
     expect(page).not_to have_text('John Doe')

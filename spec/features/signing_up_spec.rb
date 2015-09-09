@@ -5,7 +5,7 @@ describe 'Signing Up' do
     visit signup_path
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'secret'
-    click_button('Create a User')
+    click_button('Sign Up')
     expect(page).to_not have_text('Sign Up')
     expect(page).to have_text('john@example.com')
     expect(page).to have_text('Thanks for signing up!')
@@ -15,7 +15,7 @@ describe 'Signing Up' do
     visit signup_path
     fill_in 'Email', with: 'john.com'
     fill_in 'Password', with: ''
-    click_button('Create a User')
+    click_button('Sign Up')
     expect(page).to have_text('Login')
     expect(page).to have_text('Oops! The user could not be saved.')
     expect(page).to_not have_text('john.com')
