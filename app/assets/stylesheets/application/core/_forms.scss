@@ -1,3 +1,7 @@
+form {
+  margin-bottom: 12px
+}
+
 legend {
   border: 0;
   color: $color-medium-grey-2;
@@ -58,6 +62,7 @@ label {
   @include border-radius(5px);
   background: $color-error;
   color: $color-white;
+  margin-bottom: 10px;
   padding: 15px;
 
   h3 {

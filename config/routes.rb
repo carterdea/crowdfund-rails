@@ -20,8 +20,10 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'pages#dashboard'
   get 'about' => 'pages#about'
+  get 'faq' => 'pages#faq'
+  get 'contact' => 'pages#contact'
 
-  get 'donate' => 'donations#new', id: 1
+  get 'donate' => 'donations#new'
   get 'thanks' => 'donations#thanks'
 
   namespace :admin do

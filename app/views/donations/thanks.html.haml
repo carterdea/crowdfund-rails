@@ -1,13 +1,17 @@
 .row
   .col-xs-12.col-sm-8
     %h1 Thank you for your donation!
-    %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business.
+    %p Hank give me some nice text for here 💖💖
 
     .well
       .row
         .col-xs-8
           %h3= @donation.type
-          %p designated to #{@family.full_name}’s Adoption
+          - if @family.id == 1
+            %p to AdoptTogether
+          - else
+            %p designated to #{@family.full_name}’s Adoption
+
         .col-xs-4
           %span.pull-right= pretty_dollars(@donation.amount, 2)
         .col-xs-8
@@ -34,8 +38,11 @@
       .share-buttons.col-xs-12.col-sm-8
         = render 'shared/share_buttons'
   %aside.col-xs-12.col-sm-4
-    %h2 You donated to
-    = render 'shared/family_thumb', :family => @family
+    - if @family.id == 1
+      %h2 You donated to AdoptTogether
+    - else
+      %h2 You donated to
+      = render 'shared/family_thumb', :family => @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.

@@ -5,8 +5,12 @@ class DonationsController < ApplicationController
   def index
   end
 
-  def new  
-    @family = Family.find(params[:family_id])
+  def new
+    if params[:family_id].nil?
+      @family = Family.find(1)
+    else
+      @family = Family.find(params[:family_id])
+    end
     @donation = Donation.new
   end
 

@@ -1,4 +1,6 @@
 require 'elasticsearch/model'
+require 'file_size_validator'
+
 # app/models/family.rb
 class Family < ActiveRecord::Base
   # has_many :donations, as: :recipient
@@ -14,7 +16,8 @@ class Family < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  validates :first_name, :last_name, :postal_code, :user_cost, :cost, :photo, presence: true
+  validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
+  validates :photo, presence: true, file_size: { maximum: 2.megabytes.to_i }
   validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than 2,000 characters.'
   validates :cost, numericality: { less_than: 1_000_000 }
   validates :country, presence: true, length: { is: 2 }

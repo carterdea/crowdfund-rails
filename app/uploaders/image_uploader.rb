@@ -50,10 +50,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process resize_to_fill: [360, 240]
+    process convert: 'jpg'
+    process quality: 80
   end
 
   version :large do
     process resize_to_fill: [750, 492]
+    process convert: 'jpg'
+    process quality: 80
   end
-
 end

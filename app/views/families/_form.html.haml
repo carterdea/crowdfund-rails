@@ -34,7 +34,7 @@
           = f.label :user_cost, 'Estimated Adoption Cost'
           .input-group
             %span.input-group-addon $
-            = f.text_field :user_cost, class: 'form-control', value: ''
+            = f.text_field :user_cost, class: 'form-control'
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ['US'] }, { class: 'form-control' }
@@ -62,4 +62,4 @@
           .input-group
             %span.input-group-addon http://
             = f.text_field :agency_site, class: 'form-control', required: :true, type: :url, 'data-parsley-trigger' => 'focusout change'
-        = f.submit 'Start a Family Profile', class: 'btn btn-primary btn-block', data: { disable_with: 'Creating Your Family Profile...' }
+        = f.submit class: 'btn btn-primary btn-block', data: { disable_with: 'Creating Your Family Profile...' }

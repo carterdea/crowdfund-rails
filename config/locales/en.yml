@@ -23,5 +23,14 @@ en:
   hello: "Hello world"
   helpers:
     submit:
-      create: "Create a %{model}"
-      update: "Save changes to %{model}"
+      user:
+        create: "Sign Up"
+        update: "Save Changes to My Login Info"
+      family:
+        create: "Create a Family Profile"
+        update: "Save Changes to My Family Profile"
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"

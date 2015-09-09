@@ -2,14 +2,11 @@ class PagesController < ApplicationController
   before_action :require_login, only: :dashboard
 
   def home
-    @families = Family.approved.includes(:donations).limit(9)
+    @families = Family.approved.limit(9)
   end
 
   def dashboard
     @family = Family.includes(:donations, :updates).find_by(user_id: current_user.id) if current_user.family?
-  end
-
-  def show
   end
 
   def about
@@ -19,11 +16,11 @@ class PagesController < ApplicationController
   # def how_it_works
   # end
 
-  # def faq
-  # end
+  def faq
+  end
 
-  # def contact
-  # end
+  def contact
+  end
 
   # def press
   # end
@@ -36,4 +33,7 @@ class PagesController < ApplicationController
 
   # def terms
   # end
+
+  def show
+  end
 end

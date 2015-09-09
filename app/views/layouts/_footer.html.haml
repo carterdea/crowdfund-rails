@@ -11,15 +11,15 @@
           .row
             .col-xs-6
               %li How It Works
-              %li About Us
-              %li FAQ
-              %li Contact Us
+              %li= link_to 'About Us', about_path
+              %li= link_to 'FAQ', faq_path
+              %li= link_to 'Contact Us', contact_path
               %li Legal
             .col-xs-6
-              %li Testimonials
-              %li Press
+              / %li Testimonials
+              / %li Press
               %li Blog
-              %li Help
+              / %li Help
       .col-xs-12.col-sm-6.col-md-4
         %h4 Get Infrequent Email Updates
         %form(action="//adopttogether.us1.list-manage.com/subscribe/post?u=3b533553aa7564167238aba5e&amp;id=929a88a092" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" role="form" novalidate)

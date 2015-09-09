@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Making a donation to a family' do
   it 'makes the donation if the family data & user data is valid', js: true do
+    at = create(:family)
     family = create(:family)
     visit family_path(family)
     expect(page).to have_text('John Doe')
@@ -25,6 +26,7 @@ describe 'Making a donation to a family' do
   end
 
   it "respects a donor's privacy settings", js: true do
+    at = create(:family)
     family = create(:family)
     visit family_path(family)
     expect(page).to have_text('John Doe')
@@ -53,6 +55,7 @@ describe 'Making a donation to a family' do
   end
 
   it 'lets the user put a custom donation amount & a custom at tip', js: true do
+    at = create(:family)
     family = create(:family)
     visit family_path(family)
     expect(page).to have_text('John Doe')
@@ -78,6 +81,7 @@ describe 'Making a donation to a family' do
   end
 
   it 'lets the user cancel their monthly donation', js: true do
+    at = create(:family)
     family = create(:family)
     visit family_path(family)
     expect(page).to have_text('John Doe')

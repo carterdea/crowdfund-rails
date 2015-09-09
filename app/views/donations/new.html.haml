@@ -1,29 +1,29 @@
-- if params[:id] == 1
-  - title "Donate to AdoptTogether"
-  - meta_description "You can donate to adoption on AdoptTogether, a crowdfunding platform for adopting families."
+- if @family.id == 1
+  - title 'Donate to AdoptTogether'
+  - meta_description 'You can donate to adoption on AdoptTogether, a crowdfunding platform for adopting families.'
 - else
   - title "Donate to #{@family.full_name}'s Adoption on AdoptTogether"
   - meta_description "You can donate to #{@family.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
 .row
   .col-xs-12.col-sm-8
-    - if params[:id] == 1
+    - if @family.id == 1
       %h1 Donate to AdoptTogether
-      %p This is where we're putting our stuff
+      %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible.
       %ul
-        %li Item 1
-        %li Item 2
-        %li Item 3
+        %li Website hosting costs, development, legal fees, etc
+        %li Slush fund for families who don't meet their goals
+        %li Staff salaries
 
     - else
       %h1 Donate to a Family
     = render 'form'
   %aside.col-xs-12.col-sm-4
-    - unless params[:id] == 1
+    - unless @family.id == 1
       %h2 You are making a designated donation to AdoptTogether on behalf of
-      = render 'shared/family_thumb', :family => @family
+      = render 'shared/family_thumb', family: @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
-    %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
+    %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.  
     %h3 Can I send a check?
     %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
     %p
@@ -35,6 +35,6 @@
       %br
       1 (888) 826-0948
     %h3 Can I give a monthly donation?
-    %p Yes, on the last step we’ll ask if you want to make this a monthly donation.
+    %p Yes! Just choose to make your donation monthly and we will charge your credit card until you cancel. This is a great way to give more over time.
     %h3 Can I edit or cancel my monthly donation?
     %p You can cancel your monthly contribution at any time via a unique URL that we will email you after you donate. If you ever lose the email, just contact us and we'll help you cancel your donation.

@@ -19,7 +19,7 @@ namespace :db do
         family.cost = 999_999
         family.gender = 'male'
         family.quantity = 1
-        family.description = 'AdoptTogether is bringing kids home!'
+        family.description = 'AdoptTogether is bringing kids home! Thanks so much for your support.'
         family.status = 'Completed'
         family.agency_name = 'AdoptTogether'
         family.agency_site = 'www.adopttogether.org'

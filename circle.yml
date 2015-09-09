@@ -3,9 +3,13 @@ machine:
     - elasticsearch
 dependencies:
   pre:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+    - sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
+    - sudo apt-get -y update; true
+    - sudo apt-get -y install qtdeclarative5-dev libqt5webkit5-dev
     - sleep 10
+machine:
+  environment:
+    QMAKE: "/usr/lib/x86_64-linux-gnu/qt5/bin/qmake"
 database:
   override:
     # replace CircleCI's generated database.yml

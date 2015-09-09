@@ -12,11 +12,11 @@
       .col-xs-12
         .form-group
           = f.label :expense_description
-          = f.text_area :expense_description, size: "60x6", class: 'form-control'
+          = f.text_area :expense_description, size: '60x6', class: 'form-control'
           %p.small.help-block This is for Adoption related expenses and describe below (including agency fees, attorney fees, travel costs, dossier, immigration processing, court costs, foreign orphanage or agency donation).
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
-          = f.label :supporting_documentation, "Expense documentation"
+          = f.label :supporting_documentation, 'Expense documentation'
           = f.file_field(:supporting_documentation, accept: 'image/png,image/gif,image/jpeg,image/jpg')
           %p.small.help-block This is for receipts, invoices, tickets, etc. You can upload an individual file, or you can zip it up and upload it.
   %fieldset
