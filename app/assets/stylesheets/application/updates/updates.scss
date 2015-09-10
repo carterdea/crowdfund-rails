@@ -1,26 +1,39 @@
 ul.update-list {
+
   li {
     border-bottom: 1px solid darken($color-off-white, 7%);
     margin-bottom: 20px;
 
     h4 {
       color: $color-medium-grey-1;
-      text-transform: uppercase;
       margin: 0;
+      text-transform: uppercase;
     }
 
-    h2, h3 {
+    h2,
+    h3 {
       margin: 0 !important;
     }
 
-    span.date {
+    .date {
       color: $color-light-grey-2;
       display: block;
       font-size: 12px;
     }
+
+    .body {
+      margin-bottom: 15px;
+    }
   }
 }
 
-.updates.index .btn.pull-right {
-  margin-top: 18px;
+.updates.index {
+
+  h3 {
+    font-size: 22px;
+  }
+
+  .btn.pull-right {
+    margin-top: 18px;
+  }
 }

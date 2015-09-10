@@ -21,6 +21,7 @@ describe 'Creating a family profile' do
     expect(page).not_to have_text('Login')
     expect(page).to have_text('John Doe')
     expect(page).to have_text('Your family profile is now live!')
+    expect(page).to have_text('$12,345')
   end
 
   it "doesn't make an account or a family profile if the family data is invalid & user data is valid" do
@@ -88,6 +89,8 @@ describe 'Creating a family profile' do
 
     expect(page).to have_text('John Doe')
     expect(page).to have_text('Your family profile is now live!')
+    expect(page).to have_text('$12,345')
+
   end
 
   it "doesn't let me make a profile with an email that's already in the system" do

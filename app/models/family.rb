@@ -3,18 +3,18 @@ require 'file_size_validator'
 
 # app/models/family.rb
 class Family < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   # has_many :donations, as: :recipient
   belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
-  has_many :donations, dependent: :destroy
+  has_many :donations, as: :recipient, dependent: :destroy
   has_many :updates, dependent: :destroy
   has_many :grants, dependent: :destroy
 
   scope :approved, -> { where(approved: true).order('created_at DESC') }
   scope :unapproved, -> { where approved: false }
-
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
 
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
   validates :photo, presence: true, file_size: { maximum: 2.megabytes.to_i }
@@ -22,6 +22,7 @@ class Family < ActiveRecord::Base
   validates :cost, numericality: { less_than: 1_000_000 }
   validates :country, presence: true, length: { is: 2 }
   validates :quantity, numericality: { greater_than: 0 }
+  validates_associated :user
 
   ADOPTION_STATUSES = [
     'Paperwork Not Started',
@@ -74,5 +75,6 @@ class Family < ActiveRecord::Base
   end
 end
 
-Family.import
 Family.__elasticsearch__.create_index! force: true
+Family.import
+Family.__elasticsearch__.refresh_index!

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'oauths/oauth'
-  get 'oauths/callback'
-
   root 'pages#home'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
@@ -45,6 +42,9 @@ Rails.application.routes.draw do
   post 'oauth/callback' => 'oauths#callback'
   get 'oauth/callback' => 'oauths#callback'
   get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
+
+  get 'oauths/oauth'
+  get 'oauths/callback'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

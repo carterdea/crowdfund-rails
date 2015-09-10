@@ -11,6 +11,7 @@ namespace :db do
 
     User.populate 1 do |user|
       user.email = 'hankfortener@gmail.com'
+      user.admin = true
       Family.populate 1 do |family|
         family.user_id = 1
         family.first_name = 'Adopt'
@@ -45,7 +46,8 @@ namespace :db do
         family.agency_site = FFaker::Internet.http_url
         family.approved = true
         Donation.populate 0..35 do |donation|
-          donation.family_id = family.id
+          donation.recipient_type = 'family'
+          donation.recipient_id = family.id
           donation.amount = [30, 50, 100, 500, 1000, 400, 25, 5, 1, 18]
           donation.at_tip = [0, 10, 20]
           donation.name = FFaker::Name.name

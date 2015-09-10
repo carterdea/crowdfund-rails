@@ -1,12 +1,12 @@
-- if @family.id == 1
-  - title 'Donate to AdoptTogether'
-  - meta_description 'You can donate to adoption on AdoptTogether, a crowdfunding platform for adopting families.'
-- else
-  - title "Donate to #{@family.full_name}'s Adoption on AdoptTogether"
-  - meta_description "You can donate to #{@family.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
+/ - if @recipient
+/   - title "Donate to #{@charity.full_name}"
+/   - meta_description 'You can donate to adoption on AdoptTogether, a crowdfunding platform for adopting families.'
+/ - else
+- title "Donate to #{@recipient.full_name}'s Adoption on AdoptTogether"
+- meta_description "You can donate to #{@recipient.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
 .row
   .col-xs-12.col-sm-8
-    - if @family.id == 1
+    - if @recipient == 'charity'
       %h1 Donate to AdoptTogether
       %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible.
       %ul
@@ -18,9 +18,9 @@
       %h1 Donate to a Family
     = render 'form'
   %aside.col-xs-12.col-sm-4
-    - unless @family.id == 1
+    - if @recipient.nil?
       %h2 You are making a designated donation to AdoptTogether on behalf of
-      = render 'shared/family_thumb', family: @family
+      = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.  

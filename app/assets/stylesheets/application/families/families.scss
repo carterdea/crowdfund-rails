@@ -2,8 +2,9 @@
   h2 {
     margin-bottom: 2px;
   }
+
   p {
-    color: #888;
+    color: $color-medium-grey-1;
     font-size: 11px;
     margin-bottom: 14px;
   }
@@ -11,25 +12,28 @@
 
 .family {
   margin-bottom: 20px;
+
   h3 {
     margin: 4px 0 0;
+
     a {
       color: $color-medium-grey-2;
     }
   }
 
   .caption {
-    span {
+
+    .location {
+      color: $color-medium-grey-1;
       display: block;
-      &.location {
-        color: $color-medium-grey-1;
-        font-size: 14px;
-      }
-      &.raised {
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-      }
+      font-size: 14px;
+    }
+
+    .raised {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
     }
   }
 }
@@ -51,28 +55,40 @@
       margin: 0;
       text-transform: uppercase;
     }
+
     .agency h3 {
       margin-bottom: 0;
     }
   }
 
-  &.show{
-    .raised, .share-buttons {
+  &.show {
+
+    .raised,
+    .share-buttons {
       border-bottom: 1px solid darken($color-off-white, 7%);
       padding-bottom: 20px;
+
       span {
         display: block;
-        &.total-raised, &.share-count {
+
+        &.total-raised,
+        &.share-count {
           font-size: 36px;
           font-weight: 600;
           line-height: 1.2;
         }
-        &.goal, &.shares {
+
+        &.goal,
+        &.shares {
           color: $color-medium-grey-1;
           font-size: 16px;
           margin-bottom: 10px;
         }
       }
+    }
+
+    .description {
+      margin-bottom: 20px;
     }
   }
 
@@ -90,9 +106,7 @@
 // Small devices (tablets, 768px and up)
 @media (min-width: $screen-sm-min) {
   .family-list {
-    h2 {
 
-    }
     p {
       font-size: 14px;
     }
@@ -100,6 +114,7 @@
 
   .family-details {
     margin-top: 24px;
+
     h1 {
       margin: 10px 0 0;
     }
@@ -114,6 +129,7 @@
       font-size: 16px;
       margin: 10px 0 0;
     }
+
     p {
       font-size: 13px;
     }

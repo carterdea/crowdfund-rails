@@ -1,4 +1,6 @@
-%h4 Update #{update.id}
-%h3= update.title
-%span.date= update.date_created
-= simple_format(update.message)
+%li.update
+  %h4 Update #{update.sequential_id}
+  %h3= update.title
+  %span.date= update.date_created
+  .body
+    = simple_format(update.message)

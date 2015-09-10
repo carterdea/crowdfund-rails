@@ -1,12 +1,12 @@
-= form_for([@family, @donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
+= form_for([@recipient, @donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
   = render 'shared/errors', object: @donation
   %span.payment-errors
     %noscript
-      %p This form requires Javascript to use
+      %p FYI: This form requires Javascript to complete. If you don't have javascript enabled, you won't be able to donate :(
   .page-tabs.btn-group.btn-group-justified
-    = link_to 'Amount', '#page-amount', class: 'btn btn-default active', role: "tab", "data-toggle" => "tab"
-    = link_to 'Donation Info', '#page-donation-info', class: "btn btn-default", role: "tab", "data-toggle" => "tab"
-    = link_to 'Payment Info', '#page-payment-info', class: "btn btn-default", role: "tab", "data-toggle" => "tab"
+    = link_to 'Amount', '#page-amount', class: 'btn btn-default active', role: 'tab', 'data-toggle' => 'tab'
+    = link_to 'Donation Info', '#page-donation-info', class: 'btn btn-default', role: 'tab', 'data-toggle' => 'tab'
+    = link_to 'Payment Info', '#page-payment-info', class: 'btn btn-default', role: 'tab', 'data-toggle' => 'tab'
   .tab-content
     .amount.tab-pane.in.active#page-amount
       %fieldset
@@ -15,15 +15,15 @@
           / = link_to "#", class: "pull-right paypal" do
           /   Donate with
           /   %span PayPal
-        .form-group.donation-amount(data-toggle="buttons")
+        .form-group.donation-amount(data-toggle='buttons')
           - Donation::DONATION_AMOUNTS.each do |amount|
-            = f.label :amount, value: amount, class: "btn btn-default" do
+            = f.label :amount, value: amount, class: 'btn btn-default' do
               = f.radio_button :amount, amount
-              = "$" + amount.to_s
-          - # The empty quotes are to keep the label text empty
+              = '$' + amount.to_s
+          -# The empty quotes are to keep the label text empty
           = label_tag 'donation_amount_other', '' do
             = radio_button_tag 'donation[amount]', 'other', nil
-            = telephone_field_tag 'other_text', nil, placeholder: "Other amount", class: "form-control"
+            = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
             %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
       %fieldset
         %p.radio-label Give a small donation to AdoptTogether (totally optional!)
@@ -38,15 +38,15 @@
             = label_tag 'donation_at_tip_other', nil do
               = radio_button_tag 'donation[at_tip]', 'other', nil
               Other |
-              = telephone_field_tag 'tip_other_text', nil, placeholder: "$0", class: "form-control"
+              = telephone_field_tag 'tip_other_text', nil, placeholder: '$0', class: 'form-control'
         %p.small.help-block AdoptTogether is a non profit service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you who make these small donations.
         .checkbox
-          = f.label :hide_amount, class: "checkbox" do
+          = f.label :hide_amount, class: 'checkbox' do
             = f.check_box :hide_amount
             Make my donation amount private
         .row
           .col-xs-12.col-md-6
-            = link_to "Next", "#page-donation-info", "data-toggle" => "tab", class: "btn btn-primary btn-block"
+            = link_to 'Next', '#page-donation-info', 'data-toggle' => 'tab', class: 'btn btn-primary btn-block'
 
     .donation-info.tab-pane#page-donation-info
       %fieldset
@@ -55,22 +55,22 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :name
-              = f.text_field :name, class: "form-control", required: :true, 'data-parsley-trigger' => 'focusout change'
+              = f.text_field :name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
             .checkbox
-              = f.label :anonymous, class: "checkbox" do
+              = f.label :anonymous, class: 'checkbox' do
                 = f.check_box :anonymous
                 Make this donation anonymous
         .row
           .col-xs-12
             .form-group
-              = f.label :message, "Message to the Family"
-              = f.text_area :message, size: "60x6", class: "form-control"
+              = f.label :message, 'Message to the Family'
+              = f.text_area :message, size: '60x6', class: 'form-control'
               %p.small.help-block This message will be public.
         .row
           .col-xs-12.col-md-6
             .form-group
               = f.label :email
-              = f.email_field :email, class: "form-control", type: :email, required: :true, 'data-parsley-trigger' => 'focusout change'
+              = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout change'
               / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
           / .col-xs-12
           /   .checkbox
@@ -79,7 +79,7 @@
           /       Yes, I would like to join the thousands of others who receive monthly updates and inspiration stories.
         .row
           .col-xs-12.col-md-6
-            = link_to "Next", "#page-payment-info", "data-toggle" => "tab", class: "btn btn-primary btn-block"
+            = link_to 'Next', '#page-payment-info', 'data-toggle' => 'tab', class: 'btn btn-primary btn-block'
     .payment-info.tab-pane#page-payment-info
       %fieldset
         %legend Enter your payment information
@@ -87,21 +87,21 @@
           .col-xs-12.col-md-6
             .form-group
               = label_tag :card_number
-              = telephone_field_tag :card_number, params[:card_number], name: nil, class: "form-control js-cc-number cc-number", autocomplete: 'cc-number', type: 'tel', required: :true, minlength: 15, maxlength: 20, 'data-parsley-trigger' => 'focusout change'
+              = telephone_field_tag :card_number, params[:card_number], name: nil, class: 'form-control js-cc-number cc-number', autocomplete: 'cc-number', type: 'tel', required: :true, minlength: 15, maxlength: 20, 'data-parsley-trigger' => 'focusout change'
             .row
               .form-group.col-xs-6
                 = label_tag :expiration_date
-                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: "MM/YY", class: "form-control js-cc-expiry", type: 'tel', required: :true, maxlength: 7, 'data-parsley-trigger' => 'focusout change'
+                = telephone_field_tag :expiration_date, params[:card_expiration], name: nil, placeholder: 'MM/YY', class: 'form-control js-cc-expiry', type: 'tel', required: :true, maxlength: 7, 'data-parsley-trigger' => 'focusout change'
               .form-group.col-xs-6
                 = label_tag :security_code
-                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: "form-control js-cc-cvc", autocomplete: 'off', type: 'tel', required: :true, maxlength: 4, 'data-parsley-trigger' => 'focusout change'
+                = telephone_field_tag :security_code, params[:security_code],  name: nil, class: 'form-control js-cc-cvc', autocomplete: 'off', type: 'tel', required: :true, maxlength: 4, 'data-parsley-trigger' => 'focusout change'
                 %p.small.help-block What's this?
               = f.hidden_field :stripe_token
 
         .checkbox
-          = f.label :recurring, class: "checkbox" do
+          = f.label :recurring, class: 'checkbox' do
             = f.check_box :recurring
             Make this a monthly donation. Each month you will bring this family closer to their goal.
       .row
         .col-xs-12.col-md-6
-          = f.submit "Donate", class: "btn btn-primary btn-block donation", data: {disable_with: 'Donating...'}
+          = f.submit 'Donate', class: 'btn btn-primary btn-block donation', data: { disable_with: 'Donating...' }

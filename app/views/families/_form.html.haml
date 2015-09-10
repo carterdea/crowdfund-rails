@@ -1,4 +1,4 @@
-= form_for @family, html: { multipart: true, 'data-parsley-validate' => true }, id: 'donation-form' do |f|
+= form_for @family, html: { multipart: true, 'data-parsley-validate' => true } do |f|
   = render 'shared/errors', object: @family
   %fieldset
     %legend Family Information
@@ -47,10 +47,9 @@
           = f.text_area :description, size: '40x9', class: 'form-control', required: :true, maxlength: 2000, 'data-parsley-trigger' => 'focusout change'
           %p.help-block.small Keep this brief, simple and to the point. You can edit this at any time.
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
-        .form-group.dropzone
+        .form-group
           = f.label :photo
-          .fallback
-            = f.file_field(:photo, accept: 'image/png,image/gif,image/jpeg,image/jpg')
+          = f.file_field :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
         .form-group
           = f.label :status, 'Adoption Status'
           = f.select :status, options_for_select(Family::ADOPTION_STATUSES), {}, { class: 'form-control' }

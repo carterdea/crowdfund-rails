@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826011546) do
+ActiveRecord::Schema.define(version: 20150910082236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150826011546) do
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
 
   create_table "donations", force: :cascade do |t|
-    t.integer  "family_id"
     t.decimal  "amount",               precision: 15, scale: 2, default: 0.0
     t.boolean  "recurring"
     t.integer  "at_tip"
@@ -42,10 +41,12 @@ ActiveRecord::Schema.define(version: 20150826011546) do
     t.boolean  "anonymous"
     t.string   "stripe_id"
     t.string   "token"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
   end
 
   add_index "donations", ["family_email_updates"], name: "index_donations_on_family_email_updates", using: :btree
-  add_index "donations", ["family_id"], name: "index_donations_on_family_id", using: :btree
+  add_index "donations", ["recipient_type", "recipient_id"], name: "index_donations_on_recipient_type_and_recipient_id", using: :btree
 
   create_table "families", force: :cascade do |t|
     t.integer  "user_id"
@@ -96,8 +97,9 @@ ActiveRecord::Schema.define(version: 20150826011546) do
     t.text     "message"
     t.boolean  "on_profile"
     t.boolean  "email_donors"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "sequential_id"
   end
 
   add_index "updates", ["family_id"], name: "index_updates_on_family_id", using: :btree
@@ -120,7 +122,6 @@ ActiveRecord::Schema.define(version: 20150826011546) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
-  add_foreign_key "donations", "families"
   add_foreign_key "families", "users"
   add_foreign_key "grants", "families"
   add_foreign_key "updates", "families"

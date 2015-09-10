@@ -1,5 +1,6 @@
 class Update < ActiveRecord::Base
   belongs_to :family
+  acts_as_sequenced scope: :family_id
 
   default_scope { order('created_at DESC') }
 

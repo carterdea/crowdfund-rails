@@ -50,6 +50,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '~> 1.1.1'
 gem 'populator', '~> 1.0.0'
+gem 'sequenced'
+gem 'activemodel-associations'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'

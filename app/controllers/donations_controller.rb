@@ -6,17 +6,13 @@ class DonationsController < ApplicationController
   end
 
   def new
-    if params[:family_id].nil?
-      @family = Family.find(1)
-    else
-      @family = Family.find(params[:family_id])
-    end
+    get_recipient
     @donation = Donation.new
   end
 
   def create
-    @family = Family.find(params[:family_id])
-    @donation = @family.donations.build(donation_params)
+    @recipient = Family.find(params[:family_id])
+    @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
@@ -73,8 +69,12 @@ class DonationsController < ApplicationController
 
   private
 
-  def get_family
-    @family = Family.find(params[:family_id])
+  def get_recipient
+    if params[:family_id] == nil
+      @recipient = Charity.new
+    else
+      @recipient = Family.find(params[:family_id])
+    end
   end
 
   def get_session_ids

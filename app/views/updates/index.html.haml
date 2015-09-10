@@ -7,10 +7,6 @@
     %ul.list-unstyled.update-list
       - if @family.updates.any?
         - @family.updates.each do |update|
-          %li
-            %h4 Update #{update.id}
-            %h2= update.title
-            %span.date= update.date_created
-            = simple_format(update.message)
+          = render 'shared/update', update: update
       - else
         %p.help-block You haven't written any updates yet. Updates are a great way to communicate with your donors and update them on the status of your adoption.

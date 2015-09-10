@@ -75,10 +75,12 @@ label[for="donation_amount_other"] {
     line-height: 1;
     margin-bottom: 0;
   }
+
   .amount {
     color: $color-medium-grey-1;
     font-size: 13px;
   }
+
   blockquote {
     border-left: 0;
     color: $color-medium-grey-1;
@@ -89,8 +91,10 @@ label[for="donation_amount_other"] {
 }
 
 #new_donation {
+
   .radio label {
     width: 205px;
+
     .tip-amount {
       color: $color-medium-grey-1;
       float: right;
@@ -100,18 +104,18 @@ label[for="donation_amount_other"] {
 }
 
 .well {
+  @include box-shadow(inset 0 0 0 rgba(0, 0, 0, 0));
   background: $color-off-white;
   border: 1px solid $color-light-grey-1;
-  @include box-shadow(inset 0 0 0 rgba(0,0,0,0));
+  color: $color-medium-grey-1;
+  font-size: 14px;
+
   h3 {
     font-size: 18px;
     font-weight: 500;
-    margin: 0;
+    margin: 0 0 10px;
   }
-  p {
-    color: $color-medium-grey-1;
-    font-size: 14px;
-  }
+
   hr {
     border-color: $color-light-grey-1;
   }
@@ -126,6 +130,7 @@ label[for="donation_amount_other"] {
 @media (min-width: $screen-sm-min) {
   .page-tabs.btn-group {
     margin-bottom: 20px;
+
     .btn {
       font-size: 18px;
       padding: 12px 20px;

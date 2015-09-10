@@ -1,3 +1,4 @@
 web: bundle exec puma -e $RAILS_ENV -p $PORT -S ~/puma -C config/puma.rb
 postgres: postgres -D vendor/postgresql
 elasticsearch: elasticsearch -f
+es-import: bundle exec rake environment elasticsearch:import:model CLASS='Family' FORCE=true

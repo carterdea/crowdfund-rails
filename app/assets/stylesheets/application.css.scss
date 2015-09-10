@@ -1,17 +1,19 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "application/core/mixins";
-@import "application/core/variables";
-@import "application/core/typography";
-@import "application/core/global";
-@import "application/core/forms";
-@import "application/core/buttons";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'application/core/mixins';
+@import 'application/core/variables';
+@import 'application/core/typography';
+@import 'application/core/global';
+@import 'application/core/forms';
+@import 'application/core/buttons';
 
-@import "application/pages/home";
-@import "application/families/families";
-@import "application/donations/donations";
-@import "application/updates/updates";
-@import "application/grants/grants";
-@import "application/pages/pages";
-@import "application/admin/admin";
-@import "application/shared/shared";
+@import 'application/pages/home';
+@import 'application/families/families';
+@import 'application/donations/donations';
+@import 'application/updates/updates';
+@import 'application/grants/grants';
+@import 'application/pages/pages';
+@import 'application/admin/admin';
+@import 'application/shared/shared';
+
+@import '../../../vendor/assets/stylesheets/dropzone';
