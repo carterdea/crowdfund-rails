@@ -1,4 +1,6 @@
 class Admin::GrantsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @grants = Grant.all.page(params[:page]).per(30)
   end

@@ -6,6 +6,10 @@ FactoryGirl.define do
     password 'secret'
   end
 
+  factory :charity do
+    name 'AdoptTogether'
+  end
+
   factory :family do
     user
     first_name 'John'
@@ -24,7 +28,7 @@ FactoryGirl.define do
   end
 
   factory :donation do
-    family
+    association :recipient, factory: :family
     amount '1234'
     recurring 'false'
     at_tip '5'

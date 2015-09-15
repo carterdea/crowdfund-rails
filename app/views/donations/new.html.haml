@@ -6,19 +6,14 @@
 - meta_description "You can donate to #{@recipient.full_name}'s adoption on AdoptTogether, a crowdfunding platform for adopting families."
 .row
   .col-xs-12.col-sm-8
-    - if @recipient == 'charity'
-      %h1 Donate to AdoptTogether
-      %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible.
-      %ul
-        %li Website hosting costs, development, legal fees, etc
-        %li Slush fund for families who don't meet their goals
-        %li Staff salaries
-
-    - else
+    - if params[:family_id].present?
       %h1 Donate to a Family
+    - else
+      %h1 Donate to #{@recipient.full_name}
+      %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible. Website hosting costs, development, legal fees, etc. & a slush fund for families who don't meet their goals.
     = render 'form'
   %aside.col-xs-12.col-sm-4
-    - if @recipient.nil?
+    - if params[:family_id].present?
       %h2 You are making a designated donation to AdoptTogether on behalf of
       = render 'shared/family_thumb', family: @recipient
     %h2 FAQ

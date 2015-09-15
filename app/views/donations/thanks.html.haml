@@ -7,10 +7,7 @@
       .row
         .col-xs-8
           %h3= @donation.type
-          - if @family.id == 1
-            %p to AdoptTogether
-          - else
-            %p designated to #{@family.full_name}’s Adoption
+          %p designated to #{@recipient.full_name}’s Adoption
 
         .col-xs-4
           %span.pull-right= pretty_dollars(@donation.amount, 2)
@@ -28,19 +25,17 @@
       A receipt with this information has just been emailed to you.
       - if @donation.recurring
         You can cancel this monthly donation at any time
-        #{link_to "here", cancel_url(@family, @donation)}
+        #{link_to "here", cancel_url(@recipient, @donation)}
 
-    %h2 Help them reach their goal by sharing their fundraiser
-    .row
-      .col-xs-12.col-sm-4
-        %h2= share_count(family_url(@family))
-        %h3 Shares
-      .share-buttons.col-xs-12.col-sm-8
-        = render 'shared/share_buttons'
+    - if params[:family_id].present?
+      %h2 Help #{@recipient.full_name} reach their goal by sharing their fundraiser
+      .row
+        .col-xs-12.col-sm-4
+          %h3 Shares
+        .share-buttons.col-xs-12.col-sm-8
+          = render 'shared/share_buttons'
   %aside.col-xs-12.col-sm-4
-    - if @family.id == 1
-      %h2 You donated to AdoptTogether
-    - else
+    - if params[:family_id].present?
       %h2 You donated to
       = render 'shared/family_thumb', :family => @family
     %h2 FAQ
@@ -59,4 +54,4 @@
     %h3 Can I give a monthly contribution?
     %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
     %h3 Can I edit or cancel my monthly contribution?
-    %p You can view or edit your monthly contribution at any time #{link_to "here", cancel_url(@family, @donation)}. If you ever lose this URL or the email we sent, just contact us and we'll help you cancel.
+    %p You can view or edit your monthly contribution at any time #{link_to "here", cancel_url(@recipient, @donation)}. If you ever lose this URL or the email we sent, just contact us and we'll help you cancel.

@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe 'Editing a family profile' do
   it 'lets me update family profile if the family data is valid' do
-    visit new_family_path
+    user = create(:user)
+    family = user.create_family(attributes_for(:family))
+    login_user(user)
+    visit edit_family_path(family)
     fill_in 'First Name(s)', with: 'Jane'
     fill_in 'Last Name', with: 'Doess'
     fill_in 'Zip/Postal Code', with: '54321'
@@ -22,21 +25,21 @@ describe 'Editing a family profile' do
   end
 
   it "doesn't let me edit the family profile if the family data is invalid" do
-    family = create(:family)
+    user = create(:user)
+    family = user.create_family(attributes_for(:family))
+    login_user(user)
     visit edit_family_path(family)
-    fill_in 'First Name', with: ''
+    fill_in 'First Name(s)', with: ''
     fill_in 'Last Name', with: ''
     fill_in 'Zip/Postal Code', with: ''
     fill_in 'Estimated Adoption Cost', with: ''
     fill_in 'Message to your visitors', with: ''
-    select 'Paperwork Not Started', from: ''
     fill_in 'Adoption Agency', with: ''
     fill_in 'Adoption Agency URL', with: ''
     click_button('Save Changes to My Family Profile')
 
     expect(page).not_to have_text('example@gmail.com')
-    expect(page).not_to have_text('John Doe')
     expect(page).not_to have_text('Your family profile is now live!')
-    expect(page).to have_text('Login')
+    expect(page).to have_text('Oops! The family could not be saved.')
   end
 end

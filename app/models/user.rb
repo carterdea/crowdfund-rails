@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :email, presence: true, format: VALID_EMAIL_REGEX, uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }, if: 'crypted_password.nil?'
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
   def set_family_params_from_fb
     @user_hash.first_name = @family.first_name

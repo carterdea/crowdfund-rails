@@ -1,6 +1,6 @@
-# /app/models/charity.rb
-class Charity
-  # has_many :donations, as: :recipient
+# app/models/charity.rb
+class Charity < ActiveRecord::Base
+  has_many :donations, as: :recipient, dependent: :destroy
 
   def full_name
     'AdoptTogether'

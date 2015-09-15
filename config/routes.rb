@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :grants
     match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', via: :get
   end
-  # post 'approval_letter' => 'families#approval_letter'
 
   get 'dashboard' => 'pages#dashboard'
   get 'about' => 'pages#about'
@@ -21,6 +20,11 @@ Rails.application.routes.draw do
   get 'contact' => 'pages#contact'
 
   get 'donate' => 'donations#new'
+  resources :charity do
+    resources :donations
+    match 'donations/cancel/:token' => 'donations#cancel_monthly_donation', via: :get
+  end
+
   get 'thanks' => 'donations#thanks'
 
   namespace :admin do

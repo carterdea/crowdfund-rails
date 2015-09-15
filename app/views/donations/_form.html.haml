@@ -25,7 +25,6 @@
             = radio_button_tag 'donation[amount]', 'other', nil
             = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
             %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
-      %fieldset
         %p.radio-label Give a small donation to AdoptTogether (totally optional!)
         .radio-group
           - Donation::TIP_AMOUNTS.each do |key, value|

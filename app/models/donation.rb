@@ -2,6 +2,8 @@ class Donation < ActiveRecord::Base
   has_secure_token
   belongs_to :recipient, polymorphic: true
 
+  delegate :full_name, to: :recipient
+
   require 'stripe'
   require 'mandrill'
 
@@ -59,11 +61,11 @@ class Donation < ActiveRecord::Base
   end
 
   def stripe_charge_description
-    "#{name}'s donation to #{recipient.full_name}"
+    "#{name}'s donation to #{full_name}"
   end
 
   def stripe_customer_description
-    "#{name}'s (#{email}) monthly donation to #{recipient.full_name}"
+    "#{name}'s (#{email}) monthly donation to #{full_name}"
   end
 
   # Single Donations

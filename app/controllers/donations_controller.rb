@@ -1,4 +1,7 @@
+# app/controllers/donations_controller.rb
 class DonationsController < ApplicationController
+  before_action :get_recipient, except: [:delete, :destroy]
+
   def show
   end
 
@@ -11,7 +14,7 @@ class DonationsController < ApplicationController
   end
 
   def create
-    @recipient = Family.find(params[:family_id])
+    get_recipient
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
     if @donation.recurring == false
@@ -34,23 +37,21 @@ class DonationsController < ApplicationController
   end
 
   def thanks
-    @family = Family.find(session[:family_id])
     @donation = Donation.find(session[:donation_id])
   end
 
   def edit
-    @family = Family.find(params[:family_id])
-    @donation = @family.donations.find(params[:id])
+    @donation = @recipient.donations.find(params[:id])
   end
 
   def update
-    @family = Family.find(params[:family_id])
-    @donation = @family.donations.find(params[:id])
+    get_recipient
+    @donation = @recipient.donations.find(params[:id])
     if @donation.update(donation_params)
       if @donation.recurring == false
         @donation.delete_stripe_customer
       end
-      redirect_to @family, notice: 'Your donation has been updated.'
+      redirect_to root_url, notice: 'Your donation has been updated.'
     else
       render :edit
     end
@@ -63,28 +64,27 @@ class DonationsController < ApplicationController
   end
 
   def cancel_monthly_donation
-    @family = Family.find(params[:family_id])
-    @donation = @family.donations.find_by(token: params[:token])
+    @donation = Donation.find_by(token: params[:token])
+    @recipient = @donation.recipient
   end
 
   private
 
   def get_recipient
-    if params[:family_id] == nil
-      @recipient = Charity.new
-    else
+    if params[:family_id].present?
       @recipient = Family.find(params[:family_id])
+    else
+      @recipient = Charity.find(1)
     end
   end
 
   def get_session_ids
-    session[:family_id] = @family.id
     session[:donation_id] = @donation.id
   end
 
   def donation_params
     params.require(:donation).permit(
-      :family_id, :amount, :at_tip, :name, :anonymous, :message, :email, :at_newsletter, :family_email_updates, :hide_amount, :recurring, :stripe_token
+      :recipient_id, :recipient_type, :amount, :at_tip, :name, :anonymous, :message, :email, :at_newsletter, :family_email_updates, :hide_amount, :recurring, :stripe_token
     )
   end
 end

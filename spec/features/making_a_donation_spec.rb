@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'Making a donation to a family' do
+  before do
+    charity = create(:charity)
+  end
+
   it 'makes the donation if the family data & user data is valid', js: true do
     family = create(:family)
     visit family_path(family)
@@ -18,7 +22,7 @@ describe 'Making a donation to a family' do
     page.execute_script '$("#card_number").val("4242424242424242");'
     page.execute_script '$("#expiration_date").val("12/19");'
     page.execute_script '$("#security_code").val("123");'
-    click_button('Donate')
+    within('.new_donation') { click_button('Donate') }
 
     expect(page).not_to have_text('Donate to a Family')
     expect(page).to have_text('Thank you for your donation!')
@@ -42,7 +46,7 @@ describe 'Making a donation to a family' do
     page.execute_script '$("#card_number").val("4242424242424242");'
     page.execute_script '$("#expiration_date").val("12/19");'
     page.execute_script '$("#security_code").val("123");'
-    click_button('Donate')
+    within('.new_donation') { click_button('Donate') }
 
     expect(page).not_to have_text('Donate to a Family')
     expect(page).to have_text('Thank you for your donation!')
@@ -68,7 +72,7 @@ describe 'Making a donation to a family' do
     page.execute_script '$("#card_number").val("4242424242424242");'
     page.execute_script '$("#expiration_date").val("12/19");'
     page.execute_script '$("#security_code").val("123");'
-    click_button('Donate')
+    within('.new_donation') { click_button('Donate') }
 
     expect(page).not_to have_text('Donate to a Family')
     expect(page).to have_text('Thank you for your donation!')
@@ -95,7 +99,7 @@ describe 'Making a donation to a family' do
     page.execute_script '$("#expiration_date").val("12/19");'
     page.execute_script '$("#security_code").val("123");'
     check('Make this a monthly donation. Each month you will bring this family closer to their goal.')
-    click_button('Donate')
+    within('.new_donation') { click_button('Donate') }
 
     expect(page).not_to have_text('Donate to a Family')
     expect(page).to have_text('Thank you for your donation!')
