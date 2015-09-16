@@ -1,0 +1,8 @@
+.col-xs-12.col.col-sm-6.col-sm-offset-3
+  %h1 Reset Your Password
+  %p Enter your email and we'll send you a link to reset your password.
+  = form_tag password_resets_path, :method => :post do
+    .form-group
+      = label_tag :email
+      = text_field_tag :email, '', class: 'form-control'
+    = submit_tag 'Reset my password', class: 'btn btn-primary'

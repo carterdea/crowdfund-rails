@@ -18,7 +18,6 @@ gem 'nav_lynx', '~> 1.1.1'
 gem 'bower-rails', '~> 0.9.2'
 
 # charts
-gem 'chartkick', '~> 1.3.2'
 gem 'groupdate', '~> 2.4.0'
 
 # file handling

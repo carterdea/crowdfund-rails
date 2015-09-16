@@ -3,7 +3,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @families = Family.select(:id, :photo, :first_name, :last_name, :country).joins(:donations).select(:amount).page(params[:page]).per(30)
+    @families = Family.select(:id, :photo, :first_name, :last_name, :country).page(params[:page]).per(30)
   end
 
   def search

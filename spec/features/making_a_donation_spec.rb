@@ -104,7 +104,7 @@ describe 'Making a donation to a family' do
     expect(page).not_to have_text('Donate to a Family')
     expect(page).to have_text('Thank you for your donation!')
     expect(page).to have_text('Monthly Donation')
-    within('.small.help-block') { click_link('here') }
+    within('.small.help-block') { click_link('cancel your monthly contribution') }
     expect(page).to have_text('Cancel Monthly Donation')
     click_button('Cancel Monthly Donation')
     expect(page).to have_text('Your donation has been updated.')

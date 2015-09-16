@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+
+  get 'password_resets/edit'
+
+  get 'password_resets/update'
+
   root 'pages#home'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
-  resources :users, :sessions, :pages
+  resources :users, :sessions, :pages, :password_resets
   resources :families do
     get 'approval_letter' => 'families#approval_letter'
     post 'approval_letter' => 'families#approval_letter'

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150915052448) do
   create_table "donations", force: :cascade do |t|
     t.decimal  "amount",               precision: 15, scale: 2, default: 0.0
     t.boolean  "recurring"
-    t.integer  "at_tip"
+    t.integer  "at_tip",                                        default: 0.0
     t.string   "family_email_updates",                          default: "t"
     t.text     "message"
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150915052448) do
     t.string   "recipient_type"
   end
 
+  add_index "donations", ["amount"], name: "index_donations_on_amount", using: :btree
   add_index "donations", ["family_email_updates"], name: "index_donations_on_family_email_updates", using: :btree
   add_index "donations", ["recipient_type", "recipient_id"], name: "index_donations_on_recipient_type_and_recipient_id", using: :btree
 

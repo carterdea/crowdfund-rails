@@ -25,19 +25,21 @@
             = radio_button_tag 'donation[amount]', 'other', nil
             = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
             %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
-        %p.radio-label Give a small donation to AdoptTogether (totally optional!)
-        .radio-group
-          - Donation::TIP_AMOUNTS.each do |key, value|
+        -# Tips for AT when you're already donating to AT is redundant
+        - if @donation.recipient_type != 'Charity'
+          %p.radio-label Give a small donation to AdoptTogether (totally optional!)
+          .radio-group
+            - Donation::TIP_AMOUNTS.each do |key, value|
+              .radio
+                = f.label :at_tip, value: key do
+                  = f.radio_button :at_tip, key
+                  #{value}
+                  %span.tip-amount
             .radio
-              = f.label :at_tip, value: key do
-                = f.radio_button :at_tip, key
-                #{value}
-                %span.tip-amount
-          .radio
-            = label_tag 'donation_at_tip_other', nil do
-              = radio_button_tag 'donation[at_tip]', 'other', nil
-              Other |
-              = telephone_field_tag 'tip_other_text', nil, placeholder: '$0', class: 'form-control'
+              = label_tag 'donation_at_tip_other', nil do
+                = radio_button_tag 'donation[at_tip]', 'other', nil
+                Other |
+                = telephone_field_tag 'tip_other_text', nil, placeholder: '$0', class: 'form-control'
         %p.small.help-block AdoptTogether is a non profit service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you who make these small donations.
         .checkbox
           = f.label :hide_amount, class: 'checkbox' do

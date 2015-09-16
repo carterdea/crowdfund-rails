@@ -9,7 +9,7 @@
           .well
             %h2 Fundraising Progress
             %span #{pretty_dollars(@family.total_raised)} Net Designated Gifts
-            = area_chart @family.donations.group_by_day(:created_at).count(:amount)
+
       .row
         .updates.col-xs-12.col-md-6
           .well

@@ -5,7 +5,7 @@
   %h1 Search Results for "#{params[:q]}"
   %h2= pluralize(@families.count, "Adopting families")
 .row
-  -@families.each do |family|
+  - @families.each do |family|
     .col-xs-6.col-md-4
       = render 'shared/family_thumb', family: family
 = paginate @families

@@ -12,7 +12,7 @@ class Donation < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, format: VALID_EMAIL_REGEX
   validates :amount, numericality: { greater_than_or_equal_to: 1, message: 'Must be at least $1.' }
-  validates :at_tip, numericality: true
+  validates :at_tip, numericality: true, allow_nil: true
 
   attr_accessor :stripe_token, :stripe_customer_id
 
@@ -54,7 +54,7 @@ class Donation < ActiveRecord::Base
 
   def type
     if recurring == false
-      'Donation'
+      'One-Time Donation'
     else
       'Monthly Donation'
     end

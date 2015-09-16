@@ -10,7 +10,7 @@ class DonationsController < ApplicationController
 
   def new
     get_recipient
-    @donation = Donation.new
+    @donation = @recipient.donations.new
   end
 
   def create
@@ -64,7 +64,8 @@ class DonationsController < ApplicationController
   end
 
   def cancel_monthly_donation
-    @donation = Donation.find_by(token: params[:token])
+    @donation = Donation
+    .find_by(token: params[:token])
     @recipient = @donation.recipient
   end
 

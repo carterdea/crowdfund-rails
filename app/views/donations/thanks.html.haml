@@ -7,26 +7,30 @@
       .row
         .col-xs-8
           %h3= @donation.type
-          %p designated to #{@recipient.full_name}’s Adoption
+          - if params[:family_id].present?
+            %p designated to #{@recipient.full_name}’s Adoption
+          - else
+            %p to AdoptTogether
 
         .col-xs-4
           %span.pull-right= pretty_dollars(@donation.amount, 2)
-        .col-xs-8
-          %p Tip for AdoptTogether
-        .col-xs-4
-          %span.pull-right= pretty_dollars(@donation.tip_total, 2)
+        - if @donation.recipient_type != 'Charity'
+          .col-xs-8
+            %p Tip for AdoptTogether
+          .col-xs-4
+            %span.pull-right= pretty_dollars(@donation.tip_total, 2)
       %hr
       .row
         .col-xs-8
           %p Total
         .col-xs-4
-          %span.pull-right #{pretty_dollars(@donation.total_amount_in_dollars, 2)}
+          %span.pull-right= pretty_dollars(@donation.total_amount_in_dollars, 2)
     .small.help-block
       A receipt with this information has just been emailed to you.
       - if @donation.recurring
-        You can cancel this monthly donation at any time
-        #{link_to "here", cancel_url(@recipient, @donation)}
-
+        You can 
+        #{link_to 'cancel your monthly contribution', cancel_url(@recipient, @donation)}
+        at any time.
     - if params[:family_id].present?
       %h2 Help #{@recipient.full_name} reach their goal by sharing their fundraiser
       .row
@@ -37,7 +41,7 @@
   %aside.col-xs-12.col-sm-4
     - if params[:family_id].present?
       %h2 You donated to
-      = render 'shared/family_thumb', :family => @family
+      = render 'shared/family_thumb', family: @family
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
@@ -54,4 +58,4 @@
     %h3 Can I give a monthly contribution?
     %p Yes, on the last step we’ll ask if you want to make this a monthly contribution.
     %h3 Can I edit or cancel my monthly contribution?
-    %p You can view or edit your monthly contribution at any time #{link_to "here", cancel_url(@recipient, @donation)}. If you ever lose this URL or the email we sent, just contact us and we'll help you cancel.
+    %p You can cancel your monthly contribution at any time. We'll send you a unique URL to cancel in your receipt email. If you ever lose this URL or the email we sent, just contact us and we'll help you cancel.
