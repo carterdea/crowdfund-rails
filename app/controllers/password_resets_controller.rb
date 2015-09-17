@@ -1,4 +1,8 @@
 class PasswordResetsController < ApplicationController
+  def index
+    render :new
+  end
+
   def new
   end
 
@@ -8,7 +12,8 @@ class PasswordResetsController < ApplicationController
       @user.deliver_reset_password_instructions!
       redirect_to root_path, notice: 'A link to reset your password has been sent to your email.'
     else
-      render :new, alert: 'Sorry, we cant find an account with that email. Try another email or sign up.'
+      flash.now.alert = 'Sorry, we cant find an account with that email. Try another email or sign up.'
+      render :new
     end
   end
 
@@ -22,7 +27,8 @@ class PasswordResetsController < ApplicationController
     do_not_authenticate_blank_user
     params[:user][:password_confirmation] = params[:user][:password]
     if @user.change_password!(params[:user][:password])
-      redirect_to root_path, notice: 'Password was successfully updated.'
+      auto_login(@user)
+      redirect_to dashboard_path, notice: 'Password was successfully updated.'
     else
       render :edit
     end

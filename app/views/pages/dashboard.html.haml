@@ -7,9 +7,11 @@
       .row
         .chart.col-xs-12
           .well
-            %h2 Fundraising Progress
-            %span #{pretty_dollars(@family.total_raised)} Net Designated Gifts
-
+            .clearfix
+              %h2.pull-left Fundraising Progress
+              %span.pull-right #{pretty_dollars(@family.total_raised)} Net Designated Gifts
+            / #area-chart(data="#{@family.donations_chart_data}")
+            = content_tag :div, '', id: 'area-chart', data: { amount_raised: @family.donations_chart_data }
       .row
         .updates.col-xs-12.col-md-6
           .well

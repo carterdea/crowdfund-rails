@@ -1,3 +1,10 @@
+.home {
+  .flash {
+    position: absolute;
+    width: inherit;
+    z-index: 10;
+  }
+}
 .jumbotron {
   background: image-url("hero.jpg") center center;
   background-size: cover;

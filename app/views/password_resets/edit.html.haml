@@ -1,13 +1,13 @@
 .col-xs-12.col.col-sm-6.col-sm-offset-3
   %h1 Choose a new password
-  = form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f| %>
-    - if @user.errors.any? %>
+  = form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f|
+    - if @user.errors.any?
       = render 'shared/errors', object: @user
-    %p Change your password here.
+    %p Please choose a new password.
     .form-group
-      = f.label :password
+      = f.label :password, 'New Password'
       = f.password_field :password, class: 'form-control'
     .form-group
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-    = f.submit
+      = f.label :password_confirmation, 'New Password Again'
+      = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit 'Change Password', class: 'btn btn-primary'

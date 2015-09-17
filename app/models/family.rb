@@ -73,6 +73,25 @@ class Family < ActiveRecord::Base
       'a child'
     end
   end
+
+  def donations_chart_data(start = 1.weeks.ago)
+    total_amount_donated = amount_raised_by_day(start)
+    (start.to_date..Date.today).map do |date|
+      {
+        date: date,
+        amount: total_amount_donated[date] || 0,
+      }
+    end
+  end
+
+  def amount_raised_by_day(start)
+    donations = self.donations.where(created_at: start.beginning_of_day..Time.zone.now)
+    donations = donations.group("date(created_at)")
+    donations = donations.select("date(created_at), sum(amount) as total_amount")
+    donations.each_with_object({}) do |donation, amount|
+      amount[donation.created_at.to_date] = donation.total_amount
+    end
+  end
 end
 
 Family.__elasticsearch__.create_index! force: true
