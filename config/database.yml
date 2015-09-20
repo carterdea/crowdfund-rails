@@ -20,3 +20,5 @@ test:
 production:
   <<: *default
   database: at-prod
+  connect_timeout: 1
+  checkout_timeout: 1

@@ -15,6 +15,9 @@ class Family < ActiveRecord::Base
   scope :approved, -> { where(approved: true).order('created_at DESC') }
   scope :unapproved, -> { where approved: false }
 
+  scope :visible, -> { where(visible: true).order('created_at DESC') }
+  scope :hidden, -> { where(visible: false) }
+
   before_validation :generate_slug
 
   EXCLUDED_SLUGS = %w(

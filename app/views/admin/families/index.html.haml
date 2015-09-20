@@ -4,7 +4,7 @@
       %span.small.show
         = link_to "Admin", admin_path
         \ /
-      All #{pluralize(Family.count, "Family")}
+      All #{pluralize(@families.total_count, "Family")}
   .col-xs-12.col-sm-6
     = form_tag search_admin_families_path, method: 'get', class: 'pull-right ' do
       .form-group
@@ -18,6 +18,7 @@
       %td Updates
       %td Grants
       %td Signed Up
+      %td Updated At
       %td Status
   %tbody
     - @families.each do |family|
@@ -28,19 +29,14 @@
               = image_thumb(family, "")
             .media-body
               %h3.media-heading= link_to family.full_name, family
-              / %p= family.user.email
+              %p= family.user.email
         %td= link_to family.donations.size, admin_family_donations_path(family)
         %td= link_to pretty_dollars(family.total_raised), admin_family_donations_path(family)
-        %td= link_to family.updates.count, family
-        %td= link_to("#{family.grants.count} (#{family.grants.count} total)", admin_family_grants_path(family))
+        %td= link_to family.updates.size, family
+        %td= link_to family.grants.size, admin_family_grants_path(family)
+        %td #{time_ago_in_words(family.updated_at)} ago
         %td #{time_ago_in_words(family.created_at)} ago
         %td
-          - if family.approved?
-            👍
-          - else
-            👎
-          = form_for family do |t|
-            = t.hidden_field :approved
-            = t.submit "Approve"
-
+          = link_to family.approved? ? '👍' : '👎', toggle_approval_admin_family_path(family)
+          = link_to family.visible? ? '👀' : '🙈', toggle_visibility_admin_family_path(family)
 = paginate(@families)

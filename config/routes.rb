@@ -37,9 +37,8 @@ Rails.application.routes.draw do
       resources :donations
       resources :updates
       resources :grants
-      member do
-        put :toggle_approval
-      end
+      get 'toggle_approval', on: :member
+      get 'toggle_visibility', on: :member
     end
   end
 

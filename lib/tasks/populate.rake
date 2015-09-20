@@ -32,6 +32,9 @@ namespace :db do
         family.agency_site = FFaker::Internet.http_url
         family.approved = true
         family.slug = 'the-' + family.last_name.parameterize
+        family.donations_count = 0
+        family.updates_count = 0
+        family.grants_count = 0
         Donation.populate 0..35 do |donation|
           donation.recipient_type = 'Family'
           donation.recipient_id = family.id

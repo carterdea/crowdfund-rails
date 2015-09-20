@@ -19,6 +19,15 @@ module ApplicationHelper
     end
   end
 
+  def robots_meta_tag
+    # Right now we have to hide all pages from Google, but when we launch, just hide the ones that are hidden
+
+    # if @family && @family.visible == false
+    #   tag('meta', name: 'robots', content: 'noindex')
+    # end
+    tag('meta', name: 'robots', content: 'noindex')
+  end
+
   def image_thumb(subject, classes)
     image_tag(subject.photo.thumb.url, class: classes)
   end
