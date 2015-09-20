@@ -10,22 +10,36 @@
         .form-group
           = f.label :last_name, 'Last Name'
           = f.text_field :last_name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
+        - if @family.persisted?
+          .form-group
+            = f.label :address
+            = f.text_field :address, class: 'form-control'
+          .form-group
+            = f.label :city
+            = f.text_field :city, class: 'form-control'
+          .form-group
+            = f.label :state
+            = f.select :state, options_for_select(us_states), {}, class: 'form-control'
         .form-group
-          = f.label :postal_code do
-            Zip/Postal Code
-            %span.optional
+          = f.label :postal_code, 'Zip/Postal Code'
           = f.text_field :postal_code, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
-        - if current_user == nil
-          %fieldset
-            %legend Login Information
-            = fields_for :user do |ff|
-              .form-group
-                = ff.label :email
-                = ff.email_field :email, class: 'form-control', type: :email, 'data-parsley-trigger' => 'focusout change', required: :true
-              .form-group
-                = ff.label :password
-                = ff.password_field :password, class: 'form-control', required: :true, minlength: 6, 'data-parsley-trigger' => 'focusout change'
-                %p.help-block.small Must be at least 6 characters. You'll use this email & password to log back in.
+        - if @family.persisted?
+          .form-group
+            = f.label :phone
+            = f.text_field :phone, class: 'form-control'
+  - if current_user == nil
+    %fieldset
+      .row
+        .col-xs-12.col-sm-8.col-md-8.col-lg-6
+          %legend Login Information
+          = fields_for :user do |ff|
+            .form-group
+              = ff.label :email
+              = ff.email_field :email, class: 'form-control', type: :email, 'data-parsley-trigger' => 'focusout change', required: :true
+            .form-group
+              = ff.label :password
+              = ff.password_field :password, class: 'form-control', required: :true, minlength: 6, 'data-parsley-trigger' => 'focusout change'
+              %p.help-block.small Must be at least 6 characters. You'll use this email & password to log back in.
   %fieldset
     %legend Adoption Information
     .row
@@ -61,4 +75,16 @@
           .input-group
             %span.input-group-addon http://
             = f.text_field :agency_site, class: 'form-control', required: :true, type: :url, 'data-parsley-trigger' => 'focusout change'
-        = f.submit class: 'btn btn-primary btn-block', data: { disable_with: 'Creating Your Family Profile...' }
+  - if @family.persisted?
+    %fieldset
+      %legend Profile Information
+      .row
+        .col-xs-12.col-sm-8.col-md-8.col-lg-6
+          .form-group
+            = f.label :slug, 'AdoptTogether URL'
+            .input-group
+              %span.input-group-addon http://adopttogehther.org/
+              = f.text_field :slug, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
+  .row
+    .col-xs-12.col-sm-8.col-md-8.col-lg-6
+      = f.submit class: 'btn btn-primary btn-block', data: { disable_with: 'Creating Your Family Profile...' }

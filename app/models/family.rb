@@ -6,7 +6,6 @@ class Family < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  # has_many :donations, as: :recipient
   belongs_to :user, dependent: :destroy
   mount_uploader :photo, ImageUploader
   has_many :donations, as: :recipient, dependent: :destroy
@@ -16,12 +15,30 @@ class Family < ActiveRecord::Base
   scope :approved, -> { where(approved: true).order('created_at DESC') }
   scope :unapproved, -> { where approved: false }
 
+  before_validation :generate_slug
+
+  EXCLUDED_SLUGS = %w(
+    register
+    signup
+    login
+    signin
+    about
+    reset_password
+    resetpassword
+    passwordreset
+    adopttogether
+    adopt_together
+    adoption
+    cancel
+  )
+
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
   validates :photo, presence: true, file_size: { maximum: 2.megabytes.to_i }
   validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than 2,000 characters.'
   validates :cost, numericality: { less_than: 1_000_000 }
   validates :country, presence: true, length: { is: 2 }
   validates :quantity, numericality: { greater_than: 0 }
+  validates :slug, uniqueness: true, presence: true, exclusion: { in: EXCLUDED_SLUGS }
   validates_associated :user
 
   ADOPTION_STATUSES = [
@@ -33,6 +50,10 @@ class Family < ActiveRecord::Base
     'Matched',
     'Completed'
   ]
+
+  def to_param
+    slug
+  end
 
   def full_name
     "#{first_name} #{last_name}"
@@ -74,23 +95,22 @@ class Family < ActiveRecord::Base
     end
   end
 
+  def total_amount_donated_until(date)
+    donations.where("date(created_at) <= ?", date).sum(:amount)
+  end
+
   def donations_chart_data(start = 1.weeks.ago)
-    total_amount_donated = amount_raised_by_day(start)
     (start.to_date..Date.today).map do |date|
       {
-        date: date,
-        amount: total_amount_donated[date] || 0,
+        date: date.to_s,
+        amount: total_amount_donated_until(date)
       }
     end
   end
+  private
 
-  def amount_raised_by_day(start)
-    donations = self.donations.where(created_at: start.beginning_of_day..Time.zone.now)
-    donations = donations.group("date(created_at)")
-    donations = donations.select("date(created_at), sum(amount) as total_amount")
-    donations.each_with_object({}) do |donation, amount|
-      amount[donation.created_at.to_date] = donation.total_amount
-    end
+  def generate_slug
+    self.slug ||= "the-#{last_name.pluralize.parameterize}"
   end
 end
 

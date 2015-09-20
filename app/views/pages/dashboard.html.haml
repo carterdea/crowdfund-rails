@@ -11,7 +11,10 @@
               %h2.pull-left Fundraising Progress
               %span.pull-right #{pretty_dollars(@family.total_raised)} Net Designated Gifts
             / #area-chart(data="#{@family.donations_chart_data}")
-            = content_tag :div, '', id: 'area-chart', data: { amount_raised: @family.donations_chart_data(@family.created_at), cost: @family.cost }
+            - if @family.donations.any?
+              = content_tag :div, '', id: 'area-chart', data: { amount_raised: @family.donations_chart_data(@family.created_at), cost: @family.cost }
+            - else
+              %p.small.help-block.blank-slate-chart You haven't received any donations yet. Share your profile with your friends and family to start getting donations.
       .row
         .updates.col-xs-12.col-md-6
           .well

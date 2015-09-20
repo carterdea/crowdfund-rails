@@ -31,6 +31,7 @@ namespace :db do
         family.agency_name = FFaker::Company.name
         family.agency_site = FFaker::Internet.http_url
         family.approved = true
+        family.slug = 'the-' + family.last_name.parameterize
         Donation.populate 0..35 do |donation|
           donation.recipient_type = 'Family'
           donation.recipient_id = family.id

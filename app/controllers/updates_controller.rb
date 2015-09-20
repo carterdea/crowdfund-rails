@@ -48,6 +48,6 @@ private
   end
 
   def set_family
-    @family = Family.find(params[:family_id])
+    @family = Family.find_by_slug!(params[:family_id])
   end
 end

@@ -1,6 +1,7 @@
 class FamiliesController < ApplicationController
+  before_filter :set_family, only: [:edit, :show, :update, :approval_letter]
   load_and_authorize_resource
-  before_action :require_login, only: [:edit, :update, :destroy]
+  before_action :require_login, only: [:edit, :update, :destroy, :approval_letter]
 
   def index
     @families = Family.select(:id, :photo, :first_name, :last_name, :country).page(params[:page]).per(30)
@@ -16,7 +17,6 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find(params[:id])
     @donations = @family.donations.order('id DESC').page(params[:page]).per(10)
     @updates = @family.updates.page(params[:page]).per(5)
   end
@@ -53,15 +53,12 @@ class FamiliesController < ApplicationController
   end
 
   def edit
-    @family = Family.find(params[:id])
   end
 
   def approval_letter
-    @family = Family.find(params[:family_id])
   end
 
   def update
-    @family = Family.find(params[:id])
     if @family.update(family_params)
       redirect_to @family, notice: 'Your family profile has been updated.'
     else
@@ -76,7 +73,11 @@ class FamiliesController < ApplicationController
 
   private
 
+  def set_family
+    @family = Family.find_by_slug!(params[:id])
+  end
+
   def family_params
-    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo, :approval_letter_file)
+    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo, :approval_letter_file, :slug)
   end
 end

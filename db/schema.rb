@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915052448) do
+ActiveRecord::Schema.define(version: 20150920062522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150915052448) do
   create_table "donations", force: :cascade do |t|
     t.decimal  "amount",               precision: 15, scale: 2, default: 0.0
     t.boolean  "recurring"
-    t.integer  "at_tip",                                        default: 0.0
+    t.integer  "at_tip",                                        default: 0
     t.string   "family_email_updates",                          default: "t"
     t.text     "message"
     t.string   "name"
@@ -76,8 +76,11 @@ ActiveRecord::Schema.define(version: 20150915052448) do
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
     t.string   "approval_letter_file"
+    t.string   "slug"
+    t.string   "address"
   end
 
+  add_index "families", ["slug"], name: "index_families_on_slug", using: :btree
   add_index "families", ["user_id"], name: "index_families_on_user_id", using: :btree
 
   create_table "grants", force: :cascade do |t|
