@@ -25,6 +25,9 @@ FactoryGirl.define do
     agency_name 'The Cradle'
     agency_site 'http://www.cradle.org'
     approved true
+    donations_count 0
+    updates_count 0
+    grants_count 0
   end
 
   factory :donation do

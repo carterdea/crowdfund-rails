@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 20150920104800) do
     t.string   "slug"
     t.string   "address"
     t.boolean  "visible",                                       default: true
-    t.integer  "donations_count",                               default: 0,    null: false
-    t.integer  "updates_count",                                 default: 0,    null: false
-    t.integer  "grants_count",                                  default: 0,    null: false
+    t.integer  "donations_count",                               default: 0
+    t.integer  "updates_count",                                 default: 0
+    t.integer  "grants_count",                                  default: 0
   end
 
   add_index "families", ["slug"], name: "index_families_on_slug", using: :btree
