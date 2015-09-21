@@ -1,21 +1,25 @@
 language: ruby
 rvm:
-- 2.2.3
+  - 2.2.3
 addons:
   code_climate:
     repo_token: 1daf3ed2df2eb3622a2ef124110b3d889a1794f6b3f9990e6d4bc5b7cfbc799d
 services:
-- elasticsearch
+  - elasticsearch
 before_script:
-- cp config/database.yml.travis config/database.yml
-- psql -c 'create database travis_ci_test;' -U postgres
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- sleep 10
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - sh -c 'if [ -n "$QMAKE" ]; then sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa && sudo apt-get update && sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev; fi'
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 10
 gemfile:
-- Gemfile
+  - Gemfile
 install:
-- bundle install
+  - bundle install
+script:
+  - xvfb-run bundle exec rspec
+
 deploy:
   provider: heroku
   api_key:
