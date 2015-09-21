@@ -6,6 +6,7 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /vendor/postgresql
+/public/assets
 /public/system
 /public/uploads
 /coverage/
@@ -21,19 +22,23 @@ config/secrets.yml
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
-# these should all be checked in to normalise the environment:
 
+# these should all be checked in to normalise the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
+# if using bower-rails ignore default bower_components path bower.json files
 /bower_components/*
+/vendor/assets/bower_components
+*.bowerrc
 
 # Ignore pow environment settings
 /log/*
 .powenv
 /tmp
+
 # Ignore application configuration
 /config/application.yml
 
