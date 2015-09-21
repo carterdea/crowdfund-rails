@@ -24,7 +24,7 @@
           - if donation.anonymous?
             %span.small (Anonymous)
         %td= donation.email
-        %td= link_to donation.family.full_name, donation.family
+        %td= link_to donation.recipient.full_name, donation.recipient
         %td
           = pretty_dollars(donation.amount)
           - if donation.hide_amount?

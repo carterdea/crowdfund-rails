@@ -16,24 +16,8 @@
               %p.small.help-block.blank-slate-chart You haven't received any donations yet. Share your profile with your friends and family to start getting donations.
       .row
         .updates.col-xs-12.col-md-6
-          .well
-            %h3 Latest Updates
-            %ul.list-unstyled.update-list
-              - if @family.updates.any?
-                - @family.updates.limit(5).each do |update|
-                  = render 'shared/update', :update => update
-              - else
-                %p.small.help-block You haven't written any updates yet.
-            = link_to "See all updates", family_updates_path(@family)
+          = render 'latest_updates', family: @family
         .donations.col-xs-12.col-md-6
-          .well
-            %h3 Latest Donations
-            %ul.list-unstyled
-              - if @family.donations.any?
-                - @family.donations.limit(5).each do |donation|
-                  = render 'shared/donation', :donation => donation
-              - else
-                %p.small.help-block You haven't received any donations yet.
-            = link_to "See all donations", @family
+          = render 'latest_donations', family: @family
     - else
       %p Create a family profile and we'll show you your progress here.

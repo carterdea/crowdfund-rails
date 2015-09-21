@@ -6,7 +6,7 @@
         \ /
       All #{pluralize(@families.total_count, "Family")}
   .col-xs-12.col-sm-6
-    = form_tag search_admin_families_path, method: 'get', class: 'pull-right ' do
+    = form_tag search_admin_families_path, method: 'get', class: 'pull-right ', style: 'margin-top: 20px;' do
       .form-group
         = text_field_tag :q, params[:q], placeholder: 'Search Families', size: 20, class: 'form-control'
 %table.table.table-hover
@@ -26,7 +26,8 @@
         %td
           .media
             .media-left
-              = image_thumb(family, "")
+              = link_to family do
+                = image_thumb(family, "family.full_name")
             .media-body
               %h3.media-heading= link_to family.full_name, family
               %p= family.user.email
@@ -34,9 +35,10 @@
         %td= link_to pretty_dollars(family.total_raised), admin_family_donations_path(family)
         %td= link_to family.updates.size, family
         %td= link_to family.grants.size, admin_family_grants_path(family)
-        %td #{time_ago_in_words(family.updated_at)} ago
-        %td #{time_ago_in_words(family.created_at)} ago
+        %td.small #{time_ago_in_words(family.updated_at)} ago
+        %td.small #{time_ago_in_words(family.created_at)} ago
         %td
           = link_to family.approved? ? '👍' : '👎', toggle_approval_admin_family_path(family)
           = link_to family.visible? ? '👀' : '🙈', toggle_visibility_admin_family_path(family)
+          = link_to '📝', edit_family_path(family), title: 'Edit Family'
 = paginate(@families)

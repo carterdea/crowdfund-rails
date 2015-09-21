@@ -1,8 +1,9 @@
 class FamiliesController < ApplicationController
-  before_filter :set_family, only: [:edit, :show, :update, :approval_letter]
+  before_action :set_family, only: [:edit, :show, :update, :approval_letter]
 
   load_and_authorize_resource
   before_action :require_login, only: [:edit, :update, :destroy, :approval_letter]
+
 
   def index
     @families = Family.approved.visible.select(:id, :photo, :first_name, :last_name, :country, :slug).page(params[:page]).per(30)
@@ -75,7 +76,11 @@ class FamiliesController < ApplicationController
   private
 
   def set_family
-    @family = Family.find_by_slug!(params[:id])
+    if params[:id]
+      @family = Family.find_by_slug!(params[:id])
+    elsif params[:family_id]
+      @family = Family.find_by_slug!(params[:family_id])
+    end
   end
 
   def family_params

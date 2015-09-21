@@ -1,7 +1,7 @@
 .row
   .col-xs-12.col-sm-8
     .family-details
-      = image_tag(@family.photo.large.url, class: 'img-responsive')
+      = image_tag(@family.photo.large.url, alt: "#{@family.full_name} is raising money on AdoptTogether for their adoption from #{@family.country_name}.", class: 'img-responsive')
       %h1.title= @family.full_name
       %h2.subtitle #{@family.pluralize_is} adopting #{@family.number_of_children} from #{@family.country_name}
       .description= simple_format(@family.description)

@@ -44,7 +44,7 @@ class UpdatesController < ApplicationController
 
 private
   def update_params
-    params.require(:update).permit(:title, :message, :on_profile, :email_donors)
+    params.require(:update).permit(:title, :message, :video_url, :photo, :on_profile, :email_donors)
   end
 
   def set_family

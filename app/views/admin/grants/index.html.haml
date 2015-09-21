@@ -1,6 +1,9 @@
 %h1
   %span.small.show
-    = link_to "Admin", admin_path
+    - if @family
+      = link_to @family.full_name, :back
+    - else
+      = link_to 'Admin', admin_path
     \ /
   All #{pluralize(Grant.count, "Grant")}
 %table.table.table-hover

@@ -3,6 +3,7 @@ class Admin::GrantsController < ApplicationController
 
   def index
     @grants = Grant.all.page(params[:page]).per(30)
+    @family = Family.find_by_slug!(params[:family_id]) if params[:family_id]
   end
 
   def edit

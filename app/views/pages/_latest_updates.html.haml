@@ -1,0 +1,9 @@
+.well
+  %h3 Latest Updates
+  %ul.list-unstyled.update-list
+    - if family.updates.any?
+      - family.updates.limit(5).each do |update|
+        = render 'shared/update', :update => update
+    - else
+      %p.small.help-block You haven't written any updates yet.
+  = link_to "See all updates", family_updates_path(family)
