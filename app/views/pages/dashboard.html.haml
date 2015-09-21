@@ -10,7 +10,6 @@
             .clearfix
               %h2.pull-left Fundraising Progress
               %span.pull-right #{pretty_dollars(@family.total_raised)} Net Designated Gifts
-            / #area-chart(data="#{@family.donations_chart_data}")
             - if @family.donations.any?
               = content_tag :div, '', id: 'area-chart', data: { amount_raised: @family.donations_chart_data(@family.created_at), cost: @family.cost }
             - else

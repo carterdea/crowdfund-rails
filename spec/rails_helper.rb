@@ -6,6 +6,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 require 'database_cleaner'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -46,6 +47,8 @@ RSpec.configure do |config|
     config.block_url('example.com')
     config.ignore_ssl_errors
   end
+
+  Capybara::Screenshot.prune_strategy = :keep_last_run
 
   config.use_transactional_fixtures = false
 

@@ -103,13 +103,14 @@ class Family < ActiveRecord::Base
   end
 
   def donations_chart_data(start = 1.weeks.ago)
-    (start.to_date..Date.today).map do |date|
+    (start.to_date.prev_day..Date.tomorrow).map do |date|
       {
         date: date.to_s,
         amount: total_amount_donated_until(date)
       }
     end
   end
+
   private
 
   def generate_slug

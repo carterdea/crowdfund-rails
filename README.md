@@ -15,6 +15,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
   * Ruby 2.2.2
   * ImageMagick
   * ElasticSearch
+  * Bower
 
 3. Install Gems
 

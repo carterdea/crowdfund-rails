@@ -15,7 +15,7 @@ gem 'jquery-rails', '~> 4.0.4'
 gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'turbolinks', '~> 2.5.3'
 gem 'nav_lynx', '~> 1.1.1'
-gem 'bower-rails', '~> 0.9.2'
+gem 'bower'
 
 # charts
 gem 'groupdate', '~> 2.4.0'
@@ -86,6 +86,7 @@ end
 group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'capybara-webkit', '~> 1.7.0'
+  gem 'capybara-screenshot'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.5.0'
   gem 'guard-rspec', '~> 4.6.0'

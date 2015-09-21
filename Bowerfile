@@ -1,9 +1,0 @@
-# Puts to ./vendor/assets/bower_components
-# assets_path './app/assets/javascript/'
-
-asset 'jquery.payment.min.js', 'https://raw.githubusercontent.com/stripe/jquery.payment/master/lib/jquery.payment.js'
-asset 'jquery.mask.min.js', 'https://raw.githubusercontent.com/igorescobar/jQuery-Mask-Plugin/master/dist/jquery.mask.min.js'
-asset 'jquery.collapser.min.js', 'https://raw.githubusercontent.com/vaakash/jquery-collapser/master/jquery.collapser.min.js'
-asset 'parsley.min.js', 'http://parsleyjs.org/dist/parsley.min.js'
-asset 'raphael.min.js', 'https://raw.githubusercontent.com/DmitryBaranovskiy/raphael/master/raphael-min.js'
-asset 'morris.min.js', 'https://raw.githubusercontent.com/morrisjs/morris.js/master/morris.min.js'
