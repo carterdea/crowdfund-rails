@@ -2,7 +2,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts 
-//= require ../../../vendor/assets/bower_components/raphael.min.js/index.js
+//= require_tree ../../../vendor/assets/bower_components/raphael.min.js
 //= require_tree ../../../vendor/assets/bower_components
 //= require_tree .
 //= require bootstrap
