@@ -71,10 +71,12 @@
           = f.label :agency_name, 'Adoption Agency'
           = f.text_field :agency_name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
         .form-group
-          = f.label :agency_site, 'Adoption Agency URL'
+          = f.label :agency_site do
+            Adoption Agency URL
+            %span.optional (Optional)
           .input-group
             %span.input-group-addon http://
-            = f.text_field :agency_site, class: 'form-control', required: :true, type: :url, 'data-parsley-trigger' => 'focusout change'
+            = f.text_field :agency_site, class: 'form-control', required: :true, 'data-parsely-pattern' => '\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b', 'data-parsley-trigger' => 'focusout change'
   - if @family.persisted?
     %fieldset
       %legend Profile Information
