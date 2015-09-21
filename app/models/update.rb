@@ -4,6 +4,7 @@ class Update < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  mount_uploader :photo, ImageUploader
   validates :title, :message, presence: true
 
   def date_created
