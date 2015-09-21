@@ -12,6 +12,7 @@ before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - sleep 10
+- bundle exec rake environment elasticsearch:import:model CLASS='Family' FORCE=true
 gemfile:
 - Gemfile
 install:
