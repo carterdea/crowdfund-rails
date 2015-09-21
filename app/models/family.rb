@@ -99,7 +99,7 @@ class Family < ActiveRecord::Base
   end
 
   def total_amount_donated_until(date)
-    donations.where("date(created_at) <= ?", date).sum(:amount)
+    donations.where('date(created_at) <= ?', date).sum(:amount)
   end
 
   def donations_chart_data(start = 1.weeks.ago)

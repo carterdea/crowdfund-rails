@@ -1,4 +1,5 @@
-language: ruby
+language:
+- ruby
 rvm:
 - 2.2.3
 addons:
@@ -7,6 +8,8 @@ addons:
 services:
 - elasticsearch
 before_script:
+- npm install -g bower
+- bower install
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
 - export DISPLAY=:99.0
