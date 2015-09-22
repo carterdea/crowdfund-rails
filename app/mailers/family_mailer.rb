@@ -1,8 +1,20 @@
 class FamilyMailer < ApplicationMailer
-  def welcome_family(family)
+  def new_family_email(family)
     @family = family
     @user = family.user
-    mail(to: @user.email, subject: 'Welcome to AdoptTogether')
+
+    subject = 'Your AdoptTogether Profile is Live!'
+
+    merge_vars = {
+      'FIRST_NAME' => @family.first_name,
+      'FAMILY_URL' => family_url(@family)
+    }
+
+    body = mandrill_template('new-family', merge_vars)
+
+    send_mail(@user.email,
+              subject,
+              body)
   end
 
   def start_fundraising
@@ -11,7 +23,10 @@ class FamilyMailer < ApplicationMailer
   def fully_funded
   end
 
-  def grant_receieved
+  def approval_letter_received
+  end
+
+  def grant_received
   end
 
   def grant_approved

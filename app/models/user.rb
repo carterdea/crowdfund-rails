@@ -21,7 +21,4 @@ class User < ActiveRecord::Base
   def family?
     family.present?
   end
-
-  private
-  
 end

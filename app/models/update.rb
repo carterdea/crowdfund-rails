@@ -15,7 +15,7 @@ class Update < ActiveRecord::Base
   end
 
   def video_embed
-
+    
   end
 
   # def user_message

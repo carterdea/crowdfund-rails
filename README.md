@@ -13,6 +13,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 2. Install Dependencies 
   * Ruby 2.2.2
+  * Postgres
   * ImageMagick
   * ElasticSearch
   * Bower
@@ -23,13 +24,19 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
     % bundle install
     ```
 
-4. Setup the DB
+4. Install Front-end Dependencies
+
+    ```shell
+    % bower install
+    ```
+
+5. Setup the DB
 
     ```shell
     % rake db:setup:populate
     ```
 
-5. Start the Server
+6. Start the Server
 
     ```shell
     % foreman start -f Procfile.dev
@@ -37,7 +44,8 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
     visit [http://locahlhost:5000](http://localhost:5000)
 
 ### Continuous Integration
-CircleCI & CodeClimate & Hound & Travis, oh my!
+Travis autodeploys to Heroku when a build passes on `Master`.
+CodeClimate is making sure I'm not writing bad code and to keep my test coverage at a reasonable level.
 
 ### Stripe
 TODO

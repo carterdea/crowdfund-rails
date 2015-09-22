@@ -18,7 +18,7 @@ class DonationsController < ApplicationController
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
         set_session_ids
-        # send_receipt
+        DonationMailer.donation_receipt(@donation).deliver_now
         redirect_to :thanks
       else
         render :new
@@ -26,7 +26,7 @@ class DonationsController < ApplicationController
     else
       if @donation.subscribe_stripe_customer && @donation.save
         set_session_ids
-        # send_receipt
+        DonationMailer.donation_receipt(@donation).deliver_now
         redirect_to :thanks
       else
         render :new

@@ -1,8 +1,8 @@
 %h1
   %span.show.small
-    = link_to "Admin", admin_path
+    = link_to 'Admin', admin_path
     \ /
-  All #{pluralize(@donations.size, "Donation")}
+  All #{pluralize(@donations.total_count, 'Donation')}
   - if @family.present?
     for #{link_to @family.full_name, family_path(@family)}
 %table.table.table-hover
@@ -31,5 +31,5 @@
             %span.small (hidden)
         %td= pretty_dollars(donation.at_tip)
         %td= donation.recurring?
-        %td= link_to "💳💸💰", 'https://dashboard.stripe.com/test/customers/' + donation.stripe_customer_id.to_s
+        %td= link_to '💳💸💰', 'https://dashboard.stripe.com/test/customers/' + donation.stripe_customer_id.to_s
   = paginate(@donations)

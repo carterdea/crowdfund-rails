@@ -5,7 +5,7 @@
     - else
       = link_to 'Admin', admin_path
     \ /
-  All #{pluralize(Grant.count, "Grant")}
+  All #{pluralize(@grants.total_count, 'Grant')}
 %table.table.table-hover
   %thead
     %tr

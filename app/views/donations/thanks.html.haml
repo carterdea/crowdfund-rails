@@ -2,15 +2,12 @@
   .col-xs-12.col-sm-8
     %h1 Thank you for your donation!
     %p If you have any questions please don't hesitate to email us at any time.
-    %h2 There are more ways to give to AdoptTogether.
-    %p We are always looking for ways to help put children in homes. Whether you're a lawyer, doctor, web designer or just about anything else, you can help AdoptTogether bring kids home. Get Connected with us.
-    %h3 Thank you from the entire AdoptTogether family!
 
     .well
       .row
         .col-xs-8
           %h3= @donation.type
-          - if params[:family_id].present?
+          - if @donation.recipient_type != 'Charity'
             %p designated to #{@recipient.full_name}’s Adoption
           - else
             %p to AdoptTogether
@@ -31,10 +28,8 @@
     .small.help-block
       A receipt with this information has just been emailed to you.
       - if @donation.recurring
-        You can 
-        #{link_to 'cancel your monthly contribution', cancel_url(@recipient, @donation)}
-        at any time.
-    - if params[:family_id].present?
+        You can #{link_to 'cancel your monthly contribution', cancel_url(@recipient, @donation)} at any time.
+    - if @donation.recipient_type != 'Charity'
       %h2 Help #{@recipient.full_name} reach their goal by sharing their fundraiser
       .row
         .col-xs-12.col-sm-4

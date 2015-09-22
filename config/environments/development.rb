@@ -38,14 +38,11 @@ Rails.application.configure do
 
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.airbrake = true
   end
- 
-  config.action_mailer.default_url_options = { host: 'localhost:5000' }
-  # Rails.application.routes.default_url_options[:host] = 'localhost:5000'
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.mandrillapp.com',
@@ -54,8 +51,10 @@ Rails.application.configure do
     user_name:            ENV['MANDRILL_USERNAME'],
     password:             ENV['MANDRILL_API_KEY'],
     authentication:       'plain',
-    domain:                'heroku.com',
+    domain:               'localhost'
   }
+
+  config.action_mailer.default_url_options = { host: 'localhost:5000' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default charset: 'utf-8'

@@ -33,6 +33,7 @@ class FamiliesController < ApplicationController
       @user = current_user
       @family = @user.build_family(family_params)
       if @family.save
+        FamilyMailer.new_family_email(@family).deliver_now
         redirect_to @family, notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
       else
         flash.now[:alert] = 'There was a problem with your family profile. Please check it and try again.'
@@ -45,7 +46,7 @@ class FamiliesController < ApplicationController
         @user.save unless current_user
         @family.save
         login(user_params[:email], user_params[:password])
-
+        FamilyMailer.new_family_email(@family).deliver_now
         redirect_to @family, notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
       else
         flash.now[:alert] = 'There was a problem with your family profile. Please check it and try again.'
