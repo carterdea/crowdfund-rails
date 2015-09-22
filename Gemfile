@@ -84,7 +84,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '~> 2.4.4'
+  gem 'capybara', '~> 2.5.0'
   gem 'capybara-webkit', '~> 1.7.0'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails', '~> 4.5.0'

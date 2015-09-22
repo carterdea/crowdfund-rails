@@ -4,9 +4,16 @@ describe 'Making a donation to a family' do
   before do
     charity = create(:charity)
   end
+end
+
+describe 'Making a donation to a family' do
+  before do
+    family = create(:family)
+  end
+
+  puts page.driver.version
 
   it 'makes the donation if the family data & user data is valid', js: true do
-    family = create(:family)
     visit family_path(family)
     expect(page).to have_text('John Doe')
     click_link('Give to this Adoption')

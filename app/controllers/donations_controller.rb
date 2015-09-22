@@ -1,6 +1,6 @@
 # app/controllers/donations_controller.rb
 class DonationsController < ApplicationController
-  before_action :set_recipient, except: [:delete, :destroy]
+  before_action :set_recipient, except: [:thanks, :cancel_monthly_donation, :delete, :destroy]
 
   def show
   end
@@ -36,6 +36,7 @@ class DonationsController < ApplicationController
 
   def thanks
     @donation = Donation.find(session[:donation_id])
+    @recipient = @donation.recipient
   end
 
   def edit

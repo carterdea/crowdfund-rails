@@ -33,13 +33,14 @@
       %h2 Help #{@recipient.full_name} reach their goal by sharing their fundraiser
       .row
         .col-xs-12.col-sm-4
+          %span.share-count= share_count(family_url(@recipient))
           %h3 Shares
         .share-buttons.col-xs-12.col-sm-8
-          = render 'shared/share_buttons'
+          = render 'shared/share_buttons', family: @recipient
   %aside.col-xs-12.col-sm-4
-    - if params[:family_id].present?
+    - if @donation.recipient_type == 'Family'
       %h2 You donated to
-      = render 'shared/family_thumb', family: @family
+      = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
