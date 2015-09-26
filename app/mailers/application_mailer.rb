@@ -6,11 +6,13 @@ class ApplicationMailer < ActionMailer::Base
     reply_to: 'info@adopttogether.org'
   )
 
+  private
+
   def send_mail(email, subject, body)
     mail(to: email,
          subject: subject,
-         body: body, 
-         content_type: "text/html")
+         body: body,
+         content_type: 'text/html')
   end
 
   def mandrill_template(template_name, attributes)
@@ -20,6 +22,6 @@ class ApplicationMailer < ActionMailer::Base
       { name: key, content: value }
     end
 
-    mandrill.templates.render(template_name, [], merge_vars)["html"]
+    mandrill.templates.render(template_name, [], merge_vars)['html']
   end
 end

@@ -17,6 +17,9 @@ class UpdatesController < ApplicationController
   def create
     @update = @family.updates.new(update_params)
     if @update.save
+      if @update.email_donors == true
+        UpdatesMailer.family_update(@family, @update).deliver_now
+      end
       redirect_to family_updates_path(@family), notice: 'Thanks so much for updating your donors!'
     else
       render :new

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921062545) do
+ActiveRecord::Schema.define(version: 20150926210510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 20150921062545) do
     t.string   "requested_to_state"
     t.string   "requested_to_zip"
     t.boolean  "signature"
-    t.string   "status"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "status",                   default: "requested"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "grants", ["family_id"], name: "index_grants_on_family_id", using: :btree

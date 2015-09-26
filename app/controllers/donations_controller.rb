@@ -17,16 +17,18 @@ class DonationsController < ApplicationController
     @stripe_token = :stripe_token
     if @donation.recurring == false
       if @donation.create_stripe_charge && @donation.save
-        set_session_ids
         DonationMailer.donation_receipt(@donation).deliver_now
+        DonationMailer.donation_received(@donation).deliver_now
+        set_session_ids
         redirect_to :thanks
       else
         render :new
       end
     else
       if @donation.subscribe_stripe_customer && @donation.save
+        DonationMailer.monthly_donation_receipt(@donation).deliver_now
+        DonationMailer.donation_received(@donation).deliver_now
         set_session_ids
-        DonationMailer.donation_receipt(@donation).deliver_now
         redirect_to :thanks
       else
         render :new
@@ -48,6 +50,7 @@ class DonationsController < ApplicationController
     if @donation.update(donation_params)
       if @donation.recurring == false
         @donation.delete_stripe_customer
+        # send cancel confirmation email
       end
       redirect_to root_url, notice: 'Your donation has been updated.'
     else

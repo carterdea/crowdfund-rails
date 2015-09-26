@@ -1,6 +1,7 @@
 //= require jquery2
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require retina_tag
 
 // Bower packages
 //= require raphael/raphael

@@ -16,6 +16,7 @@ gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'turbolinks', '~> 2.5.3'
 gem 'nav_lynx', '~> 1.1.1'
 gem 'bower'
+gem 'retina_tag'
 
 # charts
 gem 'groupdate', '~> 2.4.0'
@@ -53,6 +54,9 @@ gem 'sequenced'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'
+
+# background jobs
+# gem 'sidekiq', '~> 3.5.0'
 
 # performance & monitoring
 gem 'skylight'

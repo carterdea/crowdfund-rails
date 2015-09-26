@@ -18,9 +18,10 @@
   }
 
   .input-group-addon {
-    background: image-url("search-icon-sm.png") no-repeat right center darken($color-white, 2%);
-    border: 0;
     @include border-radius(5px 0 0 0);
+    background-color: darken($color-white, 2%);
+    background-image: image-url('search-icon-lg.png') no-repeat right center;
+    border: 0;
   }
 
   input {
@@ -113,6 +114,7 @@
 
     .input-group-addon {
       background: image-url("search-icon-lg.png") no-repeat right center darken($color-white, 2%);
+      @include image-2x('search-icon-lg@2x.png', 24px, 24px);
       @include border-radius(5px 0 0 5px);
       padding: 0 18px;
     }

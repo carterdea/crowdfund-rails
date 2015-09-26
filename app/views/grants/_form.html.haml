@@ -5,10 +5,10 @@
     .row
       .col-xs-12.col-sm-8.col-md-8.col-lg-6
         .form-group
-          = f.label :amount_requested
+          = f.label :user_amount_requested, 'Amount Requested'
           .input-group
             %span.input-group-addon $
-            = f.text_field :amount_requested, class: 'form-control'
+            = f.text_field :user_amount_requested, class: 'form-control'
       .col-xs-12
         .form-group
           = f.label :expense_description

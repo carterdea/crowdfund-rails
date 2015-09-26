@@ -19,7 +19,7 @@ module DonationsHelper
   end
 
   def cancel_url(recipient, donation)
-    if params[:family_id]
+    if donation.recipient_type = 'Family'
       family_donations_path(recipient) + '/cancel/' + donation.token
     else
       charity_donations_path(recipient) + '/cancel/' + donation.token

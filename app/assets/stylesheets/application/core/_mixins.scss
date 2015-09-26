@@ -15,6 +15,7 @@
   border-top-left-radius: $radius;
   background-clip: padding-box;
 }
+
 @mixin border-right-radius($radius:5px) {
   -webkit-border-bottom-right-radius: $radius;
   -moz-border-bottom-right-radius: $radius;
@@ -24,6 +25,7 @@
   border-top-right-radius: $radius;
   background-clip: padding-box;
 }
+
 @mixin border-bottom-radius($radius:5px) {
   -webkit-border-bottom-right-radius: $radius;
   -moz-border-bottom-right-radius: $radius;
@@ -33,6 +35,7 @@
   border-bottom-left-radius: $radius;
   background-clip: padding-box;
 }
+
 @mixin border-left-radius($radius:5px) {
   -webkit-border-bottom-left-radius: $radius;
   -moz-border-bottom-left-radius: $radius;
@@ -62,6 +65,18 @@
   -webkit-transform: translateY($value);
   -ms-transform: translateY($value);
   transform: translateY($value);
+}
+
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    // on retina, use image that's scaled by 2
+    background-image: url($image);
+    background-size: $width $height;
+  }
 }
 
 @mixin hardware-accelerate {

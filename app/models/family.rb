@@ -115,6 +115,11 @@ class Family < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= "the-#{last_name.pluralize.parameterize}"
+    suffix = 1
+    while Family.find_by(slug: self.slug)
+      self.slug = "the-#{last_name.pluralize.parameterize}-#{suffix}"
+      suffix += 1
+    end
   end
 end
 
