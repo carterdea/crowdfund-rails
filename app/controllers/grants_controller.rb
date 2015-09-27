@@ -13,6 +13,7 @@ class GrantsController < ApplicationController
   def create
     @grant = @family.grants.build(grants_params)
     if @grant.save
+      GrantMailer.grant_request_received(@grant).deliver_now
       redirect_to family_grants_path(@family), notice: 'Thanks for requesting a grant! We\'ll get back to you soon'
     else
       render :new
@@ -38,6 +39,6 @@ class GrantsController < ApplicationController
   end
 
   def grants_params
-    params.require(:grant).permit(:family_id, :user_amount_requested, :amount_requested, :expense_description, :requested_to_name, :requested_to_address, :requested_to_city, :requested_to_state, :requested_to_zip, :signature)
+    params.require(:grant).permit(:family_id, :user_amount_requested, :amount_requested, :supporting_documentation, :expense_description, :requested_to_name, :requested_to_address, :requested_to_city, :requested_to_state, :requested_to_zip, :signature)
   end
 end

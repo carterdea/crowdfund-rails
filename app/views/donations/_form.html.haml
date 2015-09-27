@@ -64,7 +64,10 @@
         .row
           .col-xs-12
             .form-group
-              = f.label :message, 'Message to the Family'
+              - if @donation.recipient_type != 'Charity'
+                = f.label :message, 'Message to the Family'
+              -else
+                = f.label :message, 'Message to the AdoptTogether Team'
               = f.text_area :message, size: '60x6', class: 'form-control'
               %p.small.help-block This message will be public.
         .row

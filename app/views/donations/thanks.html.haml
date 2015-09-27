@@ -29,7 +29,7 @@
       A receipt with this information has just been emailed to you.
       - if @donation.recurring
         You can #{link_to 'cancel your monthly contribution', cancel_url(@recipient, @donation)} at any time.
-    - if @donation.recipient_type != 'Charity'
+    - if @donation.recipient_type == 'Family'
       %h2 Help #{@recipient.full_name} reach their goal by sharing their fundraiser
       .row
         .col-xs-12.col-sm-4

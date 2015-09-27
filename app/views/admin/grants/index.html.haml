@@ -19,10 +19,12 @@
       %tr
         %td
           %h2= link_to grant.family.full_name, family_path(grant.family_id)
-          %p= grant.expense_description
+          %p= truncate(grant.expense_description, length: 60)
         %td= pretty_dollars(grant.amount_requested)
-        %td= grant.requested_to_name
+        %td= link_to grant.requested_to_name, admin_grant_path(grant)
         %td #{time_ago_in_words(grant.created_at)} ago
+        %td
+          - if @grant.supporting_documentation.present?
+            ✅
         %td= grant.status
-
 = paginate(@grants)

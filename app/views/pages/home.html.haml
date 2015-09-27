@@ -4,27 +4,29 @@
       .row
         .hero-content.col-xs-12.col-md-8.col-lg-7
           %h1 Help Fund Adoptions
-          %p AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
-          = form_tag search_families_path, method: "get", class: "form-inline form-horizontal" do
+          %p.lead AdoptTogether is the world’s largest crowdfunding platform for adoption. Every gift you give, brings a family one step closer to each other.
+          = form_tag search_families_path, method: 'get', class: 'form-inline form-horizontal' do
             .input-group
               %span.input-group-addon
-              = text_field_tag :q, params[:q], placeholder: "Search for an Adopting Family", size: 34, class: "form-control input-lg"
+              = text_field_tag :q, params[:q], placeholder: 'Search for an Adopting Family', size: 34, class: 'form-control input-lg'
             = submit_tag :Search, class: "btn btn-primary btn-lg"
             %p.small.hidden-xs Search by name or email
       .press
         %span.text-center.col-xs-12 As seen on
         .row.clearfix
-          = image_tag("press-cnn-logo.png", alt: "CNN", class: "img-responsive first")
-          = image_tag("press-the-christian-post-logo.png", alt: "The Christian Post", class: "img-responsive second")
-          = image_tag("press-womans-day-logo.png", alt: "Woman's Day", class: "img-responsive third")
+          = image_tag('press-womans-day.png', height: 39, alt: 'Woman\'s Day', class: 'img-responsive womans')
+          = image_tag('press-huffington-post.png', height: 47, alt: 'Woman\'s Day', class: 'img-responsive huffington')
+          = image_tag("press-vanity-fair.png", height: 32, alt: 'Vanity Fair', class: 'img-responsive vanity')
+          = image_tag('press-forbes.png', height: 31, alt: 'Forbes', class: 'img-responsive forbes')
+          = image_tag('press-cnn.png', height: 38, alt: 'CNN', class: 'img-responsive cnn')
 
 .row.family-bucket
   .col-xs-12.col-md-6
     %h2 Raise money for your adoption from friends, family, and more
     %p Create an AdoptTogether profile and invite your friends & family to make designated donations to bring your child home.
-    = link_to "Get My Own Family Profile", new_family_path, class: "btn btn-primary"
+    = link_to 'Get My Own Family Profile', new_family_path, class: 'btn btn-primary'
   .col-xs-12.col-md-6
-    = image_tag("ipad-family-profile.png", class: "img-responsive center-block")
+    = image_tag('ipad-family-profile.png', class: 'img-responsive center-block')
 
 .family-list.no-padding
   %h2 #{pluralize(Family.count, 'Family')} have raised #{pretty_dollars(global_donations)}
@@ -38,9 +40,14 @@
   .testimonials.no-padding
     .container
       .testimonial
-        %p "A great quote about what AdoptTogether did to help us adopt our beautiful child who we love so dearly. We would be lost without Adopt Together."
+        %p "Without AdoptTogether we would not have been able to grow our family through adoption at this point in our lives. AdoptTogether allowed us to engage our friends and family through fundraising."
         %h4 The Wittigs
         %p Adopted from Uganda
+        %p See their story
+      .testimonial
+        %p "We are thankful for Adopt Together... In our journey, over 1,500 different people donated through AdoptTogether to help bring Thaddeus home. We did not do this alone, we literally did 'Adopt tTogether.'"
+        %h4 The Gullett
+        %p Adopted from the US
         %p See their story
   .container
     .blog

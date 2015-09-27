@@ -1,8 +1,8 @@
 %h1
   %span.show.small
-    = link_to "Admin", admin_path
+    = link_to 'Admin', admin_path
     \ /
-  All #{pluralize(@users.size, "User")}
+  All #{pluralize(@users.size, 'User')}
 %table.table.table-hover
   %thead
     %tr
@@ -10,6 +10,7 @@
       %td Email
       %td Family
       %td Date Created
+      %td Last Logged In
       %td Admin?
   %tbody
     - @users.each do |user|
@@ -19,9 +20,13 @@
           %strong
             = user.email
         %td
-          - if user.families.any?
-            - user.families.each do |family|
-              %strong.show= link_to family.full_name, family
+          - if user.family.present?
+            %strong.show= link_to user.family.full_name, user.family
         %td{title: user.created_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(user.created_at)} ago
+        - if user.last_login_at.nil?
+          %td
+            %span.help-block No login yet 😞
+        - else
+          %td{title: user.last_login_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(user.last_login_at)} ago
         %td= user.admin?
   = paginate(@users)

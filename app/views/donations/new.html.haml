@@ -10,7 +10,7 @@
       %h1 Donate to a Family
     - else
       %h1 Donate to #{@recipient.full_name}
-      %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible. Website hosting costs, development, legal fees, etc. & a slush fund for families who don't meet their goals.
+      %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible. Credit card fees, website hosting & development costs, legal fees, etc. & a slush fund for families who don't meet their goals.
     = render 'form'
   %aside.col-xs-12.col-sm-4
     - if params[:family_id].present?

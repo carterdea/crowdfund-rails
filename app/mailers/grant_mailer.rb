@@ -1,4 +1,8 @@
 class GrantMailer < ApplicationMailer
+  include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TextHelper
+  include DonationsHelper
+
   def grant_request_received(grant)
     family = grant.family
     user = family.user
@@ -7,14 +11,14 @@ class GrantMailer < ApplicationMailer
 
     merge_vars = {
       'FIRST_NAME' => family.first_name,
-      'AMOUNT_REQUESTED' => grant.amount_requested,
-      'EXPENSE_DESCRIPTION' => grant.expense_requested,
+      'AMOUNT_REQUESTED' => pretty_dollars(grant.amount_requested),
+      'EXPENSE_DESCRIPTION' => simple_format(grant.expense_description),
       'REQUESTED_TO_NAME' => grant.requested_to_name
     }
 
-    body = mandrill_template('family-fully-funded', merge_vars)
+    body = mandrill_template('grant-request-received', merge_vars)
 
-    send_mail(@user.email,
+    send_mail(user.email,
               subject,
               body)
   end

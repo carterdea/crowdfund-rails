@@ -9,3 +9,32 @@
 .grants.index li p:last-of-type {
   margin-bottom: 5px;
 }
+
+ul.grant-list {
+
+  li {
+    border-bottom: 1px solid darken($color-off-white, 7%);
+    margin-bottom: 20px;
+
+    h4 {
+      color: $color-medium-grey-1;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h2,
+    h3 {
+      margin: 0 !important;
+    }
+
+    .date {
+      color: $color-light-grey-2;
+      display: block;
+      font-size: 12px;
+    }
+
+    .body {
+      // margin-bottom: 15px;
+    }
+  }
+}

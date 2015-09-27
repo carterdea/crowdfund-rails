@@ -12,13 +12,13 @@
       = link_to "Upload Your Approval Letter", family_approval_letter_path(@family), class: 'btn btn-primary'
     - else
       - if @family.grants.any?
-        %ul.list-unstyled.update-list
+        %ul.list-unstyled.grant-list
           - @family.grants.each do |grant|
-            %li
+            %li.grant
               %h4 Grant for #{grant.requested_to_name}
               %span.date= grant.date_created
               %h2= pretty_dollars(grant.amount_requested)
-              = simple_format(grant.expense_description)
+              .body= simple_format(grant.expense_description)
               %span.label.label-default= grant.status.titleize
       - else
         %p.help-block You haven't requested any grants yet. You will need request grants for each adoption-related expense.

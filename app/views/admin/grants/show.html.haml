@@ -1,0 +1,18 @@
+%h1
+  %span.small.show
+    - if @family
+      = link_to "#{@family.full_name}'s Grants", :back
+    - else
+      = link_to 'Admin / Grants', admin_path
+  Grant for #{@grant.requested_to_name}
+%span.date= @grant.date_created
+%h2= pretty_dollars(@grant.amount_requested)
+%span.label= @grant.status.titleize
+.body= simple_format(@grant.expense_description)
+%p= link_to "📎💾 #{@grant.supporting_documentation}", @grant.supporting_documentation_url
+%p
+  %strong #{@grant.requested_to_name}
+  %br
+  #{@grant.requested_to_address}
+  %br
+  #{@grant.requested_to_city}, #{@grant.requested_to_state} #{@grant.requested_to_zip}

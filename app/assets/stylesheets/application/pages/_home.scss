@@ -20,8 +20,10 @@
   .input-group-addon {
     @include border-radius(5px 0 0 0);
     background-color: darken($color-white, 2%);
-    background-image: image-url('search-icon-lg.png') no-repeat right center;
+    background: image-url('search-icon-lg.png') no-repeat right center darken($color-white, 2%);
+    @include image-2x('search-icon-lg@2x.png', 24px, 24px);
     border: 0;
+    padding-left: 20px;
   }
 
   input {
@@ -63,26 +65,38 @@
     img.img-responsive {
       display: inline-block;
       vertical-align: middle;
-      width: 20%;
-      margin-right: 10%;
-      &.first {
+      width: 15%;
+      margin-right: 3%;
+
+      &.womans {
+        max-width: 130px;
         margin-left: 5%;
-        max-width: 105px;
       }
-      &.second {
-        width: 25%;
-        max-width: 220px;
+
+      &.huffington {
+        // width: 25%;
+        max-width: 122px;
       }
-      &.third {
+
+      &.vanity {
+        // margin-right: 0;
+        max-width: 144px;
+      }
+
+      &.forbes {
+        max-width: 120px;
+      }
+
+      &.cnn {
+        max-width: 80px;
         margin-right: 0;
-        max-width: 145px;
       }
     }
   }
 }
 
 .family-bucket {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid darken($color-off-white, 5%);
   .img-responsive {
     margin-top: 24px;
   }
@@ -137,7 +151,7 @@
     }
 
     .press img.img-responsive {
-      margin-right: 17%;
+      margin-right: 4%;
     }
   }
 
@@ -155,7 +169,7 @@
       margin-bottom: 8px;
     }
     .press img.img-responsive {
-      margin-right: 22%;
+      margin-right: 6%;
     }
   }
 }
@@ -165,7 +179,7 @@
   .jumbotron {
     padding-top: 30px;
     .press img.img-responsive {
-      margin-right: 27%;
+      margin-right: 8%;
     }
   }
 }

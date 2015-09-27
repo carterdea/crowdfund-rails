@@ -6,6 +6,10 @@ class Charity < ActiveRecord::Base
     'AdoptTogether'
   end
 
+  def first_name
+    'AdoptTogether Team'
+  end
+
   def total_raised
     donations.map(&:amount).inject(:+)
   end
