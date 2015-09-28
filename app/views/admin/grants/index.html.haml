@@ -1,30 +1,34 @@
 %h1
   %span.small.show
+    = link_to 'Admin', admin_path
+    \ /
     - if @family
       = link_to @family.full_name, :back
-    - else
-      = link_to 'Admin', admin_path
-    \ /
   All #{pluralize(@grants.total_count, 'Grant')}
+= paginate(@grants)
 %table.table.table-hover
   %thead
     %tr
-      %td Family & Description
+      %td Family & Expense Description
       %td Amount Requested
       %td Recipient
       %td Created
+      %td Doc Upload?
       %td Status
   %tbody
     - @grants.each do |grant|
       %tr
         %td
-          %h2= link_to grant.family.full_name, family_path(grant.family_id)
-          %p= truncate(grant.expense_description, length: 60)
+          .media
+            .media-body
+              %h3.media-heading= link_to grant.family.full_name, grant.family
+              %p= truncate(grant.expense_description, length: 60)
         %td= pretty_dollars(grant.amount_requested)
         %td= link_to grant.requested_to_name, admin_grant_path(grant)
-        %td #{time_ago_in_words(grant.created_at)} ago
+        %td.small #{time_ago_in_words(grant.created_at)} ago
         %td
-          - if @grant.supporting_documentation.present?
+          - if grant.supporting_documentation?
             ✅
-        %td= grant.status
+        %td
+          = status_label(grant)
 = paginate(@grants)

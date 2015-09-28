@@ -2,12 +2,12 @@
   .col-xs-12.col-sm-8
     %h1 Request a Grant
     %p This is where you can request a grant
-    = render 'form'
+    = render 'form', family: @family, grant: @grant
   %aside.col-xs-12.col-sm-4
     %h2 A note about grants
-    %p The Hoping Hearts Foundation Board reviews grant requests and makes an independent evaluation of grants to individuals. 
-    %p The Board awards grants to adopting families based on adoption status, actual adoption expenses, net designated gifts, and Hoping Hearts foundation funding. 
-    %p "Net designated gifts" is the total designated gifts less AdoptTogether designations and transaction costs. 
+    %p The Hoping Hearts Foundation Board reviews grant requests and makes an independent evaluation of grants to individuals.
+    %p The Board awards grants to adopting families based on adoption status, actual adoption expenses, net designated gifts, and Hoping Hearts foundation funding.
+    %p "Net designated gifts" is the total designated gifts less AdoptTogether designations and transaction costs.
     %p The total grant to an adopting family could be more or less than the designated gifts, and depends on actual adoption costs, amount raised by the family, and AdoptTogether administrative and transaction costs.
     %h2 FAQ
     %h3 What if I have an international expense?

@@ -1,7 +1,7 @@
 %header.navbar.navbar-default
   / .container-fluid
   .navbar-header
-    %button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar-collapse")
+    %button{ type: 'button', class: 'navbar-toggle collapsed', 'data-toggle' => 'collapse', 'data-target' => '#navbar-collapse', 'aria-expanded' => 'false', 'aria-controls' => 'navbar-collapse' }
       %span.sr-only Toggle Navigation
       %span.icon-bar
       %span.icon-bar
@@ -12,15 +12,15 @@
       .form-group
         = text_field_tag :q, params[:q], placeholder: 'Search Families', size: 20, class: 'form-control'
     %ul.nav.navbar-nav.navbar-right
-      - if logged_in? && current_user.family?
+      - if current_user.present? && current_user.family?
         %li= nav_link_to 'Dashboard', dashboard_path, class: 'greater'
       - else
         %li= nav_link_to 'Start a Family Profile', new_family_path, class: 'greater'
-        / %li= nav_link_to "Start a Fundraiser", "#", class: "greater"
+        / %li= nav_link_to 'Start a Fundraiser', '#', class: 'greater'
       %li.hidden-sm.visible-md-inline-block.visible-lg-inline-block= nav_link_to 'What is AdoptTogether?', about_path
       - if logged_in?
         %li.dropdown
-          = nav_link_to "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown' do 
+          = nav_link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do
             = current_user.family? ? current_user.family.full_name : current_user.email
             %span.caret
           %ul.dropdown-menu
@@ -32,4 +32,4 @@
         %li= nav_link_to 'Login', login_path
       %li
         %p.navbar-btn
-          =link_to 'Donate', donate_path, class: 'btn btn-primary btn-block'
+          = link_to 'Donate', donate_path, class: 'btn btn-primary btn-block'

@@ -53,6 +53,22 @@ class DonationMailer < ApplicationMailer
   end
 
   def cancel_monthly_donation_confirmation(donation)
+    recipient = donation.recipient
+    first_name = donation.name
+    donation.name.split(' ')[0]
+
+    subject = 'Thank you for your Monthly Donation to AdoptTogether'
+
+    merge_vars = {
+      'FIRST_NAME' => first_name,
+      'RECIPIENT_NAME' => recipient.full_name
+    }
+
+    body = mandrill_template('cancel-monthly-donation-confirmation', merge_vars)
+
+    send_mail(donation.email,
+              subject,
+              body)
   end
 
   def donation_received(donation)

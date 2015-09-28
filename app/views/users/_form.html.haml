@@ -1,5 +1,5 @@
-= form_for @user do |f|
-  = render 'shared/errors', object: @user
+= form_for user do |f|
+  = render 'shared/errors', object: user
   .form-group
     = f.label :email
     = f.email_field :email, size: 40, autofocus: true, class: 'form-control', type: :email, 'data-parsley-trigger' => 'focusout change', required: :true

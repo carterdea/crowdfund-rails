@@ -18,7 +18,7 @@ class Family < ActiveRecord::Base
   scope :visible, -> { where(visible: true).order('created_at DESC') }
   scope :hidden, -> { where(visible: false) }
 
-  before_validation :generate_slug
+  before_validation :generate_slug, on: :create
 
   EXCLUDED_SLUGS = %w(
     register
@@ -42,7 +42,8 @@ class Family < ActiveRecord::Base
   validates :country, presence: true, length: { is: 2 }
   validates :quantity, numericality: { greater_than: 0 }
   validates :slug, uniqueness: true, presence: true, exclusion: { in: EXCLUDED_SLUGS }
-  validates_associated :user
+  validates :phone, :address, :city, :state, presence: true, on: :update
+  validates_associated :user, on: :create
 
   ADOPTION_STATUSES = [
     'Paperwork Not Started',
@@ -116,7 +117,7 @@ class Family < ActiveRecord::Base
   def generate_slug
     self.slug ||= "the-#{last_name.pluralize.parameterize}"
     suffix = 1
-    while Family.find_by(slug: self.slug)
+    while Family.find_by_slug(self.slug)
       self.slug = "the-#{last_name.pluralize.parameterize}-#{suffix}"
       suffix += 1
     end

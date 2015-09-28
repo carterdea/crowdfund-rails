@@ -40,6 +40,7 @@ module ApplicationHelper
 
   def us_states
     [
+      ['-- Select a State--', nil],
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
       ['Arizona', 'AZ'],

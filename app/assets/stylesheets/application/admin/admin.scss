@@ -1,4 +1,9 @@
 .table .media {
+
+  .media-body {
+    width: auto;
+  }
+
   h3 {
     font-size: 20px;
   }
@@ -8,5 +13,5 @@
 }
 
 .families.index .media-body {
-	width: 70%;
+	// width: 70%;
 }

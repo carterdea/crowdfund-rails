@@ -9,6 +9,7 @@
     = form_tag search_admin_families_path, method: 'get', class: 'pull-right ', style: 'margin-top: 20px;' do
       .form-group
         = text_field_tag :q, params[:q], placeholder: 'Search Families', size: 20, class: 'form-control'
+= paginate(@families)
 %table.table.table-hover
   %thead
     %tr
@@ -18,6 +19,7 @@
       %td Updates
       %td Grants
       %td Signed Up
+      %td Last Signed In
       %td Updated At
       %td Status
   %tbody
@@ -36,6 +38,11 @@
         %td= link_to family.updates.size, family
         %td= link_to family.grants.size, admin_family_grants_path(family)
         %td.small #{time_ago_in_words(family.updated_at)} ago
+        - if family.user.last_login_at.nil?
+          %td.small
+            %span.help-block No login yet 😞
+        - else
+          %td.small{title: family.user.last_login_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(family.user.last_login_at)} ago
         %td.small #{time_ago_in_words(family.created_at)} ago
         %td
           = link_to family.approved? ? '👍' : '👎', toggle_approval_admin_family_path(family)

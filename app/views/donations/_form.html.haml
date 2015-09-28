@@ -1,5 +1,5 @@
-= form_for([@recipient, @donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
-  = render 'shared/errors', object: @donation
+= form_for([recipient, donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
+  = render 'shared/errors', object: donation
   %span.payment-errors
     %noscript
       %p FYI: This form requires Javascript to complete. If you don't have javascript enabled, you won't be able to donate :(
@@ -26,7 +26,7 @@
             = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
             %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
         -# Tips for AT when you're already donating to AT is redundant
-        - if @donation.recipient_type != 'Charity'
+        - if donation.recipient_type != 'Charity'
           %p.radio-label Give a small donation to AdoptTogether (totally optional!)
           .radio-group
             - Donation::TIP_AMOUNTS.each do |key, value|
@@ -64,7 +64,7 @@
         .row
           .col-xs-12
             .form-group
-              - if @donation.recipient_type != 'Charity'
+              - if donation.recipient_type != 'Charity'
                 = f.label :message, 'Message to the Family'
               -else
                 = f.label :message, 'Message to the AdoptTogether Team'
@@ -108,4 +108,4 @@
             Make this a monthly donation. Each month you will bring this family closer to their goal.
       .row
         .col-xs-12.col-md-6
-          = f.submit 'Donate', class: 'btn btn-primary btn-block donation', data: { disable_with: 'Donating...' }
+          = f.submit 'Donate', class: 'btn btn-primary btn-block donation', data: { disable_with: 'Submitting Donation...' }

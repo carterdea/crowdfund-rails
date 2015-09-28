@@ -8,7 +8,11 @@ describe 'Editing a family profile' do
     visit edit_family_path(family)
     fill_in 'First Name(s)', with: 'Jane'
     fill_in 'Last Name', with: 'Doess'
+    fill_in 'Address', with: '1234 Main Street Blvd.'
+    fill_in 'City', with: 'New York'
+    select 'New York', from: 'State'
     fill_in 'Zip/Postal Code', with: '54321'
+    fill_in 'Phone', with: '(123) 456-7890'
     fill_in 'Estimated Adoption Cost', with: '54321.00'
     select 'Angola', from: 'Country'
     select '1', from: 'How many children are you adopting?'
@@ -31,7 +35,10 @@ describe 'Editing a family profile' do
     visit edit_family_path(family)
     fill_in 'First Name(s)', with: ''
     fill_in 'Last Name', with: ''
+    fill_in 'Address', with: ''
+    fill_in 'City', with: ''
     fill_in 'Zip/Postal Code', with: ''
+    fill_in 'Phone', with: ''
     fill_in 'Estimated Adoption Cost', with: ''
     fill_in 'Message to your visitors', with: ''
     fill_in 'Adoption Agency', with: ''

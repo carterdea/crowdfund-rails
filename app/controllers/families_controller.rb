@@ -4,7 +4,6 @@ class FamiliesController < ApplicationController
   load_and_authorize_resource
   before_action :require_login, only: [:edit, :update, :destroy, :approval_letter]
 
-
   def index
     @families = Family.approved.visible.select(:id, :photo, :first_name, :last_name, :country, :slug).page(params[:page]).per(30)
   end
@@ -12,7 +11,7 @@ class FamiliesController < ApplicationController
   def search
     if params[:q].present?
       @families = Family.search(params[:q]).records.page(params[:page]).per(30)
-      render action: 'index'
+      render :index
     else
       redirect_to families_path
     end
@@ -85,6 +84,6 @@ class FamiliesController < ApplicationController
   end
 
   def family_params
-    params.require(:family).permit(:first_name, :last_name, :phone, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo, :approval_letter_file, :slug)
+    params.require(:family).permit(:first_name, :last_name, :phone, :address, :city, :state, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo, :approval_letter_file, :slug)
   end
 end

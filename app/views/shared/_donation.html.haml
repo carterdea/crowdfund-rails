@@ -2,7 +2,7 @@
   %h5= donation.donor_name
   %span.amount
     gave #{donation.donation_amount}
-    - unless donation.message.blank?
+    - if donation.message?
       and said:
-  - unless donation.message.blank?
+  - if donation.message?
     %blockquote "#{donation.message}"

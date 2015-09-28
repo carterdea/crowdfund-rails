@@ -1,18 +1,63 @@
 %h1
   %span.small.show
+    = link_to 'Admin', admin_grants_path
+    \ /
     - if @family
-      = link_to "#{@family.full_name}'s Grants", :back
+      = link_to "#{@family.full_name}'s Grants", admin_family_grants_path(@family)
     - else
-      = link_to 'Admin / Grants', admin_path
+      = link_to 'Admin', admin_path
+      \ /
+      = link_to 'Grants', admin_grants_path
   Grant for #{@grant.requested_to_name}
-%span.date= @grant.date_created
-%h2= pretty_dollars(@grant.amount_requested)
-%span.label= @grant.status.titleize
-.body= simple_format(@grant.expense_description)
-%p= link_to "📎💾 #{@grant.supporting_documentation}", @grant.supporting_documentation_url
-%p
-  %strong #{@grant.requested_to_name}
-  %br
-  #{@grant.requested_to_address}
-  %br
-  #{@grant.requested_to_city}, #{@grant.requested_to_state} #{@grant.requested_to_zip}
+.row
+  .col-xs-12.col-sm-8
+    %dl
+      %dt Requested By
+      %dd= link_to @family.full_name, @family
+      %dt Total Raised
+      %dd= pretty_dollars(@family.total_raised)
+      %dt Total Grants Paid
+      %dd= pretty_dollars(@family.grants.approved.pluck(:amount_approved).sum)
+      %dt Request Date
+      %dd= @grant.date_created
+      %dt Status
+      %dd
+        = status_label(@grant)
+      - if @grant.status == 'approved'
+        %dt Amount Approved
+        %dd= pretty_dollars(@grant.amount_approved)
+      %dt Price
+      %dd= pretty_dollars(@grant.amount_requested)
+      %dt Expense Description
+      %dd.body= simple_format(@grant.expense_description)
+      %dt Supporting Documentation
+      %dd
+        - if @grant.supporting_documentation.present?
+          = link_to "📎💾 #{@grant.supporting_documentation}", @grant.supporting_documentation_url
+        - else
+          %small.small No documentation 😟
+      %dt Requested To Name & Address
+      %dd
+        %p
+          #{@grant.requested_to_name}
+          %br
+          #{@grant.requested_to_address}
+          %br
+          #{@grant.requested_to_city}, #{@grant.requested_to_state} #{@grant.requested_to_zip}
+  .col-xs-12.col-sm-4
+    %h2 Grant Action
+    - if @grant.status == 'requested'
+      = form_for(@grant, url: {action: 'update', id: @grant.id}, method: 'put') do |f|
+        = render 'shared/errors', object: @grant
+        = f.label :amount_approved
+        .input-group
+          %span.input-group-addon $
+          = f.telephone_field :amount_approved, value: @grant.amount_requested, class: 'form-control', type: 'tel', required: :true
+        .row
+          %br
+          .col-xs-12.col-sm-6
+            = f.submit 'Approve', class: 'btn btn-success btn-block'
+          .col-xs-12.col-sm-6
+            = link_to 'Deny', admin_grant_deny_grant_path(@grant), class: 'btn btn-danger btn-block'
+    - else
+      You've already #{@grant.status} this grant.

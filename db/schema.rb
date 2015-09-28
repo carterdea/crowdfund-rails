@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926222337) do
+ActiveRecord::Schema.define(version: 20150928050516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150926222337) do
     t.string   "status",                   default: "requested"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.decimal  "amount_approved"
   end
 
   add_index "grants", ["family_id"], name: "index_grants_on_family_id", using: :btree

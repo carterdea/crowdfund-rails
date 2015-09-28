@@ -34,7 +34,7 @@
   .row.no-padding
     - @families.each do |family|
       .col-xs-6.col-md-4
-        = render 'shared/family_thumb', :family => family
+        = render 'shared/family_thumb', family: family
 
 - provide(:after_container) do
   .testimonials.no-padding

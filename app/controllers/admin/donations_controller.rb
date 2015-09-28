@@ -10,4 +10,12 @@ class Admin::DonationsController < ApplicationController
     end
   end
 
+  def edit
+    @donation = Donation.find(params[:id])
+    @recipient = @donation.recipient
+  end
+
+  def update
+  end
+
 end

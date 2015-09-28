@@ -238,4 +238,9 @@ a {
     border-color: $color-light-grey-1;
     color: $color-light-grey-2;
   }
+
+  > .disabled > a,
+  &> .disabled > a:hover {
+    border: none;
+  }
 }

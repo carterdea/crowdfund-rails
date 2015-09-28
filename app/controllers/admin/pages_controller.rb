@@ -3,7 +3,8 @@ class Admin::PagesController < ApplicationController
 
   def dashboard
     @families = Family.select(:id, :photo, :first_name, :last_name, :country).includes(:donations).page(params[:page]).per(30)
-    @donations = Donation.select(:amount, :recipient, :recipient_type)
+    # @donations = Donation.select(:amount, :recipient, :recipient_type)
+    @donations = Donation.all
   end
 
   def index

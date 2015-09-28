@@ -2,6 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :require_login, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update]
 
   def index
   end
@@ -24,17 +25,25 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @family = @user.family
+    if @user.update(user_params)
+      redirect_to @family, notice: 'Your user account has been updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, authentications_attributes: [:user_id, :provider, :uid])

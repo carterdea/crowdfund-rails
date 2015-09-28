@@ -1,6 +1,6 @@
 %li.update
   %h4 Update #{update.sequential_id}
-  = image_tag(update.photo.large.url, class: 'img-responsive') if update.photo.present?
+  = image_tag(update.photo.large.url, class: 'img-responsive') if update.photo?
   %h3= update.title
   %span.date= update.date_created
   .body

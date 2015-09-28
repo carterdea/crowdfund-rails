@@ -50,7 +50,7 @@ class DonationsController < ApplicationController
     if @donation.update(donation_params)
       if @donation.recurring == false
         @donation.delete_stripe_customer
-        # send cancel confirmation email
+        DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_now
       end
       redirect_to root_url, notice: 'Your donation has been updated.'
     else

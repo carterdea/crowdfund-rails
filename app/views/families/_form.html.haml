@@ -1,5 +1,5 @@
-= form_for @family, html: { multipart: true, 'data-parsley-validate' => true } do |f|
-  = render 'shared/errors', object: @family
+= form_for family, html: { multipart: true, 'data-parsley-validate' => true } do |f|
+  = render 'shared/errors', object: family
   %fieldset
     %legend Family Information
     .row
@@ -10,7 +10,7 @@
         .form-group
           = f.label :last_name, 'Last Name'
           = f.text_field :last_name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
-        - if @family.persisted?
+        - if family.persisted?
           .form-group
             = f.label :address
             = f.text_field :address, class: 'form-control'
@@ -23,7 +23,7 @@
         .form-group
           = f.label :postal_code, 'Zip/Postal Code'
           = f.text_field :postal_code, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
-        - if @family.persisted?
+        - if family.persisted?
           .form-group
             = f.label :phone
             = f.text_field :phone, class: 'form-control'
@@ -77,7 +77,7 @@
           .input-group
             %span.input-group-addon http://
             = f.text_field :agency_site, class: 'form-control', 'data-parsely-pattern' => '\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b', 'data-parsley-trigger' => 'focusout change'
-  - if @family.persisted?
+  - if family.persisted?
     %fieldset
       %legend Profile Information
       .row

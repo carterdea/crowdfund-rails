@@ -11,14 +11,14 @@
     - else
       %h1 Donate to #{@recipient.full_name}
       %p A donation to AdoptTogether helps us fund even MORE adoptions than we ever thought possible. Credit card fees, website hosting & development costs, legal fees, etc. & a slush fund for families who don't meet their goals.
-    = render 'form'
+    = render 'form', recipient: @recipient, donation: @donation
   %aside.col-xs-12.col-sm-4
     - if params[:family_id].present?
       %h2 You are making a designated donation to AdoptTogether on behalf of
       = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
     %h3 Are my donations tax deductible?
-    %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.  
+    %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.
     %h3 Can I send a check?
     %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
     %p

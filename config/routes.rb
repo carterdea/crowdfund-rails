@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
   root 'pages#home'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
+
   resources :users, :sessions, :pages, :password_resets
-  resources :families do
+
+  resources :families, concerns: :paginatable do
     get   'approval_letter' => 'families#approval_letter'
     post  'approval_letter' => 'families#approval_letter'
     collection { get :search }
@@ -31,7 +38,9 @@ Rails.application.routes.draw do
     get '/' => 'pages#dashboard'
     resources :users
     resources :donations
-    resources :grants
+    resources :grants do
+      get 'deny_grant' => 'grants#grant_denied'
+    end
     resources :families do
       collection { get :search }
       resources :donations
@@ -40,6 +49,7 @@ Rails.application.routes.draw do
       get 'toggle_approval', on: :member
       get 'toggle_visibility', on: :member
     end
+    resources :charities
   end
 
   post 'oauth/callback' => 'oauths#callback'

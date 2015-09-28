@@ -6,6 +6,8 @@ class Grant < ActiveRecord::Base
   validates :user_amount_requested, :amount_requested, :expense_description, :requested_to_name, :requested_to_address, :requested_to_city, :requested_to_state, :requested_to_zip, presence: true
   # validates :supporting_documentation
 
+  scope :approved, -> { where(status: 'approved') }
+
   def user_amount_requested
     amount_requested if amount_requested
   end

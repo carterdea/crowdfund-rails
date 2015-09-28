@@ -10,7 +10,7 @@ class Admin::FamiliesController < ApplicationController
   def search
     if params[:q].present?
       @families = Family.search(params[:q]).records.page(params[:page]).per(30)
-      render action: 'index'
+      render :index
     else
       redirect_to admin_families_path
     end

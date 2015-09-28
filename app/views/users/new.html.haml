@@ -1,4 +1,4 @@
 .col-xs-12.col.col-sm-6.col-sm-offset-3
   %h1 Sign Up
-  = render 'form'
+  = render 'form', user: @user
   %p Already have an account? #{link_to "Log In", login_path}

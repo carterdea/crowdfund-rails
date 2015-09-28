@@ -5,7 +5,6 @@ class Donation < ActiveRecord::Base
   delegate :full_name, to: :recipient
 
   require 'stripe'
-  require 'mandrill'
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -119,11 +118,5 @@ class Donation < ActiveRecord::Base
 
   def save_customer_id(customer)
     self.stripe_id = customer.id
-  end
-
-  private
-
-  def send_receipt
-
   end
 end

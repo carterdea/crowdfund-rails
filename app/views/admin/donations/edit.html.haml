@@ -1,0 +1,76 @@
+%h1
+  .small.show #{link_to 'Admin', admin_donations_path} /
+  Edit Donation to #{@recipient.full_name}
+%p
+  :markdown
+    This is for changing **information**, it does _NOT_ actually change the credit card again. You can do refunds, extra charges, subscriptions, etc from #{stripe_url(@donation, 'this donation\'s Stripe Profile', 'Stripe URL')}.
+= form_for([@recipient, @donation], html: { 'data-parsley-validate' => true, autocomplete: 'on' }) do |f|
+  = render 'shared/errors', object: @donation
+  %span.payment-errors
+  %noscript
+    %p FYI: This form requires Javascript to complete. If you don't have javascript enabled, you won't be able to donate :(
+  %fieldset
+    %legend
+      Amount
+    .form-group.donation-amount(data-toggle='buttons')
+      - Donation::DONATION_AMOUNTS.each do |amount|
+        = f.label :amount, value: amount, class: 'btn btn-default' do
+          = f.radio_button :amount, amount
+          = '$' + amount.to_s
+      -# The empty quotes are to keep the label text empty
+      = label_tag 'donation_amount_other', '' do
+        = radio_button_tag 'donation[amount]', 'other', nil
+        = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
+        %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
+    -# Tips for AT when you're already donating to AT is redundant, so let's hide it
+    - if @donation.recipient_type != 'Charity'
+      %p.radio-label AdoptTogether Tip
+      .radio-group
+        - Donation::TIP_AMOUNTS.each do |key, value|
+          .radio
+            = f.label :at_tip, value: key do
+              = f.radio_button :at_tip, key
+              #{value}
+              %span.tip-amount
+        .radio
+          = label_tag 'donation_at_tip_other', nil do
+            = radio_button_tag 'donation[at_tip]', 'other', nil
+            Other |
+            = telephone_field_tag 'tip_other_text', nil, placeholder: '$0', class: 'form-control'
+    %p.small.help-block AdoptTogether is a non profit service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you who make these small donations.
+    .checkbox
+      = f.label :hide_amount, class: 'checkbox' do
+        = f.check_box :hide_amount
+        Make my donation amount private
+  %fieldset
+    %legend Enter your information
+    .row
+      .col-xs-12.col-md-6
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
+        .checkbox
+          = f.label :anonymous, class: 'checkbox' do
+            = f.check_box :anonymous
+            Make this donation anonymous
+    .row
+      .col-xs-12
+        .form-group
+          - if @donation.recipient_type != 'Charity'
+            = f.label :message, 'Message to the Family'
+          -else
+            = f.label :message, 'Message to the AdoptTogether Team'
+          = f.text_area :message, size: '60x6', class: 'form-control'
+          %p.small.help-block This message will be public.
+    .row
+      .col-xs-12.col-md-6
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout change'
+        .checkbox
+          = f.label :recurring, class: 'checkbox' do
+            = f.check_box :recurring
+            Make this a monthly donation. Each month you will bring this family closer to their goal.
+  .row
+    .col-xs-12.col-md-6
+      = f.submit 'Donate', class: 'btn btn-primary btn-block donation', data: { disable_with: 'Donating...' }
