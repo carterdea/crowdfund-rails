@@ -32,7 +32,7 @@
       %dd.body= simple_format(@grant.expense_description)
       %dt Supporting Documentation
       %dd
-        - if @grant.supporting_documentation.present?
+        - if @grant.supporting_documentation?
           = link_to "📎💾 #{@grant.supporting_documentation}", @grant.supporting_documentation_url
         - else
           %small.small No documentation 😟

@@ -53,5 +53,6 @@ describe 'Requesting a grant' do
     expect(page).not_to have_text("Thanks for requesting a grant! We'll get back to you soon")
     expect(page).not_to have_text('Grant for Bob Loblaw')
     expect(page).not_to have_text('$4,321')
+    expect(page).not_to have_text('I need to pay my adoption lawyer for all the adoption things I need.')
   end
 end

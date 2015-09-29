@@ -15,23 +15,26 @@ class DonationsController < ApplicationController
   def create
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
-    if @donation.recurring == false
-      if @donation.create_stripe_charge && @donation.save
-        DonationMailer.donation_receipt(@donation).deliver_now
-        DonationMailer.donation_received(@donation).deliver_now
-        set_session_ids
-        redirect_to :thanks
+    mutex = Mutex.new
+    mutex.synchronize do
+      if @donation.recurring == false
+        if @donation.create_stripe_charge && @donation.save
+          DonationMailer.donation_receipt(@donation).deliver_now
+          DonationMailer.donation_received(@donation).deliver_now
+          set_session_ids
+          redirect_to :thanks
+        else
+          render :new
+        end
       else
-        render :new
-      end
-    else
-      if @donation.subscribe_stripe_customer && @donation.save
-        DonationMailer.monthly_donation_receipt(@donation).deliver_now
-        DonationMailer.donation_received(@donation).deliver_now
-        set_session_ids
-        redirect_to :thanks
-      else
-        render :new
+        if @donation.subscribe_stripe_customer && @donation.save
+          DonationMailer.monthly_donation_receipt(@donation).deliver_now
+          DonationMailer.donation_received(@donation).deliver_now
+          set_session_ids
+          redirect_to :thanks
+        else
+          render :new
+        end
       end
     end
   end
@@ -52,7 +55,7 @@ class DonationsController < ApplicationController
         @donation.delete_stripe_customer
         DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_now
       end
-      redirect_to root_url, notice: 'Your donation has been updated.'
+      redirect_to root_url, notice: 'Your donation has been canceled.'
     else
       render :edit
     end

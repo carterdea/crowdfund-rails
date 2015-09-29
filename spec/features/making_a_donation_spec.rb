@@ -104,6 +104,6 @@ describe 'Making a donation to a family' do
     within('.small.help-block') { click_link('cancel your monthly contribution') }
     expect(page).to have_text('Cancel Monthly Donation')
     click_button('Cancel Monthly Donation')
-    expect(page).to have_text('Your donation has been updated.')
+    expect(page).to have_text('Your donation has been canceled.')
   end
 end

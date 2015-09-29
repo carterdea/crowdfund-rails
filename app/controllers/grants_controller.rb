@@ -1,7 +1,6 @@
 class GrantsController < ApplicationController
   before_filter :set_family, only: [:index, :new, :create, :edit, :update]
 
-
   def index
     @grants = @family.grants.all
   end
@@ -34,6 +33,7 @@ class GrantsController < ApplicationController
   end
 
   private
+
   def set_family
     @family = Family.find_by_slug!(params[:family_id])
   end
