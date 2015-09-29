@@ -3,7 +3,7 @@ class Admin::GrantsController < ApplicationController
   before_action :set_grant, only: [:edit, :show, :update]
 
   def index
-    @grants = Grant.all.page(params[:page]).per(30)
+    @grants = Grant.all.page(params[:page]).per(30).order('created_at asc')
     @family = Family.find_by_slug!(params[:family_id]) if params[:family_id]
   end
 

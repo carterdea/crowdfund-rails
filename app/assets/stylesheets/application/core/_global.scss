@@ -30,8 +30,8 @@ footer {
   margin-bottom: 0;
 
   .form-control {
-    background: image-url('search-icon-sm.png') no-repeat 10px center;
-    @include image-2x('search-icon-sm@2x.png', 16px, 16px);
+    background: image-url("search-icon-sm.png") no-repeat 10px center;
+    @include image-2x("search-icon-sm@2x.png", 16px, 16px);
     padding-left: 34px;
   }
 }
