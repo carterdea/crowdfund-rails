@@ -44,7 +44,7 @@ class GrantMailer < ApplicationMailer
               body)
   end
 
-  def grant_request_declined(grant)
+  def grant_request_denied(grant)
     family = grant.family
     user = family.user
 

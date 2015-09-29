@@ -16,7 +16,7 @@ class Admin::GrantsController < ApplicationController
       @grant.status = 'approved'
       @grant.save
       GrantMailer.grant_request_approved(@grant).deliver_now
-      redirect_to admin_grant_path(@grant), notice: "You have approved this grant for #{pretty_dollars(@grant.amount_approved)}! 🎉"
+      redirect_to admin_grant_path(@grant), notice: "You have approved this grant for $#{@grant.amount_approved}! 🎉"
     else
       render :show
     end

@@ -3,7 +3,7 @@
     = render 'shared/dashboard_nav', family: @family
   .col-xs-12.col-md-8
     - if @family.approval_letter_file?
-      = link_to 'New Grant Request', new_family_grant_path(@family), class: 'btn btn-primary pull-right'
+      = link_to 'Request a Grant', new_family_grant_path(@family), class: 'btn btn-primary pull-right'
     - else
       %span.btn.btn-primary.pull-right{ disabled: true } New Grant Request
     %h1 Your Grants
@@ -20,5 +20,5 @@
       - else
         %p.help-block You haven't requested any grants yet. You will need request grants for each adoption-related expense.
     - else
-      %p In order to submit your first grant, you must give us a little bit more informaiton and upload a copy of your Approval Letter from your Adoption Agency, Social Worker, or Lawyer.
+      %p In order to submit your first grant, you must give us a little bit more information and upload a copy of your Approval Letter from your Adoption Agency, Social Worker, or Lawyer.
       = link_to 'Upload Your Approval Letter', family_approval_letter_path(@family), class: 'btn btn-primary'

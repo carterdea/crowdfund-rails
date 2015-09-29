@@ -21,7 +21,7 @@
         %td
           .media
             .media-body
-              %h3.media-heading= link_to grant.family.full_name, grant.family
+              %h3.media-heading= link_to grant.family.full_name, admin_grant_path(grant)
               %p= truncate(grant.expense_description, length: 60)
         %td= pretty_dollars(grant.amount_requested)
         %td= link_to grant.requested_to_name, admin_grant_path(grant)

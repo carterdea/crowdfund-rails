@@ -87,7 +87,7 @@ class DonationMailer < ApplicationMailer
 
     body = mandrill_template('donation-received', merge_vars)
 
-    send_mail(donation.email,
+    send_mail(recipient.user.email,
               subject,
               body)
   end
