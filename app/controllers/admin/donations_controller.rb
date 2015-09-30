@@ -4,9 +4,9 @@ class Admin::DonationsController < ApplicationController
   def index
     if params[:family_id]
       @family = Family.find_by_slug!(params[:family_id])
-      @donations = @family.donations.all.page(params[:page]).per(30)
+      @donations = @family.donations.all.order('created_at DESC').page(params[:page]).per(30)
     else
-      @donations = Donation.all.page(params[:page]).per(30)
+      @donations = Donation.all.order('created_at DESC').page(params[:page]).per(30)
     end
   end
 

@@ -19,7 +19,7 @@
           .form-group
             = f.label :photo do
               Photo
-              %span.optional (Optional
+              %span.optional (Optional)
             = f.file_field :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
           .form-group
             = f.label :video_url do
@@ -27,7 +27,7 @@
               %span.optional (Optional)
             .input-group
               %span.input-group-addon http://
-              = f.text_field :video_url, type: 'url', class: 'form-control', 'data-parsley-trigger' => 'focusout change'
+              = f.text_field :video_url, class: 'form-control', 'data-parsley-trigger' => 'focusout change'
             %p.small.help-block Just give us a URL from Vimeo or Youtube and we'll handle the rest.
         .col-xs-12
           .checkbox

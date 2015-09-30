@@ -21,6 +21,11 @@ label {
   }
 }
 
+input {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .form-control {
   @include border-radius(3px);
   @include box-shadow(inset .5px .9px 1px rgba(0, 0, 0, .2));

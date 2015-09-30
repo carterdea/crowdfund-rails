@@ -4,7 +4,7 @@ class Admin::FamiliesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @families = Family.includes(:user, ).order("families.updated_at DESC").page(params[:page]).per(30)
+    @families = Family.includes(:user).order('created_at DESC').page(params[:page]).per(30)
   end
 
   def search

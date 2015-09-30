@@ -13,6 +13,7 @@
       %td Date Created
       %td Last Logged In
       %td Admin?
+      %td Actions
   %tbody
     - @users.each do |user|
       %tr
@@ -29,4 +30,5 @@
         - else
           %td.small No login yet 😞
         %td= user.admin?
+        %td= link_to '📝', edit_user_path(user)
 = paginate(@users)

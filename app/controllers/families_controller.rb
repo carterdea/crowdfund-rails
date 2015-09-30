@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy, :approval_letter]
 
   def index
-    @families = Family.approved.visible.select(:id, :photo, :first_name, :last_name, :country, :slug).page(params[:page]).per(30)
+    @families = Family.approved.visible.select(:id, :photo, :first_name, :last_name, :country, :slug).order('created_at DESC').page(params[:page]).per(30)
   end
 
   def search

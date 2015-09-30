@@ -19,7 +19,7 @@
             = f.text_field :city, class: 'form-control'
           .form-group
             = f.label :state
-            = f.select :state, options_for_select(us_states), {}, class: 'form-control'
+            = f.select :state, options_for_select(us_states, family.state), { include_blank: true }, class: 'form-control'
         .form-group
           = f.label :postal_code, 'Zip/Postal Code'
           = f.text_field :postal_code, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
@@ -48,7 +48,7 @@
           = f.label :user_cost, 'Estimated Adoption Cost'
           .input-group
             %span.input-group-addon $
-            = f.text_field :user_cost, class: 'form-control'
+            = f.text_field :user_cost, value: number_with_precision(family.cost, precision: 0) || 0, class: 'form-control'
         .form-group
           = f.label :country
           = f.country_select :country, { priority_countries: ['US'] }, { class: 'form-control' }
