@@ -1,9 +1,9 @@
-class Admin::GrantsController < ApplicationController
+class Admin::GrantsController < ADMIN::AdminController
   load_and_authorize_resource
   before_action :set_grant, only: [:edit, :show, :update]
 
   def index
-    @grants = Grant.all.order('created_at DESC').page(params[:page]).per(30)
+    @grants = Grant.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
     @family = Family.find_by_slug!(params[:family_id]) if params[:family_id]
   end
 

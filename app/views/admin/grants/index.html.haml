@@ -9,12 +9,12 @@
 %table.table.table-hover
   %thead
     %tr
-      %td Family & Expense Description
-      %td Amount Requested
-      %td Recipient
-      %td Created
-      %td Doc Upload?
-      %td Status
+      %th Family & Expense Description
+      %th= sortable 'amount_requested'
+      %th Requested To
+      %th= sortable 'created_at', 'Dated Requested'
+      %th Doc Upload?
+      %th= sortable 'status'
   %tbody
     - @grants.each do |grant|
       %tr
@@ -29,6 +29,5 @@
         %td
           - if grant.supporting_documentation?
             ✅
-        %td
-          = status_label(grant)
+        %td= status_label(grant)
 = paginate(@grants)

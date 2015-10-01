@@ -1,10 +1,10 @@
-class Admin::FamiliesController < ApplicationController
+class Admin::FamiliesController < ADMIN::AdminController
   before_filter :set_family, only: [:toggle_approval, :toggle_visibility]
 
   load_and_authorize_resource
 
   def index
-    @families = Family.includes(:user).order('created_at DESC').page(params[:page]).per(30)
+    @families = Family.includes(:user).order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
   end
 
   def search
@@ -30,11 +30,5 @@ class Admin::FamiliesController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
-  end
-
-  private
-
-  def set_family
-    @family = Family.find_by_slug!(params[:id])
   end
 end

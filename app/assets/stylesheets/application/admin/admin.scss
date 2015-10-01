@@ -1,3 +1,27 @@
+th a {
+  color: $color-medium-grey-2;
+
+  &:hover {
+    color: lighten($color-medium-grey-2, 15%);
+    text-decoration: none;
+  }
+
+  &.current {
+    color: $color-dark-grey;
+    &:hover {
+      color: lighten($color-dark-grey, 15%);
+    }
+  }
+
+  &.desc::after {
+    content: '\00a0🔽';
+  }
+
+  &.asc::after {
+    content: '\00a0🔼';
+  }
+}
+
 .table .media {
 
   .media-body {

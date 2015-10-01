@@ -9,14 +9,15 @@
 %table.table.table-hover
   %thead
     %tr
-      %td Donor Name
-      %td Email
-      %td Recipient
-      %td Amount
-      %td AT Tip
-      %td Monthly?
-      %td Stripe Link
-      %td Actions
+      %th= sortable 'name', 'Donor Name'
+      %th= sortable 'email'
+      %th Recipient
+      %th= sortable 'amount'
+      %th= sortable 'at_tip'
+      %th= sortable 'recurring', 'Monthly?'
+      %th= sortable 'created_at', 'Date Donated'
+      %th Stripe Link
+      %th Actions
   %tbody
     - @donations.each do |donation|
       %tr
@@ -33,6 +34,7 @@
             %span.small (hidden)
         %td= pretty_dollars(donation.at_tip)
         %td= donation.recurring?
+        %td.small{title: donation.created_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(donation.created_at)} ago
         %td= stripe_url(donation, '💳', 'Stripe Profile')
         %td= link_to '📝', edit_admin_donation_path(donation), title: 'Edit Donation'
 = paginate(@donations)

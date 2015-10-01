@@ -7,13 +7,13 @@
 %table.table.table-hover
   %thead
     %tr
-      %td ID
-      %td Email
-      %td Family
-      %td Date Created
-      %td Last Logged In
-      %td Admin?
-      %td Actions
+      %th ID
+      %th= sortable 'email'
+      %th Family
+      %th= sortable 'created_at', 'Signed Up'
+      %th= sortable 'last_login_at', 'Last Logged In'
+      %th= sortable 'admin', 'Admin?'
+      %th Actions
   %tbody
     - @users.each do |user|
       %tr

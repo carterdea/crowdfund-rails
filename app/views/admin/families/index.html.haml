@@ -13,15 +13,15 @@
 %table.table.table-hover
   %thead
     %tr
-      %td Family Name
-      %td Donations
-      %td Raised
-      %td Updates
-      %td Grants
-      %td Signed Up
-      %td Last Signed In
-      %td Updated At
-      %td Status
+      %th= sortable 'last_name', 'Family Name'
+      %th= sortable 'donations_count', 'Donations'
+      %th Total Raised
+      %th= sortable 'updates_count', 'Updates'
+      %th= sortable 'grants_count', 'Grants'
+      %th= sortable 'created_at', 'Signed Up'
+      %th= sortable 'last_login_at', 'Last Signed In'
+      %th= sortable 'updated_at', 'Updated At'
+      %th= sortable 'approved', 'Status'
   %tbody
     - @families.each do |family|
       %tr
@@ -34,16 +34,16 @@
               %h3.media-heading= link_to family.full_name, family
               %p= family.user.email
         %td= link_to family.donations.size, admin_family_donations_path(family)
-        %td= link_to pretty_dollars(family.total_raised), admin_family_donations_path(family)
+        %td= pretty_dollars(family.total_raised)
         %td= link_to family.updates.size, family
         %td= link_to family.grants.size, admin_family_grants_path(family)
-        %td.small #{time_ago_in_words(family.updated_at)} ago
+        %td.small #{time_ago_in_words(family.created_at)} ago
         - if family.user.last_login_at.nil?
           %td.small
             %span.help-block No login yet 😞
         - else
           %td.small{title: family.user.last_login_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(family.user.last_login_at)} ago
-        %td.small #{time_ago_in_words(family.created_at)} ago
+        %td.small #{time_ago_in_words(family.updated_at)} ago
         %td
           = link_to family.approved? ? '👍' : '👎', toggle_approval_admin_family_path(family)
           = link_to family.visible? ? '👀' : '🙈', toggle_visibility_admin_family_path(family)
