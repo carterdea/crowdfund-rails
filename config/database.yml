@@ -22,4 +22,4 @@ production:
   database: at-prod
   connect_timeout: 1
   checkout_timeout: 1
-  pool: 25
+  pool: 10

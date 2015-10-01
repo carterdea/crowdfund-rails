@@ -1,7 +1,7 @@
 class UpdateMailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
 
-  def family_update(update, family)
+  def family_update(family, update)
     @family = family
     @update = update
     email_receivers = @family.donations.pluck(:email)
@@ -14,7 +14,7 @@ class UpdateMailer < ApplicationMailer
       'UPDATE_BODY' => simple_format(@update.message),
       'UPDATE_PHOTO' => @update.photo,
       'UPDATE_NUMBER' => @update.sequential_id,
-      'UPDATE_CREATED_AT' => @update.created_at,
+      'UPDATE_CREATED_AT' => @update.date_created,
       'FAMILY_URL' => family_url(@family)
     }
 

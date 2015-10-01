@@ -1,5 +1,8 @@
 %li.update
   %h4 Update #{update.sequential_id}
+  - if update.video_url?
+    .video-responsive
+      = video_embed(update.video_url)
   = image_tag(update.photo.large.url, class: 'img-responsive') if update.photo?
   %h3= update.title
   %span.date= update.date_created

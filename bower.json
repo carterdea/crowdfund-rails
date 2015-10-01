@@ -6,6 +6,7 @@
   "dependencies": {
     "jquery-mask-plugin": "jQuery-Mask-Plugin#~1.13.4",
     "jquery.collapser.min.js": "https://raw.githubusercontent.com/vaakash/jquery-collapser/master/jquery.collapser.min.js",
+    "jquery.fitvids": "fitvids#~1.1.0",
     "jquery.payment": "~1.3.2",
     "morris.js": "morrisjs#~0.5.1",
     "parsleyjs": "~2.1.3",

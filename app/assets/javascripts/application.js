@@ -10,6 +10,7 @@
 //= require parsleyjs/dist/parsley
 //= require jquery.payment/lib/jquery.payment
 //= require jquery.collapser.min.js/index
+//= require jquery.fitvids/jquery.fitvids
 
 //= require_tree .
 //= require bootstrap

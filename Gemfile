@@ -49,10 +49,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'kaminari', '~> 0.16.3'
 gem 'populator', '~> 1.0.0'
 gem 'redcarpet', '~> 3.3.2'
+gem 'ruby-oembed', '~> 0.8.14'
 gem 'sequenced'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'social_shares', '~> 0.2.5'
-gem 'sorted-actionview'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'

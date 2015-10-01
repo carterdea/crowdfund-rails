@@ -17,4 +17,7 @@ $(function () {
     showText: 'Read more',
     hideText: 'Read less',  
   });
+
+  $('.video-responsive').fitVids();
+
 });

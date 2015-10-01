@@ -4,7 +4,7 @@ class Update < ActiveRecord::Base
   belongs_to :family, counter_cache: true
   acts_as_sequenced scope: :family_id
 
-  default_scope { order('created_at DESC') }
+  before_validation :add_http
 
   mount_uploader :photo, ImageUploader
   validates :title, :message, presence: true
@@ -14,7 +14,12 @@ class Update < ActiveRecord::Base
     created_at.strftime('%B %e, %Y')
   end
 
-  def video_embed
+  private
+
+  def add_http
+    if video_url.present?
+      self.video_url = "http://#{video_url}" unless video_url[/\Ahttp:\/\//] || video_url[/\Ahttps:\/\//]
+    end
   end
 
   # def user_message
