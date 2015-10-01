@@ -12,7 +12,7 @@ class GrantsController < ApplicationController
   def create
     @grant = @family.grants.build(grant_params)
     if @grant.save
-      GrantMailer.grant_request_received(@grant).deliver_now
+      GrantMailer.grant_request_received(@grant).deliver_later
       redirect_to family_grants_path(@family), notice: 'Thanks for requesting a grant! We\'ll get back to you soon'
     else
       render :new

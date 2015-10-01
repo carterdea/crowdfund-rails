@@ -15,7 +15,7 @@ class Admin::GrantsController < ADMIN::AdminController
     if @grant.update(grant_params)
       @grant.status = 'approved'
       @grant.save
-      GrantMailer.grant_request_approved(@grant).deliver_now
+      GrantMailer.grant_request_approved(@grant).deliver_later
       redirect_to admin_grant_path(@grant), notice: "You have approved this grant for $#{@grant.amount_approved}! 🎉"
     else
       render :show
@@ -26,7 +26,7 @@ class Admin::GrantsController < ADMIN::AdminController
     @grant = Grant.find(params[:grant_id])
     @grant.status = 'denied'
     if @grant.save
-      GrantMailer.grant_request_denied(@grant).deliver_now
+      GrantMailer.grant_request_denied(@grant).deliver_later
       redirect_to admin_grant_path(@grant), notice: 'You have denied this grant. 😔'
     else
       render :show, notice: 'I have no idea what happened, but email me and I\'ll figure it out. <3 Carter'

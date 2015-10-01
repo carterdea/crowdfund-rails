@@ -19,8 +19,8 @@ class DonationsController < ApplicationController
     mutex.synchronize do
       if @donation.recurring == false
         if @donation.create_stripe_charge && @donation.save
-          DonationMailer.donation_receipt(@donation).deliver_now
-          DonationMailer.donation_received(@donation).deliver_now
+          DonationMailer.donation_receipt(@donation).deliver_later
+          DonationMailer.donation_received(@donation).deliver_later
           set_session_ids
           redirect_to :thanks
         else
@@ -28,8 +28,8 @@ class DonationsController < ApplicationController
         end
       else
         if @donation.subscribe_stripe_customer && @donation.save
-          DonationMailer.monthly_donation_receipt(@donation).deliver_now
-          DonationMailer.donation_received(@donation).deliver_now
+          DonationMailer.monthly_donation_receipt(@donation).deliver_later
+          DonationMailer.donation_received(@donation).deliver_later
           set_session_ids
           redirect_to :thanks
         else
@@ -53,7 +53,7 @@ class DonationsController < ApplicationController
     if @donation.update(donation_params)
       if @donation.recurring == false
         @donation.delete_stripe_customer
-        DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_now
+        DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_later
       end
       redirect_to root_url, notice: 'Your donation has been canceled.'
     else

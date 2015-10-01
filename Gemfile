@@ -58,7 +58,7 @@ gem 'social_shares', '~> 0.2.5'
 gem 'rails-i18n', '~> 4.0.4'
 
 # background jobs
-# gem 'sidekiq', '~> 3.5.0'
+gem 'sidekiq', '~> 3.5.0'
 
 # performance & monitoring
 gem 'airbrake'
@@ -78,6 +78,7 @@ group :development do
   gem 'memory_profiler', '~> 0.9.4'
   gem 'meta_request'
   gem 'stackprof', '~> 0.2.7'
+  gem 'sinatra', '~> 1.4.6'
   gem 'rails-footnotes', '~> 4.1.7'
   gem 'rails_best_practices'
 end

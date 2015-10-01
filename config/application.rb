@@ -24,6 +24,8 @@ module Adopttogether
     config.active_record.raise_in_transactional_callbacks = true
     config.nav_lynx.selected_class = 'active'
 
+    config.active_job.queue_adapter = :sidekiq
+
     config.middleware.use Rack::Deflater
   end
 end

@@ -8,5 +8,6 @@
       - if @family.updates.any?
         - @family.updates.each do |update|
           = render 'shared/update', update: update
+        = paginate @updates
       - else
         %p.help-block You haven't written any updates yet. Updates are a great way to communicate with your donors and update them on the status of your adoption.

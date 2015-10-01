@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   get 'oauths/oauth'
   get 'oauths/callback'
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

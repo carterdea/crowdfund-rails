@@ -20,6 +20,7 @@
             - if @updates.any?
               - @updates.each do |update|
                 = render 'shared/update', update: update
+              = paginate @updates
             - else
               %p.help-block This family hasn't written any updates yet.
 
@@ -42,6 +43,7 @@
       - if @donations.any?
         - @donations.each do |donation|
           = render 'shared/donation', donation: donation
+        = paginate @donations
       - else
         %p No one has donated yet.
       = paginate @donations
