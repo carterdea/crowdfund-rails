@@ -39,33 +39,74 @@
 - provide(:after_container) do
   .testimonials.no-padding
     .container
-      .testimonial
-        %p "Without AdoptTogether we would not have been able to grow our family through adoption at this point in our lives. AdoptTogether allowed us to engage our friends and family through tax-deductible fundraising."
-        %h4 The Wittigs
-        %p Adopted from Uganda
-      .testimonial
-        %p "We are thankful for Adopt Together! In our adoption journey, over 1,500 different people donated through AdoptTogether to help bring Thaddeus home. We did not do this alone, we literally did 'Adopt Together.'"
-        %h4 The Gulletts
-        %p Adopted from the US
-      .testimonial
-        %p "AdoptTogether provided a simple way for people to make donations. Receiving our money when we were ready to travel was also as simple as sending an email. When you are in the midst of paperwork and travel plans, the simplicity of AdoptTogether is so appreciated."
-        %h4 The Robinsons
-        %p Adopted from China
-      .testimonial
-        %p "After an adoption without any financial support, we knew that adopting again would be a challenge. Then we heard about AdoptTogether. The process was easy, the staff was amazingly supportive, and the ability for our family and friends to give toward our adoption costs is simply amazing."
-        %h4 The Crooks
-        %p Adopted from the US
-      .testimonial
-        %p "AdoptTogether is a simple partnership that will bless your family and breathe new life into the sails of your adoption journey. We have told everyone we know who is adopting about AdoptTogether and we recommend them to you enthusiastically."
-        %h4 Jeff Crawford
-        %p Adopted from Colombia
-      .testimonial
-        %p "We knew that we needed a financial partnerwhile adopting our daughter from China. AdoptTogether was our answer to prayer! Many friends, businesses and anonymous donors blessed our family, completely funding the adoption cost of $39,500! Our family will forever be grateful to God for the gift of AdoptTogether!"
-        %h4 The Butchers
-        %p Adopted from China
-  .container
-    .blog
-      %h3 A Seahawk Family's Crazy Adoption Story
-      %p Dec 30, 2014
-      %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
-      = link_to 'See the blog', 'http://adopttogether.tumblr.com', class: 'btn btn-default btn-sm'
+      #testimonials-carousel.carousel.slide{ 'data-ride' => 'carousel' }
+        .carousel-inner{ role: 'listbox' }
+          .item.active
+            .testimonial.col-xs-12.col-md-5.col-md-offset-1
+              %blockquote
+                %p "Without AdoptTogether we would not have been able to grow our family through adoption at this point in our lives. AdoptTogether allowed us to engage our friends and family through tax-deductible fundraising."
+                .media
+                  .media-body
+                    %h4.media-heading The Wittigs
+                    %p.media-subheading Adopted from Uganda
+            .testimonial.col-xs-12.col-md-5
+              %blockquote
+                %p "We are thankful for AdoptTogether! In our adoption journey, over 1,500 different people donated through AdoptTogether to help bring Thaddeus home. We did not do this alone, we literally did 'Adopt Together.'"
+                .media
+                  .media-body
+                    %h4.media-heading The Gulletts
+                    %p.media-subheading Adopted from the US
+          .item
+            .testimonial.col-xs-12.col-md-5.col-md-offset-1
+              %blockquote
+                %p "AdoptTogether provided a simple way for people to make donations. Receiving our money when we were ready to travel was also as simple as sending an email. When you are in the midst of paperwork and travel plans, the simplicity of AdoptTogether is so appreciated."
+                .media
+                  .media-body
+                    %h4.media-heading The Robinsons
+                    %p.media-subheading Adopted from China
+            .testimonial.col-xs-12.col-md-5
+              %blockquote
+                %p "After an adoption without any financial support, we knew that adopting again would be a challenge. Then we heard about AdoptTogether. The process was easy, the staff was amazingly supportive, and the ability for our family and friends to give toward our adoption costs is simply amazing."
+                .media
+                  .media-body
+                    %h4.media-heading The Crooks
+                    %p.media-subheading Adopted from the US
+          .item
+            .testimonial.col-xs-12.col-md-5.col-md-offset-1
+              %blockquote
+                %p "AdoptTogether is a simple partnership that will bless your family and breathe new life into the sails of your adoption journey. We have told everyone we know who is adopting about AdoptTogether and we recommend them to you enthusiastically."
+                .media
+                  .media-body
+                    %h4.media-heading Jeff Crawford
+                    %p.media-subheading Adopted from Colombia
+            .testimonial.col-xs-12.col-md-5
+              %blockquote
+                %p "We knew that we needed a financial partnerwhile adopting our daughter from China. AdoptTogether was our answer to prayer! Many friends, businesses and anonymous donors blessed our family, completely funding the adoption cost of $39,500! Our family will forever be grateful to God for the gift of AdoptTogether!"
+                .media
+                  .media-body
+                    %h4.media-heading The Butchers
+                    %p.media-subheading Adopted from China
+          = link_to('#testimonials-carousel', html_options = { 'data-slide' => 'prev', role: 'button' }) do
+            %span.left.carousel-control
+            %span.sr-only Previous
+          = link_to('#testimonials-carousel', html_options = { 'data-slide' => 'next', role: 'button' }) do
+            %span.right.carousel-control
+            %span.sr-only Next
+  .container.blog
+    .row
+      .article.article-large.col-xs-12.col-md-6
+        = image_tag('blog-big.png', class: 'pull-left')
+        %h3 A Seahawk Family's Crazy Adoption Story
+        %p.timestamp Dec 30, 2014
+        %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta-services for market-driven data. Collaboratively restore cross-platform users before client-centered manufactured products. Read more
+      .article.col-xs-12.col-md-6
+        = image_tag('blog-small-1.png', class: 'pull-left')
+        %h3 Is AdoptTogether Real?
+        %p.timestamp Sep 26, 2013
+        %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta- services... Read more
+      .article.col-xs-12.col-md-6
+        = image_tag('blog-small-2.png', class: 'pull-left')
+        %h3 Featured Family: Meet Jerry and Jodi Tucker
+        %p.timestamp Apr 20, 2013
+        %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta- services... Read more
+    = link_to 'See the blog', 'http://adopttogether.tumblr.com', class: 'btn btn-default btn-sm text-center'

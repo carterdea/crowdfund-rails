@@ -14,7 +14,7 @@ class DonationMailer < ApplicationMailer
       'AMOUNT' => pretty_dollars(donation.amount),
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
-      'RECIPIENT_NAME' => recipient.full_name
+      'RECIPIENT_LAST_NAME' => recipient.last_name
     }
 
     body = mandrill_template('donation-receipt', merge_vars)
@@ -36,7 +36,7 @@ class DonationMailer < ApplicationMailer
       'AMOUNT' => pretty_dollars(donation.amount),
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
-      'RECIPIENT_NAME' => recipient.full_name,
+      'RECIPIENT_LAST_NAME' => recipient.last_name,
       'CANCEL_MONTHLY_DONATION_BOTTLE' => cancel_monthly_donation_url
     }
 
@@ -74,8 +74,8 @@ class DonationMailer < ApplicationMailer
   def donation_received(donation)
     recipient = donation.recipient
     donor_name = donation.name
-
-    subject = "#{donor_name} donated to your Adoption on AdoptTogether"
+    exclamation = %w(Yipee Hooray Yay Yahoo).sample
+    subject = "#{exclamation}! #{donor_name} donated to your Adoption on AdoptTogether"
 
     merge_vars = {
       'DONOR_NAME' => donor_name,

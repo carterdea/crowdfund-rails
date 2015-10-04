@@ -197,6 +197,38 @@ footer {
     font-size: 12px;
     padding: 11px;
   }
+
+}
+
+.social-links {
+  li {
+    padding: 4px 0 0 26px;
+  }
+
+  .facebook {
+    background: image-url('footer-facebook.png') no-repeat left center;
+    @include image-2x('footer-facebook@2x.png', 16px, 16px);
+  }
+
+  .twitter {
+    background: image-url('footer-twitter.png') no-repeat left center;
+    @include image-2x('footer-twitter@2x.png', 16px, 13px);
+  }
+
+  .instagram {
+    background: image-url('footer-instagram.png') no-repeat left center;
+    @include image-2x('footer-instagram@2x.png', 16px, 16px);
+  }
+
+  .google-plus {
+    background: image-url('footer-google-plus.png') no-repeat left center;
+    @include image-2x('footer-google-plus@2x.png', 16px, 10px);
+  }
+
+  .pinterest {
+    background: image-url('footer-pinterest.png') no-repeat left center;
+    @include image-2x('footer-pinterest@2x.png', 16px, 16px);
+  }
 }
 
 a {
