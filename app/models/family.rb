@@ -112,6 +112,16 @@ class Family < ActiveRecord::Base
     end
   end
 
+  def self.to_csv(options = { headers: true })
+    CSV.generate(options) do |csv|
+      attributes = %w(id user_id first_name last_name quantity country status total_raised cost status approved visible phone address city state postal_code agency_name slug donations_count updates_count grants_count created_at updated_at)
+      csv << attributes
+      all.each do |family|
+        csv << attributes.map { |attr| family.send(attr) }
+      end
+    end
+  end
+
   private
 
   def generate_slug

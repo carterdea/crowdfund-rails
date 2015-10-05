@@ -5,6 +5,11 @@ class Admin::GrantsController < ADMIN::AdminController
   def index
     @grants = Grant.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
     @family = Family.find_by_slug!(params[:family_id]) if params[:family_id]
+    respond_to do |format|
+      format.html
+      format.csv { send_data Grant.to_csv, filename: "grants-#{Date.today}.csv" }
+      format.xls { send_data Grant.to_csv(col_sep: "\t"), filename: "grants-#{Date.today}.xls" }
+    end
   end
 
   def show

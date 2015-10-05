@@ -5,6 +5,9 @@
     - if @family
       = link_to @family.full_name, :back
   All #{pluralize(@grants.total_count, 'Grant')}
+.pull-right
+  = link_to 'Export as CSV', admin_grants_path(format: 'csv'), class: 'btn btn-sm btn-default'
+  = link_to 'Export as XLS', admin_grants_path(format: 'xls'), class: 'btn btn-sm btn-default'
 = paginate(@grants)
 %table.table.table-hover
   %thead

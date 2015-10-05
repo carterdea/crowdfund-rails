@@ -119,4 +119,15 @@ class Donation < ActiveRecord::Base
   def save_customer_id(customer)
     self.stripe_id = customer.id
   end
+
+  def self.to_csv(options = { headers: true })
+    CSV.generate(options) do |csv|
+      attributes = %w(id amount recurring at_tip recipient_id recipient_type message name email anonymous hide_amount  stripe_id recipient_id recipient_type created_at updated_at)
+      csv << attributes
+      all.each do |family|
+        csv << attributes.map { |attr| family.send(attr) }
+      end
+    end
+  end
 end
+

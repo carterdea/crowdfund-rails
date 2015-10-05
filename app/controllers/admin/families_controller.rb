@@ -5,6 +5,11 @@ class Admin::FamiliesController < ADMIN::AdminController
 
   def index
     @families = Family.includes(:user).order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
+    respond_to do |format|
+      format.html
+      format.csv { send_data Family.to_csv, filename: "families-#{Date.today}.csv" }
+      format.xls { send_data Family.to_csv(col_sep: "\t"), filename: "families-#{Date.today}.xls" }
+    end
   end
 
   def search

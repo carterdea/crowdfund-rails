@@ -5,6 +5,9 @@
   All #{pluralize(@donations.total_count, 'Donation')}
   - if @family.present?
     for #{link_to @family.full_name, family_path(@family)}
+.pull-right
+  = link_to 'Export as CSV', admin_donations_path(format: 'csv'), class: 'btn btn-sm btn-default'
+  = link_to 'Export as XLS', admin_donations_path(format: 'xls'), class: 'btn btn-sm btn-default'
 = paginate(@donations)
 %table.table.table-hover
   %thead

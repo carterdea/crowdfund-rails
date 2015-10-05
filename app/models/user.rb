@@ -22,4 +22,14 @@ class User < ActiveRecord::Base
   def family?
     family.present?
   end
+
+  def self.to_csv(options = { headers: true })
+    CSV.generate(options) do |csv|
+      attributes = %w(id email last_login_at last_activity_at last_login_from_ip_address created_at updated_at reset_password_email_sent_at)
+      csv << attributes
+      all.each do |family|
+        csv << attributes.map { |attr| family.send(attr) }
+      end
+    end
+  end
 end

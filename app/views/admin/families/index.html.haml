@@ -9,6 +9,9 @@
     = form_tag search_admin_families_path, method: 'get', class: 'pull-right ', style: 'margin-top: 20px;' do
       .form-group
         = text_field_tag :q, params[:q], placeholder: 'Search Families', size: 20, class: 'form-control'
+.pull-right
+  = link_to 'Export as CSV', admin_families_path(format: 'csv'), class: 'btn btn-sm btn-default'
+  = link_to 'Export as XLS', admin_families_path(format: 'xls'), class: 'btn btn-sm btn-default'
 = paginate(@families)
 %table.table.table-hover
   %thead

@@ -19,4 +19,14 @@ class Grant < ActiveRecord::Base
   def date_created
     created_at.strftime('%B %e, %Y')
   end
+
+  def self.to_csv(options = { headers: true })
+    CSV.generate(options) do |csv|
+      attributes = %w(id family_id amount_requested expense_description supporting_documentation requested_to_name requested_to_address requested_to_city requested_to_state requested_to_state requested_to_zip signature status created_at updated_at amount_approved)
+      csv << attributes
+      all.each do |family|
+        csv << attributes.map { |attr| family.send(attr) }
+      end
+    end
+  end
 end

@@ -18,4 +18,6 @@
         = yield
       = content_for(:after_container)
     = render 'layouts/footer'
+    :javascript
+      _gaq.push(['_trackPageview']);
     = render 'shared/fb_share_js'

@@ -8,6 +8,6 @@ class Admin::CharitiesController < ApplicationController
   def show
     @charity = Charity.find(params[:id])
     @donations = @charity.donations
-    render "admin/donations/index"
+    render 'admin/donations/index'
   end
 end
