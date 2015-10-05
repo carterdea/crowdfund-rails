@@ -15,26 +15,23 @@ class DonationsController < ApplicationController
   def create
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
-    mutex = Mutex.new
-    mutex.synchronize do
-      if @donation.recurring == false
-        if @donation.create_stripe_charge && @donation.save
-          DonationMailer.donation_receipt(@donation).deliver_later
-          DonationMailer.donation_received(@donation).deliver_later
-          set_session_ids
-          redirect_to :thanks
-        else
-          render :new
-        end
+    if @donation.recurring == false
+      if @donation.create_stripe_charge && @donation.save
+        DonationMailer.donation_receipt(@donation).deliver_later
+        DonationMailer.donation_received(@donation).deliver_later
+        set_session_ids
+        redirect_to :thanks
       else
-        if @donation.subscribe_stripe_customer && @donation.save
-          DonationMailer.monthly_donation_receipt(@donation).deliver_later
-          DonationMailer.donation_received(@donation).deliver_later
-          set_session_ids
-          redirect_to :thanks
-        else
-          render :new
-        end
+        render :new
+      end
+    else
+      if @donation.subscribe_stripe_customer && @donation.save
+        DonationMailer.monthly_donation_receipt(@donation).deliver_later
+        DonationMailer.donation_received(@donation).deliver_later
+        set_session_ids
+        redirect_to :thanks
+      else
+        render :new
       end
     end
   end

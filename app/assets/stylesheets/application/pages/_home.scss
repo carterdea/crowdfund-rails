@@ -147,7 +147,7 @@ blockquote {
 }
 
 .blog {
-  margin: 40px auto;
+  margin: 40px auto 20px;
 
   .article {
     margin-bottom: 20px;
@@ -170,12 +170,11 @@ blockquote {
 
   .timestamp {
     color: lighten($color-medium-grey-1, 5%);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     margin-bottom: 0;
     text-transform: uppercase;
   }
-  
 }
 
 // Small devices (tablets, 768px and up)
