@@ -6,7 +6,8 @@
     = stylesheet_link_tag('application', '//cloud.typography.com/7610312/729166/css/fonts.css', media: 'all', 'data-turbolinks-track' => true)
     = javascript_include_tag('application', 'https://js.stripe.com/v2/', 'data-turbolinks-track' => true)
     = render 'shared/app_js'
-    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+
     = robots_meta_tag
     = csrf_meta_tags
   %body{:class => body_class}
