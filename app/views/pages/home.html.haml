@@ -16,7 +16,7 @@
         .row.clearfix
           = image_tag('press-womans-day.png', height: 39, alt: 'Woman\'s Day', class: 'img-responsive womans')
           = image_tag('press-huffington-post.png', height: 47, alt: 'Woman\'s Day', class: 'img-responsive huffington')
-          = image_tag("press-vanity-fair.png", height: 32, alt: 'Vanity Fair', class: 'img-responsive vanity')
+          = image_tag('press-vanity-fair.png', height: 32, alt: 'Vanity Fair', class: 'img-responsive vanity')
           = image_tag('press-forbes.png', height: 31, alt: 'Forbes', class: 'img-responsive forbes')
           = image_tag('press-cnn.png', height: 38, alt: 'CNN', class: 'img-responsive cnn')
 
@@ -32,9 +32,11 @@
   %h2 #{pluralize(Family.count, 'Family')} have raised #{pretty_dollars(global_donations)}
   %p for their adoptions on AdoptTogether
   .row.no-padding
-    - @families.each do |family|
-      .col-xs-6.col-md-4
-        = render 'shared/family_thumb', family: family
+    - cache(['families_list', @families.map(&:id), @families.maximum(:updated_at)]) do
+      - @families.each do |family|
+        - cache(family) do
+          .col-xs-6.col-md-4
+            = render 'shared/family_thumb', family: family
 
 - provide(:after_container) do
   .testimonials.no-padding
@@ -110,4 +112,4 @@
         %p.timestamp Apr 20, 2013
         %p Completely impact multifunctional processes and wireless supply chains. Dynamically engage business meta- services... Read more
     .text-center
-      = link_to 'See the blog', 'http://adopttogether.tumblr.com', class: 'btn btn-default btn-sm'
+    = link_to 'See the blog', 'http://adopttogether.tumblr.com', class: 'btn btn-default btn-sm'

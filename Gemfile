@@ -38,8 +38,15 @@ gem 'stripe', '~> 1.22.0'
 gem 'elasticsearch-model', '~> 0.1.7'
 gem 'elasticsearch-rails', '~> 0.1.7'
 
+# cache
+gem 'hiredis'
+gem 'readthis', '~> 1.0.0'
+
 # mailers
 gem 'mandrill-api', '~> 1.0.53'
+
+# background jobs
+gem 'sidekiq', '~> 3.5.0'
 
 # miscelaneous
 gem 'country_select', '~> 2.2.0'
@@ -57,14 +64,11 @@ gem 'social_shares', '~> 0.2.5'
 # localization
 gem 'rails-i18n', '~> 4.0.4'
 
-# background jobs
-gem 'sidekiq', '~> 3.5.0'
+# gem 'capistrano-rails', group: :development
 
 # performance & monitoring
 gem 'airbrake'
 gem 'skylight'
-
-# gem 'capistrano-rails', group: :development
 
 # server & deployment
 gem 'pg', '~> 0.18.2'

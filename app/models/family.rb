@@ -6,7 +6,7 @@ class Family < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user, touch: true, dependent: :destroy
   mount_uploader :photo, ImageUploader
   has_many :donations, as: :recipient, dependent: :destroy
   has_many :updates, dependent: :destroy
