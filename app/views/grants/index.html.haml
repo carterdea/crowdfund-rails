@@ -8,15 +8,17 @@
       %span.btn.btn-primary.pull-right{ disabled: true } New Grant Request
     %h1 Your Grants
     - if @family.approval_letter_file?
-      - if @family.grants.any?
+      - if @grants.any?
         %ul.list-unstyled.grant-list
-          - @family.grants.each do |grant|
-            %li.grant
-              %h4 Grant for #{grant.requested_to_name}
-              %span.date= grant.date_created
-              %h2= pretty_dollars(grant.amount_requested)
-              .body= simple_format(grant.expense_description)
-              = status_label(grant)
+          - cache(['grants_list', @grants.map(&:id), @grants.maximum(:updated_at)]) do
+            - @family.grants.each do |grant|
+              - cache(grant) do
+                %li.grant
+                  %h4 Grant for #{grant.requested_to_name}
+                  %span.date= grant.date_created
+                  %h2= pretty_dollars(grant.amount_requested)
+                  .body= simple_format(grant.expense_description)
+                  = status_label(grant)
       - else
         %p.help-block You haven't requested any grants yet. You will need request grants for each adoption-related expense.
     - else

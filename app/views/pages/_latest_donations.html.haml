@@ -1,9 +1,11 @@
 .well
   %h3 Latest Donations
   %ul.list-unstyled
-    - if family.donations.any?
-      - family.donations.limit(5).each do |donation|
-        = render 'shared/donation', donation: donation
+    - if donations.any?
+      - cache(['donations_list', donations.map(&:id), donations.maximum(:updated_at)]) do
+        - donations.limit(5).each do |donation|
+          - cache(donation) do
+            = render 'shared/donation', donation: donation
     - else
       %p.small.help-block You haven't received any donations yet.
   = link_to "See all donations", family

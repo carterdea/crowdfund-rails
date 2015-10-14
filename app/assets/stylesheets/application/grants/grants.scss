@@ -35,6 +35,9 @@ ul.grant-list {
 
     .body {
       // margin-bottom: 15px;
+      &.show-class {
+        margin-bottom: 6px;
+      }
     }
 
     .label {
