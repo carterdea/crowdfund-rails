@@ -17,7 +17,7 @@
         .row
           .col-xs-12
             %h2 Updates
-            - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
+            - cache(['updates_list', @updates.map(&:id), @updates.maximum(:updated_at)]) do
               %ul.list-unstyled.update-list
                 - if @updates.any?
                   - @updates.each do |update|
