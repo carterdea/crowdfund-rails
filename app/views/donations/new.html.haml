@@ -14,8 +14,9 @@
     = render 'form', recipient: @recipient, donation: @donation
   %aside.col-xs-12.col-sm-4
     - if params[:family_id].present?
-      %h2 You are making a designated donation to AdoptTogether on behalf of
-      = render 'shared/family_thumb', family: @recipient
+      - cache(@recipient) do
+        %h2 You are making a designated donation to AdoptTogether on behalf of
+        = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.

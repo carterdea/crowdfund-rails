@@ -17,13 +17,15 @@
         .row
           .col-xs-12
             %h2 Updates
-            %ul.list-unstyled.update-list
-              - if @updates.any?
-                - @updates.each do |update|
-                  = render 'shared/update', update: update
-                = paginate @updates
-              - else
-                %p.help-block This family hasn't written any updates yet.
+            - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
+              %ul.list-unstyled.update-list
+                - if @updates.any?
+                  - @updates.each do |update|
+                    - cache(update) do
+                      = render 'shared/update', update: update
+                  = paginate @updates
+                - else
+                  %p.help-block This family hasn't written any updates yet.
 
     %aside.col-xs-12.col-sm-4
       .raised
@@ -41,10 +43,11 @@
         = render 'shared/share_buttons', family: @family
       %h2= pluralize(@family.donations.length, 'Donation')
       %ul.list-unstyled
-        - if @donations.any?
-          - @donations.each do |donation|
-            = render 'shared/donation', donation: donation
-          = paginate @donations
-        - else
-          %p No one has donated yet.
-        = paginate @donations
+        - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
+          - if @donations.any?
+            - @donations.each do |donation|
+              - cache(donation) do
+                = render 'shared/donation', donation: donation
+            = paginate @donations
+          - else
+            %p No one has donated yet.

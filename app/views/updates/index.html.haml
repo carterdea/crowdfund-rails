@@ -6,7 +6,9 @@
     %h1 Your Updates
     %ul.list-unstyled.update-list
       - if @family.updates.any?
+        - cache(['updates_list', @updates.map(&:id), @updates.maximum(:updated_at)]) do
         - @family.updates.each do |update|
+          - cache(update) do
           = render 'shared/update', update: update
         = paginate @updates
       - else

@@ -39,8 +39,9 @@
           = render 'shared/share_buttons', family: @recipient
   %aside.col-xs-12.col-sm-4
     - if @donation.recipient_type == 'Family'
-      %h2 You donated to
-      = render 'shared/family_thumb', family: @recipient
+      - cache(@recipient) do
+        %h2 You donated to
+        = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
     %h3 Are my donations tax deductible?
     %p Yes! Your donation is going to the Hoping Hearts foundation and then it is being appropriated to the families.
