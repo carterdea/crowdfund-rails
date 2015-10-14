@@ -38,7 +38,11 @@ class DonationsController < ApplicationController
 
   def thanks
     @donation = Donation.find(session[:donation_id])
-    @recipient = @donation.recipient
+    if @donation.recipient_type == 'Family'
+      @recipient = Family.include_total_raised.find(@donation.recipient_id)
+    else
+      @recipient = @donation.recipient
+    end
   end
 
   def edit
@@ -73,7 +77,7 @@ class DonationsController < ApplicationController
 
   def set_recipient
     if params[:family_id].present?
-      @recipient = Family.find_by_slug!(params[:family_id])
+      @recipient = Family.include_total_raised.find_by_slug!(params[:family_id])
     else
       @recipient = Charity.find(1)
     end

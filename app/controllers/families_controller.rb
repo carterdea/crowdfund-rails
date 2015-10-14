@@ -5,12 +5,12 @@ class FamiliesController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy, :approval_letter]
 
   def index
-    @families = Family.approved.visible.select(:id, :photo, :first_name, :last_name, :country, :slug).order('created_at DESC').page(params[:page]).per(30)
+    @families = Family.approved.visible.include_total_raised.select(:id, :photo, :first_name, :last_name, :country, :slug).order('families.created_at DESC').page(params[:page]).per(30)
   end
 
   def search
     if params[:q].present?
-      @families = Family.search(params[:q]).records.page(params[:page]).per(30)
+      @families = Family.include_total_raised.search(params[:q]).records.page(params[:page]).per(30)
       render :index
     else
       redirect_to families_path
@@ -77,9 +77,9 @@ class FamiliesController < ApplicationController
 
   def set_family
     if params[:id]
-      @family = Family.find_by_slug!(params[:id])
+      @family = Family.include_total_raised.find_by_slug!(params[:id])
     elsif params[:family_id]
-      @family = Family.find_by_slug!(params[:family_id])
+      @family = Family.include_total_raised.find_by_slug!(params[:family_id])
     end
   end
 

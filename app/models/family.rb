@@ -12,11 +12,13 @@ class Family < ActiveRecord::Base
   has_many :updates, dependent: :destroy
   has_many :grants, dependent: :destroy
 
-  scope :approved, -> { where(approved: true).order('created_at DESC') }
+  scope :approved, -> { where(approved: true).order('families.created_at DESC') }
   scope :unapproved, -> { where approved: false }
 
-  scope :visible, -> { where(visible: true).order('created_at DESC') }
+  scope :visible, -> { where(visible: true).order('families.created_at DESC') }
   scope :hidden, -> { where(visible: false) }
+
+  scope :include_total_raised, -> { joins('LEFT OUTER JOIN donations ON families.id = donations.recipient_id').select('families.*, COALESCE(SUM(donations.amount), 0) AS total_raised').group('families.id') }
 
   before_validation :generate_slug, on: :create
 
@@ -70,10 +72,6 @@ class Family < ActiveRecord::Base
 
   def user_cost=(cost)
     self.cost = cost.delete('$,') if cost.present?
-  end
-
-  def total_raised
-    donations.sum(:amount)
   end
 
   def funded?

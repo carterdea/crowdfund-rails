@@ -6,7 +6,7 @@ class Admin::DonationsController < ADMIN::AdminController
       @family = Family.find_by_slug!(params[:family_id])
       @donations = @family.donations.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
     else
-      @donations = Donation.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
+      @donations = Donation.all.includes(:recipient).order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
       respond_to do |format|
         format.html
         format.csv { send_data Donation.to_csv, filename: "donations-#{Date.today}.csv" }

@@ -2,7 +2,7 @@ class Admin::PagesController < ApplicationController
   authorize_resource :class => false
 
   def dashboard
-    @families = Family.select(:id, :photo, :first_name, :last_name, :country).includes(:donations).page(params[:page]).per(30)
+    @families = Family.include_total_raised.select(:id, :photo, :first_name, :last_name, :country).page(params[:page]).per(30)
     # @donations = Donation.select(:amount, :recipient, :recipient_type)
     @donations = Donation.all
   end

@@ -4,7 +4,7 @@ class Admin::FamiliesController < ADMIN::AdminController
   load_and_authorize_resource
 
   def index
-    @families = Family.includes(:user).order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
+    @families = Family.include_total_raised.includes(:user).order(sort_column + ' ' + sort_direction).page(params[:page]).per(30)
     respond_to do |format|
       format.html
       format.csv { send_data Family.to_csv, filename: "families-#{Date.today}.csv" }
@@ -14,7 +14,7 @@ class Admin::FamiliesController < ADMIN::AdminController
 
   def search
     if params[:q].present?
-      @families = Family.search(params[:q]).records.page(params[:page]).per(30)
+      @families = Family.include_total_raised.search(params[:q]).records.page(params[:page]).per(30)
       render :index
     else
       redirect_to admin_families_path
