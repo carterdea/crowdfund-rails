@@ -27,6 +27,5 @@ module Adopttogether
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.middleware.use Rack::Deflater
   end
 end
