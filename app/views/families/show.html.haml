@@ -41,7 +41,7 @@
         %span.share-count= share_count(family_url(@family))
         %span.shares Shares
         = render 'shared/share_buttons', family: @family
-      %h2= pluralize(@family.donations.length, 'Donation')
+      %h2= pluralize(@donations.length, 'Donation')
       %ul.list-unstyled
         - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
           - if @donations.any?

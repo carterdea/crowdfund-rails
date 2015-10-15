@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
   has_secure_token
-  belongs_to :recipient, polymorphic: true, counter_cache: true
+  belongs_to :recipient, polymorphic: true, counter_cache: true, touch: true, dependent: :destroy
 
   delegate :full_name, to: :recipient
 
