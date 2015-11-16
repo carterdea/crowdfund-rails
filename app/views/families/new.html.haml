@@ -3,6 +3,9 @@
     %h1 Start a Family Profile
     %p Hey! We are so excited to help you fundraise for your adoption. Please take a few minutes to fill out the information below and we’ll get you started.
     = render 'form', family: @family
+    .lock
+      = image_tag('lock.png', height: 23, alt: 'Secured by Stripe')
+      %p Your information is secure with 256 bit SSL encryption
   %aside.col-xs-12.col-sm-4
     %h2 FAQ
     %h3 What do I need to start raising money on AdoptTogether?

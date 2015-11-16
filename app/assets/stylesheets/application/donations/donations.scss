@@ -104,6 +104,17 @@ label[for="donation_amount_other"] {
   }
 }
 
+.lock {
+  img {
+    float: left;
+    margin-right: 10px;
+  }
+  p {
+    font-size: 12px;
+    padding-top: 4px;
+  }
+}
+
 .well {
   @include box-shadow(inset 0 0 0 rgba(0, 0, 0, 0));
   background: $color-off-white;
@@ -145,5 +156,27 @@ label[for="donation_amount_other"] {
   .form-group.donation-amount .btn {
     font-size: 24px;
     padding: 15px 25px 13px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .lock {
+    float: right;
+    margin-top: -52px;
+    width: 50%;
+
+    img {
+      margin-top: 4px;
+    }
+
+    p {
+      padding-top: 0;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .lock {
+    width: 35%;
   }
 }
