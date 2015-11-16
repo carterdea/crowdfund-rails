@@ -79,43 +79,44 @@ $(function () {
   $('.js-cc-number').payment('formatCardNumber');
   $('.js-cc-expiry').payment('formatCardExpiry');
   $('.js-cc-cvc').payment('formatCardCVC');
-
-  // Stripe Tokenization
-  jQuery(function($) {
-    $('#new_donation').submit(function(event) {
-      var $form = $(this);
-
-      // Disable the submit button to prevent repeated clicks
-      $form.find('input[type=submit]').prop('disabled', true);
-
-      // Stripe.card.createToken($form, stripeResponseHandler);
-      Stripe.card.createToken({
-        number: $('.js-cc-number').val(),
-        cvc: $('.js-cc-cvc').val(),
-        exp_month: $('.js-cc-expiry').payment('cardExpiryVal').month,
-        exp_year: $('.js-cc-expiry').payment('cardExpiryVal').year,
-        name: $('#donation_name').val()
-      }, stripeResponseHandler);
-
-      // Prevent the form from submitting with the default action
-      return false;
-    });
-  });
-
-  function stripeResponseHandler(status, response) {
-    var $form = $('#new_donation');
-
-    if (response.error) {
-      // Show the errors on the form
-      $form.find('.payment-errors').text(response.error.message);
-      $form.find('input[type=submit]').prop('disabled', false);
-    } else {
-      // response contains id and card, which contains additional card details
-      var token = response.id;
-      // Insert the token into the hidden field so it gets submitted to the server
-      $form.find($('#donation_stripe_token').val(token));
-      // and submit
-      $form.get(0).submit();
-    }
-  }
 });
+
+// Stripe Tokenization
+jQuery(function($) {
+  $('#new_donation').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('input[type=submit]').prop('disabled', true);
+
+
+    // Stripe.card.createToken($form, stripeResponseHandler);
+    Stripe.card.createToken({
+      number: $('.js-cc-number').val(),
+      cvc: $('.js-cc-cvc').val(),
+      exp_month: $('.js-cc-expiry').payment('cardExpiryVal').month,
+      exp_year: $('.js-cc-expiry').payment('cardExpiryVal').year,
+      name: $('#donation_name').val()
+    }, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#new_donation');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('input[type=submit]').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the hidden field so it gets submitted to the server
+    $form.find($('#donation_stripe_token').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+}

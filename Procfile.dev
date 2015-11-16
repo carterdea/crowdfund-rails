@@ -1,5 +1,5 @@
 web: bundle exec puma -e $RAILS_ENV -p $PORT -S ~/puma -C config/puma.rb
 postgres: postgres -D vendor/postgresql
-elasticsearch: elasticsearch -f
+elasticsearch: elasticsearch
 redis: redis-server
 worker: sleep 4; bundle exec sidekiq -q default -q mailers
