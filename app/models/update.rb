@@ -9,6 +9,7 @@ class Update < ActiveRecord::Base
   mount_uploader :photo, ImageUploader
   validates :title, :message, presence: true
   validates :photo, file_size: { maximum: 2.megabytes.to_i }
+  validates :video_url, format: /\Ahttp:\/\/(?:.*?)\.?(youtube|vimeo)\.com\/(watch\?[^#]*v=(\w+)|(\d+)).+\z/
 
   def date_created
     created_at.strftime('%B %e, %Y')
