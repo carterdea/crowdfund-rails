@@ -10,7 +10,8 @@ class FamiliesController < ApplicationController
 
   def search
     if params[:q].present?
-      @families = Family.include_total_raised.search(params[:q]).records.page(params[:page]).per(30)
+      families_ = Family.approved.visible.search(params[:q]).records.page(params[:page]).per(30)
+      @families = families_.joins('LEFT OUTER JOIN donations ON families.id = donations.recipient_id').select('families.*, SUM(donations.amount) AS total_raised')
       render :index
     else
       redirect_to families_path

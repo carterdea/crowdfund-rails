@@ -36,4 +36,18 @@ class Admin::FamiliesController < ADMIN::AdminController
       format.js
     end
   end
+
+  private
+
+  def set_family
+    if params[:id]
+      @family = Family.include_total_raised.find_by_slug!(params[:id])
+    elsif params[:family_id]
+      @family = Family.include_total_raised.find_by_slug!(params[:family_id])
+    end
+  end
+
+  def family_params
+    params.require(:family).permit(:first_name, :last_name, :phone, :address, :city, :state, :postal_code, :user_cost, :country, :gender, :quantity, :description, :status, :agency_name, :agency_site, :photo, :approval_letter_file, :slug)
+  end
 end
