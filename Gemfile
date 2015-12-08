@@ -35,8 +35,8 @@ gem 'sorcery', '~> 0.9.1'
 gem 'stripe', '~> 1.22.0'
 
 # search
-gem 'elasticsearch-model', '~> 0.1.7'
-gem 'elasticsearch-rails', '~> 0.1.7'
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
 
 # cache
 gem 'hiredis'
