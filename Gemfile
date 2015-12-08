@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 
 # front-end
 gem 'bootstrap-sass', '~> 3.3.5'
