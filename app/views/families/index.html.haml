@@ -3,7 +3,7 @@
   %h2= pluralize(Family.all.count, 'Adopting family')
 - else
   %h1 Search Results for "#{params[:q]}"
-  %h2= pluralize(@families.count, 'Adopting family')
+  %h2= pluralize(@families.length, 'Adopting family') # Using length instead of count to keep the join intact
 .row
   - cache(['families_list', @families.map(&:id), @families.maximum(:updated_at)]) do
     - @families.each do |family|

@@ -4,7 +4,11 @@
       %span.small.show
         = link_to "Admin", admin_path
         \ /
-      All #{pluralize(@families.total_count, "Family")}
+      - if params[:q].blank?
+        All #{pluralize(@families.total_count, "Family")}
+      - else
+        - # Using length instead of count to keep the join intact
+        #{pluralize(@families.length, 'Family')} found for "#{params[:q]}"
   .col-xs-12.col-sm-6
     = form_tag search_admin_families_path, method: 'get', class: 'pull-right ', style: 'margin-top: 20px;' do
       .form-group

@@ -14,7 +14,7 @@ class Admin::FamiliesController < ADMIN::AdminController
 
   def search
     if params[:q].present?
-      @families = Family.include_total_raised.search(params[:q]).records.page(params[:page]).per(30)
+      @families = Family.approved.visible.search(params[:q]).records.include_total_raised.page(params[:page]).per(30)
       render :index
     else
       redirect_to admin_families_path
