@@ -79,6 +79,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'bullet', '~> 4.14.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
+  gem 'letter_opener', '~> 1.4'
   gem 'memory_profiler', '~> 0.9.4'
   gem 'meta_request'
   gem 'stackprof', '~> 0.2.7'
