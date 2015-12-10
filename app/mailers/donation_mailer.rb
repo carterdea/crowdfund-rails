@@ -14,7 +14,11 @@ class DonationMailer < ApplicationMailer
       'AMOUNT' => pretty_dollars(donation.amount),
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
-      'RECIPIENT_LAST_NAME' => recipient.last_name
+      'RECIPIENT_LAST_NAME' => recipient.last_name,
+      'FAMILY_PROFILE_URL' => family_url(recipient),
+      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
+      'ADOPTION_COUNTRY' => recipient.country_name,
+      'TOTAL_RAISED' => recipient.total_raised
     }
 
     body = mandrill_template('donation-receipt', merge_vars)
@@ -37,7 +41,7 @@ class DonationMailer < ApplicationMailer
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
       'RECIPIENT_LAST_NAME' => recipient.last_name,
-      'CANCEL_MONTHLY_DONATION_BOTTLE' => cancel_monthly_donation_url
+      'CANCEL_MONTHLY_DONATION_URL' => cancel_monthly_donation_url
     }
 
     body = mandrill_template('monthly-donation-receipt', merge_vars)
