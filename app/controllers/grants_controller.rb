@@ -1,8 +1,13 @@
 class GrantsController < ApplicationController
   before_filter :set_family, only: [:index, :new, :create, :edit, :update]
 
+  load_and_authorize_resource
+  before_action :require_login
+
   def index
     @grants = @family.grants.all
+    # I had to explicitly set authorization to keep user A from being able to see user b's grants
+    authorize! :read, @grants
   end
 
   def new

@@ -97,11 +97,6 @@ class Family < ActiveRecord::Base
     end
   end
 
-  # for the search
-  # def total_raised
-  #   donations.pluck('amount').sum
-  # end
-
   def total_amount_donated_until(date)
     donations.where('date(created_at) <= ?', date).sum(:amount)
   end

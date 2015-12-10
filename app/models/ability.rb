@@ -2,27 +2,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||= User.new
 
-    can :create, :update, Donation
+    can [:create, :update], Donation
     can :create, User
     can :create, Family
-    can :read, Family
-
-    cannot :read, Family, approved: false
+    can :read, Family, approved: true
 
     if user.admin?
       can :manage, :all
       can :read, Family, approved: false
     else
       can :manage, User, id: user.id
-      can :manage, Family, user_id: user.id
       if user.family?
-        can :manage, Update, family_id: user.family.id
-        can :manage, Grant, family_id: user.family.id
-
-        can :read, Family, approved: false, family_id: user.family.id
+        can :manage, Family, user_id: user.id
+        # We don't want users creating more than 1 family for now
+        cannot :create, Family
+        cannot :index, [Update, Grant]
+        can :manage, [Update, Grant], family: { id: user.family.id }
       end
     end
 

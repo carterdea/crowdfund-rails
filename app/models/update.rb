@@ -7,9 +7,10 @@ class Update < ActiveRecord::Base
   before_validation :add_http
 
   mount_uploader :photo, ImageUploader
-  validates :title, :message, presence: true
+  validates_presence_of :title
+  validates_length_of :message, within: 1..10_000
   validates :photo, file_size: { maximum: 2.megabytes.to_i }
-  validates :video_url, format: /\Ahttp:\/\/(?:.*?)\.?(youtube|vimeo)\.com\/(watch\?[^#]*v=(\w+)|(\d+)).+\z/
+  validates :video_url, format: %r{\Ahttp:\/\/(?:.*?)\.?(youtube|vimeo)\.com\/(watch\?[^#]*v=(\w+)|(\d+)).+\z}, allow_blank: true
 
   def date_created
     created_at.strftime('%B %e, %Y')
@@ -19,7 +20,7 @@ class Update < ActiveRecord::Base
 
   def add_http
     if video_url.present?
-      self.video_url = "http://#{video_url}" unless video_url[/\Ahttp:\/\//] || video_url[/\Ahttps:\/\//]
+      self.video_url = "http://#{video_url}" unless video_url[%r{\Ahttp:\/\/}] || video_url[%r{\Ahttps:\/\/}]
     end
   end
 

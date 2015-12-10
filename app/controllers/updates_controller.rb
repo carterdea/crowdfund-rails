@@ -4,6 +4,8 @@ class UpdatesController < ApplicationController
 
   def index
     @updates = @family.updates.all.order('created_at ASC').page(params[:page]).per(10)
+    # I had to explicitly set authorization to keep user A from being able to see user b's updates
+    authorize! :read, @updates
   end
 
   def show
