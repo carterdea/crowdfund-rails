@@ -16,10 +16,10 @@ class Ability
       can :manage, User, id: user.id
       if user.family?
         can :manage, Family, user_id: user.id
-        # We don't want users creating more than 1 family for now
-        cannot :create, Family
-        cannot :index, [Update, Grant]
-        can :manage, [Update, Grant], family: { id: user.family.id }
+        cannot :create, Family # We don't want users creating more than 1 family for now
+
+        cannot :manage, [Update, Grant]
+        can :manage, [Update, Grant], family: { user_id: user.id }
       end
     end
 

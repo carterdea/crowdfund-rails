@@ -1,11 +1,11 @@
 class UpdatesController < ApplicationController
-  load_and_authorize_resource
   before_action :set_family
+
+  load_and_authorize_resource :family
+  load_and_authorize_resource :update, through: :family
 
   def index
     @updates = @family.updates.all.order('created_at ASC').page(params[:page]).per(10)
-    # I had to explicitly set authorization to keep user A from being able to see user b's updates
-    authorize! :read, @updates
   end
 
   def show
