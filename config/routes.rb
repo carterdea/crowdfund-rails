@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'faq' => 'pages#faq'
   get 'contact' => 'pages#contact'
+  get 'unsub' => 'pages#unsub'
 
   get 'donate' => 'donations#new'
   resources :charity do

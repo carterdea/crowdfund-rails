@@ -34,6 +34,10 @@ class PagesController < ApplicationController
   # def terms
   # end
 
+  # when a user unsubscribes show them this page
+  # def unsub
+  # end
+
   def show
   end
 end
