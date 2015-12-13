@@ -19,6 +19,7 @@
                   %h2= pretty_dollars(grant.amount_requested)
                   .body= simple_format(grant.expense_description)
                   = status_label(grant)
+          = paginate @grants
       - else
         %p.help-block You haven't requested any grants yet. You will need request grants for each adoption-related expense.
     - else

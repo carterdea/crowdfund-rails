@@ -1,11 +1,12 @@
 class GrantsController < ApplicationController
   before_filter :set_family, only: [:index, :new, :create, :edit, :update]
 
-  load_and_authorize_resource
+  load_and_authorize_resource :family
+  load_and_authorize_resource :grant, through: :family
   before_action :require_login
 
   def index
-    @grants = @family.grants.all
+    @grants = @family.grants.all.page(params[:page]).per(10)
     authorize! :manage, @family
   end
 
