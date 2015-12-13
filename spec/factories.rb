@@ -28,8 +28,8 @@ FactoryGirl.define do
     donations_count 0
     updates_count 0
     grants_count 0
-    trait :approval_letter_file do
-      approval_letter_file 'file.jpg'
+    trait :with_approval_letter do
+      approval_letter_file 'file.pdf'
     end
   end
 

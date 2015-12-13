@@ -2,20 +2,18 @@ require 'rails_helper'
 
 describe 'Requesting a grant' do
   it "doesn't let you make a grant request if you haven't uploaded an approval letter" do
-    user = create(:user)
     family = create(:family)
-    login_user(user)
+    login_user(family.user)
     visit family_grants_path(family)
     expect(page).not_to have_button('New Grant Request')
     expect(page).to have_text('New Grant Request')
   end
 
   it "lets you make a grant request if you've uploaded an approval letter" do
-    user = create(:user)
-    family = create(:family, :approval_letter_file)
-    login_user(user)
+    family = create(:family, :with_approval_letter)
+    login_user(family.user)
     visit family_grants_path(family)
-    expect(page).not_to have_button('Upload Your Approval Letter')
+    expect(page).not_to have_link('Upload Your Approval Letter')
     click_link('Request a Grant')
     expect(page).to have_text('Request a Grant')
     fill_in 'Amount Requested', with: '4321.00'
@@ -34,9 +32,8 @@ describe 'Requesting a grant' do
   end
 
   it "doesn't let you make a grant request with invalid data" do
-    user = create(:user)
-    family = create(:family, :approval_letter_file)
-    login_user(user)
+    family = create(:family, :with_approval_letter)
+    login_user(family.user)
     visit family_grants_path(family)
     click_link('Request a Grant')
     expect(page).to have_text('Request a Grant')

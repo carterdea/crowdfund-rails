@@ -18,7 +18,6 @@ class Ability
         can :manage, Family, user_id: user.id
         cannot :create, Family # We don't want users creating more than 1 family for now
 
-        cannot :manage, [Update, Grant]
         can :manage, [Update, Grant], family: { user_id: user.id }
       end
     end
