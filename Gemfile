@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '>= 1.3.0'
 
 # charts
-gem 'groupdate', '~> 2.4.0'
+gem 'groupdate', '~> 2.5.0'
 
 # file handling
 gem 'carrierwave', '~> 0.10.0'
@@ -63,8 +63,6 @@ gem 'social_shares', '~> 0.2.5'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'
-
-# gem 'capistrano-rails', group: :development
 
 # performance & monitoring
 gem 'airbrake'
