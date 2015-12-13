@@ -10,15 +10,19 @@ class DonationMailer < ApplicationMailer
     subject = 'Thank you for your Donation to AdoptTogether'
 
     merge_vars = {
-      'FIRST_NAME' => first_name,
+      'RECIPIENT_TYPE' => recipient.class.name,
+      'DONOR_FIRST_NAME' => first_name,
+      'DONOR_FULL_NAME' => donation.name,
       'AMOUNT' => pretty_dollars(donation.amount),
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
+      'RECIPIENT_FULL_NAME' => recipient.full_name,
       'RECIPIENT_LAST_NAME' => recipient.last_name,
       'FAMILY_PROFILE_URL' => family_url(recipient),
       'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
+      'FAMILY_PHOTO_URL' => root_url + recipient.photo.large.url,
       'ADOPTION_COUNTRY' => recipient.country_name,
-      'TOTAL_RAISED' => recipient.total_raised
+      'TOTAL_RAISED' => pretty_dollars(recipient.donations.pluck(:amount).sum)
     }
 
     body = mandrill_template('donation-receipt', merge_vars)
@@ -36,11 +40,19 @@ class DonationMailer < ApplicationMailer
     subject = 'Thank you for your Monthly Donation to AdoptTogether'
 
     merge_vars = {
-      'FIRST_NAME' => first_name,
+      'RECIPIENT_TYPE' => recipient.class.name,
+      'DONOR_FIRST_NAME' => first_name,
+      'DONOR_FULL_NAME' => donation.name,
       'AMOUNT' => pretty_dollars(donation.amount),
       'AT_TIP' => pretty_dollars(donation.at_tip),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip),
+      'RECIPIENT_FULL_NAME' => recipient.full_name,
       'RECIPIENT_LAST_NAME' => recipient.last_name,
+      'FAMILY_PROFILE_URL' => family_url(recipient),
+      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
+      'FAMILY_PHOTO_URL' => root_url + recipient.photo.large.url,
+      'ADOPTION_COUNTRY' => recipient.country_name,
+      'TOTAL_RAISED' => pretty_dollars(recipient.donations.pluck(:amount).sum),
       'CANCEL_MONTHLY_DONATION_URL' => cancel_monthly_donation_url
     }
 

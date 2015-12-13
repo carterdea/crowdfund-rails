@@ -1,4 +1,8 @@
 class FamilyMailer < ApplicationMailer
+  include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TextHelper
+  include DonationsHelper
+
   def new_family_email(family)
     @family = family
     @user = family.user
@@ -7,7 +11,14 @@ class FamilyMailer < ApplicationMailer
 
     merge_vars = {
       'FIRST_NAME' => @family.first_name,
-      'FAMILY_URL' => family_url(@family)
+      'LAST_NAME' => @family.last_name,
+      'FAMILY_PROFILE_URL' => family_url(@family),
+      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(@family).to_param,
+      'TOTAL_RAISED' => pretty_dollars(family.donations.pluck(:amount).sum),
+      'ADOPTION_COUNTRY' => @family.country,
+      'FAMILY_PHOTO_URL' => root_url + @family.photo.large.url,
+      'FAMILY_UPDATES_URL' => family_updates_url(@family),
+      'FAMILY_GRANTS_URL' => family_grants_url(@family)
     }
 
     body = mandrill_template('new-family', merge_vars)
