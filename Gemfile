@@ -15,6 +15,7 @@ gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'nav_lynx', '~> 1.1.1'
 gem 'retina_tag'
 gem 'sass-rails', '~> 5.0.4'
+# gem 'sassc', '~> 1.8'
 gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '>= 1.3.0'
 

@@ -14,7 +14,7 @@ $(function () {
   // Other Donation amount
 
   // When the "Other" text field value changes
-  $('#other_text').keyup(function(){
+  $('#other_text').on('click keyup', function(){
 
     // Check that radio button
     var other_text_value = $('#other_text').val().replace(',','');
