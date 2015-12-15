@@ -7,7 +7,7 @@ class Ability
     can [:create, :update], Donation
     can :create, User
     can :create, Family
-    can :read, Family, approved: true
+    can [:read, :search], Family, approved: true
 
     if user.admin?
       can :manage, :all

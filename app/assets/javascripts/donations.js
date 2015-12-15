@@ -120,3 +120,7 @@ function stripeResponseHandler(status, response) {
     $form.get(0).submit();
   }
 }
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

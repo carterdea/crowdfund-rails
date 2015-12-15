@@ -99,7 +99,8 @@
               .form-group.col-xs-6
                 = label_tag :security_code
                 = telephone_field_tag :security_code, params[:security_code],  name: nil, class: 'form-control js-cc-cvc', autocomplete: 'off', type: 'tel', required: :true, maxlength: 4, 'data-parsley-trigger' => 'focusout change'
-                %p.small.help-block What's this?
+                %p.small.help-block
+                  %span{'data-toggle' => 'tooltip', 'data-placement' => 'top', title: 'This is the 3 digit number on the back of your credit card (4 digits if you have Amex)'} What's this?
               = f.hidden_field :stripe_token
 
         .checkbox

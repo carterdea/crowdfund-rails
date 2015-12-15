@@ -16,7 +16,7 @@ class FamilyMailer < ApplicationMailer
       'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(@family).to_param,
       'TOTAL_RAISED' => pretty_dollars(family.donations.pluck(:amount).sum),
       'ADOPTION_COUNTRY' => @family.country,
-      'FAMILY_PHOTO_URL' => root_url + @family.photo.large.url,
+      'FAMILY_PHOTO_URL' => @family.photo.large.url,
       'FAMILY_UPDATES_URL' => family_updates_url(@family),
       'FAMILY_GRANTS_URL' => family_grants_url(@family)
     }

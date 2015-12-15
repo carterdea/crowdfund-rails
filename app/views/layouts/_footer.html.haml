@@ -1,39 +1,40 @@
 %footer
-  .container
-    .row
-      .col-xs-12.col-md-4
-        =image_tag('logo-alt.png', height: 105, alt: 'AdoptTogether', class: 'pull-left')
-        =link_to 'Donate to AdoptTogether', donate_path, class: 'btn btn-primary'
-        %p AdoptTogether is a project of Hoping Hearts Foundation, an IRS approved 501(c)(3) organization.
-      .col-xs-12.col-sm-6.col-md-4
-        %h4 What is AdoptTogether
-        %ul.list-unstyled
-          .row
-            .col-xs-6
-              %li How It Works
-              %li= link_to 'About Us', about_path
-              %li= link_to 'FAQ', faq_path
-              %li= link_to 'Contact Us', contact_path
-              %li Legal
-            .col-xs-6
-              / %li Testimonials
-              / %li Press
-              %li= link_to 'Blog', 'http://adopttogether.tumblr.com'
-              / %li Help
-      .col-xs-12.col-sm-6.col-md-4
-        %h4 Get Infrequent Email Updates
-        %form(action="//adopttogether.us1.list-manage.com/subscribe/post?u=3b533553aa7564167238aba5e&amp;id=929a88a092" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" role="form" novalidate)
-          // real people should not fill this in and expect good things - do not remove this or risk form bot signups
-          %div{ style: 'position: absolute; left: -5000px;' }
-            %input(type="text" name="b_3b533553aa7564167238aba5e_929a88a092" tabindex="-1" value="")
-          .form-group
-            %input{ type: 'email', value: '', name: 'EMAIL', class: 'form-control footer-input', placeholder: 'email@domain.com', required: true }
-            %input{ type: 'submit', value: 'Sign Up', name: 'subscribe', class: 'btn btn-default form-control-button email-btn' }
-        %ul.list-unstyled.social-links
-          %li.facebook= link_to 'Facebook', 'https://www.facebook.com/Adoptt'
-          %li.twitter= link_to 'Twitter', 'https://twitter.com/Adoptt'
-          %li.instagram= link_to 'Instagram', 'https://www.instagram.com/adopttogether'
-          %li.google-plus= link_to 'Google+', 'https://plus.google.com/113162280265037527351'
-          %li.pinterest= link_to 'Pinterest', 'https://www.pinterest.com/adoptt/'
-      .col-xs-12
-        %p &copy; 2010-2015 AdoptTogether. All rights reserved.
+  - cache('footer-v1') do  
+    .container
+      .row
+        .col-xs-12.col-md-4
+          =image_tag('logo-alt.png', height: 105, alt: 'AdoptTogether', class: 'pull-left')
+          =link_to 'Donate to AdoptTogether', donate_path, class: 'btn btn-primary'
+          %p AdoptTogether is a project of Hoping Hearts Foundation, an IRS approved 501(c)(3) organization.
+        .col-xs-12.col-sm-6.col-md-4
+          %h4 What is AdoptTogether
+          %ul.list-unstyled
+            .row
+              .col-xs-6
+                %li How It Works
+                %li= link_to 'About Us', about_path
+                %li= link_to 'FAQ', faq_path
+                %li= link_to 'Contact Us', contact_path
+                %li Legal
+              .col-xs-6
+                / %li Testimonials
+                / %li Press
+                %li= link_to 'Blog', 'http://adopttogether.tumblr.com'
+                / %li Help
+        .col-xs-12.col-sm-6.col-md-4
+          %h4 Get Infrequent Email Updates
+          %form(action="//adopttogether.us1.list-manage.com/subscribe/post?u=3b533553aa7564167238aba5e&amp;id=929a88a092" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" role="form" novalidate)
+            // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            %div{ style: 'position: absolute; left: -5000px;' }
+              %input(type="text" name="b_3b533553aa7564167238aba5e_929a88a092" tabindex="-1" value="")
+            .form-group
+              %input{ type: 'email', value: '', name: 'EMAIL', class: 'form-control footer-input', placeholder: 'email@domain.com', required: true }
+              %input{ type: 'submit', value: 'Sign Up', name: 'subscribe', class: 'btn btn-default form-control-button email-btn' }
+          %ul.list-unstyled.social-links
+            %li.facebook= link_to 'Facebook', 'https://www.facebook.com/Adoptt'
+            %li.twitter= link_to 'Twitter', 'https://twitter.com/Adoptt'
+            %li.instagram= link_to 'Instagram', 'https://www.instagram.com/adopttogether'
+            %li.google-plus= link_to 'Google+', 'https://plus.google.com/113162280265037527351'
+            %li.pinterest= link_to 'Pinterest', 'https://www.pinterest.com/adoptt/'
+        .col-xs-12
+          %p &copy; 2010-2015 AdoptTogether. All rights reserved.

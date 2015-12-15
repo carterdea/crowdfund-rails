@@ -12,10 +12,10 @@ class UpdateMailer < ApplicationMailer
       'FAMILY_FULL_NAME' => @family.full_name,
       'UPDATE_TITLE' => @update.title,
       'UPDATE_BODY' => simple_format(@update.message),
-      'UPDATE_PHOTO' => @update.photo,
+      'UPDATE_PHOTO' => @update.photo.large.url,
       'UPDATE_NUMBER' => @update.sequential_id,
-      'UPDATE_CREATED_AT' => @update.date_created,
-      'FAMILY_URL' => family_url(@family)
+      'UPDATE_DATE' => @update.date_created,
+      'FAMILY_PROFILE_URL' => family_url(@family)
     }
 
     body = mandrill_template('family-update', merge_vars)
