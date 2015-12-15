@@ -62,7 +62,11 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to @family, notice: 'Your family profile has been updated.'
+      if Rails.application.routes.recognize_path(request.referer)[:action] == 'approval_letter' ## If the user is coming to Families#Update from 'Approval Letter', send them back to Grants#Update
+        redirect_to family_grants_path(@family), notice: 'Thanks for uploading your approval letter! We\'ll take a look at it and get back to you soon.'
+      else
+        redirect_to @family, notice: 'Your family profile has been updated.'
+      end
     else
       render :edit
     end
