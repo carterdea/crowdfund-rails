@@ -4,17 +4,17 @@
   .col-xs-12.col-md-8
     %h1 New Update
     %h2 Give Your Donors an Update
-    = form_for([@family, @update]) do |f|
+    = form_for([@family, @update], html: { 'data-parsley-validate' => true }) do |f|
       = render 'shared/errors', object: @update
       .row
         .col-xs-12.col-sm-8.col-md-8.col-lg-6
           .form-group
             = f.label :title
-            = f.text_field :title, class: 'form-control'
+            = f.text_field :title, required: :true, 'data-parsley-trigger' => 'focusout change', class: 'form-control'
         .col-xs-12
           .form-group
             = f.label :message, 'Message to your donors'
-            = f.text_area :message, size: '60x10', class: 'form-control'
+            = f.text_area :message, size: '60x10', minlength: 1, maxlength: 10_000, 'data-parsley-length' => '[1, 10_000]', 'data-parsley-trigger' => 'focusout change', class: 'form-control'
         .col-xs-12.col-sm-8.col-md-8.col-lg-6
           .form-group
             = f.label :photo do
