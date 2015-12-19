@@ -21,6 +21,7 @@ class Family < ActiveRecord::Base
   scope :include_total_raised, -> { joins('LEFT OUTER JOIN donations ON families.id = donations.recipient_id').select('families.*, COALESCE(SUM(donations.amount), 0) AS total_raised').group('families.id') }
 
   before_validation :generate_slug, on: :create
+  before_validation :add_http
 
   EXCLUDED_SLUGS = %w(
     register
@@ -37,6 +38,8 @@ class Family < ActiveRecord::Base
     cancel
   )
 
+  VALID_URL_REGEX = %r{\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z}
+
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
   validates :photo, presence: true, file_size: { maximum: 2.megabytes.to_i }
   validates_length_of :description, maximum: 2000, message: 'Please keep your story to less than 2,000 characters.'
@@ -45,6 +48,7 @@ class Family < ActiveRecord::Base
   validates :quantity, numericality: { greater_than: 0 }
   validates :slug, uniqueness: true, presence: true, exclusion: { in: EXCLUDED_SLUGS }
   validates :phone, :address, :city, :state, presence: true, on: :update
+  validates :agency_site, format: VALID_URL_REGEX
   validates_associated :user, on: :create
 
   ADOPTION_STATUSES = [
@@ -129,6 +133,12 @@ class Family < ActiveRecord::Base
       self.slug = "the-#{last_name.pluralize.parameterize}-#{suffix}"
       suffix += 1
     end
+  end
+end
+
+def add_http
+  if agency_site.present?
+    self.agency_site = "http://#{agency_site}" unless agency_site[%r{\Ahttp:\/\/}] || agency_site[%r{\Ahttps:\/\/}]
   end
 end
 
