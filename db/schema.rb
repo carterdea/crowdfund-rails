@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215105425) do
+ActiveRecord::Schema.define(version: 20151219021842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 20151215105425) do
   end
 
   add_index "grants", ["family_id"], name: "index_grants_on_family_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "updates", force: :cascade do |t|
     t.integer  "family_id"

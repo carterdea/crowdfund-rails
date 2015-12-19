@@ -61,6 +61,7 @@ gem 'ruby-oembed', '~> 0.8.14'
 gem 'sequenced'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'social_shares', '~> 0.2.5'
+gem 'tumblr_client', '~> 0.8.5'
 
 # localization
 gem 'rails-i18n', '~> 4.0.4'
@@ -76,6 +77,7 @@ gem 'puma', '~> 2.15.3'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', '~> 0.7.2'
+  gem 'brakeman', '~> 3.1'
   gem 'bullet', '~> 4.14.7'
   gem 'derailed_benchmarks', '~> 1.0.1'
   gem 'letter_opener', '~> 1.4'

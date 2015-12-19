@@ -19,7 +19,7 @@ class FamiliesController < ApplicationController
 
   def show
     @donations = @family.donations.order('id DESC').page(params[:page]).per(10)
-    @updates = @family.updates.page(params[:page]).per(5)
+    @updates = @family.updates.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new
@@ -46,7 +46,7 @@ class FamiliesController < ApplicationController
         @family.save
         login(user_params[:email], user_params[:password])
         FamilyMailer.new_family_email(@family).deliver_later
-        redirect_to @family, notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
+        redirect_to family_path(@family), notice: 'Your family profile is now live! Share it with friends to start raising funds for your adoption.'
       else
         flash.now[:alert] = 'There was a problem with your family profile. Please check it and try again.'
         render :new

@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @families = Family.approved.visible.include_total_raised.limit(9)
+    @posts = Page.tumblr_posts
   end
 
   def dashboard

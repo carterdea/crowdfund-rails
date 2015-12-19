@@ -7,6 +7,7 @@
 }
 .jumbotron {
   background: image-url("hero.jpg") center center;
+  background-position-x: -620px;
   background-size: cover;
   color: $color-white;
   margin-bottom: 0;
@@ -135,6 +136,10 @@ blockquote {
   margin: 0;
   padding: 0;
 
+  img {
+    width: 50px;
+  }
+
   h4.media-heading {
     color: $color-medium-grey-2;
     font-size: 16px;
@@ -152,19 +157,30 @@ blockquote {
   .article {
     margin-bottom: 20px;
 
-    img.pull-left {
-      padding-right: 10px;
+    .blog-thumb {
+      background-position: center center;
+      background-size: cover;
+      height: 140px;
+      margin-right: 10px;
+      width: 140px;
     }
 
     h3 {
+      a {
+        color: $color-medium-grey-2;
+      }
       margin: 2px;
     }
   }
 
   .article-large {
+    .blog-thumb {
+      height: 220px;
+      width: 220px;
+    }
+
     h3 {
       font-size: 18px;
-      margin-top: 12px;
     }
   }
 
@@ -175,12 +191,18 @@ blockquote {
     margin-bottom: 0;
     text-transform: uppercase;
   }
+
+  .btn {
+    max-width: 140px;
+    text-align: center;
+  }
 }
 
 // Small devices (tablets, 768px and up)
 @media (min-width: $screen-sm-min) {
   .jumbotron {
     padding-top: 20px;
+    background-position-x: center;
     
     h1 {
       font-size: 36px;
