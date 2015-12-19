@@ -13,7 +13,7 @@
         - if family.persisted?
           .form-group
             = f.label :address
-            = f.text_field :address, class: 'form-control'
+            = f.text_field :address, class: 'form-control', autocorrect: 'off'
           .form-group
             = f.label :city
             = f.text_field :city, class: 'form-control'

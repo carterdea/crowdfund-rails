@@ -74,7 +74,7 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :email
-              = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout change'
+              = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout  change', autocorrect: 'off'
               / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
           / .col-xs-12
           /   .checkbox

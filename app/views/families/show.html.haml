@@ -1,5 +1,5 @@
-- cache(@family) do
-  .row
+.row
+  - cache(@family) do
     .col-xs-12.col-sm-8
       .family-details
         = image_tag(@family.photo.large.url, alt: "#{@family.full_name} is raising money on AdoptTogether for their adoption from #{@family.country_name}.", class: 'img-responsive')
@@ -27,20 +27,22 @@
                 - else
                   %p.help-block This family hasn't written any updates yet.
 
-    %aside.col-xs-12.col-sm-4
-      .raised
+  %aside.col-xs-12.col-sm-4
+    .raised
+      - cache(@family) do
         %h3 Raised
         %span.total-raised= pretty_dollars(@family.total_raised)
         %span.goal of #{pretty_dollars(@family.cost)} Goal
-        - if current_user && @family == current_user.family
-          %span.btn.btn-primary.btn-lg.btn-block.disabled Give to this Adoption
-          %span.help-block.small Unfortunately, the IRS won't let you give to your own Adoption. Sorry about that! 😩
-        - else
-          = link_to 'Give to this Adoption', new_family_donation_path(@family), class: 'btn btn-primary btn-lg btn-block'
-      .share-buttons
-        %span.share-count= share_count(family_url(@family))
-        %span.shares Shares
-        = render 'shared/share_buttons', family: @family
+      - if current_user && @family == current_user.family
+        %span.btn.btn-primary.btn-lg.btn-block.disabled Give to this Adoption
+        %span.help-block.small Unfortunately, the IRS won't let you give to your own Adoption. Sorry about that! 😩
+      - else
+        = link_to 'Give to this Adoption', new_family_donation_path(@family), class: 'btn btn-primary btn-lg btn-block'
+    .share-buttons
+      %span.share-count= share_count(family_url(@family))
+      %span.shares Shares
+      = render 'shared/share_buttons', family: @family
+    - cache(@family) do
       %h2= pluralize(@donations.length, 'Donation')
       %ul.list-unstyled
         - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do

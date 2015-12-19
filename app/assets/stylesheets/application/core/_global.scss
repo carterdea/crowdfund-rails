@@ -86,7 +86,7 @@ footer {
 
 .navbar-toggle {
   @include border-radius(5px);
-  background-color: darken($color-light-grey-1, 10%);
+  background-color: darken($color-light-grey-2, 10%);
   border: 1px solid $color-medium-grey-1;
   margin: 8px 15px 5px 0;
   padding: 7px 8px;
