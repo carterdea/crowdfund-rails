@@ -5,7 +5,7 @@
       - cache(['updates_list', updates.map(&:id), updates.maximum(:updated_at)]) do
         - updates.limit(5).each do |update|
           - cache(update) do
-            = render 'shared/update', :update => update
+            = render 'shared/update', update: update, family: family
     - else
       %p.small.help-block You haven't written any updates yet.
   = link_to "See all updates", family_updates_path(family)
