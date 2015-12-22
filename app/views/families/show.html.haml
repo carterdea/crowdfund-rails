@@ -22,7 +22,7 @@
                 - if @updates.any?
                   - @updates.each do |update|
                     - cache(update) do
-                      = render 'shared/update', update: update
+                      = render 'shared/update', update: update, family: @family
                   = paginate @updates
                 - else
                   %p.help-block This family hasn't written any updates yet.

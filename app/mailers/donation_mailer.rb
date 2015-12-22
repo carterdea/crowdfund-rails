@@ -10,20 +10,17 @@ class DonationMailer < ApplicationMailer
     subject = 'Thank you for your Donation to AdoptTogether'
 
     merge_vars = {
-      'RECIPIENT_TYPE' => recipient.class.name,
+      'RECIPIENT_TYPE' => donation.recipient_type,
       'DONOR_FIRST_NAME' => first_name,
       'DONOR_FULL_NAME' => donation.name,
       'AMOUNT' => pretty_dollars(donation.amount, 2), # Showing 2 decimals so it's more accurate
       'AT_TIP' => pretty_dollars(donation.at_tip, 2),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip, 2),
       'RECIPIENT_FULL_NAME' => recipient.full_name,
-      'RECIPIENT_LAST_NAME' => recipient.last_name,
-      'FAMILY_PROFILE_URL' => family_url(recipient),
-      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
-      'FAMILY_PHOTO_URL' => recipient.photo.large.url,
-      'ADOPTION_COUNTRY' => recipient.country_name,
       'TOTAL_RAISED' => pretty_dollars(recipient.donations.pluck(:amount).sum)
     }
+
+    add_family_vars(merge_vars) if donation.recipient_type == 'Family'
 
     body = mandrill_template('donation-receipt', merge_vars)
 
@@ -40,21 +37,18 @@ class DonationMailer < ApplicationMailer
     subject = 'Thank you for your Monthly Donation to AdoptTogether'
 
     merge_vars = {
-      'RECIPIENT_TYPE' => recipient.class.name,
+      'RECIPIENT_TYPE' => donation.recipient_type,
       'DONOR_FIRST_NAME' => first_name,
       'DONOR_FULL_NAME' => donation.name,
       'AMOUNT' => pretty_dollars(donation.amount, 2),
       'AT_TIP' => pretty_dollars(donation.at_tip, 2),
       'TOTAL' => pretty_dollars(donation.amount + donation.at_tip, 2),
       'RECIPIENT_FULL_NAME' => recipient.full_name,
-      'RECIPIENT_LAST_NAME' => recipient.last_name,
-      'FAMILY_PROFILE_URL' => family_url(recipient),
-      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
-      'FAMILY_PHOTO_URL' => recipient.photo.large.url,
-      'ADOPTION_COUNTRY' => recipient.country_name,
       'TOTAL_RAISED' => pretty_dollars(recipient.donations.pluck(:amount).sum),
       'CANCEL_MONTHLY_DONATION_URL' => cancel_monthly_donation_url
     }
+
+    add_family_vars(merge_vars) if donation.recipient_type == 'Family'
 
     body = mandrill_template('monthly-donation-receipt', merge_vars)
 
@@ -108,5 +102,19 @@ class DonationMailer < ApplicationMailer
     send_mail(recipient.user.email,
               subject,
               body)
+  end
+
+  private
+
+  def add_family_vars(merge_hash)
+    # These are variables that only donations to families need. If these run on Charity donations, it throws an exception
+    family_vars = {
+      'RECIPIENT_LAST_NAME' => recipient.last_name,
+      'FAMILY_PROFILE_URL' => family_url(recipient),
+      'FAMILY_PROFILE_URL_PARAMETERIZED' => family_url(recipient).to_param,
+      'FAMILY_PHOTO_URL' => recipient.photo.large.url,
+      'ADOPTION_COUNTRY' => recipient.country_name
+    }
+    merge_hash.merge(family_vars)
   end
 end

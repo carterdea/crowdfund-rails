@@ -19,7 +19,7 @@ class FamiliesController < ApplicationController
 
   def show
     @donations = @family.donations.order('id DESC').page(params[:page]).per(10)
-    @updates = @family.updates.order("created_at DESC").page(params[:page]).per(5)
+    @updates = @family.updates.order('created_at DESC').page(params[:page]).per(5)
   end
 
   def new

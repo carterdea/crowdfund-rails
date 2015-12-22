@@ -7,14 +7,14 @@
       .row
         .col-xs-8
           %h3= @donation.type
-          - if @donation.recipient_type != 'Charity'
+          - if @donation.recipient_type == 'Family'
             %p designated to #{@recipient.full_name}’s Adoption
           - else
             %p to AdoptTogether
 
         .col-xs-4
           %span.pull-right= pretty_dollars(@donation.amount, 2)
-        - if @donation.recipient_type != 'Charity'
+        - if @donation.recipient_type == 'Family'
           .col-xs-8
             %p Tip for AdoptTogether
           .col-xs-4
@@ -34,7 +34,7 @@
       .row
         .col-xs-12.col-sm-4
           %span.share-count= share_count(family_url(@recipient))
-          %h3 Shares
+          %span.shares Shares
         .share-buttons.col-xs-12.col-sm-8
           = render 'shared/share_buttons', family: @recipient
   %aside.col-xs-12.col-sm-4

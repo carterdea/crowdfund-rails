@@ -15,19 +15,19 @@ class DonationsController < ApplicationController
   def create
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
-    if @donation.recurring == false
-      if @donation.create_stripe_charge && @donation.save
-        DonationMailer.donation_receipt(@donation).deliver_later
-        DonationMailer.donation_received(@donation).deliver_later
+    if @donation.recurring == true
+      if @donation.subscribe_stripe_customer && @donation.save
+        DonationMailer.monthly_donation_receipt(@donation).deliver_later
+        DonationMailer.donation_received(@donation).deliver_later unless @donation.recipient_type == 'Charity'
         set_session_ids
         redirect_to :thanks
       else
         render :new
       end
     else
-      if @donation.subscribe_stripe_customer && @donation.save
-        DonationMailer.monthly_donation_receipt(@donation).deliver_later
-        DonationMailer.donation_received(@donation).deliver_later
+      if @donation.create_stripe_charge && @donation.save
+        DonationMailer.donation_receipt(@donation).deliver_later
+        DonationMailer.donation_received(@donation).deliver_later unless @donation.recipient_type == 'Charity'
         set_session_ids
         redirect_to :thanks
       else
@@ -38,10 +38,10 @@ class DonationsController < ApplicationController
 
   def thanks
     @donation = Donation.find(session[:donation_id])
-    if @donation.recipient_type == 'Family'
-      @recipient = Family.include_total_raised.find(@donation.recipient_id)
-    else
-      @recipient = @donation.recipient
+    if session[:recipient_type] == 'Family'
+      @recipient = Family.include_total_raised.find(session[:recipient_id])
+    elsif session[:recipient_type] == 'Charity'
+      @recipient = Charity.find(session[:recipient_id])
     end
   end
 
@@ -85,6 +85,8 @@ class DonationsController < ApplicationController
 
   def set_session_ids
     session[:donation_id] = @donation.id
+    session[:recipient_type] = @donation.recipient_type
+    session[:recipient_id] = @donation.recipient_id
   end
 
   def donation_params

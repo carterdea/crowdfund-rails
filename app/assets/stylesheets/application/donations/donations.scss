@@ -105,6 +105,8 @@ label[for="donation_amount_other"] {
 }
 
 #cards {
+  margin-bottom: 20px;
+
   &.visa {
     img {
       opacity: .25;
@@ -181,8 +183,28 @@ label[for="donation_amount_other"] {
 }
 
 .donations.thanks {
+  .well {
+    margin-bottom: 8px;
+  }
+
   .well p {
     margin-bottom: 0;
+  }
+
+  .share-count,
+  .shares {
+    display: block;
+    line-height: 1.2;
+  }
+
+  .share-count {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .shares {
+    color: $color-medium-grey-1;
+    font-size: 16px;
   }
 }
 
