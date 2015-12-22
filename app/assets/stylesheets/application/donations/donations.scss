@@ -104,6 +104,53 @@ label[for="donation_amount_other"] {
   }
 }
 
+#cards {
+  &.visa {
+    img {
+      opacity: .25;
+    }
+
+    img.visa {
+      opacity: 1;
+    }
+  }
+
+  &.mastercard {
+    img {
+      opacity: .25;
+    }
+
+    img.mastercard {
+      opacity: 1;
+    }
+  }
+
+  &.discover {
+    img {
+      opacity: .25;
+    }
+
+    img.discover {
+      opacity: 1;
+    }
+  }
+
+  &.amex {
+    img {
+      opacity: .25;
+    }
+
+    img.amex {
+      opacity: 1;
+    }
+  }
+
+  img {
+    display: inline-block;
+    margin-right: 7px;
+  }
+}
+
 .lock {
   img {
     float: left;

@@ -24,7 +24,7 @@
           = label_tag 'donation_amount_other', '' do
             = radio_button_tag 'donation[amount]', 'other', nil
             = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
-            %p.small.help-block The average gift is #{pretty_dollars(average_donation_amount)}
+            %p.small.help-block The average gift is #{pretty_dollars(Donation.average_donation_amount)}
         -# Tips for AT when you're already donating to AT is redundant
         - if donation.recipient_type != 'Charity'
           %p.radio-label Give a small donation to AdoptTogether (totally optional!)
@@ -41,10 +41,11 @@
                 Other |
                 = telephone_field_tag 'tip_other_text', nil, placeholder: '$0', class: 'form-control'
         %p.small.help-block AdoptTogether is a non profit service for adoptive families. We are a 501(c)(3) non profit funded completely by people just like you who make these small donations.
-        .checkbox
-          = f.label :hide_amount, class: 'checkbox' do
-            = f.check_box :hide_amount
-            Make my donation amount private
+        - if donation.recipient_type != 'Charity'
+          .checkbox
+            = f.label :hide_amount, class: 'checkbox' do
+              = f.check_box :hide_amount
+              Make my donation amount private
         .row
           .col-xs-12.col-md-6
             = link_to 'Next', '#page-donation-info', 'data-toggle' => 'tab', class: 'btn btn-primary btn-block'
@@ -57,10 +58,11 @@
             .form-group
               = f.label :name
               = f.text_field :name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
-            .checkbox
-              = f.label :anonymous, class: 'checkbox' do
-                = f.check_box :anonymous
-                Make this donation anonymous
+            - if donation.recipient_type != 'Charity'
+              .checkbox
+                = f.label :anonymous, class: 'checkbox' do
+                  = f.check_box :anonymous
+                  Make this donation anonymous
         .row
           .col-xs-12
             .form-group
@@ -102,7 +104,11 @@
                 %p.small.help-block
                   %span{'data-toggle' => 'tooltip', 'data-placement' => 'top', title: 'This is the 3 digit number on the back of your credit card (4 digits if you have Amex)'} What's this?
               = f.hidden_field :stripe_token
-
+        #cards
+          = image_tag('card-visa.png', height: 38, alt: 'Visa', class: 'visa')
+          = image_tag('card-mastercard.png', height: 38, alt: 'Mastercard', class: 'mastercard')
+          = image_tag('card-discover.png', height: 38, alt: 'Discover', class: 'discover')
+          = image_tag('card-amex.png', height: 38, alt: 'American Express', class: 'amex')
         .checkbox
           = f.label :recurring, class: 'checkbox' do
             = f.check_box :recurring

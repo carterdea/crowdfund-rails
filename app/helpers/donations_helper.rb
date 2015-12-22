@@ -10,14 +10,6 @@ module DonationsHelper
     '$' + number_with_delimiter(dollar_value)
   end
 
-  def average_donation_amount
-    if Donation.any?
-      Donation.average(:amount)
-    else
-      0
-    end
-  end
-
   def cancel_url(recipient, donation)
     if donation.recipient_type = 'Family'
       family_donations_path(recipient) + '/cancel/' + donation.token

@@ -79,6 +79,11 @@ $(function () {
   $('.js-cc-number').payment('formatCardNumber');
   $('.js-cc-expiry').payment('formatCardExpiry');
   $('.js-cc-cvc').payment('formatCardCVC');
+
+  $('.js-cc-number').keyup(function () {
+    var cardType = $.payment.cardType($('.js-cc-number').val());
+    $('#cards').removeClass().addClass(cardType);
+  });
 });
 
 // Stripe Tokenization

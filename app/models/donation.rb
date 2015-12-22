@@ -67,6 +67,16 @@ class Donation < ActiveRecord::Base
     "#{name}'s (#{email}) monthly donation to #{full_name}"
   end
 
+  def self.average_donation_amount
+    Rails.cache.fetch('average_donation_amount', expires_in: 12.hours) do
+      if Donation.any?
+        Donation.average(:amount)
+      else
+        0
+      end
+    end
+  end
+
   # Single Donations
 
   def create_stripe_charge
