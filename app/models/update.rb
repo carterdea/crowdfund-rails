@@ -1,7 +1,7 @@
 require 'file_size_validator'
 
 class Update < ActiveRecord::Base
-  belongs_to :family, counter_cache: true, touch: true, dependent: :destroy
+  belongs_to :family, counter_cache: true, touch: true
   acts_as_sequenced scope: :family_id
 
   before_validation :add_http

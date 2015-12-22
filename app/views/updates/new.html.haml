@@ -4,35 +4,4 @@
   .col-xs-12.col-md-8
     %h1 New Update
     %h2 Give Your Donors an Update
-    = form_for([@family, @update], html: { 'data-parsley-validate' => true }) do |f|
-      = render 'shared/errors', object: @update
-      .row
-        .col-xs-12.col-sm-8.col-md-8.col-lg-6
-          .form-group
-            = f.label :title
-            = f.text_field :title, required: :true, 'data-parsley-trigger' => 'focusout change', class: 'form-control'
-        .col-xs-12
-          .form-group
-            = f.label :message, 'Message to your donors'
-            = f.text_area :message, size: '60x10', minlength: 1, maxlength: 10_000, 'data-parsley-length' => '[1, 10_000]', 'data-parsley-trigger' => 'focusout change', class: 'form-control'
-        .col-xs-12.col-sm-8.col-md-8.col-lg-6
-          .form-group
-            = f.label :photo do
-              Photo
-              %span.optional (Optional)
-            = f.file_field :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
-          .form-group
-            = f.label :video_url do
-              Video URL
-              %span.optional (Optional)
-            .input-group
-              %span.input-group-addon http://
-              = f.text_field :video_url, class: 'form-control', 'data-parsley-trigger' => 'focusout change'
-            %p.small.help-block Just give us a URL from Vimeo or Youtube and we'll handle the rest.
-        .col-xs-12
-          .checkbox
-            = f.label :email_donors do
-              = f.check_box :email_donors
-              Update my donors via email
-        .col-xs-12.col-sm-8.col-md-8.col-lg-6
-          = f.submit 'Post Update', class: 'btn btn-primary btn-block'
+    = render 'form', family: @family, update: @update

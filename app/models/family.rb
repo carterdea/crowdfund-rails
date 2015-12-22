@@ -36,6 +36,10 @@ class Family < ActiveRecord::Base
     adopt_together
     adoption
     cancel
+    babyball
+    baby_ball
+    1500
+    fifteen
   )
 
   VALID_URL_REGEX = %r{\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z}

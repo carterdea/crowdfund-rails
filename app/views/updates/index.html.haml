@@ -9,7 +9,7 @@
         - cache(['updates_list', @updates.map(&:id), @updates.maximum(:updated_at)]) do
           - @family.updates.each do |update|
             - cache(update) do
-              = render 'shared/update', update: update
+              = render 'shared/update', update: update, family: @family
         = paginate @updates
       - else
         %p.help-block You haven't written any updates yet. Updates are a great way to communicate with your donors and update them on the status of your adoption.

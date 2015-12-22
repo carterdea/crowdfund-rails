@@ -5,7 +5,7 @@ class UpdatesController < ApplicationController
   load_and_authorize_resource :update, through: :family
 
   def index
-    @updates = @family.updates.all.order('created_at ASC').page(params[:page]).per(10)
+    @updates = @family.updates.order('created_at ASC').page(params[:page]).per(10)
   end
 
   def show
@@ -35,7 +35,7 @@ class UpdatesController < ApplicationController
   def update
     @update = @family.updates.find(params[:id])
     if @update.update(update_params)
-      redirect :show, notice: 'Your update has been edited successfully.'
+      redirect_to family_updates_path(@family), notice: 'Your update has been edited successfully.'
     else
       render :new
     end
@@ -44,7 +44,7 @@ class UpdatesController < ApplicationController
   def destroy
     @update = @family.updates.find(params[:id])
     @update.destroy
-    redirect_to updates_path, alert: 'Your update has been deleted.'
+    redirect_to family_updates_path(@family), alert: 'Your update has been deleted.'
   end
 
 private

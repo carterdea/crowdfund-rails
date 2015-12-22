@@ -1,0 +1,8 @@
+.row
+  .col-xs-12.col-md-4
+    = render 'shared/dashboard_nav', family: @family
+  .col-xs-12.col-md-8
+    %h1 Edit Update
+    %h2 Make changes to an existing Update.
+    %p Note: Unfortunately we are not able to send edited update emails to your donors. Only the original edit will be sent.
+    = render 'form', family: @family, update: @update
