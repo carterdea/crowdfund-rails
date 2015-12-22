@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, dependent: :destroy
-  has_one :family, dependent: :delete
+  has_one :family, dependent: :destroy
   has_many :updates, through: :families
   accepts_nested_attributes_for :authentications
 
