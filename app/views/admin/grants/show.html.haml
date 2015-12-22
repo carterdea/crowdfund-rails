@@ -56,8 +56,8 @@
         .row
           %br
           .col-xs-12.col-sm-6
-            = f.submit 'Approve', class: 'btn btn-success btn-block'
+            = f.submit 'Approve', class: 'btn btn-success btn-block', 'data-confirm' => 'Are you sure you want to Approve this Grant?'
           .col-xs-12.col-sm-6
-            = link_to 'Deny', admin_grant_deny_grant_path(@grant), class: 'btn btn-danger btn-block'
+            = link_to 'Deny', admin_grant_deny_grant_path(@grant), class: 'btn btn-danger btn-block', 'data-confirm' => 'Are you sure you want to Deny this Grant?'
     - else
       You've already #{@grant.status} this grant.
