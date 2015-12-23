@@ -29,7 +29,7 @@
 
   %aside.col-xs-12.col-sm-4
     .raised
-      - cache(@family) do
+      - cache(@family.total_raised) do
         %h3 Raised
         %span.total-raised= pretty_dollars(@family.total_raised)
         %span.goal of #{pretty_dollars(@family.cost)} Goal
@@ -42,7 +42,7 @@
       %span.share-count= share_count(family_url(@family))
       %span.shares Shares
       = render 'shared/share_buttons', family: @family
-    - cache(@family) do
+    - cache(['donations_list', @donations.map(&:id), @donations.maximum(:updated_at)]) do
       %h2= pluralize(@donations.length, 'Donation')
       %ul.list-unstyled
         - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
