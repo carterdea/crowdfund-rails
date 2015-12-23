@@ -1,5 +1,7 @@
 .row
-  - if posts.any?
+  - if defined?(posts).nil? # If posts isn't defined
+    %p.text-center We can't find any posts right now. Check our blog below to see what's new.
+  - else
     - posts.find(0) do |post|
       - image = post['body'][/img.*?src="(.*?)"/i,1]
       - title = post['title']
@@ -28,6 +30,4 @@
         %p
           = body
           = link_to('Read more', post['post_url'])
-  - else
-    %p.text-center We done goofed! We can't find any blog posts right now.
 = link_to 'See the blog', 'http://adopttogether.tumblr.com', class: 'btn btn-default btn-sm center-block'
