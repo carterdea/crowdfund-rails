@@ -18,12 +18,12 @@
   %aside.col-xs-12.col-sm-4
     - if params[:family_id].present?
       - cache(@recipient) do
-        %h2 You are making a designated donation to AdoptTogether on behalf of
+        %h3 You are making a designated donation to AdoptTogether on behalf of
         = render 'shared/family_thumb', family: @recipient
     %h2 FAQ
-    %h3 Are my donations tax deductible?
+    %h4 Are my donations tax deductible?
     %p Yes! Your donation is going to Hoping Hearts Foundation, an IRS approved 501c3 non-profit organization.
-    %h3 Can I send a check?
+    %h4 Can I send a check?
     %p Of course! Just make your check payable to AdoptTogether and put the family’s name on the envelope & in the memo and mail it to:
     %p
       AdoptTogether
@@ -33,7 +33,7 @@
       Springboro, OH 45066
       %br
       1 (888) 826-0948
-    %h3 Can I give a monthly donation?
+    %h4 Can I give a monthly donation?
     %p Yes! Just choose to make your donation monthly and we will charge your credit card until you cancel. This is a great way to give more over time.
-    %h3 Can I edit or cancel my monthly donation?
+    %h4 Can I edit or cancel my monthly donation?
     %p You can cancel your monthly contribution at any time via a unique URL that we will email you after you donate. If you ever lose the email, just contact us and we'll help you cancel your donation.
