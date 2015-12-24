@@ -10,6 +10,7 @@
     "jquery.payment": "~1.3.2",
     "morris.js": "morrisjs#~0.5.1",
     "parsleyjs": "~2.1.3",
-    "raphael": "~2.1.4"
+    "raphael": "~2.1.4",
+    "mailcheck": "~1.1.1"
   }
 }
