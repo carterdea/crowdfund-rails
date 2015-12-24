@@ -42,12 +42,20 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+  def fix_exif_rotation
+    manipulate! do |img|
+      img.auto_orient
+      img
+    end
+  end
+
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
 
+  process :fix_exif_rotation
   process convert: 'jpg'
   process quality: 80
 
