@@ -15,6 +15,9 @@ class DonationsController < ApplicationController
   def create
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
+    # When evaluating booleans, you don't need `== true`. `if @donation.recurring` 
+    # is all you need. Additionally, ruby's convention is to call the property 
+    # `is_recurring`, but that's probably a bigger refactor.
     if @donation.recurring == true
       if @donation.subscribe_stripe_customer && @donation.save
         DonationMailer.monthly_donation_receipt(@donation).deliver_later
@@ -52,6 +55,7 @@ class DonationsController < ApplicationController
   def update
     @donation = @recipient.donations.find(params[:id])
     if @donation.update(donation_params)
+      # The ruby convention is to use `unless` when evaluating a false boolean. So `unless @donation.recurring`.
       if @donation.recurring == false
         @donation.delete_stripe_customer
         DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_later
