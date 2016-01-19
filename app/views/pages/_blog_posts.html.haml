@@ -1,5 +1,5 @@
 .row
-  - if defined?(posts).nil? # If posts isn't defined
+  - if defined?(posts).nil? || posts.nil? # If posts isn't defined
     %p.text-center We can't find any posts right now. Check our blog below to see what's new.
   - else
     - posts.find(0) do |post|
