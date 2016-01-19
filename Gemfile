@@ -46,7 +46,7 @@ gem 'readthis', '~> 1.1' # cool new redis client http://sorentwo.com/2015/07/20/
 gem 'mandrill-api', '~> 1.0.53'
 
 # background jobs
-gem 'sidekiq', '~> 3.5.0'
+gem 'sidekiq', '~> 4.0'
 
 # miscelaneous
 gem 'country_select', '~> 2.2.0'
@@ -90,10 +90,10 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'ffaker', '~> 2.1.0'
   gem 'rspec-rails', '~> 3.3.1'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
-  gem 'ffaker', '~> 2.1.0'
 end
 
 group :test do
@@ -104,6 +104,9 @@ group :test do
   gem 'database_cleaner', '~> 1.5.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'guard-rspec', '~> 4.6.0'
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'webmock', '~> 1.22'
+  gem 'vcr', '~> 3.0'
 end
 
 group :production do
