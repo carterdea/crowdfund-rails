@@ -19,11 +19,11 @@ gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '>= 1.3.0'
 
 # charts
-gem 'groupdate', '~> 2.5.0', require: false
+gem 'groupdate'
 
 # file handling
 gem 'carrierwave', '~> 0.10.0'
-gem 'mini_magick', '~> 4.3.6', require: false
+gem 'mini_magick', '~> 4.3.6'
 
 # security & auth
 gem 'bcrypt', '~> 3.1.7'
@@ -49,8 +49,8 @@ gem 'mandrill-api', '~> 1.0.53'
 gem 'sidekiq', '~> 4.0'
 
 # miscelaneous
-gem 'country_select', '~> 2.2.0', require: false
-gem 'countries', require: false
+gem 'country_select', '~> 2.2.0'
+gem 'countries'
 gem 'figaro', '~> 1.1.1'
 gem 'jbuilder', '~> 2.0'
 gem 'kaminari', '~> 0.16.3'

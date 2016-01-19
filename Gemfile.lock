@@ -615,7 +615,7 @@ DEPENDENCIES
   figaro (~> 1.1.1)
   fog (~> 1.36)
   gem_bench
-  groupdate (~> 2.5.0)
+  groupdate
   guard-rspec (~> 4.6.0)
   haml (~> 4.0.7)
   has_secure_token (~> 1.0.0)
