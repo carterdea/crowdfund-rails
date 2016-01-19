@@ -138,12 +138,16 @@ class Family < ActiveRecord::Base
       suffix += 1
     end
   end
-end
 
-def add_http
-  if agency_site.present?
-    self.agency_site = "http://#{agency_site}" unless agency_site[%r{\Ahttp:\/\/}] || agency_site[%r{\Ahttps:\/\/}]
+  def add_http
+    if agency_site.present?
+      self.agency_site = "http://#{agency_site}" unless agency_site[%r{\Ahttp:\/\/}] || agency_site[%r{\Ahttps:\/\/}]
+    end
   end
 end
 
+Family.__elasticsearch__.create_index! force: true
+
 Family.import
+
+Family.__elasticsearch__.refresh_index!
