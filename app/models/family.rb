@@ -123,7 +123,7 @@ class Family < ActiveRecord::Base
       attributes = %w(id user_id first_name last_name quantity country status total_raised cost status approved visible phone address city state postal_code agency_name slug donations_count updates_count grants_count created_at updated_at)
       csv << attributes
       all.each do |family|
-        csv << attributes.map { |attr| family.send(attr) }
+        csv << attributes.map! { |attr| family.send(attr) }
       end
     end
   end
@@ -146,6 +146,4 @@ def add_http
   end
 end
 
-Family.__elasticsearch__.create_index! force: true
 Family.import
-Family.__elasticsearch__.refresh_index!
