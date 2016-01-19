@@ -15,7 +15,7 @@ class DonationsController < ApplicationController
   def create
     @donation = @recipient.donations.build(donation_params)
     @stripe_token = :stripe_token
-    if @donation.recurring == true
+    if @donation.recurring
       if @donation.subscribe_stripe_customer && @donation.save
         DonationMailer.monthly_donation_receipt(@donation).deliver_later
         DonationMailer.donation_received(@donation).deliver_later unless @donation.recipient_type == 'Charity'
@@ -52,7 +52,7 @@ class DonationsController < ApplicationController
   def update
     @donation = @recipient.donations.find(params[:id])
     if @donation.update(donation_params)
-      if @donation.recurring == false
+      unless @donation.recurring
         @donation.delete_stripe_customer
         DonationMailer.cancel_monthly_donation_confirmation(@donation).deliver_later
       end
