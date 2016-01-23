@@ -92,7 +92,7 @@ jQuery(function($) {
     var $form = $(this);
 
     // Disable the submit button to prevent repeated clicks
-    $form.find('input[type=submit]').prop('disabled', true);
+    $form.find('input[type=submit]').prop('disabled', true).prop('value', 'Donating Now...');
 
 
     // Stripe.card.createToken($form, stripeResponseHandler);
@@ -115,7 +115,7 @@ function stripeResponseHandler(status, response) {
   if (response.error) {
     // Show the errors on the form
     $form.find('.payment-errors').text(response.error.message);
-    $form.find('input[type=submit]').prop('disabled', false);
+    $form.find('input[type=submit]').prop('disabled', false).prop('value', 'Donate');
   } else {
     // response contains id and card, which contains additional card details
     var token = response.id;
@@ -127,5 +127,5 @@ function stripeResponseHandler(status, response) {
 }
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+  $('[data-toggle="tooltip"]').tooltip();
+});

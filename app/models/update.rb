@@ -23,8 +23,4 @@ class Update < ActiveRecord::Base
       self.video_url = "http://#{video_url}" unless video_url[%r{\Ahttp:\/\/}] || video_url[%r{\Ahttps:\/\/}]
     end
   end
-
-  # def user_message
-  #   message.chomp
-  # end
 end

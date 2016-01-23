@@ -72,6 +72,9 @@ gem 'skylight', '~> 0.10.0'
 gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 2.15.3'
 
+# benchmarking
+gem 'stackprof', '~> 0.2.7'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -83,7 +86,6 @@ group :development do
   gem 'memory_profiler', '~> 0.9.4'
   gem 'meta_request'
   gem 'populator', '~> 1.0.0'
-  gem 'stackprof', '~> 0.2.7'
   gem 'sinatra', '~> 1.4.6' # for Sidekiq monitoring https://github.com/mperham/sidekiq/wiki/Monitoring
   gem 'rails-footnotes', '~> 4.1.7'
   gem 'rails_best_practices'
