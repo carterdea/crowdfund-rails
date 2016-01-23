@@ -13,7 +13,7 @@
           .col-xs-6.agency
             %h4 Adoption Agency
             %h3= @family.agency_name
-            %span.website= link_to @family.agency_site, 'http://' + @family.agency_site, target: '_blank'
+            %span.website= link_to @family.agency_site, @family.agency_site, target: '_blank'
         .row
           .col-xs-12
             %h2 Updates
