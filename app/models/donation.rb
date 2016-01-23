@@ -24,18 +24,18 @@ class Donation < ActiveRecord::Base
   ]
 
   def donor_name
-    if anonymous == false
-      name
-    else
+    if anonymous
       'Anonymous'
+    else
+      name
     end
   end
 
   def donation_amount
-    if hide_amount == false
-      '$' + (amount.to_i).to_s
-    else
+    if hide_amount
       'an undisclosed amount'
+    else
+      '$' + (amount.to_i).to_s
     end
   end
 
@@ -52,10 +52,10 @@ class Donation < ActiveRecord::Base
   end
 
   def type
-    if recurring == false
-      'One-Time Donation'
-    else
+    if recurring
       'Monthly Donation'
+    else
+      'One-Time Donation'
     end
   end
 
