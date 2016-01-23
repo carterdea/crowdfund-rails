@@ -30,8 +30,8 @@ footer {
   margin-bottom: 0;
 
   .form-control {
-    background: image-url("search-icon-sm.png") no-repeat 10px center;
-    @include image-2x("search-icon-sm@2x.png", 16px, 16px);
+    background: image-url('search-icon-sm.png') no-repeat 10px center;
+    background-size: 16px;
     padding-left: 34px;
   }
 }
@@ -207,27 +207,27 @@ footer {
 
   .facebook {
     background: image-url('footer-facebook.png') no-repeat left center;
-    @include image-2x('footer-facebook@2x.png', 16px, 16px);
+    background-size: 16px, 16px;
   }
 
   .twitter {
     background: image-url('footer-twitter.png') no-repeat left center;
-    @include image-2x('footer-twitter@2x.png', 16px, 13px);
+    background-size: 16px, 13px;
   }
 
   .instagram {
     background: image-url('footer-instagram.png') no-repeat left center;
-    @include image-2x('footer-instagram@2x.png', 16px, 16px);
+    background-size: 16px, 16px;
   }
 
   .google-plus {
     background: image-url('footer-google-plus.png') no-repeat left center;
-    @include image-2x('footer-google-plus@2x.png', 16px, 10px);
+    background-size: 16px, 10px;
   }
 
   .pinterest {
     background: image-url('footer-pinterest.png') no-repeat left center;
-    @include image-2x('footer-pinterest@2x.png', 16px, 16px);
+    background-size: 16px, 16px;
   }
 }
 

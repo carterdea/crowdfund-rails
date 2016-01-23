@@ -6,7 +6,7 @@
   }
 }
 .jumbotron {
-  background: image-url("hero.jpg") center center;
+  background: image-url('hero.jpg') center center;
   background-position-x: -620px;
   background-size: cover;
   color: $color-white;
@@ -21,8 +21,8 @@
   .input-group-addon {
     @include border-radius(5px 0 0 0);
     background-color: darken($color-white, 2%);
-    background: image-url("search-icon-lg.png") no-repeat right center darken($color-white, 2%);
-    @include image-2x("search-icon-lg@2x.png", 24px, 24px);
+    background: image-url('search-icon-lg.png') no-repeat right center darken($color-white, 2%);
+    // background-size: 24px;
     border: 0;
     padding-left: 20px;
   }
@@ -114,12 +114,12 @@
 
   &.left {
     background: image-url('arrow-left.png') no-repeat center center;
-    @include image-2x('arrow-left@2x.png', 23px, 48px);
+    background-size: 23px, 48px;
   }
 
   &.right {
     background: image-url('arrow-right.png') no-repeat center center;
-    @include image-2x('arrow-right@2x.png', 23px, 48px);
+    background-size: 23px, 48px;
   }
 
 }
@@ -219,8 +219,8 @@ blockquote {
     }
 
     .input-group-addon {
-      background: image-url("search-icon-lg.png") no-repeat right center darken($color-white, 2%);
-      @include image-2x('search-icon-lg@2x.png', 24px, 24px);
+      background: image-url('search-icon-lg.png') no-repeat right center darken($color-white, 2%);
+      background-size: 24px;
       @include border-radius(5px 0 0 5px);
       padding: 0 18px;
     }
