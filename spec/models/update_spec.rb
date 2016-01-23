@@ -1,4 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Update, type: :model do
+describe Update, '#action' do
+  
 end
