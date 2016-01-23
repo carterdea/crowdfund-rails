@@ -22,7 +22,7 @@
     @include border-radius(5px 0 0 0);
     background-color: darken($color-white, 2%);
     background: image-url('search-icon-lg.png') no-repeat right center darken($color-white, 2%);
-    // background-size: 24px;
+    background-size: 24px;
     border: 0;
     padding-left: 20px;
   }
@@ -126,28 +126,30 @@
 
 .testimonials {
   background: darken($color-off-white, 3%);
-  padding: 50px 0
+  padding: 20px 0
 }
 
 blockquote {
   border-left: 0;
   color: $color-medium-grey-1;
+  font-size: 12px;
   font-style: italic;
   margin: 0;
   padding: 0;
 
   img {
-    width: 50px;
+    width: 32px;
   }
 
   h4.media-heading {
     color: $color-medium-grey-2;
-    font-size: 16px;
+    font-size: 13px;
     margin-bottom: 0;
   }
 
   p.media-subheading {
-    font-size: 14px;
+    font-size: 11px;
+    margin-bottom: 20px;
   }
 }
 
@@ -250,6 +252,27 @@ blockquote {
   .family-bucket {
     h2 {
       margin-top: 50px;
+    }
+  }
+
+  .testimonials {
+    padding: 50px 0;
+  }
+
+  blockquote {
+  font-size: 17px;
+
+    img {
+      width: 50px;
+    }
+
+    h4.media-heading {
+      font-size: 16px;
+    }
+
+    p.media-subheading {
+      font-size: 12px;
+      margin-bottom: 0;
     }
   }
 }

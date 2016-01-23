@@ -18,11 +18,11 @@
         .form-group.donation-amount(data-toggle='buttons')
           - Donation::DONATION_AMOUNTS.each do |amount|
             = f.label :amount, value: amount, class: 'btn btn-default' do
-              = f.radio_button :amount, amount
+              = f.radio_button :amount, amount, required: :true, 'data-parsley-multiple' => 'amount'
               = '$' + amount.to_s
           -# The empty quotes are to keep the label text empty
           = label_tag 'donation_amount_other', '' do
-            = radio_button_tag 'donation[amount]', 'other', nil
+            = radio_button_tag 'donation[amount]', 'other', nil, required: :true, 'data-parsley-multiple' => 'amount'
             = telephone_field_tag 'other_text', nil, placeholder: 'Other amount', class: 'form-control'
             %p.small.help-block The average gift is #{pretty_dollars(Donation.average_donation_amount)}
         -# Tips for AT when you're already donating to AT is redundant
@@ -57,7 +57,7 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :name
-              = f.text_field :name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change'
+              = f.text_field :name, class: 'form-control', required: :true, 'data-parsley-trigger' => 'focusout change', 'data-parsley-group' => 'fieldset-2'
             - if donation.recipient_type != 'Charity'
               .checkbox
                 = f.label :anonymous, class: 'checkbox' do
@@ -76,7 +76,7 @@
           .col-xs-12.col-md-6
             .form-group
               = f.label :email
-              = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout  change', autocorrect: 'off'
+              = f.email_field :email, class: 'form-control', type: :email, required: :true, 'data-parsley-trigger' => 'focusout  change',  'data-parsley-group' => 'fieldset-2', autocorrect: 'off'
               / %p.small.help-block For the receipt. We will not email you anything else unless you opt in.
           / .col-xs-12
           /   .checkbox

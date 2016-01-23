@@ -19,13 +19,8 @@
             %h2 Updates
             - cache(['updates_list', @updates.map(&:id), @updates.maximum(:updated_at)]) do
               %ul.list-unstyled.update-list
-                - if @updates.any?
-                  - @updates.each do |update|
-                    - cache(update) do
-                      = render 'shared/update', update: update, family: @family
-                  = paginate @updates
-                - else
-                  %p.help-block This family hasn't written any updates yet.
+                = render partial: 'shared/update', collection: @updates, as: :update, locals: {family: @family} || 'This family has not posted any updates yet.'
+                = paginate @updates
 
   %aside.col-xs-12.col-sm-4
     .raised
@@ -43,13 +38,8 @@
       %span.shares Shares
       = render 'shared/share_buttons', family: @family
     - cache(['donations_list', @donations.map(&:id), @donations.maximum(:updated_at)]) do
-      %h2= pluralize(@donations.length, 'Donation')
+      %h2= pluralize(@donations.total_count, 'Donation')
       %ul.list-unstyled
         - cache(["donation_list", @donations.map(&:id), @donations.maximum(:updated_at)]) do
-          - if @donations.any?
-            - @donations.each do |donation|
-              - cache(donation) do
-                = render 'shared/donation', donation: donation
-            = paginate @donations
-          - else
-            %p No one has donated yet.
+          = render partial: 'shared/donation', collection: @donations, as: :donation || 'No one has donated to this family. You can be the first!'
+          = paginate @donations

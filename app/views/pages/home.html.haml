@@ -33,12 +33,7 @@
     %h2 #{pluralize(Family.count, 'Family')} have raised #{pretty_dollars(global_donations)}
   %p for their adoptions on AdoptTogether
   .row.no-padding
-    - cache(['families_list', @families.map(&:id), @families.maximum(:updated_at)]) do
-      - @families.each do |family|
-        - cache(family) do
-          .col-xs-6.col-md-4
-            = render 'shared/family_thumb', family: family
-
+    = render partial: 'shared/family_thumb', collection: @families, as: :family, layout: 'home_thumbs' || 'There are no families on AdoptTogether right now :('
 - provide(:after_container) do
   - cache ('testimonials') do
     .testimonials.no-padding

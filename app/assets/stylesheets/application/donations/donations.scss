@@ -37,13 +37,13 @@
   font-size: 18px;
   margin: 0 4px 4px 0;
   padding: 10px 10px 8px;
-  width: 32%;
+  width: 31%;
 }
 
 label[for="donation_amount_other"] {
   margin-top: 1px;
   vertical-align: top;
-  width: 32%;
+  width: 31%;
   #donation_amount_other {
     display: none;
   }
@@ -54,9 +54,9 @@ label[for="donation_amount_other"] {
 
 .form-group.donation-amount .form-control {
   display: inline-block;
-  font-size: 24px;
-  padding: 25px 15px;
-  width: 32%;
+  font-size: 16px;
+  padding: 18px 10px 16px;
+  width: 30%;
   vertical-align: top;
 }
 
@@ -226,9 +226,22 @@ label[for="donation_amount_other"] {
     font-size: 24px;
     padding: 15px 25px 13px;
   }
+
+  .form-group.donation-amount .form-control {
+    font-size: 24px;
+    padding: 25px 15px;
+  }
 }
 
 @media (min-width: $screen-md-min) {
+  .form-group.donation-amount .btn {
+    width: 32%
+  }
+
+  .form-group.donation-amount .form-control {
+    width: 31%
+  }
+
   .lock {
     float: right;
     margin-top: -52px;

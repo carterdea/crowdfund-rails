@@ -5,9 +5,5 @@
   %h1 Search Results for "#{params[:q]}"
   %h2= pluralize(@families.length, 'Adopting family') # Using length instead of count to keep the join intact
 .row
-  - cache(['families_list', @families.map(&:id), @families.maximum(:updated_at)]) do
-    - @families.each do |family|
-      - cache(family) do
-        .col-xs-6.col-md-4
-          = render 'shared/family_thumb', family: family
+  = render partial: 'shared/family_thumb', collection: @families, as: :family, layout: 'family_index_thumbs' || 'We can\'t find any families :('
 = paginate @families
