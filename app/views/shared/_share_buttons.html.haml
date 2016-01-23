@@ -1,18 +1,21 @@
-.share-fb
-  %div(class="fb-share-button" data-href="#{family_url(family)}" data-layout="box_count")
-.share-twitter
-  %a(href="https://twitter.com/share" class="twitter-share-button" data-url="#{family_url(family)}" data-text="I just donated towards #{family.full_name}'s adoption on @adoptt, you should too!" data-count="vertical")Tweet
-:javascript
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-.share-gplus
-  %script(src="https://apis.google.com/js/platform.js" async defer)
-  %g:plusone(size="tall" data-annotation="vertical-bubble" data-href="#{family_url(family)}" data-size="tall")
-.share-linkedin
-  %script(src="//platform.linkedin.com/in.js" type="text/javascript") lang: en_US
-  %script(type="IN/Share" data-counter="top")
-.share-pinterest
-  %a(href="//www.pinterest.com/pin/create/button/?url=#{Rack::Utils.escape(family_url(family))}&media=#{Rack::Utils.escape(family.photo.large.url)}&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above" data-pin-color="red" data-pin-height="28")
-    %img(src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png")
-  <!-- Please call pinit.js only once per page -->
-  %script(type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js")
+- title = url_encode("#{family.full_name} on AdoptTogether")
+- text_intro = url_encode("The #{family.last_name} Family is raising money for their adoption on ")
+- url = url_encode(family_url(family))
+- text_prompt = url_encode("Check it out!")
+- image = url_encode(image_url(family.photo.large.url))
+.row
+  .col-xs-6.share-button
+    = link_to "Facebook", "https://www.facebook.com/sharer/sharer.php?u=#{url}", class: 'facebook'
+  .col-xs-6.share-button
+    = link_to 'Twitter', "https://twitter.com/home?status=#{text_intro}%40Adoptt,%20#{text_prompt}%20#{url}", class: 'twitter'
+.row
+  .col-xs-6.share-button
+    = link_to 'Google +', "https://plus.google.com/share?url=#{url}", class: 'google-plus'
+  .col-xs-6.share-button
+    = link_to 'LinkedIn', "https://www.linkedin.com/shareArticle?mini=true&url=#{url}&title=#{title}&summary=#{text_intro}AdoptTogether.#{text_prompt}&source=", class: 'linkedin'
+.row
+  .col-xs-6.share-button
+    = link_to 'Pinterest', "https://pinterest.com/pin/create/button/?url=#{url}&media=#{image}&description=#{text_intro}AdoptTogether.%20#{text_prompt}}", class: 'pinterest'
+  .col-xs-6.share-button
+    =link_to 'Email', "mailto:?&subject=#{title}&body=#{text_intro}AdoptTogether.%20#{text_prompt}%20#{url}%0A%0AThanks!", class: 'email'
 = text_field_tag :url, family_url(family), class: "form-control", onClick: "this.setSelectionRange(0, this.value.length)"

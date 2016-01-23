@@ -1,10 +1,50 @@
 .share-buttons {
-	&> div {
-		float: left;
-		margin-right: 10px;
-	}
+  a {
+    display: block;
+    font-weight: 600;
+    padding: 3px 0 3px 35px;
+    margin-bottom: 10px;
+  }
 
-	.share-pinterest {
-		margin-top: 38px;
-	}
+	.facebook {
+    background: image-url('share-facebook.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-facebook;
+  }
+
+  .twitter {
+    background: image-url('share-twitter.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-twitter;
+  }
+
+  .google-plus {
+    background: image-url('share-google-plus.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-google-plus;
+  }
+
+  .linkedin {
+    background: image-url('share-linkedin.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-linkedin;
+  }
+
+  .pinterest {
+    background: image-url('share-pinterest.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-pinterest;
+  }
+
+  .email {
+    background: image-url('share-email.png') no-repeat left center;
+    background-size: 24px;
+    color: $color-medium-grey-1;
+  }
+
+  input {
+    background: image-url('share-link.png') no-repeat 10px center;
+    background-size: 16px;
+    padding-left: 32px;
+  }
 }
