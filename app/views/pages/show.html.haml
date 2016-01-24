@@ -1,3 +1,3 @@
-- title = @page.seo_title
-- description = @page.seo_description
+- title @page.seo_title
+- meta_description @page.seo_description
 = sanitize @page.body, scrubber: PageBodyScrubber.new

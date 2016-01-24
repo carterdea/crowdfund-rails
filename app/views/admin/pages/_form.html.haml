@@ -16,7 +16,7 @@
           %code example-page
   .form-group
     = f.label :body
-    = f.text_area :body, size: '40x20', class: 'form-control', required: true
+    = f.text_area :body, size: '40x20', class: 'form-control'
     #editor
     = render 'body_instructions'
   .row
@@ -30,11 +30,11 @@
     = f.text_field :seo_description, size: 40, class: 'form-control'
     %span.small.help-block This is the paragraph of text shown under the title in the Google search result, it should be optimized for SEO.
   .btn-group{'data-toggle' => 'buttons'}
-    = f.label :live_true, class: 'btn btn-default active' do
-      = f.radio_button :live, 'true'
+    = f.label :live_true, class: 'btn btn-default' do
+      = f.radio_button :live, :true
       Live
     = f.label :live_false, class: 'btn btn-default' do
-      = f.radio_button :live, 'false'
+      = f.radio_button :live, :false
       Hidden
   = f.hidden_field :created_by, value: @current_user.email
   .row

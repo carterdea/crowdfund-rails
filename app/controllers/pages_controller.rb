@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :require_login, only: :dashboard
+  load_and_authorize_resource
 
   def home
     @families = Family.approved.visible.include_total_raised.limit(9)

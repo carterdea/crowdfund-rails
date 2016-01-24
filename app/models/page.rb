@@ -1,7 +1,7 @@
 require 'page_body_scrubber'
 
 class Page < ActiveRecord::Base
-  validates_presence_of [:title, :body]
+  validates_presence_of [:title, :body, :seo_title, :seo_description]
   validates :slug, uniqueness: true, presence: true, exclusion: { in: EXCLUDED_SLUGS }
 
   def self.tumblr_posts

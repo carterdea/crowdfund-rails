@@ -2,12 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    alias_action :home, :about, :faq, :contact, to: :page_read
+
     user ||= User.new
 
     can [:create, :update], Donation
     can :create, User
     can :create, Family
     can [:read, :search], Family, approved: true
+    can :page_read, Page
+    cannot :read, Page, live: false
     can :read, Page, live: true
 
     if user.admin?
