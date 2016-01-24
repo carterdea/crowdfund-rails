@@ -87,7 +87,7 @@ $(function () {
 });
 
 // Stripe Tokenization
-jQuery(function($) {
+$(function () {
   $('#new_donation').submit(function(event) {
     var $form = $(this);
 

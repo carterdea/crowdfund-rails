@@ -1,5 +1,4 @@
 $(function () {
-
   $('#grant_user_amount_requested').mask('000,000,000,000,000', {reverse: true});
 
   $('.grant .body').collapser({
@@ -10,5 +9,4 @@ $(function () {
     showText: 'Read more',
     hideText: 'Read less',  
   });
-
 });

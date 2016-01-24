@@ -1,5 +1,4 @@
 $(function () {
-
   $('.well .update .body').collapser({
     mode: 'words',
     truncate: 10,
@@ -19,5 +18,4 @@ $(function () {
   });
 
   $('.video-responsive').fitVids();
-
 });
