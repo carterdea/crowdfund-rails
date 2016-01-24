@@ -312,6 +312,10 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     haml (4.0.7)
       tilt
+    hamlit (2.2.0)
+      temple (~> 0.7.6)
+      thor
+      tilt
     has_secure_token (1.0.0)
       activerecord (>= 3.0)
     hashdiff (0.2.3)
@@ -617,7 +621,7 @@ DEPENDENCIES
   gem_bench
   groupdate
   guard-rspec (~> 4.6.0)
-  haml (~> 4.0.7)
+  hamlit (~> 2.2)
   has_secure_token (~> 1.0.0)
   hiredis
   jbuilder (~> 2.0)
