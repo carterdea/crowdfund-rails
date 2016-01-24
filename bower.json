@@ -11,6 +11,8 @@
     "morris.js": "morrisjs#~0.5.1",
     "parsleyjs": "~2.1.3",
     "raphael": "~2.1.4",
-    "mailcheck": "~1.1.1"
+    "mailcheck": "~1.1.1",
+    "ace-editor-bower": "~1.2.2",
+    "jquery-readyselector": "~0.1.0"
   }
 }

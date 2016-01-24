@@ -1,0 +1,6 @@
+%h1 
+  %span.small.show
+    = link_to 'Pages', admin_pages_path
+    \ /
+  Edit #{@page.title}
+= render 'form', page: @page

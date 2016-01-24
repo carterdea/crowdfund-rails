@@ -8,6 +8,7 @@ class Ability
     can :create, User
     can :create, Family
     can [:read, :search], Family, approved: true
+    can :read, Page, live: true
 
     if user.admin?
       can :manage, :all

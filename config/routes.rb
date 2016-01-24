@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       get 'toggle_visibility', on: :member
     end
     resources :charities
+    resources :pages
   end
 
   post 'oauth/callback' => 'oauths#callback'
@@ -59,6 +60,8 @@ Rails.application.routes.draw do
 
   get 'oauths/oauth'
   get 'oauths/callback'
+
+  match '/:slug' => 'pages#show', via: [:get, :post]
 
   if Rails.env.development?
     require 'sidekiq/web'

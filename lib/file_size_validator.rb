@@ -1,6 +1,5 @@
 # lib/file_size_validator.rb
 # Based on: https://gist.github.com/795665
-
 class FileSizeValidator < ActiveModel::EachValidator
   MESSAGES  = { is: :wrong_size, :minimum => :size_too_small, :maximum => :size_too_big }.freeze
   CHECKS    = { is: :==, :minimum => :>=, :maximum => :<= }.freeze

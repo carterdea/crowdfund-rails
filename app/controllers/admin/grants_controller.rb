@@ -13,7 +13,7 @@ class Admin::GrantsController < ADMIN::AdminController
   end
 
   def show
-    @family = @grant.family
+    @family = Family.include_total_raised.find(@grant.family_id)
   end
 
   def update

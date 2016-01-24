@@ -1,0 +1,28 @@
+= link_to 'Create a Page', new_admin_page_path, class: 'btn btn-primary pull-right'
+%h1
+  %span.small.show
+    = link_to 'Admin', admin_path
+    \ /
+    - if @page
+      = link_to @page.name, :back
+  All #{pluralize(@pages.total_count, 'Page')}
+= paginate(@pages)
+%table.table.table-hover
+  %thead
+    %tr
+      %th= sortable 'title', 'Title'
+      %th= sortable 'slug', 'URL'
+      %th= sortable 'created_by', 'Created By'
+      %th= sortable 'created_at', 'Created At'
+      %th= sortable 'updated_at', 'Updated At'
+      %th= sortable 'Status', 'Status'
+  %tbody
+    - @pages.each do |page|
+      %tr
+        %td= page.title
+        %td= link_to page.slug, root_url + page.slug
+        %td= page.created_by
+        %td.small{title: page.created_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(page.created_at)} ago
+        %td.small{title: page.updated_at.strftime("on %-m/%-d/%Y at %l:%M %p")} #{time_ago_in_words(page.updated_at)} ago
+        %td
+          = link_to '📝', edit_admin_page_path(page), title: 'Edit Page'

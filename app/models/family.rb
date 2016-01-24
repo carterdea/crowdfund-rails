@@ -23,25 +23,6 @@ class Family < ActiveRecord::Base
   before_validation :generate_slug, on: :create
   before_validation :add_http
 
-  EXCLUDED_SLUGS = %w(
-    register
-    signup
-    login
-    signin
-    about
-    reset_password
-    resetpassword
-    passwordreset
-    adopttogether
-    adopt_together
-    adoption
-    cancel
-    babyball
-    baby_ball
-    1500
-    fifteen
-  )
-
   VALID_URL_REGEX = %r{\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z}
 
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true

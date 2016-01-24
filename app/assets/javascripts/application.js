@@ -11,6 +11,9 @@
 //= require jquery.payment/lib/jquery.payment
 //= require jquery.collapser.min.js/index
 //= require jquery.fitvids/jquery.fitvids
+//= require ace-editor-bower/ace.js
+//= require ace-editor-bower/theme-monokai.js
+//= require ace-editor-bower/mode-html.js
 
 //= require_tree .
 //= require bootstrap

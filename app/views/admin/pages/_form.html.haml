@@ -1,0 +1,42 @@
+= form_for [:admin, @page] do |f|
+  = render 'shared/errors', object: page
+  .row
+    .col-xs-12.col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, size: 40, autofocus: true, class: 'form-control', 'data-parsley-trigger' => 'focusout change', required: :true
+        %span.small.help-block This is the internal title, end users won't see this
+      .form-group
+        = f.label :slug
+        .input-group
+          %span.input-group-addon http://www.adopttogether.org/
+          = f.text_field :slug, size: 40, class: 'form-control', 'data-parsely-trigger' => 'focusout change', required: :true
+        %span.small.help-block
+          This is the URL. Needs to be in this format:
+          %code example-page
+  .form-group
+    = f.label :body
+    = f.text_area :body, size: '40x20', class: 'form-control', required: true
+    #editor
+    = render 'body_instructions'
+  .row
+    .col-xs-12.col-md-6
+      .form-group
+        = f.label :seo_title
+        = f.text_field :seo_title, size: 40, class: 'form-control'
+        %span.small.help-block This is the title shown in the top of the browser & on Google, it should be optimized for SEO.
+  .form-group
+    = f.label :seo_description
+    = f.text_field :seo_description, size: 40, class: 'form-control'
+    %span.small.help-block This is the paragraph of text shown under the title in the Google search result, it should be optimized for SEO.
+  .btn-group{'data-toggle' => 'buttons'}
+    = f.label :live_true, class: 'btn btn-default active' do
+      = f.radio_button :live, 'true'
+      Live
+    = f.label :live_false, class: 'btn btn-default' do
+      = f.radio_button :live, 'false'
+      Hidden
+  = f.hidden_field :created_by, value: @current_user.email
+  .row
+    .col-xs-12.col-md-6.col-lg-4
+      = f.submit class: 'btn btn-primary btn-block'

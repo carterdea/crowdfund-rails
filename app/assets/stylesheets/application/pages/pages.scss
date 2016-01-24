@@ -58,3 +58,19 @@
   margin: 0.1em 0
 }
 
+textarea#page_body {
+  display: none;
+}
+
+#editor {
+  @include border-radius(3px);
+  height: 400px;
+  width: 100%;
+}
+
+.pages.new,
+.pages.edit {
+  .btn-group {
+    margin-bottom: 15px;
+  }
+}

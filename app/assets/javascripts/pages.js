@@ -1,6 +1,6 @@
 $(function () {
-  if($('#area-chart').length >0 ){
-    new Morris.Area({
+  if($('#area-chart').length >0 ) {
+      new Morris.Area({
       element: 'area-chart',
       data: $('#area-chart').data('amount-raised'),
       goals: [$('#area-chart').data('cost')],
