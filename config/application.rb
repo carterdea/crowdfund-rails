@@ -28,5 +28,8 @@ module Adopttogether
     config.active_job.queue_adapter = :sidekiq
 
     config.middleware.use Rack::Deflater
+
+    config.action_dispatch.default_headers.merge!('content-type' => 'text/html; charset=utf-8')
+    config.action_dispatch.default_headers.merge!('x-ua-compatible' => 'IE=edge')
   end
 end

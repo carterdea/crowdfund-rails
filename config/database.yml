@@ -16,10 +16,3 @@ development:
 test:
   <<: *default
   database: at-test
-
-production:
-  <<: *default
-  database: at-prod
-  connect_timeout: 1
-  checkout_timeout: 1
-  pool: 10
