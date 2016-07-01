@@ -12,7 +12,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
    ```
 
 2. Install Dependencies 
-  * Ruby 2.2.2
+  * Ruby 2.3.1
   * Postgres
   * ImageMagick
   * ElasticSearch

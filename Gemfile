@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 
 gem 'rails', '4.2.5'
 
@@ -102,7 +102,7 @@ end
 group :test do
   gem 'capybara', '~> 2.5.0'
   gem 'capybara-screenshot'
-  gem 'capybara-webkit', '~> 1.7.1'
+  gem 'capybara-webkit', '~> 1.11'
   gem 'codeclimate-test-reporter', require: nil
   gem 'database_cleaner', '~> 1.5.0'
   gem 'factory_girl_rails', '~> 4.5.0'
