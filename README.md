@@ -7,9 +7,9 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 1. Get the code.
 
-   ```shell
-   % git clone git@github.com:carterdea/adopttogether.git
-   ```
+    ```shell
+    % git clone git@github.com:carterdea/adopttogether.git
+    ```
 
 2. Install Dependencies 
   * Ruby 2.3.1
