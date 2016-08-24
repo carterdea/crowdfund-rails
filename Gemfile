@@ -92,8 +92,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'byebug'
   gem 'ffaker', '~> 2.1.0'
+  gem 'jazz_fingers', '~> 4.0'
   gem 'rspec-rails', '~> 3.3.1'
   gem 'spring', '~> 1.3.6'
   gem 'web-console', '~> 2.0'
