@@ -53,7 +53,6 @@ namespace :db do
           update.family_id = family.id
           update.title = FFaker::BaconIpsum.phrases(2).sample
           update.message = FFaker::BaconIpsum.paragraphs(5).sample
-          update.on_profile = FFaker::Boolean.maybe
         end
       end
     end
