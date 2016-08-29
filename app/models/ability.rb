@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    alias_action :home, :about, :faq, :contact, to: :page_read
+    alias_action :home, :about, :faq, :contact, :dashboard, to: :page_read
 
     user ||= User.new
 
@@ -22,10 +22,10 @@ class Ability
       if user.family?
         can :manage, Family, user_id: user.id
         cannot :create, Family # We don't want users creating more than 1 family for now
-
         can :manage, [Update, Grant], family: { user_id: user.id }
       end
     end
+
 
     # Define abilities for the passed in user here. For example:
     #
