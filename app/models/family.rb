@@ -33,7 +33,7 @@ class Family < ActiveRecord::Base
   validates :quantity, numericality: { greater_than: 0 }
   validates :slug, uniqueness: true, presence: true, exclusion: { in: EXCLUDED_SLUGS }
   validates :phone, :address, :city, :state, presence: true, on: :update
-  validates :agency_site, format: VALID_URL_REGEX
+  validates :agency_site, format: VALID_URL_REGEX, allow_blank: true
   validates_associated :user, on: :create
 
   ADOPTION_STATUSES = [
