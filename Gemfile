@@ -29,7 +29,7 @@ gem 'mini_magick', '~> 4.5'
 gem 'bcrypt', '~> 3.1'
 gem 'cancancan', '~> 1.15'
 gem 'has_secure_token', '~> 1.0.0'
-gem 'sorcery', '~> 0.9.1'
+gem 'sorcery', github: 'NoamB/sorcery'
 
 # payment
 gem 'stripe', '~> 1.51'
