@@ -1,4 +1,4 @@
-class Authentication < ActiveRecord::Base
+class Authentication < ApplicationRecord
   belongs_to :user
 
   def has_linked_facebook?

@@ -1,6 +1,6 @@
 require 'file_size_validator'
 
-class Update < ActiveRecord::Base
+class Update < ApplicationRecord
   belongs_to :family, counter_cache: true, touch: true
   acts_as_sequenced scope: :family_id
 

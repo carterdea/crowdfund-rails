@@ -1,4 +1,4 @@
-class Donation < ActiveRecord::Base
+class Donation < ApplicationRecord
   has_secure_token
   belongs_to :recipient, polymorphic: true, counter_cache: true, touch: true
 

@@ -1,4 +1,4 @@
-class Grant < ActiveRecord::Base
+class Grant < ApplicationRecord
   belongs_to :family, counter_cache: true
 
   mount_uploader :supporting_documentation, AttachmentUploader

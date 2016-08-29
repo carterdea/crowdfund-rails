@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '4.2.7'
+gem 'rails', '5.0.0.1'
 
 # front-end
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -46,7 +46,7 @@ gem 'readthis', '~> 2.0' # cool new redis client http://sorentwo.com/2015/07/20/
 gem 'mandrill-api', '~> 1.0.53'
 
 # background jobs
-gem 'sidekiq', '~> 4.1'
+gem 'sidekiq', '~> 4.1.4'
 
 # miscelaneous
 gem 'country_select', '~> 2.5'
@@ -62,7 +62,7 @@ gem 'social_shares', '~> 0.3.2'
 gem 'tumblr_client', '~> 0.8.5'
 
 # localization
-gem 'rails-i18n', '~> 4.0.4' # needs Rails 5 to update
+gem 'rails-i18n', '~> 5.0'
 
 # performance & monitoring
 gem 'airbrake', '~> 5.4'
@@ -81,9 +81,9 @@ group :development do
   gem 'gem_bench', require: false
   gem 'letter_opener', '~> 1.4'
   gem 'memory_profiler', '~> 0.9.6'
-  gem 'meta_request', '~> 0.4.0'
+  # gem 'meta_request', '~> 0.4.0'
   gem 'populator', '~> 1.0.0'
-  gem 'sinatra', '~> 1.4.7' # for Sidekiq monitoring https://github.com/mperham/sidekiq/wiki/Monitoring
+  gem 'sinatra', github: 'sinatra/sinatra' # for Sidekiq monitoring https://github.com/mperham/sidekiq/wiki/Monitoring
   gem 'rails-footnotes', '~> 4.1'
   gem 'rails_best_practices', '~> 1.17'
   # benchmarking

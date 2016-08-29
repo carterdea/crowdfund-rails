@@ -2,7 +2,7 @@ require 'elasticsearch/model'
 require 'file_size_validator'
 
 # app/models/family.rb
-class Family < ActiveRecord::Base
+class Family < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 

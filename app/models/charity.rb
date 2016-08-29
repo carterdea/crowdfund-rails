@@ -1,5 +1,5 @@
 # app/models/charity.rb
-class Charity < ActiveRecord::Base
+class Charity < ApplicationRecord
   has_many :donations, as: :recipient, dependent: :destroy
 
   def full_name
