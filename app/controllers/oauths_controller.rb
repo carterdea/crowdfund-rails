@@ -1,5 +1,5 @@
 class OauthsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_action :require_login
 
   def oauth
     session[:return_to_url] = request.referer unless request.referer =~ /oauth/

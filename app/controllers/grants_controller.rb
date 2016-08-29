@@ -1,5 +1,5 @@
 class GrantsController < ApplicationController
-  before_filter :set_family, only: [:index, :new, :create, :edit, :update]
+  before_action :set_family, only: [:index, :new, :create, :edit, :update]
 
   load_and_authorize_resource :family
   load_and_authorize_resource :grant, through: :family

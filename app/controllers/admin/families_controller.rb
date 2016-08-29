@@ -1,5 +1,5 @@
 class Admin::FamiliesController < ADMIN::AdminController
-  before_filter :set_family, only: [:toggle_approval, :toggle_visibility]
+  before_action :set_family, only: [:toggle_approval, :toggle_visibility]
 
   load_and_authorize_resource
 

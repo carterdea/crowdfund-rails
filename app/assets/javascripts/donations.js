@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+$(function () {
   // When the user clicks the tabs, give the active tab a class of "active"
   $('.page-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     $(e.target).addClass('active').siblings().removeClass("active");
