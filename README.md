@@ -5,18 +5,19 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 ### Setup
 
-1. Get the code.
+1. Get the code
 
     ```shell
     % git clone git@github.com:carterdea/adopttogether.git
     ```
 
 2. Install Dependencies 
-  * Ruby 2.3.1
-  * Postgres
-  * ImageMagick
-  * ElasticSearch
-  * Bower
+
+  ** Ruby 2.3.1
+  ** Postgres
+  ** ImageMagick
+  ** ElasticSearch
+  ** Bower
 
 3. Install Gems
 
@@ -45,6 +46,7 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
 
 ### Continuous Integration
 Travis autodeploys to Heroku when a build passes on `Master`.
+
 CodeClimate is making sure I'm not writing bad code and to keep my test coverage at a reasonable level.
 
 ### Stripe
@@ -88,9 +90,7 @@ Last 2 version of:
 
 
 ### Code Status
-[![Code Climate](https://codeclimate.com/github/carterdea/adopttogether/badges/gpa.svg)](https://codeclimate.com/github/carterdea/adopttogether)
-[![Test Coverage](https://codeclimate.com/github/carterdea/adopttogether/badges/coverage.svg)](https://codeclimate.com/github/carterdea/adopttogether/coverage)
-[![Build Status](https://travis-ci.org/carterdea/adopttogether.svg?branch=master)](https://travis-ci.org/carterdea/adopttogether)
+[![Code Climate](https://codeclimate.com/github/carterdea/adopttogether/badges/gpa.svg)](https://codeclimate.com/github/carterdea/adopttogether) [![Test Coverage](https://codeclimate.com/github/carterdea/adopttogether/badges/coverage.svg)](https://codeclimate.com/github/carterdea/adopttogether/coverage) [![Build Status](https://travis-ci.org/carterdea/adopttogether.svg?branch=master)](https://travis-ci.org/carterdea/adopttogether)
 
 ## Admin Access
 Ask @carterdea (me@carterdea.com) for admin access
