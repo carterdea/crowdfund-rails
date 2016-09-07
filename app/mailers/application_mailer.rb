@@ -1,6 +1,8 @@
 require 'mandrill'
 
 class ApplicationMailer < ActionMailer::Base
+  append_view_path Rails.root.join('app', 'views', 'mailers')
+
   default(
     from: 'info@adopttogether.org',
     reply_to: 'info@adopttogether.org'
