@@ -73,12 +73,14 @@ gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.6'
 
 group :development do
+  gem 'annotate', '~> 2.7', '>= 2.7.1'
   gem 'better_errors'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'brakeman', '~> 3.3'
   gem 'bullet', '~> 5.3'
   gem 'derailed_benchmarks', '~> 1.3'
   gem 'gem_bench', require: false
+  gem 'immigrant', '~> 0.3.5'
   gem 'letter_opener', '~> 1.4'
   gem 'memory_profiler', '~> 0.9.6'
   gem 'meta_request', '~> 0.4.0'

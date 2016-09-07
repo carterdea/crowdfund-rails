@@ -41,6 +41,9 @@ GEM
     airbrake (5.4.5)
       airbrake-ruby (~> 1.4)
     airbrake-ruby (1.4.6)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
     arel (6.0.3)
     autoprefixer-rails (6.4.0.3)
       execjs
@@ -336,6 +339,8 @@ GEM
       domain_name (~> 0.5)
     i18n (0.7.0)
     i18n_data (0.7.0)
+    immigrant (0.3.5)
+      activerecord (>= 3.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jazz_fingers (4.0.1)
@@ -615,6 +620,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake (~> 5.4)
+  annotate (~> 2.7, >= 2.7.1)
   bcrypt (~> 3.1)
   better_errors
   binding_of_caller (~> 0.7.2)
@@ -648,6 +654,7 @@ DEPENDENCIES
   hamlit (~> 2.6)
   has_secure_token (~> 1.0.0)
   hiredis (~> 0.6.1)
+  immigrant (~> 0.3.5)
   jazz_fingers (~> 4.0)
   jbuilder (~> 2.6)
   jquery-rails (~> 4.2)

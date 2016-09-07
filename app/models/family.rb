@@ -1,3 +1,36 @@
+# == Schema Information
+#
+# Table name: families
+#
+#  id                   :integer          not null, primary key
+#  user_id              :integer
+#  first_name           :string
+#  last_name            :string
+#  phone                :string
+#  postal_code          :string
+#  city                 :string
+#  state                :string
+#  cost                 :decimal(15, 2)   default(0.0)
+#  country              :string
+#  gender               :string
+#  quantity             :integer
+#  description          :text
+#  status               :string
+#  agency_name          :string
+#  agency_site          :string
+#  photo                :string
+#  approved             :boolean          default(TRUE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  approval_letter_file :string
+#  slug                 :string
+#  address              :string
+#  visible              :boolean          default(TRUE)
+#  donations_count      :integer          default(0)
+#  updates_count        :integer          default(0)
+#  grants_count         :integer          default(0)
+#
+
 require 'elasticsearch/model'
 require 'file_size_validator'
 

@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: donations
+#
+#  id                   :integer          not null, primary key
+#  amount               :decimal(15, 2)   default(0.0)
+#  recurring            :boolean
+#  at_tip               :integer          default(0)
+#  family_email_updates :string           default("t")
+#  message              :text
+#  name                 :string
+#  email                :string
+#  at_newsletter        :boolean
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  hide_amount          :boolean
+#  anonymous            :boolean
+#  stripe_id            :string
+#  token                :string
+#  recipient_id         :integer
+#  recipient_type       :string
+#
+
 require 'rails_helper'
 
 describe Donation, '#donor_name' do
