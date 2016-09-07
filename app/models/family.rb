@@ -35,28 +35,22 @@ require 'elasticsearch/model'
 require 'file_size_validator'
 
 # app/models/family.rb
-class Family < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+class Family < ActiveRecord::Base  
+  VALID_URL_REGEX = %r{\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z}
+  ADOPTION_STATUSES = [
+    'Paperwork Not Started',
+    'Paperwork Filed',
+    'Homestudy Scheduled',
+    'Homestudy Completed',
+    'Awaiting Matching',
+    'Matched',
+    'Completed'
+  ]
 
   belongs_to :user, touch: true, dependent: :destroy
-  mount_uploader :photo, ImageUploader
   has_many :donations, as: :recipient, dependent: :destroy
   has_many :updates, dependent: :destroy
   has_many :grants, dependent: :destroy
-
-  scope :approved, -> { where(approved: true).order('families.created_at DESC') }
-  scope :unapproved, -> { where approved: false }
-
-  scope :visible, -> { where(visible: true).order('families.created_at DESC') }
-  scope :hidden, -> { where(visible: false) }
-
-  scope :include_total_raised, -> { joins('LEFT OUTER JOIN donations ON families.id = donations.recipient_id').select('families.*, COALESCE(SUM(donations.amount), 0) AS total_raised').group('families.id') }
-
-  before_validation :generate_slug, on: :create
-  before_validation :add_http
-
-  VALID_URL_REGEX = %r{\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z}
 
   validates :first_name, :last_name, :postal_code, :user_cost, :cost, presence: true
   validates :photo, presence: true, file_size: { maximum: 2.megabytes.to_i }
@@ -69,15 +63,20 @@ class Family < ActiveRecord::Base
   validates :agency_site, format: VALID_URL_REGEX, allow_blank: true
   validates_associated :user, on: :create
 
-  ADOPTION_STATUSES = [
-    'Paperwork Not Started',
-    'Paperwork Filed',
-    'Homestudy Scheduled',
-    'Homestudy Completed',
-    'Awaiting Matching',
-    'Matched',
-    'Completed'
-  ]
+  before_validation :generate_slug, on: :create
+  before_validation :add_http
+
+  mount_uploader :photo, ImageUploader
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  scope :approved, -> { where(approved: true).order('families.created_at DESC') }
+  scope :unapproved, -> { where approved: false }
+
+  scope :visible, -> { where(visible: true).order('families.created_at DESC') }
+  scope :hidden, -> { where(visible: false) }
+
+  scope :include_total_raised, -> { joins('LEFT OUTER JOIN donations ON families.id = donations.recipient_id').select('families.*, COALESCE(SUM(donations.amount), 0) AS total_raised').group('families.id') }
 
   def to_param
     slug

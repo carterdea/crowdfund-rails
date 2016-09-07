@@ -21,20 +21,20 @@
 #
 
 class User < ActiveRecord::Base
-  authenticates_with_sorcery!
-  authenticates_with_sorcery! do |config|
-    config.authentications_class = Authentication
-  end
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   has_many :authentications, dependent: :destroy
   has_one :family, dependent: :destroy
   has_many :updates, through: :families
   accepts_nested_attributes_for :authentications
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-
   validates :email, presence: true, format: VALID_EMAIL_REGEX, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_nil: true
+
+  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
 
   def set_family_params_from_fb
     @user_hash.first_name = @family.first_name

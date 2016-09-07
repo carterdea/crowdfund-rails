@@ -22,10 +22,10 @@
 class Grant < ActiveRecord::Base
   belongs_to :family, counter_cache: true
 
-  mount_uploader :supporting_documentation, AttachmentUploader
-
   validates :user_amount_requested, :amount_requested, :expense_description, :requested_to_name, :requested_to_address, :requested_to_city, :requested_to_state, :requested_to_zip, presence: true
   # validates :supporting_documentation
+
+  mount_uploader :supporting_documentation, AttachmentUploader
 
   scope :approved, -> { where(status: 'approved') }
 

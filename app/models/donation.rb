@@ -22,22 +22,6 @@
 #
 
 class Donation < ActiveRecord::Base
-  has_secure_token
-  belongs_to :recipient, polymorphic: true, counter_cache: true, touch: true
-
-  delegate :full_name, to: :recipient
-
-  require 'stripe'
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-
-  validates :name, presence: true
-  validates :email, presence: true, format: VALID_EMAIL_REGEX
-  validates :amount, numericality: { greater_than_or_equal_to: 1, message: 'Must be at least $1.' }
-  validates :at_tip, numericality: true, allow_nil: true
-
-  attr_accessor :stripe_token, :stripe_customer_id
-
   DONATION_AMOUNTS = [
     30, 50, 100, 500, 1000
   ]
@@ -45,6 +29,22 @@ class Donation < ActiveRecord::Base
   TIP_AMOUNTS = [
     [0, 'None'], [10, '10%'], [20, '20%']
   ]
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  attr_accessor :stripe_token, :stripe_customer_id
+
+  belongs_to :recipient, polymorphic: true, counter_cache: true, touch: true
+
+  delegate :full_name, to: :recipient
+
+  validates :name, presence: true
+  validates :email, presence: true, format: VALID_EMAIL_REGEX
+  validates :amount, numericality: { greater_than_or_equal_to: 1, message: 'Must be at least $1.' }
+  validates :at_tip, numericality: true, allow_nil: true
+
+  has_secure_token
+  require 'stripe'
 
   def donor_name
     if anonymous
