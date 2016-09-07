@@ -7,7 +7,7 @@ $(function () {
     effect: 'slide',
     speed: 'fast',
     showText: 'Read more',
-    hideText: 'Read less',
+    hideText: 'Read less'
   });
 
   $('.donor blockquote').collapser({
@@ -16,6 +16,6 @@ $(function () {
     effect: 'slide',
     speed: 'fast',
     showText: 'Read more',
-    hideText: 'Read less',
+    hideText: 'Read less'
   });
 });
