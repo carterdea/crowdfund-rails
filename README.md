@@ -75,6 +75,7 @@ Stripe is set up for single donations & recurring payments. Both allow the user 
 
 ### Testing
 We use Rspec & Capybara for testing. You can run specs w/ the command:
+
 ```shell
 % rspec
 ```
