@@ -50,7 +50,7 @@ Travis autodeploys to Heroku when a build passes on `Master`.
 CodeClimate is making sure I'm not writing bad code and to keep my test coverage at a reasonable level.
 
 ### Stripe
-TODO
+Stripe is set up for single donations & recurring payments. Both allow the user to choose a custom amount.
 
 #### Test Cards
 
@@ -73,6 +73,12 @@ TODO
   </tbody>
 </table>
 
+### Testing
+We use Rspec & Capybara for testing. You can run specs w/ the command:
+```shell
+% rspec
+```
+
 ### Services
 - Heroku
 - Bonsai.io (for Elasticsearch)
@@ -86,7 +92,7 @@ Last 2 version of:
 - Chrome
 - Safari
 - Firefox
-- IE 9+
+- IE 10+ & Edge
 
 
 ### Code Status

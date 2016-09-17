@@ -73,7 +73,7 @@ gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.6'
 
 group :development do
-  gem 'annotate', '~> 2.7', '>= 2.7.1'
+  gem 'annotate', '~> 2.7'
   gem 'better_errors'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'brakeman', '~> 3.3'
