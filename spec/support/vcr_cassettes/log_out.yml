@@ -1,0 +1,466 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tumblr.com/v2/blog/adopttogether.tumblr.com/posts?api_key=Gj2VAefvkaQrxcvr7V0tHSPVTs1dEugmoqoq9xT1tNFtLTWbmS&limit=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - tumblr_client (ruby) - 0.8.5
+      Authorization:
+      - OAuth oauth_consumer_key="Gj2VAefvkaQrxcvr7V0tHSPVTs1dEugmoqoq9xT1tNFtLTWbmS",
+        oauth_nonce="d662995f3e536c9e59d95225dd00e526", oauth_signature="V1J89V3tnBf%2FPv7KUKveXVVq0U4%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1475256329", oauth_token="Od3knRgrF9xKYVVW2uDN64ber4DKhEPrslkqPtyjazSE0ThdLo",
+        oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Fri, 30 Sep 2016 17:25:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - tmgioct=57eea00a0151c80406738390; expires=Mon, 28-Sep-2026 17:25:30 GMT; Max-Age=315360000;
+        path=/; domain=.tumblr.com; HttpOnly
+      P3p:
+      - 'CP="Tumblr''s privacy policy is available here: https://www.tumblr.com/policy/en/privacy"'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"status":200,"msg":"OK"},"response":{"blog":{"title":"AdoptTogether","name":"adopttogether","total_posts":3,"posts":3,"url":"http:\/\/adopttogether.tumblr.com\/","updated":1453758150,"description":"This
+        is a blog about AdoptTogether goings on, amazing Adopting Families, and other
+        stuff that cares about.","is_nsfw":false,"ask":false,"ask_page_title":"Ask
+        me anything","ask_anon":false,"followed":false,"can_send_fan_mail":true,"is_blocked_from_primary":false,"share_likes":true,"likes":-1,"twitter_enabled":false,"twitter_send":false,"facebook_opengraph_enabled":"N","tweet":"N","facebook":"N","followers":0,"primary":true,"admin":true,"messages":0,"queue":0,"drafts":0,"type":"public","reply_conditions":3,"subscribed":false,"can_subscribe":false},"posts":[{"blog_name":"adopttogether","id":138043001430,"post_url":"http:\/\/adopttogether.tumblr.com\/post\/138043001430\/what-adoption-means-to-me","slug":"what-adoption-means-to-me","type":"text","date":"2016-01-25
+        21:42:30 GMT","timestamp":1453758150,"state":"published","format":"html","reblog_key":"tLkQOAVU","tags":["Adoption","family","uncle","truemeaningoflove","adoptionrocks","thosehaircuts"],"short_url":"https:\/\/tmblr.co\/Z3fTTj20a0GfM","summary":"What
+        [Adoption] Means To Me","recommended_source":null,"recommended_color":null,"followed":false,"highlighted":[],"liked":false,"note_count":0,"title":"What
+        [Adoption] Means To Me","body":"\u003Cp\u003EWhenever I\u2019m asked if anyone
+        in my family is adopted my instinct is to say \u201cno.\u201d I don\u2019t
+        mean to lie, I just always forget my uncle is adopted. I swear, if I showed
+        you a photo of our entire family today and told you to guess who was adopted,
+        you would not pick him.\u003C\/p\u003E\u003Cp\u003E\tMy Uncle Pete is adopted.
+        I have almost no emotional connection to that sentence. That\u2019s what happens
+        when you grow up with something that\u2019s been normalized. If you\u2019ve
+        grown up with parents who didn\u2019t speak english, or had a sibling with
+        a disability, you know what I\u2019m talking about. To the world around you
+        it may seem unique or odd, but for you it just is. To me, it\u2019s odd to
+        think that my Uncle does not share the same genetics as the rest of us because
+        he literally has the same height, facial features, emotional demeanour and
+        sense of humor as the rest of the family. This is why my grandparents preached
+        that family is about who loves you the most, not blood relation.\u003C\/p\u003E\u003Cp\u003EYou
+        see, my grandparents are extraordinary people. They refinanced their house
+        to afford the outrageous adoption costs (something that still hasn\u2019t
+        changed) and bring home their first son. I joke that, after having three girls,
+        my grandparents were desperate enough for a boy that they adopted my uncle,
+        but the truth is they had less than 24 hours notice when my uncle was born
+        to confirm a decision that would shape the rest of their lives.\u003C\/p\u003E\u003Cp\u003E\tNow,
+        over 40 years later, my uncle is married with two wonderful sons and he is
+        one of the most involved fathers I have ever seen. He shows up to their games,
+        drives them around everywhere on his days off, and supports their dreams in
+        any way he can. They are two generations deep in reaping the benefits of one
+        couple\u2019s choice to bring home a son born in the heart, as my grandma
+        loves to say.\u003C\/p\u003E\u003Cp\u003E\u003Cb\u003ESo in the end, that\u2019s
+        what adoption means to me. Adoption creates a ripple effect of love and becomes
+        an antidote to broken, painful situations. I know not every adoption story
+        ends like this one, and while I have no idea how hard it must be for a mother
+        to let go of her child, I do know my life would be tragically different without
+        my uncle Pete and the three additional lives he brought into our crazy, loving
+        family.\u003C\/b\u003E\u003C\/p\u003E\u003Cp\u003Eby Colton Simmons\u003C\/p\u003E\u003Cfigure
+        data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/185b8f39107a59e6b9bebd7672181797\/tumblr_inline_o1j4q9TvSa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022\/\u003E\u003C\/figure\u003E\u003Cp\u003E(Crocker
+        Family, 1970)\u003C\/p\u003E","reblog":{"tree_html":"","comment":"\u003Cp\u003EWhenever
+        I\u2019m asked if anyone in my family is adopted my instinct is to say \u201cno.\u201d
+        I don\u2019t mean to lie, I just always forget my uncle is adopted. I swear,
+        if I showed you a photo of our entire family today and told you to guess who
+        was adopted, you would not pick him.\u003C\/p\u003E\u003Cp\u003E\tMy Uncle
+        Pete is adopted. I have almost no emotional connection to that sentence. That\u2019s
+        what happens when you grow up with something that\u2019s been normalized.
+        If you\u2019ve grown up with parents who didn\u2019t speak english, or had
+        a sibling with a disability, you know what I\u2019m talking about. To the
+        world around you it may seem unique or odd, but for you it just is. To me,
+        it\u2019s odd to think that my Uncle does not share the same genetics as the
+        rest of us because he literally has the same height, facial features, emotional
+        demeanour and sense of humor as the rest of the family. This is why my grandparents
+        preached that family is about who loves you the most, not blood relation.\u003C\/p\u003E\u003Cp\u003EYou
+        see, my grandparents are extraordinary people. They refinanced their house
+        to afford the outrageous adoption costs (something that still hasn\u2019t
+        changed) and bring home their first son. I joke that, after having three girls,
+        my grandparents were desperate enough for a boy that they adopted my uncle,
+        but the truth is they had less than 24 hours notice when my uncle was born
+        to confirm a decision that would shape the rest of their lives.\u003C\/p\u003E\u003Cp\u003E\tNow,
+        over 40 years later, my uncle is married with two wonderful sons and he is
+        one of the most involved fathers I have ever seen. He shows up to their games,
+        drives them around everywhere on his days off, and supports their dreams in
+        any way he can. They are two generations deep in reaping the benefits of one
+        couple\u2019s choice to bring home a son born in the heart, as my grandma
+        loves to say.\u003C\/p\u003E\u003Cp\u003E\u003Cb\u003ESo in the end, that\u2019s
+        what adoption means to me. Adoption creates a ripple effect of love and becomes
+        an antidote to broken, painful situations. I know not every adoption story
+        ends like this one, and while I have no idea how hard it must be for a mother
+        to let go of her child, I do know my life would be tragically different without
+        my uncle Pete and the three additional lives he brought into our crazy, loving
+        family.\u003C\/b\u003E\u003C\/p\u003E\u003Cp\u003Eby Colton Simmons\u003C\/p\u003E\u003Cfigure
+        data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/185b8f39107a59e6b9bebd7672181797\/tumblr_inline_o1j4q9TvSa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022\u003E\u003C\/figure\u003E\u003Cp\u003E(Crocker
+        Family, 1970)\u003C\/p\u003E"},"trail":[{"blog":{"name":"adopttogether","active":true,"theme":{"avatar_shape":"square","background_color":"#ffffff","body_font":"Helvetica
+        Neue","header_bounds":0,"header_image":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_focused":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_scaled":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_stretch":true,"link_color":"#56BF4B","show_avatar":false,"show_description":false,"show_header_image":true,"show_title":false,"title_color":"#444444","title_font":"Bodoni
+        Recut FS","title_font_weight":"bold"},"share_likes":true,"share_following":false,"can_be_followed":true},"post":{"id":"138043001430"},"content_raw":"\u003Cp\u003EWhenever
+        I\u2019m asked if anyone in my family is adopted my instinct is to say \u201cno.\u201d
+        I don\u2019t mean to lie, I just always forget my uncle is adopted. I swear,
+        if I showed you a photo of our entire family today and told you to guess who
+        was adopted, you would not pick him.\u003C\/p\u003E\u003Cp\u003E\tMy Uncle
+        Pete is adopted. I have almost no emotional connection to that sentence. That\u2019s
+        what happens when you grow up with something that\u2019s been normalized.
+        If you\u2019ve grown up with parents who didn\u2019t speak english, or had
+        a sibling with a disability, you know what I\u2019m talking about. To the
+        world around you it may seem unique or odd, but for you it just is. To me,
+        it\u2019s odd to think that my Uncle does not share the same genetics as the
+        rest of us because he literally has the same height, facial features, emotional
+        demeanour and sense of humor as the rest of the family. This is why my grandparents
+        preached that family is about who loves you the most, not blood relation.\u003C\/p\u003E\u003Cp\u003EYou
+        see, my grandparents are extraordinary people. They refinanced their house
+        to afford the outrageous adoption costs (something that still hasn\u2019t
+        changed) and bring home their first son. I joke that, after having three girls,
+        my grandparents were desperate enough for a boy that they adopted my uncle,
+        but the truth is they had less than 24 hours notice when my uncle was born
+        to confirm a decision that would shape the rest of their lives.\u003C\/p\u003E\u003Cp\u003E\tNow,
+        over 40 years later, my uncle is married with two wonderful sons and he is
+        one of the most involved fathers I have ever seen. He shows up to their games,
+        drives them around everywhere on his days off, and supports their dreams in
+        any way he can. They are two generations deep in reaping the benefits of one
+        couple\u2019s choice to bring home a son born in the heart, as my grandma
+        loves to say.\u003C\/p\u003E\u003Cp\u003E\u003Cb\u003ESo in the end, that\u2019s
+        what adoption means to me. Adoption creates a ripple effect of love and becomes
+        an antidote to broken, painful situations. I know not every adoption story
+        ends like this one, and while I have no idea how hard it must be for a mother
+        to let go of her child, I do know my life would be tragically different without
+        my uncle Pete and the three additional lives he brought into our crazy, loving
+        family.\u003C\/b\u003E\u003C\/p\u003E\u003Cp\u003Eby Colton Simmons\u003C\/p\u003E\u003Cfigure
+        data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/185b8f39107a59e6b9bebd7672181797\/tumblr_inline_o1j4q9TvSa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221007\u0022 data-orig-height=\u0022738\u0022\u003E\u003C\/figure\u003E\u003Cp\u003E(Crocker
+        Family, 1970)\u003C\/p\u003E","content":"\u003Cp\u003EWhenever I\u2019m asked
+        if anyone in my family is adopted my instinct is to say \u201cno.\u201d I
+        don\u2019t mean to lie, I just always forget my uncle is adopted. I swear,
+        if I showed you a photo of our entire family today and told you to guess who
+        was adopted, you would not pick him.\u003C\/p\u003E\u003Cp\u003E\tMy Uncle
+        Pete is adopted. I have almost no emotional connection to that sentence. That\u2019s
+        what happens when you grow up with something that\u2019s been normalized.
+        If you\u2019ve grown up with parents who didn\u2019t speak english, or had
+        a sibling with a disability, you know what I\u2019m talking about. To the
+        world around you it may seem unique or odd, but for you it just is. To me,
+        it\u2019s odd to think that my Uncle does not share the same genetics as the
+        rest of us because he literally has the same height, facial features, emotional
+        demeanour and sense of humor as the rest of the family. This is why my grandparents
+        preached that family is about who loves you the most, not blood relation.\u003C\/p\u003E\u003Cp\u003EYou
+        see, my grandparents are extraordinary people. They refinanced their house
+        to afford the outrageous adoption costs (something that still hasn\u2019t
+        changed) and bring home their first son. I joke that, after having three girls,
+        my grandparents were desperate enough for a boy that they adopted my uncle,
+        but the truth is they had less than 24 hours notice when my uncle was born
+        to confirm a decision that would shape the rest of their lives.\u003C\/p\u003E\u003Cp\u003E\tNow,
+        over 40 years later, my uncle is married with two wonderful sons and he is
+        one of the most involved fathers I have ever seen. He shows up to their games,
+        drives them around everywhere on his days off, and supports their dreams in
+        any way he can. They are two generations deep in reaping the benefits of one
+        couple\u2019s choice to bring home a son born in the heart, as my grandma
+        loves to say.\u003C\/p\u003E\u003Cp\u003E\u003Cb\u003ESo in the end, that\u2019s
+        what adoption means to me. Adoption creates a ripple effect of love and becomes
+        an antidote to broken, painful situations. I know not every adoption story
+        ends like this one, and while I have no idea how hard it must be for a mother
+        to let go of her child, I do know my life would be tragically different without
+        my uncle Pete and the three additional lives he brought into our crazy, loving
+        family.\u003C\/b\u003E\u003C\/p\u003E\u003Cp\u003Eby Colton Simmons\u003C\/p\u003E\u003Cfigure
+        class=\u0022tmblr-full\u0022\u003E\u003Cimg src=\u0022https:\/\/66.media.tumblr.com\/185b8f39107a59e6b9bebd7672181797\/tumblr_inline_o1j4q9TvSa1tcyx0y_540.jpg\u0022
+        class=\u0022\u0022\/\u003E\u003C\/figure\u003E\u003Cp\u003E(Crocker Family,
+        1970)\u003C\/p\u003E","is_current_item":true,"is_root_item":true}],"can_like":false,"can_reblog":true,"can_send_in_message":true,"can_reply":true,"display_avatar":true},{"blog_name":"adopttogether","id":131074115425,"post_url":"http:\/\/adopttogether.tumblr.com\/post\/131074115425\/what-kind-of-adoption-is-right-for-me","slug":"what-kind-of-adoption-is-right-for-me","type":"text","date":"2015-10-13
+        06:01:52 GMT","timestamp":1444716112,"state":"published","format":"html","reblog_key":"tgI25LSt","tags":["adoption","glossary","terms","adoption
+        type","types of adoptions"],"short_url":"https:\/\/tmblr.co\/Z3fTTj1w4e4TX","summary":"What
+        Kind of Adoption is Right for Me?","recommended_source":null,"recommended_color":null,"followed":false,"highlighted":[],"liked":false,"note_count":0,"title":"What
+        Kind of Adoption is Right for Me?","body":"\u003Cfigure data-orig-width=\u00225760\u0022
+        data-orig-height=\u00223840\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/204e649c5abe103c3434b92c299ca922\/tumblr_inline_nw5a1jTYoa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00225760\u0022 data-orig-height=\u00223840\u0022\/\u003E\u003C\/figure\u003E\u003Cblockquote\u003E\u003Cp\u003EDid
+        you know, that if you want to adopt a child from Korea, your body mass index\n(BMI)
+        must land between 30-35, or that it can sometimes cost more to adopt a\ngirl,
+        than a boy?\u003C\/p\u003E\u003Cp\u003E\u003Ci\u003ESrc:\u00a0\u003Ca href=\u0022http:\/\/www.buzzfeed.com\/alisoncaporimo\/things-everyone-should-know-about-adoption#.cdZmKYP6N\u0022\u003EBuzzfeed\u003C\/a\u003E\u003C\/i\u003E\u003C\/p\u003E\u003C\/blockquote\u003E\u003Cp\u003EEach
+        path toward\nadoption has its own special set of challenges which may make
+        one route a\nbetter fit for you and your family than others. \nFor our first
+        article, we\u2019ve listed the various kinds of adoptions\navailable, at a
+        glance.\u003C\/p\u003E\u003Ch2\u003E\u003Cb\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003EUsing\nan
+        Agency to Adopt:\u003C\/a\u003E\u003C\/b\u003E\u003C\/h2\u003E\u003Cp\u003EAgencies\nare
+        either public or private and regulated by the state. Public\nagencies place
+        children who are typically wards of the state. Private\nagencies place children
+        who have been brought to them by birth parents.\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.adoptionhelp.org\/qa\/can-i-adopt-without-using-agency\u0022\u003E\u003Cb\u003EIndependent\nAdoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIndependent\nadoptions
+        are a direct arrangement between the biological parents and the\nadoptive
+        parents. \u00a0Attorneys are\ntypically involved to guide parents through
+        the process.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdoption\nthrough
+        Identification:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThis\nform
+        of adoption is a hybrid between an agency adoption and an independent\nadoption.
+        \u00a0In this scenario, both the\nbirth parents and the biological parents
+        request an agency\u2019s assistance in\ncompleting the process. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdopting\nthrough
+        Foster Care:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EYou\nmay
+        decide to adopt a child through foster care. \u00a0Children in foster care
+        are wards of the\nstate. \u00a0In most states, local or public agencies\nhelp
+        with these kinds of adoptions, but some states use private agencies for\nadoptions
+        through foster care.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022https:\/\/www.holtinternational.org\/adoption\/\u0022\u003E\u003Cb\u003EInternational
+        Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThe\nadoption
+        of a child who is a citizen of another country. \u00a0You must not only meet
+        the laws of the state\nwhere you live but the laws of your child\u2019s birth
+        country. \u00a0The international adoption process has the\nmost hoops for
+        parents to jump through. \nYou may or may not choose to use an agency to complete
+        an international\nadoption. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/family.findlaw.com\/adoption\/open-vs-closed-adoption.html\u0022\u003E\u003Cb\u003EOpen\nVersus
+        Closed Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EAn\nopen
+        adoption gives the birth mother the option of staying in touch with their\nchild
+        through letters, photos, and visitation. \nIn a closed adoption, the birth
+        mother has no contact with the\nchild. \u00a0International adoptions are\nalmost
+        always closed.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.adoptingfamilyresources.com\/adopting\/adopting_interstate_instrastate_adoption.htm\u0022\u003E\u003Cb\u003EInterstate\nversus
+        Intrastate Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIn\nan
+        interstate adoption, parents must meet the legal adoption requirements of
+        at\nleast two states. In\nan intrastate adoption, parents must meet the legal
+        adoption requirements of\nonly one state.\u003C\/p\u003E\u003Cp\u003E\n\nAdoptTogether\nis
+        excited about the opportunity to partner with you as you move closer toward\nbuilding
+        your family. \u00a0For information\nabout how we help families fund their
+        adoption, take a look at \u003Ca href=\u0022http:\/\/adopttogether.org\/about\u0022\u003Ehow
+        AdoptTogether can help your family raise money for an adoption\u003C\/a\u003E.\u003C\/p\u003E","reblog":{"tree_html":"","comment":"\u003Cp\u003E\u003Cfigure
+        data-orig-width=\u00225760\u0022 data-orig-height=\u00223840\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/204e649c5abe103c3434b92c299ca922\/tumblr_inline_nw5a1jTYoa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00225760\u0022 data-orig-height=\u00223840\u0022\u003E\u003C\/figure\u003E\u003Cblockquote\u003E\u003Cp\u003EDid
+        you know, that if you want to adopt a child from Korea, your body mass index\n(BMI)
+        must land between 30-35, or that it can sometimes cost more to adopt a\ngirl,
+        than a boy?\u003C\/p\u003E\u003Cp\u003E\u003Ci\u003ESrc:\u00a0\u003Ca href=\u0022http:\/\/www.buzzfeed.com\/alisoncaporimo\/things-everyone-should-know-about-adoption#.cdZmKYP6N\u0022\u003EBuzzfeed\u003C\/a\u003E\u003C\/i\u003E\u003C\/p\u003E\u003C\/blockquote\u003E\u003Cp\u003EEach
+        path toward\nadoption has its own special set of challenges which may make
+        one route a\nbetter fit for you and your family than others. \nFor our first
+        article, we\u2019ve listed the various kinds of adoptions\navailable, at a
+        glance.\u003C\/p\u003E\u003Ch2\u003E\u003Cb\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003EUsing\nan
+        Agency to Adopt:\u003C\/a\u003E\u003C\/b\u003E\u003C\/h2\u003E\u003Cp\u003EAgencies\nare
+        either public or private and regulated by the state. Public\nagencies place
+        children who are typically wards of the state. Private\nagencies place children
+        who have been brought to them by birth parents.\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.adoptionhelp.org\/qa\/can-i-adopt-without-using-agency\u0022\u003E\u003Cb\u003EIndependent\nAdoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIndependent\nadoptions
+        are a direct arrangement between the biological parents and the\nadoptive
+        parents. \u00a0Attorneys are\ntypically involved to guide parents through
+        the process.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdoption\nthrough
+        Identification:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThis\nform
+        of adoption is a hybrid between an agency adoption and an independent\nadoption.
+        \u00a0In this scenario, both the\nbirth parents and the biological parents
+        request an agency\u2019s assistance in\ncompleting the process. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdopting\nthrough
+        Foster Care:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EYou\nmay
+        decide to adopt a child through foster care. \u00a0Children in foster care
+        are wards of the\nstate. \u00a0In most states, local or public agencies\nhelp
+        with these kinds of adoptions, but some states use private agencies for\nadoptions
+        through foster care.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022https:\/\/www.holtinternational.org\/adoption\/\u0022\u003E\u003Cb\u003EInternational
+        Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThe\nadoption
+        of a child who is a citizen of another country. \u00a0You must not only meet
+        the laws of the state\nwhere you live but the laws of your child\u2019s birth
+        country. \u00a0The international adoption process has the\nmost hoops for
+        parents to jump through. \nYou may or may not choose to use an agency to complete
+        an international\nadoption. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/family.findlaw.com\/adoption\/open-vs-closed-adoption.html\u0022\u003E\u003Cb\u003EOpen\nVersus
+        Closed Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EAn\nopen
+        adoption gives the birth mother the option of staying in touch with their\nchild
+        through letters, photos, and visitation. \nIn a closed adoption, the birth
+        mother has no contact with the\nchild. \u00a0International adoptions are\nalmost
+        always closed.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.adoptingfamilyresources.com\/adopting\/adopting_interstate_instrastate_adoption.htm\u0022\u003E\u003Cb\u003EInterstate\nversus
+        Intrastate Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIn\nan
+        interstate adoption, parents must meet the legal adoption requirements of
+        at\nleast two states. In\nan intrastate adoption, parents must meet the legal
+        adoption requirements of\nonly one state.\u003C\/p\u003E\u003Cp\u003E\n\nAdoptTogether\nis
+        excited about the opportunity to partner with you as you move closer toward\nbuilding
+        your family. \u00a0For information\nabout how we help families fund their
+        adoption, take a look at \u003Ca href=\u0022http:\/\/adopttogether.org\/about\u0022\u003Ehow
+        AdoptTogether can help your family raise money for an adoption\u003C\/a\u003E.\u003C\/p\u003E\u003C\/p\u003E"},"trail":[{"blog":{"name":"adopttogether","active":true,"theme":{"avatar_shape":"square","background_color":"#ffffff","body_font":"Helvetica
+        Neue","header_bounds":0,"header_image":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_focused":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_scaled":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_stretch":true,"link_color":"#56BF4B","show_avatar":false,"show_description":false,"show_header_image":true,"show_title":false,"title_color":"#444444","title_font":"Bodoni
+        Recut FS","title_font_weight":"bold"},"share_likes":true,"share_following":false,"can_be_followed":true},"post":{"id":"131074115425"},"content_raw":"\u003Cp\u003E\u003Cfigure
+        data-orig-width=\u00225760\u0022 data-orig-height=\u00223840\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/66.media.tumblr.com\/204e649c5abe103c3434b92c299ca922\/tumblr_inline_nw5a1jTYoa1tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00225760\u0022 data-orig-height=\u00223840\u0022\u003E\u003C\/figure\u003E\u003Cblockquote\u003E\u003Cp\u003EDid
+        you know, that if you want to adopt a child from Korea, your body mass index\n(BMI)
+        must land between 30-35, or that it can sometimes cost more to adopt a\ngirl,
+        than a boy?\u003C\/p\u003E\u003Cp\u003E\u003Ci\u003ESrc:\u00a0\u003Ca href=\u0022http:\/\/www.buzzfeed.com\/alisoncaporimo\/things-everyone-should-know-about-adoption#.cdZmKYP6N\u0022\u003EBuzzfeed\u003C\/a\u003E\u003C\/i\u003E\u003C\/p\u003E\u003C\/blockquote\u003E\u003Cp\u003EEach
+        path toward\nadoption has its own special set of challenges which may make
+        one route a\nbetter fit for you and your family than others. \nFor our first
+        article, we\u2019ve listed the various kinds of adoptions\navailable, at a
+        glance.\u003C\/p\u003E\u003Ch2\u003E\u003Cb\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003EUsing\nan
+        Agency to Adopt:\u003C\/a\u003E\u003C\/b\u003E\u003C\/h2\u003E\u003Cp\u003EAgencies\nare
+        either public or private and regulated by the state. Public\nagencies place
+        children who are typically wards of the state. Private\nagencies place children
+        who have been brought to them by birth parents.\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.adoptionhelp.org\/qa\/can-i-adopt-without-using-agency\u0022\u003E\u003Cb\u003EIndependent\nAdoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIndependent\nadoptions
+        are a direct arrangement between the biological parents and the\nadoptive
+        parents. \u00a0Attorneys are\ntypically involved to guide parents through
+        the process.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdoption\nthrough
+        Identification:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThis\nform
+        of adoption is a hybrid between an agency adoption and an independent\nadoption.
+        \u00a0In this scenario, both the\nbirth parents and the biological parents
+        request an agency\u2019s assistance in\ncompleting the process. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdopting\nthrough
+        Foster Care:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EYou\nmay
+        decide to adopt a child through foster care. \u00a0Children in foster care
+        are wards of the\nstate. \u00a0In most states, local or public agencies\nhelp
+        with these kinds of adoptions, but some states use private agencies for\nadoptions
+        through foster care.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022https:\/\/www.holtinternational.org\/adoption\/\u0022\u003E\u003Cb\u003EInternational
+        Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThe\nadoption
+        of a child who is a citizen of another country. \u00a0You must not only meet
+        the laws of the state\nwhere you live but the laws of your child\u2019s birth
+        country. \u00a0The international adoption process has the\nmost hoops for
+        parents to jump through. \nYou may or may not choose to use an agency to complete
+        an international\nadoption. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/family.findlaw.com\/adoption\/open-vs-closed-adoption.html\u0022\u003E\u003Cb\u003EOpen\nVersus
+        Closed Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EAn\nopen
+        adoption gives the birth mother the option of staying in touch with their\nchild
+        through letters, photos, and visitation. \nIn a closed adoption, the birth
+        mother has no contact with the\nchild. \u00a0International adoptions are\nalmost
+        always closed.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.adoptingfamilyresources.com\/adopting\/adopting_interstate_instrastate_adoption.htm\u0022\u003E\u003Cb\u003EInterstate\nversus
+        Intrastate Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIn\nan
+        interstate adoption, parents must meet the legal adoption requirements of
+        at\nleast two states. In\nan intrastate adoption, parents must meet the legal
+        adoption requirements of\nonly one state.\u003C\/p\u003E\u003Cp\u003E\n\nAdoptTogether\nis
+        excited about the opportunity to partner with you as you move closer toward\nbuilding
+        your family. \u00a0For information\nabout how we help families fund their
+        adoption, take a look at \u003Ca href=\u0022http:\/\/adopttogether.org\/about\u0022\u003Ehow
+        AdoptTogether can help your family raise money for an adoption\u003C\/a\u003E.\u003C\/p\u003E\u003C\/p\u003E","content":"\u003Cp\u003E\u003Cfigure
+        class=\u0022tmblr-full\u0022\u003E\u003Cimg src=\u0022https:\/\/66.media.tumblr.com\/204e649c5abe103c3434b92c299ca922\/tumblr_inline_nw5a1jTYoa1tcyx0y_540.jpg\u0022
+        class=\u0022\u0022\/\u003E\u003C\/figure\u003E\u003Cblockquote\u003E\u003Cp\u003EDid
+        you know, that if you want to adopt a child from Korea, your body mass index\n(BMI)
+        must land between 30-35, or that it can sometimes cost more to adopt a\ngirl,
+        than a boy?\u003C\/p\u003E\u003Cp\u003E\u003Ci\u003ESrc:\u00a0\u003Ca href=\u0022http:\/\/www.buzzfeed.com\/alisoncaporimo\/things-everyone-should-know-about-adoption#.cdZmKYP6N\u0022\u003EBuzzfeed\u003C\/a\u003E\u003C\/i\u003E\u003C\/p\u003E\u003C\/blockquote\u003E\u003Cp\u003EEach
+        path toward\nadoption has its own special set of challenges which may make
+        one route a\nbetter fit for you and your family than others. \nFor our first
+        article, we\u2019ve listed the various kinds of adoptions\navailable, at a
+        glance.\u003C\/p\u003E\u003Ch2\u003E\u003Cb\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003EUsing\nan
+        Agency to Adopt:\u003C\/a\u003E\u003C\/b\u003E\u003C\/h2\u003E\u003Cp\u003EAgencies\nare
+        either public or private and regulated by the state. Public\nagencies place
+        children who are typically wards of the state. Private\nagencies place children
+        who have been brought to them by birth parents.\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.adoptionhelp.org\/qa\/can-i-adopt-without-using-agency\u0022\u003E\u003Cb\u003EIndependent\nAdoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIndependent\nadoptions
+        are a direct arrangement between the biological parents and the\nadoptive
+        parents. \u00a0Attorneys are\ntypically involved to guide parents through
+        the process.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdoption\nthrough
+        Identification:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThis\nform
+        of adoption is a hybrid between an agency adoption and an independent\nadoption.
+        \u00a0In this scenario, both the\nbirth parents and the biological parents
+        request an agency\u2019s assistance in\ncompleting the process. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/www.parents.com\/parenting\/adoption\/facts\/agency-vs-independent-adoption\/\u0022\u003E\u003Cb\u003EAdopting\nthrough
+        Foster Care:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EYou\nmay
+        decide to adopt a child through foster care. \u00a0Children in foster care
+        are wards of the\nstate. \u00a0In most states, local or public agencies\nhelp
+        with these kinds of adoptions, but some states use private agencies for\nadoptions
+        through foster care.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022https:\/\/www.holtinternational.org\/adoption\/\u0022\u003E\u003Cb\u003EInternational
+        Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EThe\nadoption
+        of a child who is a citizen of another country. \u00a0You must not only meet
+        the laws of the state\nwhere you live but the laws of your child\u2019s birth
+        country. \u00a0The international adoption process has the\nmost hoops for
+        parents to jump through. \nYou may or may not choose to use an agency to complete
+        an international\nadoption. \u00a0\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca
+        href=\u0022http:\/\/family.findlaw.com\/adoption\/open-vs-closed-adoption.html\u0022\u003E\u003Cb\u003EOpen\nVersus
+        Closed Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EAn\nopen
+        adoption gives the birth mother the option of staying in touch with their\nchild
+        through letters, photos, and visitation. \nIn a closed adoption, the birth
+        mother has no contact with the\nchild. \u00a0International adoptions are\nalmost
+        always closed.\u00a0\u003C\/p\u003E\u003Ch2\u003E\u003Ca href=\u0022http:\/\/www.adoptingfamilyresources.com\/adopting\/adopting_interstate_instrastate_adoption.htm\u0022\u003E\u003Cb\u003EInterstate\nversus
+        Intrastate Adoption:\u003C\/b\u003E\u003C\/a\u003E\u003C\/h2\u003E\u003Cp\u003EIn\nan
+        interstate adoption, parents must meet the legal adoption requirements of
+        at\nleast two states. In\nan intrastate adoption, parents must meet the legal
+        adoption requirements of\nonly one state.\u003C\/p\u003E\u003Cp\u003E\n\nAdoptTogether\nis
+        excited about the opportunity to partner with you as you move closer toward\nbuilding
+        your family. \u00a0For information\nabout how we help families fund their
+        adoption, take a look at \u003Ca href=\u0022http:\/\/adopttogether.org\/about\u0022\u003Ehow
+        AdoptTogether can help your family raise money for an adoption\u003C\/a\u003E.\u003C\/p\u003E\u003C\/p\u003E","is_current_item":true,"is_root_item":true}],"can_like":false,"can_reblog":true,"can_send_in_message":true,"can_reply":true,"display_avatar":true},{"blog_name":"adopttogether","id":131073817050,"post_url":"http:\/\/adopttogether.tumblr.com\/post\/131073817050\/welcome-to-the-adopttogether-blog","slug":"welcome-to-the-adopttogether-blog","type":"text","date":"2015-10-13
+        05:54:41 GMT","timestamp":1444715681,"state":"published","format":"html","reblog_key":"3RbkA0JZ","tags":["adoption","adopt","adopttogether"],"short_url":"https:\/\/tmblr.co\/Z3fTTj1w4cxdQ","summary":"Welcome
+        to the AdoptTogether Blog!","recommended_source":null,"recommended_color":null,"followed":false,"highlighted":[],"liked":false,"note_count":0,"title":"Welcome
+        to the AdoptTogether Blog!","body":"\u003Cfigure data-orig-width=\u00221024\u0022
+        data-orig-height=\u0022683\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/67.media.tumblr.com\/023e5fe71dc996a08bd1ca106ae48312\/tumblr_inline_nw59mjECG71tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221024\u0022 data-orig-height=\u0022683\u0022\/\u003E\u003C\/figure\u003E\u003Cp\u003EWhether
+        you are exploring the possibility of adoption or are in the process of bringing\nyour
+        child home, this blog exists as a resource and a voice for you.\u003C\/p\u003E\u003Cp\u003EYou\ncan
+        expect fresh content every Monday from one of our writers at\nAdoptTogether.
+        \u00a0We\u2019ll share things like:\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EOur
+        favorite adoption books\u003Cbr\/\u003E\u003C\/li\u003E\u003Cli\u003EA list
+        of the best adoption blogs\u003Cbr\/\u003E\u003C\/li\u003E\u003Cli\u003ESome\nof
+        our favorite stories of parents bringing their children home\u003Cbr\/\u003E\u003C\/li\u003E\u003Cli\u003EAwesome
+        adoption resources\u003C\/li\u003E\u003Cli\u003EMuch more\u003Cbr\/\u003E\u003C\/li\u003E\u003C\/ul\u003E\u003Cp\u003EWe\ndon\u2019t
+        want to write in a bubble!\u00a0 This is a resource for\u00a0\u003Ci\u003Eyou\u003C\/i\u003E\u00a0after\nall.
+        If there is something specific you would like to read about, please\nlet us
+        know by \u003Ca href=\u0022mailto:\/\/hello@adopttogether.org\u0022\u003Esending
+        us an email\u003C\/a\u003E.\u003C\/p\u003E\u003Cp\u003ESo\nwe\u2019ll start
+        next week! Click \u003Cb\u003EFollow\u003C\/b\u003E so you never miss a\npost!\u003C\/p\u003E\u003Cp\u003ESee\nyou
+        soon!\u00a0 \u003C\/p\u003E\u003Cp\u003EThe\nteam at AdoptTogether\u003C\/p\u003E","reblog":{"tree_html":"","comment":"\u003Cp\u003E\u003Cfigure
+        data-orig-width=\u00221024\u0022 data-orig-height=\u0022683\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/67.media.tumblr.com\/023e5fe71dc996a08bd1ca106ae48312\/tumblr_inline_nw59mjECG71tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221024\u0022 data-orig-height=\u0022683\u0022\u003E\u003C\/figure\u003E\u003Cp\u003EWhether
+        you are exploring the possibility of adoption or are in the process of bringing\nyour
+        child home, this blog exists as a resource and a voice for you.\u003C\/p\u003E\u003Cp\u003EYou\ncan
+        expect fresh content every Monday from one of our writers at\nAdoptTogether.
+        \u00a0We\u2019ll share things like:\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EOur
+        favorite adoption books\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003EA list
+        of the best adoption blogs\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003ESome\nof
+        our favorite stories of parents bringing their children home\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003EAwesome
+        adoption resources\u003C\/li\u003E\u003Cli\u003EMuch more\u003Cbr\u003E\u003C\/li\u003E\u003C\/ul\u003E\u003Cp\u003EWe\ndon\u2019t
+        want to write in a bubble!\u00a0 This is a resource for\u00a0\u003Ci\u003Eyou\u003C\/i\u003E\u00a0after\nall.
+        If there is something specific you would like to read about, please\nlet us
+        know by \u003Ca href=\u0022mailto:\/\/hello@adopttogether.org\u0022\u003Esending
+        us an email\u003C\/a\u003E.\u003C\/p\u003E\u003Cp\u003ESo\nwe\u2019ll start
+        next week! Click \u003Cb\u003EFollow\u003C\/b\u003E so you never miss a\npost!\u003C\/p\u003E\u003Cp\u003ESee\nyou
+        soon!\u00a0 \u003C\/p\u003E\u003Cp\u003EThe\nteam at AdoptTogether\u003C\/p\u003E\u003C\/p\u003E"},"trail":[{"blog":{"name":"adopttogether","active":true,"theme":{"avatar_shape":"square","background_color":"#ffffff","body_font":"Helvetica
+        Neue","header_bounds":0,"header_image":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_focused":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_image_scaled":"https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_12.png?_v=66d5962d3469ecad376c5ae8c13d5a27","header_stretch":true,"link_color":"#56BF4B","show_avatar":false,"show_description":false,"show_header_image":true,"show_title":false,"title_color":"#444444","title_font":"Bodoni
+        Recut FS","title_font_weight":"bold"},"share_likes":true,"share_following":false,"can_be_followed":true},"post":{"id":"131073817050"},"content_raw":"\u003Cp\u003E\u003Cfigure
+        data-orig-width=\u00221024\u0022 data-orig-height=\u0022683\u0022 class=\u0022tmblr-full\u0022\u003E\u003Cimg
+        src=\u0022https:\/\/67.media.tumblr.com\/023e5fe71dc996a08bd1ca106ae48312\/tumblr_inline_nw59mjECG71tcyx0y_540.jpg\u0022
+        alt=\u0022image\u0022 data-orig-width=\u00221024\u0022 data-orig-height=\u0022683\u0022\u003E\u003C\/figure\u003E\u003Cp\u003EWhether
+        you are exploring the possibility of adoption or are in the process of bringing\nyour
+        child home, this blog exists as a resource and a voice for you.\u003C\/p\u003E\u003Cp\u003EYou\ncan
+        expect fresh content every Monday from one of our writers at\nAdoptTogether.
+        \u00a0We\u2019ll share things like:\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EOur
+        favorite adoption books\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003EA list
+        of the best adoption blogs\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003ESome\nof
+        our favorite stories of parents bringing their children home\u003Cbr\u003E\u003C\/li\u003E\u003Cli\u003EAwesome
+        adoption resources\u003C\/li\u003E\u003Cli\u003EMuch more\u003Cbr\u003E\u003C\/li\u003E\u003C\/ul\u003E\u003Cp\u003EWe\ndon\u2019t
+        want to write in a bubble!\u00a0 This is a resource for\u00a0\u003Ci\u003Eyou\u003C\/i\u003E\u00a0after\nall.
+        If there is something specific you would like to read about, please\nlet us
+        know by \u003Ca href=\u0022mailto:\/\/hello@adopttogether.org\u0022\u003Esending
+        us an email\u003C\/a\u003E.\u003C\/p\u003E\u003Cp\u003ESo\nwe\u2019ll start
+        next week! Click \u003Cb\u003EFollow\u003C\/b\u003E so you never miss a\npost!\u003C\/p\u003E\u003Cp\u003ESee\nyou
+        soon!\u00a0 \u003C\/p\u003E\u003Cp\u003EThe\nteam at AdoptTogether\u003C\/p\u003E\u003C\/p\u003E","content":"\u003Cp\u003E\u003Cfigure
+        class=\u0022tmblr-full\u0022\u003E\u003Cimg src=\u0022https:\/\/67.media.tumblr.com\/023e5fe71dc996a08bd1ca106ae48312\/tumblr_inline_nw59mjECG71tcyx0y_540.jpg\u0022
+        class=\u0022\u0022\/\u003E\u003C\/figure\u003E\u003Cp\u003EWhether you are
+        exploring the possibility of adoption or are in the process of bringing\nyour
+        child home, this blog exists as a resource and a voice for you.\u003C\/p\u003E\u003Cp\u003EYou\ncan
+        expect fresh content every Monday from one of our writers at\nAdoptTogether.
+        \u00a0We\u2019ll share things like:\u003C\/p\u003E\u003Cul\u003E\u003Cli\u003EOur
+        favorite adoption books\u003Cbr \/\u003E\u003C\/li\u003E\u003Cli\u003EA list
+        of the best adoption blogs\u003Cbr \/\u003E\u003C\/li\u003E\u003Cli\u003ESome\nof
+        our favorite stories of parents bringing their children home\u003Cbr \/\u003E\u003C\/li\u003E\u003Cli\u003EAwesome
+        adoption resources\u003C\/li\u003E\u003Cli\u003EMuch more\u003Cbr \/\u003E\u003C\/li\u003E\u003C\/ul\u003E\u003Cp\u003EWe\ndon\u2019t
+        want to write in a bubble!\u00a0 This is a resource for\u00a0\u003Ci\u003Eyou\u003C\/i\u003E\u00a0after\nall.
+        If there is something specific you would like to read about, please\nlet us
+        know by \u003Ca href=\u0022mailto:\/\/hello@adopttogether.org\u0022\u003Esending
+        us an email\u003C\/a\u003E.\u003C\/p\u003E\u003Cp\u003ESo\nwe\u2019ll start
+        next week! Click \u003Cb\u003EFollow\u003C\/b\u003E so you never miss a\npost!\u003C\/p\u003E\u003Cp\u003ESee\nyou
+        soon!\u00a0 \u003C\/p\u003E\u003Cp\u003EThe\nteam at AdoptTogether\u003C\/p\u003E\u003C\/p\u003E","is_current_item":true,"is_root_item":true}],"can_like":false,"can_reblog":true,"can_send_in_message":true,"can_reply":true,"display_avatar":true}],"total_posts":3}}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 17:25:30 GMT
+recorded_with: VCR 3.0.3
