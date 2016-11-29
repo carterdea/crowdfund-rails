@@ -65,7 +65,7 @@ gem 'tumblr_client', '~> 0.8.5'
 gem 'rails-i18n', '~> 4.0.4' # needs Rails 5 to update
 
 # performance & monitoring
-gem 'airbrake', '~> 5.5'
+gem 'airbrake', '~> 5.6'
 gem 'skylight', '~> 0.10.6'
 
 # server & deployment
