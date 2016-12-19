@@ -66,7 +66,7 @@ gem 'rails-i18n', '~> 4.0.4' # needs Rails 5 to update
 
 # performance & monitoring
 gem 'airbrake', '~> 5.6'
-gem 'skylight', '~> 0.10.6'
+gem 'skylight'
 
 # server & deployment
 gem 'pg', '~> 0.18.4'
