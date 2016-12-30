@@ -1,6 +1,8 @@
-//= require jquery2
-//= require jquery.turbolinks
+//= require jquery3
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require turbolinks
+//= require turbolinks-compatibility
 
 // Bower packages
 //= require raphael/raphael
@@ -17,4 +19,3 @@
 
 //= require_tree .
 //= require bootstrap
-//= require turbolinks
