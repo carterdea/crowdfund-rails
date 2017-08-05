@@ -11,33 +11,32 @@ A rails port of the existing AdoptTogether web app. AdoptTogether is a platform 
     % git clone git@github.com:carterdea/adopttogether.git
     ```
 
-2. Install Dependencies 
+1. Install Dependencies
+  * Ruby 2.3.1
+  * Postgres
+  * ImageMagick
+  * ElasticSearch
+  * Bower
 
-  ** Ruby 2.3.1
-  ** Postgres
-  ** ImageMagick
-  ** ElasticSearch
-  ** Bower
-
-3. Install Gems
+1. Install Gems
 
     ```shell
     % bundle install
     ```
 
-4. Install Front-end Dependencies
+1. Install Front-end Dependencies
 
     ```shell
     % bower install
     ```
 
-5. Setup the DB
+1. Setup the DB
 
     ```shell
     % rake db:setup:populate
     ```
 
-6. Start the Server
+1. Start the Server
 
     ```shell
     % foreman start -f Procfile.dev
