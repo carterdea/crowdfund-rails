@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.5.1'
 
-gem 'rails', '4.2.7'
+gem 'rails', '~> 4.2'
 
 # front-end
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -40,13 +40,13 @@ gem 'elasticsearch-rails', '~> 0.1.9'
 
 # cache
 gem 'hiredis', '~> 0.6.1'
-gem 'readthis', '~> 2.0' # cool new redis client http://sorentwo.com/2015/07/20/high-performance-caching-with-readthis.html
+gem 'readthis', '~> 2.2' # cool new redis client http://sorentwo.com/2015/07/20/high-performance-caching-with-readthis.html
 
 # mailers
 gem 'mandrill-api', '~> 1.0.53'
 
 # background jobs
-gem 'sidekiq', '~> 4.1'
+gem 'sidekiq', '~> 5.1'
 
 # miscelaneous
 gem 'country_select', '~> 2.5'
@@ -70,7 +70,7 @@ gem 'skylight'
 
 # server & deployment
 gem 'pg', '~> 0.18.4'
-gem 'puma', '~> 3.6'
+gem 'puma', '~> 3.11'
 
 group :development do
   gem 'annotate', '~> 2.7'
@@ -101,9 +101,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '~> 2.7'
+  gem 'capybara', '~> 3.3'
   gem 'capybara-screenshot', '~> 1.0'
-  gem 'capybara-webkit', '~> 1.11'
+  gem 'capybara-webkit', '~> 1.15'
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
   gem 'database_cleaner', '~> 1.5'
   gem 'factory_girl_rails', '~> 4.7'
