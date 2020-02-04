@@ -1,4 +1,4 @@
-# AdoptTogether.org
+# CrowdFund Rails
 A rails port of the existing AdoptTogether web app. AdoptTogether is a platform for Crowdfunded adoptions.
 
 ## Development
