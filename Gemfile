@@ -70,7 +70,7 @@ gem 'skylight'
 
 # server & deployment
 gem 'pg', '~> 0.18.4'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 
 group :development do
   gem 'annotate', '~> 2.7'
