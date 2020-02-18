@@ -4,7 +4,7 @@ ruby '2.5.1'
 gem 'rails', '~> 4.2'
 
 # front-end
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bourbon', '~> 4.2.7'
 gem 'bower', '~> 0.0.5'
 gem 'coffee-rails', '~> 4.2'
