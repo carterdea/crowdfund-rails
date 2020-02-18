@@ -23,7 +23,7 @@ gem 'groupdate', '~> 3.0'
 
 # file handling
 gem 'carrierwave', '~> 0.11.2'
-gem 'mini_magick', '~> 4.5'
+gem 'mini_magick', '~> 4.9'
 
 # security & auth
 gem 'bcrypt', '~> 3.1'
