@@ -22,7 +22,7 @@ gem 'uglifier', '~> 3.0'
 gem 'groupdate', '~> 3.0'
 
 # file handling
-gem 'carrierwave', '~> 0.11.2'
+gem 'carrierwave', '~> 1.3.2'
 gem 'mini_magick', '~> 4.9'
 
 # security & auth
