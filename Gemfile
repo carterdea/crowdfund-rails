@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 ruby '2.5.1'
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 4.2', '>= 4.2.10'
 
 # front-end
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bourbon', '~> 4.2.7'
 gem 'bower', '~> 0.0.5'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 gem 'compass', '~> 1.0.3'
 gem 'hamlit', '~> 2.7'
-gem 'jquery-rails', '~> 4.2'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'nav_lynx', '~> 1.1.1'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 # gem 'sassc', '~> 1.8'
 gem 'turbolinks', '~> 5.0'
 gem 'uglifier', '~> 3.0'
@@ -62,7 +62,7 @@ gem 'social_shares', '~> 0.3.2'
 gem 'tumblr_client', '~> 0.8.5'
 
 # localization
-gem 'rails-i18n', '~> 4.0.4' # needs Rails 5 to update
+gem 'rails-i18n', '~> 4.0.9' # needs Rails 5 to update
 
 # performance & monitoring
 gem 'airbrake', '~> 5.6'
@@ -83,20 +83,20 @@ group :development do
   gem 'immigrant', '~> 0.3.5'
   gem 'letter_opener', '~> 1.4'
   gem 'memory_profiler', '~> 0.9.6'
-  gem 'meta_request', '~> 0.4.0'
+  gem 'meta_request', '~> 0.4.3'
   gem 'populator', '~> 1.0.0'
   gem 'sinatra', '~> 1.4.7' # for Sidekiq monitoring https://github.com/mperham/sidekiq/wiki/Monitoring
-  gem 'rails-footnotes', '~> 4.1'
+  gem 'rails-footnotes', '~> 4.1', '>= 4.1.8'
   gem 'rails_best_practices', '~> 1.17'
   # benchmarking
   gem 'stackprof', '~> 0.2.9'
-  gem 'web-console', '~> 3.3'
+  gem 'web-console', '~> 3.3', '>= 3.3.0'
 end
 
 group :development, :test do
   gem 'ffaker', '~> 2.2'
   gem 'jazz_fingers', '~> 4.0'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'spring', '~> 1.7'
 end
 
@@ -106,7 +106,7 @@ group :test do
   gem 'capybara-webkit', '~> 1.15'
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
   gem 'database_cleaner', '~> 1.5'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_girl_rails', '~> 4.9', '>= 4.9.0'
   gem 'guard-rspec', '~> 4.7'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'webmock', '~> 2.1'
