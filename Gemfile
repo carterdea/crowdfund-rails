@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.1'
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 4.2', '>= 4.2.10'
 
 # front-end
 gem 'bootstrap-sass', '~> 3.4.1'
@@ -13,7 +13,7 @@ gem 'hamlit', '~> 2.7'
 gem 'jquery-rails', '~> 4.2'
 gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'nav_lynx', '~> 1.1.1'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0', '>= 6.0.0'
 # gem 'sassc', '~> 1.8'
 gem 'turbolinks', '~> 5.0'
 gem 'uglifier', '~> 3.0'
@@ -86,7 +86,7 @@ group :development do
   gem 'meta_request', '~> 0.4.0'
   gem 'populator', '~> 1.0.0'
   gem 'sinatra', '~> 1.4.7' # for Sidekiq monitoring https://github.com/mperham/sidekiq/wiki/Monitoring
-  gem 'rails-footnotes', '~> 4.1'
+  gem 'rails-footnotes', '~> 4.1', '>= 4.1.8'
   gem 'rails_best_practices', '~> 1.17'
   # benchmarking
   gem 'stackprof', '~> 0.2.9'
