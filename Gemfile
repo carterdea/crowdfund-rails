@@ -46,7 +46,7 @@ gem 'readthis', '~> 2.2' # cool new redis client http://sorentwo.com/2015/07/20/
 gem 'mandrill-api', '~> 1.0.53'
 
 # background jobs
-gem 'sidekiq', '~> 5.1'
+gem 'sidekiq', '~> 7.0', '>= 7.0.8'
 
 # miscelaneous
 gem 'country_select', '~> 2.5'
